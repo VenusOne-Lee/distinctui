@@ -32,20 +32,20 @@ Then ask Claude for the look: "Build the sign-up page in distinctUI. Our signatu
 From npm:
 
 ```
-npm install distinctui
+npm install @distinctui/css
 ```
 
 ```js
-import "distinctui";              // distinctui.css
-import "distinctui/distinctui.js"; // optional motion and interaction
-// also: distinctui/tailwind.css, distinctui/tokens.json, distinctui/icons.svg
+import "@distinctui/css";              // distinctui.css
+import "@distinctui/css/distinctui.js"; // optional motion and interaction
+// also: @distinctui/css/tailwind.css, @distinctui/css/tokens.json, @distinctui/css/icons.svg
 ```
 
 Or straight from a CDN, no build step:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/distinctui@0.2.0/skills/distinctui/assets/distinctui.css">
-<script src="https://cdn.jsdelivr.net/npm/distinctui@0.2.0/skills/distinctui/assets/distinctui.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@distinctui/css@0.2.0/skills/distinctui/assets/distinctui.css">
+<script src="https://cdn.jsdelivr.net/npm/@distinctui/css@0.2.0/skills/distinctui/assets/distinctui.js" defer></script>
 ```
 
 Plain CSS:
