@@ -37,7 +37,7 @@ public struct FormExample: View {
                     DUITextField("Project name", text: $name, prompt: "Taxi Fare", invalid: nameError != nil)
                 }
                 DUIField("One line", hint: "What it does, for whom. Up to 90 characters.") {
-                    DUITextField("One line", text: $oneLine)
+                    DUITextField("One line", text: $oneLine, wraps: true)
                     Text("\(oneLine.count) / 90")
                         .duiFont(12, relativeTo: .caption1)
                         .monospacedDigit()

@@ -16,7 +16,7 @@ struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
             ExamplesHome(screen: screen)
-                .distinctUI(palette: .signal)
+                .distinctUI(signature: Color(duiHex: 0x1F3BFF), palette: .signal)
         }
     }
 }

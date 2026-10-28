@@ -3,7 +3,8 @@ import SwiftUI
 // Fields, ticks and choices. Errors are black and bold with a "!" disc, never red.
 
 /// A field you type into. `.pill` for one line on its own (email, search); `.soft` for fields
-/// on a longer form, and for anything multi-line. The edge goes black when focused or invalid.
+/// on a longer form, and for anything multi-line. `wraps` lets a one-line answer grow to three lines.
+/// The edge goes black when focused or invalid.
 public struct DUITextField: View {
     public enum Shape: Sendable { case pill, soft }
 
@@ -13,16 +14,18 @@ public struct DUITextField: View {
     let shape: Shape
     let invalid: Bool
     let multiline: Bool
+    let wraps: Bool
 
     @FocusState private var focused: Bool
 
-    public init(_ title: String, text: Binding<String>, prompt: String? = nil, shape: Shape = .soft, invalid: Bool = false, multiline: Bool = false) {
+    public init(_ title: String, text: Binding<String>, prompt: String? = nil, shape: Shape = .soft, invalid: Bool = false, multiline: Bool = false, wraps: Bool = false) {
         self.title = title
         self._text = text
         self.prompt = prompt
         self.shape = multiline ? .soft : shape
         self.invalid = invalid
         self.multiline = multiline
+        self.wraps = wraps
     }
 
     public var body: some View {
@@ -46,6 +49,10 @@ public struct DUITextField: View {
         if multiline {
             TextField(title, text: $text, prompt: placeholder, axis: .vertical)
                 .lineLimit(4...)
+        } else if wraps {
+            // One line of meaning that may run long, like a tagline: grows to three lines.
+            TextField(title, text: $text, prompt: placeholder, axis: .vertical)
+                .lineLimit(1...3)
         } else {
             TextField(title, text: $text, prompt: placeholder)
         }

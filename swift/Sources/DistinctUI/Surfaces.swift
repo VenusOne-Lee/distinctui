@@ -152,9 +152,13 @@ public struct DUIRow<Leading: View, Trailing: View>: View {
         VStack(spacing: 0) {
             HStack(alignment: .center, spacing: DUISpace.x4) {
                 leading
-                Spacer(minLength: DUISpace.x2)
-                trailing
+                // With nothing on the right, the leading side runs to the edge, so a toggle lines up.
+                if Trailing.self != EmptyView.self {
+                    Spacer(minLength: DUISpace.x2)
+                    trailing
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, DUISpace.x4)
             .frame(minHeight: 44)
             Rectangle().fill(Color.duiGrey200).frame(height: 1)
