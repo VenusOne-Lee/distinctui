@@ -11,7 +11,7 @@ It is the system behind [Version One](https://versionone.co.za), where South Afr
 
 ## Before you build
 
-1. **Ask for the signature.** What is the mark (a ring around a face, a logo dot, a project badge)? What one colour? If the user has no answer, suggest a strong, saturated colour that is not already a well-known brand's, and say why. Never default to green.
+1. **Ask for the signature.** What is the mark (a ring around a face, a logo dot, a project badge)? What one colour, or which palette if every person gets a ring? If the user has no answer, offer the five palettes in `references/tokens.md` and recommend one for their product, with a reason.
 2. **Find the stack.** Plain CSS: link `assets/distinctui.css` and use the `dui-` classes. Tailwind v4: import `assets/tailwind.css`. Anything else (React Native, SwiftUI, email): copy the tokens from `references/tokens.md` by value.
 3. **Load the font** from Google Fonts, `Bricolage Grotesque` with the optical size axis: `https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap`.
 
@@ -21,7 +21,7 @@ These are not suggestions. If a request breaks one, say which rule and offer the
 
 1. **Light only.** White background, black text. No dark mode, no dark sections, no inverted hero.
 2. **Black, white and four greys.** `#000`, `#fff`, and greys 50, 100, 200, 400, 600, 800. No blue links, no red errors, no green success, no brand gradients.
-3. **One signature colour, only on the signature mark.** Not on buttons, links, headings, backgrounds or icons. If something needs to stand out, use black, weight or space.
+3. **Colour lives only on rings.** One signature colour for the product's own mark. If each person or project gets a ring, pick their colours from one palette of five (see `references/tokens.md`: Signal, Mzansi, Earth, Coast, Jacaranda). Never on buttons, links, headings, backgrounds or icons. If something needs to stand out, use black, weight or space.
 4. **One typeface.** Bricolage Grotesque for everything, including buttons and numbers. A monospace only for code.
 5. **Headings are light with one bold word.** `Just <b>shipped</b>`. Weight 300 for the line, 700 for the word that carries the meaning. Tight tracking (-0.035em to -0.04em).
 6. **Main actions are black pills.** One black pill per group. The second action is an outlined pill. Tertiary actions are underlined text links.
@@ -41,10 +41,26 @@ All components, their markup and when to use each are in `references/components.
 - Badges: outline status, solid highlight, soft version chip
 - Forms: label and hint, pill field, input, select, textarea, counter, checkbox, choice cards, field error, form problems banner
 - Cards: card, media card, feature card, note, panel, rows
-- Signature mark: sizes, dashed/solid, version label, earned dot, plain and group variants, logo
+- Signature mark: empty, initials or photo inside; sizes, dashed/solid, version label, earned dot, plain and group variants, logo
 - Page: header with nav, footer, menu, pill tabs, status notice, empty state, flash
 
-Worked pages are in `examples/`: `landing.html`, `profile.html`, `form.html` and `list.html`. Open one before building a similar screen.
+Worked pages are in `examples/`. Open the closest one before building a similar screen:
+
+| Template | Use it for |
+|---|---|
+| `landing.html` | A launch or marketing page |
+| `profile.html` | A person or team page |
+| `list.html` | A directory, feed or search results |
+| `dashboard.html` | An owner's home: what needs them, numbers, activity |
+| `article.html` | A story, blog post or long read |
+| `pricing.html` | Plans and questions |
+| `signin.html` | Sign in with an email link or passkey |
+| `settings.html` | Account, emails, your data, delete account |
+| `changelog.html` | Versions and what changed |
+| `form.html` | Any long form, with error states |
+| `email.html` | A transactional email (tables and inline styles) |
+
+The example photos in `examples/img/` are AI-generated people who don't exist. Replace them with your own.
 
 ## Layout
 

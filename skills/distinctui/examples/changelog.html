@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>What's new</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: a changelog. Each release is a version label on a line; the latest mark is solid, the next one dashed. */
+  :root { --dui-signature: #1f3bff; }
+  .log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; max-width: 46rem; }
+  .rel { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 20px; position: relative; padding-bottom: 40px; }
+  .rel::before { content: ""; position: absolute; left: 2.25rem; top: 4.5rem; bottom: 0; border-left: 1px solid var(--dui-grey-200); }
+  .rel:last-child::before { display: none; }
+  .rel .body { display: flex; flex-direction: column; gap: 10px; padding-top: 10px; min-width: 0; }
+  .rel ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; color: var(--dui-grey-800); }
+  .credit { display: flex; align-items: center; gap: 8px; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">taxi fare</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm" href="#">Open the app</a></nav>
+</header>
+
+<main class="dui-container" style="padding-block:24px 96px;display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <h1 class="dui-h1">What's <b>new</b></h1>
+    <p class="dui-lede">Every version of Taxi Fare, newest first, and who helped.</p>
+  </div>
+
+  <ol class="log">
+    <li class="rel">
+      <span class="dui-mark" data-live="false" style="--mark-size:4.5rem"><span class="dui-mark__inner" style="font-size:15px">next</span></span>
+      <div class="body"><h2 class="dui-h4">Coming next</h2><p class="dui-meta">Split a fare with people who don't have the app, by link. Ask: testers in Gqeberha.</p></div>
+    </li>
+    <li class="rel">
+      <span class="dui-mark" style="--mark-size:4.5rem"><span class="dui-mark__inner" style="font-size:15px">v1.2</span></span>
+      <div class="body">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2 class="dui-h4">Round up to the nearest rand</h2><span class="dui-badge">Live</span><span class="dui-meta">21 Oct</span></div>
+        <ul><li>Fares round up, and the change goes to whoever paid first.</li><li>Bigger buttons for the person passing money to the front.</li></ul>
+        <p class="credit"><span class="dui-mark dui-mark--plain" style="--mark-size:1.5rem"><span class="dui-mark__inner" style="font-size:9px"><img src="img/portrait-5.jpg" alt=""></span></span>Answers Thandi's ask about coins.</p>
+      </div>
+    </li>
+    <li class="rel">
+      <span class="dui-mark" style="--mark-size:4.5rem"><span class="dui-mark__inner" style="font-size:15px">v1.1</span></span>
+      <div class="body">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2 class="dui-h4">Works in Afrikaans and isiXhosa</h2><span class="dui-meta">2 Oct</span></div>
+        <ul><li>Choose your language the first time you open it.</li></ul>
+      </div>
+    </li>
+    <li class="rel">
+      <span class="dui-mark" style="--mark-size:4.5rem"><span class="dui-mark__inner" style="font-size:15px">v1.0</span></span>
+      <div class="body">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2 class="dui-h4">First live version</h2><span class="dui-meta">14 Sep</span></div>
+        <ul><li>Count the seats, type the fare, see who owes what.</li></ul>
+      </div>
+    </li>
+  </ol>
+</main>
+</body>
+</html>

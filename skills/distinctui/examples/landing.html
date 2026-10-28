@@ -21,6 +21,9 @@
   .who b, .who .dui-meta { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .who .dui-meta { font-size: 13px; }
   .week { display: grid; gap: 32px; align-items: center; }
+  .how { display: grid; gap: 32px; align-items: center; }
+  .how-shot { width: 100%; height: auto; border-radius: var(--dui-radius-card); border: 1px solid var(--dui-grey-200); }
+  @media (min-width: 900px) { .how { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 48px; } }
   @media (min-width: 768px) { .week { grid-template-columns: auto minmax(0, 1fr); gap: 48px; } }
   .steps { counter-reset: step; }
   .steps .dui-row { align-items: flex-start; padding-block: 20px; }
@@ -47,9 +50,9 @@
       <a class="dui-btn-ghost" href="#how">See how it works</a>
     </div>
     <ul class="faces" aria-label="Clubs that started this month" style="list-style:none;margin:40px 0 0">
-      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">4 cars</span></span><b>Thandi</b><span class="dui-meta">Umhlanga</span></li>
-      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner">SN</span><span class="dui-mark__version">3 cars</span></span><b>Sipho</b><span class="dui-meta">Soweto</span></li>
-      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner">AK</span><span class="dui-mark__version">2 cars</span></span><b>Aisha</b><span class="dui-meta">Rondebosch</span></li>
+      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner"><img src="img/portrait-5.jpg" alt=""></span><span class="dui-mark__version">4 cars</span></span><b>Thandi</b><span class="dui-meta">Umhlanga</span></li>
+      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner"><img src="img/portrait-7.jpg" alt=""></span><span class="dui-mark__version">3 cars</span></span><b>Sipho</b><span class="dui-meta">Soweto</span></li>
+      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span><span class="dui-mark__version">2 cars</span></span><b>Aisha</b><span class="dui-meta">Rondebosch</span></li>
       <li class="face"><span class="dui-mark" data-live="false" style="--mark-size:6.75rem"><span class="dui-mark__inner">PV</span></span><b>Pieter</b><span class="dui-meta">Finding parents</span></li>
       <li class="face" aria-hidden="true"><span class="dui-mark dui-mark--plain" data-live="false" style="--mark-size:6.75rem"><span class="dui-mark__inner">+</span></span><b style="color:var(--dui-grey-600)">Your club</b></li>
     </ul>
@@ -62,19 +65,19 @@
     </div>
     <div class="dui-grid dui-grid--4">
       <article class="dui-card">
-        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">TM</span></span><div><b>Thandi Mokoena</b><span class="dui-meta">Umhlanga</span></div><span class="dui-badge-soft">4 cars</span></div>
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner"><img src="img/portrait-5.jpg" alt=""></span></span><div><b>Thandi Mokoena</b><span class="dui-meta">Umhlanga</span></div><span class="dui-badge-soft">4 cars</span></div>
         <h3 class="dui-card__title">Glenashley Primary mornings</h3>
         <p class="dui-card__text">Weekday drop-offs at 07:10, two seats free on Thursdays.</p>
         <div class="dui-card__foot"><a class="dui-btn-sm" href="#">Ask to join</a></div>
       </article>
       <article class="dui-card">
-        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">SN</span></span><div><b>Sipho Ndlovu</b><span class="dui-meta">Soweto</span></div><span class="dui-badge-soft">3 cars</span></div>
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner"><img src="img/portrait-7.jpg" alt=""></span></span><div><b>Sipho Ndlovu</b><span class="dui-meta">Soweto</span></div><span class="dui-badge-soft">3 cars</span></div>
         <h3 class="dui-card__title">Orlando West high school run</h3>
         <p class="dui-card__text">Afternoon pick-ups after sport, Monday to Thursday.</p>
         <div class="dui-card__foot"><a class="dui-btn-sm" href="#">Ask to join</a></div>
       </article>
       <article class="dui-card">
-        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">AK</span></span><div><b>Aisha Khan</b><span class="dui-meta">Rondebosch</span></div><span class="dui-badge-soft">2 cars</span></div>
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span></span><div><b>Aisha Khan</b><span class="dui-meta">Rondebosch</span></div><span class="dui-badge-soft">2 cars</span></div>
         <h3 class="dui-card__title">Swimming galas, every second Saturday</h3>
         <p class="dui-card__text">Two parents, one minibus, and a spare booster seat.</p>
         <div class="dui-card__foot"><a class="dui-btn-sm" href="#">Ask to join</a></div>
@@ -91,7 +94,7 @@
   <section class="dui-section" aria-labelledby="week-h">
     <h2 id="week-h" class="dui-h2">Club of the <b>month</b></h2>
     <div class="dui-feature week">
-      <span class="dui-mark" style="--mark-size:9rem;justify-self:center"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">4 cars</span></span>
+      <span class="dui-mark" style="--mark-size:9rem;justify-self:center"><span class="dui-mark__inner"><img src="img/portrait-5.jpg" alt=""></span><span class="dui-mark__version">4 cars</span></span>
       <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
         <span class="dui-eyebrow"><span class="dui-badge-solid" style="text-transform:none;letter-spacing:0">Club of the month</span></span>
         <h3 class="dui-h1">Thandi runs <b>Glenashley mornings</b></h3>
@@ -103,11 +106,14 @@
 
   <section class="dui-section" id="how" aria-labelledby="how-h">
     <h2 id="how-h" class="dui-h2">How it <b>works</b></h2>
-    <ol class="dui-rows steps" style="max-width:42rem">
+    <div class="how">
+    <ol class="dui-rows steps">
       <li class="dui-row"><span class="n">1</span><div><h3 class="dui-h4">Start a club</h3><p class="dui-body">Pick the school and the times. Your ring stays dashed until a second family joins.</p></div></li>
       <li class="dui-row"><span class="n">2</span><div><h3 class="dui-h4">Invite the parents you know</h3><p class="dui-body">Send a link. Nobody sees your address until you say yes.</p></div></li>
       <li class="dui-row"><span class="n">3</span><div><h3 class="dui-h4">Share the week</h3><p class="dui-body">Everyone sees who's driving when, and swaps in one tap.</p></div></li>
     </ol>
+    <img class="how-shot" src="img/product-b.jpg" alt="The week's lift schedule: who drives which morning" loading="lazy">
+    </div>
   </section>
 </main>
 

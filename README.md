@@ -60,7 +60,8 @@ skills/distinctui/
   references/components.md markup for every component
   references/voice.md      how the words sound
   references/review.md     the checklist Claude runs before it's done
-  examples/                landing, profile, form and directory pages
+  examples/                eleven templates: landing, profile, directory, dashboard,
+                           article, pricing, sign-in, settings, changelog, form, email
 site/                      distinctui.versionone.co.za
 ```
 
@@ -68,7 +69,7 @@ site/                      distinctui.versionone.co.za
 
 1. Light only. No dark mode.
 2. Black, white and four greys. Nothing else.
-3. One signature colour, only on the signature mark.
+3. Colour lives only on rings, from one palette of five (Signal, Mzansi, Earth, Coast, Jacaranda).
 4. One typeface: Bricolage Grotesque.
 5. Headings are light, with one bold word.
 6. Main actions are black pills.
@@ -91,4 +92,4 @@ npm run deploy   # Cloudflare Workers, custom domain distinctui.versionone.co.za
 
 MIT, see [LICENSE](LICENSE). Bricolage Grotesque is by Mathieu Triay and is under the SIL Open Font Licence; it loads from Google Fonts and isn't included here.
 
-The Version One name, logo and its flag-colour rings aren't part of this licence. Every person and product in the examples is invented.
+The Version One name and logo aren't part of this licence. The Mzansi palette uses the South African flag colours as Version One does. Every person and product in the examples is invented. The example photos are AI-generated and show people who don't exist.

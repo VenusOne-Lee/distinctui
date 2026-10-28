@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>How Naledi built Spaza Stock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: a long read. One reading column, a pull quote, a project card at the end. Invented story. */
+  :root { --dui-signature: #000; }
+  .read { max-width: 42rem; margin-inline: auto; display: flex; flex-direction: column; gap: 22px; padding-block: 40px 96px; }
+  .byline { display: flex; align-items: center; gap: 14px; }
+  .read p { margin: 0; font-size: 1.125rem; line-height: 1.7; color: var(--dui-grey-800); }
+  .read h2 { margin: 18px 0 0; font-size: 1.75rem; font-weight: 300; letter-spacing: -0.035em; }
+  .read h2 b { font-weight: 700; }
+  .quote { margin: 18px 0; padding: 0; border: 0; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.15; font-weight: 300; letter-spacing: -0.035em; color: var(--dui-black); }
+  .quote b { font-weight: 700; }
+  .quote cite { display: block; margin-top: 12px; font-size: var(--dui-text-sm); font-style: normal; font-weight: 400; letter-spacing: 0; color: var(--dui-grey-600); }
+  .media { border-radius: var(--dui-radius-card); overflow: hidden; background: var(--dui-grey-100); aspect-ratio: 3 / 2; display: grid; place-items: center; }
+  .media img { width: 100%; height: 100%; object-fit: cover; }
+  figure { margin: 8px 0; display: flex; flex-direction: column; gap: 10px; }
+  figcaption { font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">makers</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm" href="#">Share</a></nav>
+</header>
+
+<main class="dui-container">
+  <article class="read">
+    <span class="dui-eyebrow">Story · 6 min read</span>
+    <h1 class="dui-h1">Naledi counted <b>stock by voice</b>, then built the app</h1>
+    <div class="byline">
+      <span class="dui-mark" style="--mark-size:3rem;--mark-colour:#ff4f1f"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span>
+      <div><b>Naledi Dube</b><p class="dui-meta">Pietermaritzburg · 12 Oct</p></div>
+    </div>
+    <figure>
+      <div class="media"><img src="img/product-a.jpg" alt="Spaza Stock v0.4: the stock list, read back after a voice count"></div>
+      <figcaption>Spaza Stock v0.4, counting offline.</figcaption>
+    </figure>
+    <p>Her aunt's shop in Imbali had a notebook for stock. By Thursday the pages were damp and the numbers didn't add up. Naledi started counting out loud into her phone, then writing it up at night.</p>
+    <p>That was the first version: a voice note and a spreadsheet. The app came three weeks later.</p>
+    <h2>The first <b>ten shops</b></h2>
+    <p>She asked for help on a Friday. Sibusiso offered to try it in two shops near his house. He came back with one question: what happens when the data runs out?</p>
+    <blockquote class="quote">"Every shop owner asked the same thing. <b>Does it work offline?</b> So that became version 0.4."<cite>Naledi Dube</cite></blockquote>
+    <p>Version 0.4 saves every count on the phone and sends it when the signal comes back. Fourteen people have tried it so far.</p>
+    <h2>What she needs <b>now</b></h2>
+    <p>Testers in KwaZulu-Natal townships, and someone who has built voice input in isiZulu before.</p>
+
+    <a class="dui-card" href="#" style="margin-top:20px">
+      <div style="display:flex;align-items:center;gap:12px"><span class="dui-mark" style="--mark-size:2.75rem;--mark-colour:#ff4f1f"><span class="dui-mark__inner" style="font-size:13px"><img src="img/portrait-1.jpg" alt=""></span><span class="dui-mark__version" style="font-size:10px">v0.4</span></span><div style="flex:1;min-width:0"><h3 class="dui-h4">Spaza Stock</h3><p class="dui-meta">Stock counts for spaza shops, by voice.</p></div><span class="dui-badge">Beta</span></div>
+      <p class="dui-note"><b>Needs:</b> testers in KZN</p>
+      <div class="dui-card__foot"><span class="dui-btn-sm">Try it</span><span class="dui-btn-sm-ghost">Offer help</span></div>
+    </a>
+  </article>
+</main>
+</body>
+</html>

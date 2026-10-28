@@ -19,6 +19,12 @@
   --color-grey-600: #6b6b6b;
   --color-grey-800: #262626;
   --color-signature: #000000;
+  /* Ring palette (Signal). Swap for another set from tokens.md. Rings only. */
+  --color-ring-1: #1f3bff;
+  --color-ring-2: #ff4f1f;
+  --color-ring-3: #7a2cff;
+  --color-ring-4: #e8a800;
+  --color-ring-5: #000000;
 
   --radius-input: 14px;
   --radius-note: 12px;
@@ -73,6 +79,11 @@ html {
     padding: calc(var(--mark-size) * 0.06);
   }
   .mark[data-live="false"] { border-style: dashed; }
+  .mark[data-ring="1"] { --mark-colour: var(--color-ring-1); }
+  .mark[data-ring="2"] { --mark-colour: var(--color-ring-2); }
+  .mark[data-ring="3"] { --mark-colour: var(--color-ring-3); }
+  .mark[data-ring="4"] { --mark-colour: var(--color-ring-4); }
+  .mark[data-ring="5"] { --mark-colour: var(--color-ring-5); }
   .mark__inner { @apply grid h-full w-full place-items-center overflow-hidden rounded-full bg-grey-100 font-medium; font-size: calc(var(--mark-size) * 0.32); }
   .mark__version {
     @apply absolute left-1/2 -translate-x-1/2 rounded-full border-[3px] border-white bg-black font-semibold whitespace-nowrap text-white;

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Dashboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: an owner's dashboard. What needs you first, then a few numbers, a black-and-grey chart, and recent activity. Invented data. */
+  :root { --dui-signature: #000; }
+  .needs { display: grid; gap: 12px; }
+  @media (min-width: 900px) { .needs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .need { display: flex; flex-direction: column; gap: 10px; }
+  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (min-width: 900px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; } }
+  .stat { display: flex; flex-direction: column; gap: 4px; }
+  .stat b { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .chart { display: flex; flex-direction: column; gap: 12px; }
+  .bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; align-items: end; height: 180px; border-bottom: 1px solid var(--dui-grey-200); }
+  .bars span { display: block; border-radius: 8px 8px 0 0; background: var(--dui-grey-200); }
+  .bars span.today { background: var(--dui-black); }
+  .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; font-size: 12px; color: var(--dui-grey-600); text-align: center; }
+  .two { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .two { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; } }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">makers</a>
+  <nav class="dui-nav" aria-label="Main"><span class="dui-nav__links"><a href="#" aria-current="page">Dashboard</a><a href="#">Projects</a></span><a class="dui-btn-sm-ghost dui-has-count" href="#">You<span class="dui-count">3<span class="dui-sr-only"> things need you</span></span></a></nav>
+</header>
+
+<main class="dui-container" style="padding-block:24px 96px;display:flex;flex-direction:column;gap:56px">
+  <h1 class="dui-h1">Morning, <b>Kagiso</b></h1>
+
+  <section aria-labelledby="n-h" style="display:flex;flex-direction:column;gap:16px">
+    <h2 id="n-h" class="dui-h3">Needs you <span class="dui-badge-soft" style="vertical-align:middle">3</span></h2>
+    <div class="needs">
+      <div class="dui-card need"><span class="dui-eyebrow">Help offer</span><b>Lerato offered to test in Gqeberha</b><p class="dui-meta">Two days ago.</p><div class="dui-card__foot"><span class="dui-btn-sm">Reply</span><span class="dui-btn-sm-ghost">Not now</span></div></div>
+      <div class="dui-card need"><span class="dui-eyebrow">Review</span><b>v1.3 was sent back</b><p class="dui-meta">The release notes need one line on what changed.</p><div class="dui-card__foot"><span class="dui-btn-sm">Fix it</span></div></div>
+      <div class="dui-card need"><span class="dui-eyebrow">Beta</span><b>Five people are waiting for a code</b><p class="dui-meta">Your beta has room for 20.</p><div class="dui-card__foot"><span class="dui-btn-sm">Send codes</span></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s-h" style="display:flex;flex-direction:column;gap:20px">
+    <h2 id="s-h" class="dui-h3">This week</h2>
+    <div class="stats">
+      <div class="dui-panel stat"><span class="dui-meta">Tried it</span><b>128</b><span class="dui-meta">+34 on last week</span></div>
+      <div class="dui-panel stat"><span class="dui-meta">Followers</span><b>46</b><span class="dui-meta">+6</span></div>
+      <div class="dui-panel stat"><span class="dui-meta">Help offers</span><b>4</b><span class="dui-meta">1 open</span></div>
+      <div class="dui-panel stat"><span class="dui-meta">Latest version</span><b>v1.2</b><span class="dui-meta">7 days live</span></div>
+    </div>
+  </section>
+
+  <div class="two">
+    <section class="dui-card chart" aria-labelledby="c-h">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h2 id="c-h" class="dui-h4">People who tried it</h2><div class="dui-tabs" role="tablist" aria-label="Range"><button class="dui-tab" role="tab" aria-selected="true" type="button">7 days</button><button class="dui-tab" role="tab" aria-selected="false" type="button">30 days</button></div></div>
+      <div class="bars" role="img" aria-label="Tried it each day: Thu 12, Fri 31, Sat 18, Sun 9, Mon 14, Tue 20, Wed 24 today"><span style="height:39%"></span><span style="height:100%"></span><span style="height:58%"></span><span style="height:29%"></span><span style="height:45%"></span><span style="height:65%"></span><span class="today" style="height:77%"></span></div>
+      <div class="days"><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span></div>
+      <p class="dui-meta">Friday's jump came from the round-up email.</p>
+    </section>
+
+    <section aria-labelledby="a-h" style="display:flex;flex-direction:column;gap:12px">
+      <h2 id="a-h" class="dui-h4">Recent</h2>
+      <ul class="dui-rows">
+        <li class="dui-row"><span class="dui-mark" style="--mark-size:2.25rem;--mark-colour:#ff4f1f"><span class="dui-mark__inner" style="font-size:12px"><img src="img/portrait-1.jpg" alt=""></span></span><span style="flex:1"><b>Naledi</b> followed you</span><span class="dui-meta">2h</span></li>
+        <li class="dui-row"><span class="dui-mark dui-mark--plain" style="--mark-size:2.25rem"><span class="dui-mark__inner" style="font-size:12px"><img src="img/portrait-2.jpg" alt=""></span></span><span style="flex:1"><b>Sizwe</b> tried Taxi Fare</span><span class="dui-meta">5h</span></li>
+        <li class="dui-row"><span class="dui-mark" data-live="false" style="--mark-size:2.25rem;--mark-colour:#7a2cff"><span class="dui-mark__inner" style="font-size:12px">LJ</span></span><span style="flex:1"><b>Lerato</b> offered help</span><span class="dui-meta">2d</span></li>
+      </ul>
+    </section>
+  </div>
+</main>
+</body>
+</html>

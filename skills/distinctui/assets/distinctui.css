@@ -28,6 +28,15 @@
   /* Your one colour. Set it once; it only ever appears on the mark. */
   --dui-signature: #000000;
 
+  /* Ring palette: up to five colours when each person or project gets its own
+     ring. Defaults to Signal; switch with a dui-palette-* class on <html>.
+     Still only ever on marks. */
+  --dui-ring-1: #1f3bff;
+  --dui-ring-2: #ff4f1f;
+  --dui-ring-3: #7a2cff;
+  --dui-ring-4: #e8a800;
+  --dui-ring-5: #000000;
+
   /* Type */
   --dui-font: "Bricolage Grotesque", "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --dui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -471,6 +480,25 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 .dui-mark--plain { --mark-colour: var(--dui-black); border-width: calc(var(--mark-size) * 0.035); }
 /* A group, not a person: a black double ring. */
 .dui-mark--group { --mark-colour: var(--dui-black); border-style: double; border-width: max(4px, calc(var(--mark-size) * 0.08)); }
+
+/* Pick a ring from the palette: <span class="dui-mark" data-ring="3">. */
+[data-ring="1"] { --mark-colour: var(--dui-ring-1); }
+[data-ring="2"] { --mark-colour: var(--dui-ring-2); }
+[data-ring="3"] { --mark-colour: var(--dui-ring-3); }
+[data-ring="4"] { --mark-colour: var(--dui-ring-4); }
+[data-ring="5"] { --mark-colour: var(--dui-ring-5); }
+
+/* Palettes. Each is five ring colours; the fifth is always black. */
+.dui-palette-signal { --dui-ring-1: #1f3bff; --dui-ring-2: #ff4f1f; --dui-ring-3: #7a2cff; --dui-ring-4: #e8a800; --dui-ring-5: #000000; }
+/* Mzansi: the South African flag colours, as Version One uses them. */
+.dui-palette-mzansi { --dui-ring-1: #e03c31; --dui-ring-2: #001489; --dui-ring-3: #ffb81c; --dui-ring-4: #007749; --dui-ring-5: #000000; }
+.dui-palette-earth { --dui-ring-1: #b5452b; --dui-ring-2: #c8860a; --dui-ring-3: #6b3e26; --dui-ring-4: #2e3a87; --dui-ring-5: #000000; }
+.dui-palette-coast { --dui-ring-1: #0067a5; --dui-ring-2: #ff5a4e; --dui-ring-3: #00706b; --dui-ring-4: #d9a400; --dui-ring-5: #000000; }
+.dui-palette-jacaranda { --dui-ring-1: #6f3fc7; --dui-ring-2: #c2185b; --dui-ring-3: #2f80ed; --dui-ring-4: #f26b1d; --dui-ring-5: #000000; }
+
+/* An empty spot: nobody here yet. A grey disc in a dashed grey ring. */
+.dui-mark--empty { --mark-colour: var(--dui-grey-400); border-style: dashed; }
+.dui-mark--empty .dui-mark__inner { color: var(--dui-grey-600); }
 
 /* The logo: a small ring in the signature colour, then the name in lower case. */
 .dui-logo { display: inline-flex; align-items: center; gap: 0.625rem; font-size: var(--dui-text-lg); font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; text-decoration: none; color: inherit; }

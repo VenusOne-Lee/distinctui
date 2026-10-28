@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Pricing</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: three plans, one feature card for the one most people pick, and questions. Prices are invented. */
+  :root { --dui-signature: #1f3bff; }
+  .top { display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 56px; text-align: center; }
+  .plans { display: grid; gap: 16px; }
+  @media (min-width: 900px) { .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; } }
+  .plan { display: flex; flex-direction: column; gap: 18px; }
+  .price { display: flex; align-items: baseline; gap: 6px; }
+  .price b { font-size: 3rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+  .list li { display: flex; gap: 10px; }
+  .list li::before { content: "✓"; display: grid; place-items: center; width: 1.25rem; height: 1.25rem; flex-shrink: 0; border-radius: 50%; background: var(--dui-grey-100); font-size: 11px; font-weight: 700; }
+  .plan .dui-btn, .plan .dui-btn-ghost { margin-top: auto; }
+  details { border-bottom: 1px solid var(--dui-grey-200); padding: 18px 0; }
+  details summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  details summary::after { content: "+"; font-weight: 300; font-size: 1.4rem; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 10px 0 0; color: var(--dui-grey-800); max-width: 60ch; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">spaza stock</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm" href="#">Start free</a></nav>
+</header>
+
+<main class="dui-container" style="padding-bottom:96px">
+  <section class="top" aria-labelledby="p-h">
+    <h1 id="p-h" class="dui-hero" style="max-width:14ch">One price per <b>shop</b></h1>
+    <p class="dui-lede">Free while you count fewer than 100 items. No card needed to start.</p>
+  </section>
+
+  <section class="dui-section" style="padding-top:56px" aria-label="Plans">
+    <div class="plans">
+      <div class="dui-card plan">
+        <h2 class="dui-h4">Free</h2>
+        <p class="price"><b>R0</b><span class="dui-meta">for good</span></p>
+        <p class="dui-meta">For trying it in one shop.</p>
+        <ul class="list"><li>Up to 100 items</li><li>Voice counts in English</li><li>One phone</li></ul>
+        <a class="dui-btn-ghost" href="#">Start free</a>
+      </div>
+      <div class="dui-feature plan" style="padding:24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2 class="dui-h4">Shop</h2><span class="dui-badge-solid">Most shops pick this</span></div>
+        <p class="price"><b>R89</b><span class="dui-meta">a month</span></p>
+        <p class="dui-meta">For a shop that counts every week.</p>
+        <ul class="list"><li>Unlimited items</li><li>isiZulu and English</li><li>Low stock list</li><li>Works offline</li><li>Three phones</li></ul>
+        <a class="dui-btn" href="#">Try Shop for 30 days</a>
+      </div>
+      <div class="dui-card plan">
+        <h2 class="dui-h4">Group</h2>
+        <p class="price"><b>R249</b><span class="dui-meta">a month</span></p>
+        <p class="dui-meta">For a family running a few shops.</p>
+        <ul class="list"><li>Everything in Shop</li><li>Up to five shops</li><li>One list across shops</li><li>Ten phones</li></ul>
+        <a class="dui-btn-ghost" href="#">Talk to us</a>
+      </div>
+    </div>
+    <p class="dui-meta" style="text-align:center">Prices include VAT. Cancel any time from Settings.</p>
+  </section>
+
+  <section class="dui-section" aria-labelledby="q-h" style="max-width:46rem">
+    <h2 id="q-h" class="dui-h2">Good <b>questions</b></h2>
+    <div>
+      <details open><summary>What happens when the 30 days end?</summary><p>We email you three days before. If you don't add a card, you move to Free and keep your counts.</p></details>
+      <details><summary>Does it work without data?</summary><p>Yes, on Shop and Group. Counts save on the phone and sync when you're back online.</p></details>
+      <details><summary>Can I pay in cash?</summary><p>Not yet. You can pay by card or EFT for a year up front.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>spaza stock</b> spazastock.example</span>
+  <span>Example page from distinctUI. Prices are invented.</span>
+  <nav aria-label="More"><a href="#">Privacy</a><a href="#">Help</a></nav>
+</footer>
+</body>
+</html>
