@@ -13,7 +13,7 @@ cpSync("skills/distinctui/examples", "dist/examples", { recursive: true });
 
 // Template order and names come from the Templates page, so new templates join the bar on their own.
 const templates = [...readFileSync("site/templates.html", "utf8").matchAll(
-  /href="\/examples\/([\w-]+)\.html"[\s\S]*?<h2[^>]*>([^<]+)<\/h2>/g,
+  /href="\/examples\/([\w-]+)\.html"[\s\S]*?<h[23][^>]*>([^<]+)<\/h[23]>/g,
 )].map(([, slug, name]) => ({ slug, name }));
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
