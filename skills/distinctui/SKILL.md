@@ -12,7 +12,7 @@ It is the system behind [Version One](https://versionone.co.za), where South Afr
 ## Before you build
 
 1. **Ask for the signature.** What is the mark (a ring around a face, a logo dot, a project badge)? What one colour, or which palette if every person gets a ring? If the user has no answer, offer the five palettes in `references/tokens.md` and recommend one for their product, with a reason.
-2. **Find the stack.** Plain CSS: link `assets/distinctui.css` and use the `dui-` classes, plus `assets/distinctui.js` for motion and interaction. Tailwind v4: import `assets/tailwind.css`. Anything else (React Native, SwiftUI, email): copy the tokens from `references/tokens.md` by value.
+2. **Find the stack.** Plain CSS: link `assets/distinctui.css` and use the `dui-` classes, plus `assets/distinctui.js` for motion and interaction. Tailwind v4: import `assets/tailwind.css`. SwiftUI (iPhone and iPad): add the `DistinctUI` Swift package and follow `references/swiftui.md`. Anything else (React Native, Android, email): copy the tokens from `references/tokens.md` by value.
 3. **Load the font** from Google Fonts, `Bricolage Grotesque` with the optical size axis: `https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap`.
 
 ## The rules
@@ -44,6 +44,8 @@ All components, their markup and when to use each are in `references/components.
 - Signature mark: empty, initials or photo inside; sizes, dashed/solid, version label, earned dot, plain and group variants, logo
 - Page: header with nav, footer, menu, pill tabs, status notice, empty state, flash
 - Motion (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, bars grow, filter tabs, toggle
+
+For SwiftUI, every one of these is a view or modifier in the `DistinctUI` package (`DUIMark`, `DUITitle`, `.buttonStyle(.duiPrimary)`, `.duiCard()` and so on). The full map, the phone-specific rules and six example screens are in `references/swiftui.md`.
 
 Worked pages are in `examples/`. Open the closest one before building a similar screen:
 
