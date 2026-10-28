@@ -34,6 +34,7 @@ Plain CSS:
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
 <link rel="stylesheet" href="distinctui.css">
+<script src="distinctui.js" defer></script> <!-- optional: motion and interaction -->
 <style>:root { --dui-signature: #1f3bff; }</style>
 <body class="dui-page">
   <h1 class="dui-hero">Your product, <b>shipped</b>.</h1>
@@ -56,8 +57,10 @@ skills/distinctui/
   SKILL.md                 the twelve rules and how Claude applies them
   assets/distinctui.css    every token and component, as plain CSS
   assets/tailwind.css      the same tokens as a Tailwind v4 theme
+  assets/distinctui.js     optional motion and interaction, driven by attributes
   references/tokens.md     colour, type, space, radius, mark, motion
   references/components.md markup for every component
+  references/motion.md     how things move, and when they don't
   references/voice.md      how the words sound
   references/review.md     the checklist Claude runs before it's done
   examples/                eleven templates: landing, profile, directory, dashboard,

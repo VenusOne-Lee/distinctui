@@ -6,6 +6,10 @@
  * MIT licence · https://distinctui.com
  */
 @theme {
+  /* Motion: use as duration-fast, ease-dui and so on. */
+  --ease-dui: cubic-bezier(0.2, 0, 0, 1);
+  --ease-pop: cubic-bezier(0.3, 1.5, 0.5, 1);
+
   --font-sans: "Bricolage Grotesque", "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
 
   /* Clear Tailwind's palette so no stray blue-500 sneaks in. */
