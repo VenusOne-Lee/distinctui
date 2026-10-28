@@ -3,7 +3,7 @@
  *   @import "tailwindcss";
  *   @import "./distinctui-tailwind.css";
  * Set --color-signature to your one colour.
- * MIT licence · https://distinctui.versionone.co.za
+ * MIT licence · https://distinctui.com
  */
 @theme {
   --font-sans: "Bricolage Grotesque", "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;

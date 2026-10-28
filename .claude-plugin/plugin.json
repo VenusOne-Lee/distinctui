@@ -3,7 +3,7 @@
   "description": "Calm black, white and grey interfaces with one signature mark in one colour. The design system behind Version One.",
   "version": "0.1.0",
   "author": { "name": "Version One", "url": "https://versionone.co.za" },
-  "homepage": "https://distinctui.versionone.co.za",
+  "homepage": "https://distinctui.com",
   "repository": "https://github.com/VenusOne-Lee/distinctui",
   "license": "MIT",
   "skills": ["./skills/distinctui"]

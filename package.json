@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Calm black, white and grey interfaces with one signature mark in one colour. The design system behind Version One.",
   "license": "MIT",
-  "homepage": "https://distinctui.versionone.co.za",
+  "homepage": "https://distinctui.com",
   "repository": { "type": "git", "url": "git+https://github.com/VenusOne-Lee/distinctui.git" },
   "keywords": ["design-system", "css", "tailwind", "claude", "skill", "monochrome"],
   "style": "skills/distinctui/assets/distinctui.css",

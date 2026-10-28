@@ -6,7 +6,7 @@ distinctUI is a small, open-source design system packaged as a [Claude](https://
 
 It's the system behind [Version One](https://versionone.co.za), where South African builders share what they've shipped.
 
-Site and live components: **https://distinctui.versionone.co.za**
+Site and live components: **https://distinctui.com**
 
 ## Add the skill
 
@@ -62,7 +62,7 @@ skills/distinctui/
   references/review.md     the checklist Claude runs before it's done
   examples/                eleven templates: landing, profile, directory, dashboard,
                            article, pricing, sign-in, settings, changelog, form, email
-site/                      distinctui.versionone.co.za
+site/                      distinctui.com
 ```
 
 ## The twelve rules
@@ -85,7 +85,7 @@ site/                      distinctui.versionone.co.za
 ```
 npm install
 npm run dev      # builds dist/ and serves it with wrangler
-npm run deploy   # Cloudflare Workers, custom domain distinctui.versionone.co.za
+npm run deploy   # Cloudflare Workers, custom domain distinctui.com
 ```
 
 ## Licence
