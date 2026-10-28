@@ -6,7 +6,7 @@ distinctUI is a small, open-source design system packaged as a [Claude](https://
 
 It's the system behind [Version One](https://versionone.co.za), where South African builders share what they've shipped.
 
-Site and live components: **https://distinctui.com**
+Site and live components: **https://distinctui.com**. A short narrated how-to is at [distinctui.com/#watch](https://distinctui.com/#watch).
 
 ## Add the skill
 
