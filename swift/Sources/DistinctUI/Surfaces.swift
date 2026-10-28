@@ -64,7 +64,7 @@ public struct DUICardButtonStyle: ButtonStyle {
             .background(shape.fill(Color.duiWhite))
             .overlay(shape.strokeBorder(configuration.isPressed ? Color.duiBlack : Color.duiGrey200, lineWidth: 1))
             .contentShape(shape)
-            .animation(DUIMotion.change, value: configuration.isPressed)
+            .animation(DUIMotion.fast, value: configuration.isPressed)
     }
 }
 

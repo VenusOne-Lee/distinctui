@@ -133,6 +133,7 @@ public struct DUIMark: View {
                     .offset(y: size * 0.08)
             }
         }
+        .animation(DUIMotion.live, value: live)
         .accessibilityElement()
         .accessibilityLabel(accessibilityText)
     }

@@ -10,6 +10,7 @@ public struct DUIButtonStyle: ButtonStyle {
     var fullWidth: Bool
 
     @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(_ kind: Kind = .primary, size: Size = .regular, fullWidth: Bool = false) {
         self.kind = kind
@@ -39,7 +40,8 @@ public struct DUIButtonStyle: ButtonStyle {
             }
         }
         .opacity(isEnabled ? (kind == .primary && configuration.isPressed ? 0.85 : 1) : 0.4)
-        .animation(DUIMotion.change, value: configuration.isPressed)
+        .scaleEffect(configuration.isPressed && kind != .link && !reduceMotion ? DUIMotion.pressScale : 1)
+        .animation(reduceMotion ? nil : DUIMotion.fast, value: configuration.isPressed)
     }
 
     private func fill(pressed: Bool) -> Color {

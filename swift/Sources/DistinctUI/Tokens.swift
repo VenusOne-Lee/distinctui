@@ -100,9 +100,22 @@ public enum DUIBorder {
     public static let strong: CGFloat = 1.5
 }
 
-/// 150ms, opacity or colour only. Off when Reduce Motion is on.
+/// Motion tokens from references/motion.md. One easing curve for everything, a spring only
+/// for going live. Check `accessibilityReduceMotion` and drop movement when it's on.
 public enum DUIMotion {
-    public static let change = Animation.easeOut(duration: 0.15)
+    /// 120ms: press and highlight.
+    public static let fast = Animation.timingCurve(0.2, 0, 0, 1, duration: 0.12)
+    /// 200ms: tabs, menus, fields.
+    public static let base = Animation.timingCurve(0.2, 0, 0, 1, duration: 0.2)
+    /// 480ms: reveals and a ring drawing in.
+    public static let slow = Animation.timingCurve(0.2, 0, 0, 1, duration: 0.48)
+    /// 700ms: a mark going from dashed to solid, with a small pop.
+    public static let live = Animation.spring(duration: 0.7, bounce: 0.25)
+    /// What a pressed button scales to. Cards never scale.
+    public static let pressScale: CGFloat = 0.97
+
+    /// Kept for state changes like a field edge; same as `base`.
+    public static let change = base
 }
 
 // MARK: - Environment
