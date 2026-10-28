@@ -30,16 +30,23 @@
 <nav class="dui-container dui-subnav site-subnav" aria-label="Sections"><a href="/" aria-current="page">Home</a><a href="#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/swiftui.html">SwiftUI</a></nav>
 
 <main id="main" class="dui-container" style="padding-bottom:64px">
-  <section class="hero" aria-labelledby="hero-h">
-    <span class="dui-mark dui-draw hero-plus" data-live="false" style="--mark-size:5.5rem;--mark-colour:var(--dui-black)" aria-label="An empty mark, waiting for yours" role="img"><span class="dui-mark__inner">+</span></span>
-    <h1 id="hero-h" class="dui-hero" style="max-width:15ch">Black, white, grey. Then one mark that's <b>yours</b>.</h1>
-    <p class="dui-lede">A free design skill for Claude. Lots of white space, one typeface, black pill buttons, and a single signature colour you choose. It's the system behind Version One.</p>
-    <div class="install">
-      <code id="cmd">npx skills add VenusOne-Lee/distinctui</code>
-      <button class="dui-btn-sm" type="button" id="copy">Copy</button>
+  <section class="hero hero--split" aria-labelledby="hero-h">
+    <div class="hero-faces" role="group" aria-label="Three people in their rings and one empty dashed ring, waiting for yours">
+      <span class="dui-mark dui-mark--plain dui-draw" style="--dui-i:0"><span class="dui-mark__inner"><img src="/img/hero-1.jpg" alt="A smiling young woman with long dark hair, in a thin black ring" width="360" height="360"></span></span>
+      <span class="dui-mark dui-mark--plain dui-draw" style="--dui-i:1"><span class="dui-mark__inner"><img src="/img/hero-2.jpg" alt="A smiling man with curly hair and round glasses, in a thin black ring" width="360" height="360"></span></span>
+      <span class="dui-mark dui-mark--empty hero-empty dui-draw" style="--dui-i:2" data-live="false" role="img" aria-label="An empty dashed ring, waiting for yours"><span class="dui-mark__inner"></span></span>
+      <span class="dui-mark dui-draw" data-ring="1" style="--dui-i:3"><span class="dui-mark__inner"><img src="/img/hero-3.jpg" alt="A laughing woman with short curly hair, in a solid blue ring with a v1.0 label" width="360" height="360"></span><span class="dui-mark__version">v1.0</span></span>
     </div>
-    <p class="dui-meta">Or in Claude Code: <code>/plugin marketplace add VenusOne-Lee/distinctui</code>, then <code>/plugin install distinctui</code>.</p>
-    <p class="dui-meta">Plain CSS, Tailwind v4, or <a class="dui-link" href="/swiftui.html">SwiftUI for iPhone and iPad</a>.</p>
+    <div class="hero-copy">
+      <h1 id="hero-h" class="dui-hero" style="max-width:15ch">Black, white, grey. Then one mark that's <b>yours</b>.</h1>
+      <p class="dui-lede">A free design skill for Claude. Lots of white space, one typeface, black pill buttons, and a single signature colour you choose. It's the system behind Version One.</p>
+      <div class="install">
+        <code id="cmd">npx skills add VenusOne-Lee/distinctui</code>
+        <button class="dui-btn-sm" type="button" id="copy">Copy</button>
+      </div>
+      <p class="dui-meta">Or in Claude Code: <code>/plugin marketplace add VenusOne-Lee/distinctui</code>, then <code>/plugin install distinctui</code>.</p>
+      <p class="dui-meta">Plain CSS, Tailwind v4, or <a class="dui-link" href="/swiftui.html">SwiftUI for iPhone and iPad</a>.</p>
+    </div>
   </section>
 
   <section class="dui-section" id="npm" aria-labelledby="npm-h">

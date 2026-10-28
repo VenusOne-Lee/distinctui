@@ -81,5 +81,15 @@ pre.code { margin: 0; overflow-x: auto; border-radius: var(--dui-radius-panel); 
 .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: 8px; }
 .ico { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px; border-radius: var(--dui-radius-panel); background: var(--dui-grey-50); font-size: var(--dui-text-xs); color: var(--dui-grey-600); }
 
-/* Home hero: the empty mark, a plus waiting for yours. */
-.hero-plus .dui-mark__inner { background: var(--dui-white); border: 1px dashed var(--dui-grey-200); font-size: 2.25rem; font-weight: 300; line-height: 1; color: var(--dui-black); }
+/* Home hero: the share card's row of faces, with one empty dashed ring waiting for yours.
+   Phones and tablets: one column, faces first. Desktop: copy left, faces right, level with the headline. */
+.hero--split .hero-copy { display: flex; flex-direction: column; align-items: center; gap: 24px; width: 100%; min-width: 0; }
+.hero-faces { --mark-size: clamp(3.75rem, 19vw, 6.5rem); display: flex; align-items: center; justify-content: center; gap: clamp(8px, 2.5vw, 14px); padding-bottom: 8px; }
+.hero-faces .dui-mark { --mark-size: inherit; }
+.hero-empty { --mark-colour: var(--dui-black); border-width: calc(var(--mark-size) * 0.03); }
+@media (min-width: 1024px) {
+  .hero--split { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 56px; row-gap: 24px; align-items: start; justify-items: start; text-align: left; }
+  .hero--split .hero-copy { display: contents; }
+  .hero--split .hero-copy > * { grid-column: 1; }
+  .hero-faces { grid-column: 2; grid-row: 1; align-self: center; --mark-size: 6.75rem; }
+}
