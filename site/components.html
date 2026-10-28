@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Components · distinctUI</title>
+<meta name="description" content="Every distinctUI token and component, live.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="/assets/distinctui.css">
+<link rel="stylesheet" href="/site.css">
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="/">distinctUI</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="wide-nav"><a href="/#rules">Rules</a><a href="/components.html" aria-current="page">Components</a><a href="/#examples">Examples</a></span>
+    <a class="dui-btn-sm" href="https://github.com/VenusOne-Lee/distinctui">GitHub</a>
+  </nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
+    <h1 class="dui-h1">Every <b>component</b></h1>
+    <p class="dui-lede">Live, from <code>distinctui.css</code>. The markup for each is in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/components.md">components.md</a>.</p>
+    <nav class="toc" aria-label="On this page">
+      <a class="dui-btn-sm-ghost" href="#colour">Colour</a><a class="dui-btn-sm-ghost" href="#type">Type</a><a class="dui-btn-sm-ghost" href="#shape">Shape</a><a class="dui-btn-sm-ghost" href="#buttons">Buttons</a><a class="dui-btn-sm-ghost" href="#badges">Badges</a><a class="dui-btn-sm-ghost" href="#forms">Forms</a><a class="dui-btn-sm-ghost" href="#cards">Cards</a><a class="dui-btn-sm-ghost" href="#mark">Mark</a><a class="dui-btn-sm-ghost" href="#nav">Menu and tabs</a><a class="dui-btn-sm-ghost" href="#notices">Notices</a>
+    </nav>
+  </div>
+
+  <section class="dui-section spec" id="colour" aria-labelledby="c-h">
+    <h2 id="c-h" class="dui-h2"><b>Colour</b></h2>
+    <div class="token-grid">
+      <div class="token"><span class="chip" style="background:#000"></span><b>black</b><span>#000000</span></div>
+      <div class="token"><span class="chip" style="background:#262626"></span><b>grey-800</b><span>#262626 · body in cards</span></div>
+      <div class="token"><span class="chip" style="background:#6b6b6b"></span><b>grey-600</b><span>#6b6b6b · secondary text</span></div>
+      <div class="token"><span class="chip" style="background:#a3a3a3"></span><b>grey-400</b><span>#a3a3a3 · placeholders</span></div>
+      <div class="token"><span class="chip" style="background:#e5e5e5"></span><b>grey-200</b><span>#e5e5e5 · hairlines</span></div>
+      <div class="token"><span class="chip" style="background:#f2f2f2"></span><b>grey-100</b><span>#f2f2f2 · fills</span></div>
+      <div class="token"><span class="chip" style="background:#fafafa"></span><b>grey-50</b><span>#fafafa · notes</span></div>
+      <div class="token"><span class="chip" style="background:#fff"></span><b>white</b><span>#ffffff</span></div>
+      <div class="token"><span class="chip" style="background:var(--dui-signature);border-color:var(--dui-signature)"></span><b>signature</b><span>yours · the mark only</span></div>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="type" aria-labelledby="t-h">
+    <h2 id="t-h" class="dui-h2"><b>Type</b></h2>
+    <div class="scale">
+      <div><span class="k">hero 76</span><span class="s dui-hero" style="font-size:clamp(2.5rem,6vw,4.75rem)">Before <b>everyone</b></span></div>
+      <div><span class="k">h1 54</span><span class="s dui-h1">Naledi is building <b>Spaza Stock</b></span></div>
+      <div><span class="k">h2 48</span><span class="s dui-h2">Just <b>shipped</b></span></div>
+      <div><span class="k">h3 26</span><span class="s dui-h3">Lift Club</span></div>
+      <div><span class="k">h4 20</span><span class="s dui-h4">Start a club</span></div>
+      <div><span class="k">lede 18</span><span class="s dui-lede">Meet them. Try what they shipped.</span></div>
+      <div><span class="k">body 16</span><span class="s">Shared school lifts for parents in the same suburb.</span></div>
+      <div><span class="k">meta 14</span><span class="s dui-meta">Thandi Mokoena · v0.3 · 12 Oct</span></div>
+      <div><span class="k">eyebrow 13</span><span class="s dui-eyebrow">Builder of the week</span></div>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="shape" aria-labelledby="s-h">
+    <h2 id="s-h" class="dui-h2"><b>Shape</b> and space</h2>
+    <div class="radii">
+      <div style="border-radius:9999px">pill</div>
+      <div style="border-radius:14px">input 14</div>
+      <div style="border-radius:16px">panel 16</div>
+      <div style="border-radius:22px">card 22</div>
+      <div style="border-radius:24px">menu 24</div>
+      <div style="border-radius:28px">feature 28</div>
+    </div>
+    <p class="cap">Space runs on 4px: 4, 8, 12, 16, 20, 24, 32, 40, 56, 80, 112. Sections sit 80px apart on phones and 112px on desktop. The only shadow is on floating menus.</p>
+  </section>
+
+  <section class="dui-section spec" id="buttons" aria-labelledby="b-h">
+    <h2 id="b-h" class="dui-h2"><b>Buttons</b></h2>
+    <div class="demo">
+      <div class="demo-row"><a class="dui-btn" href="#buttons">Share a launch</a><a class="dui-btn-ghost" href="#buttons">See how it works</a><button class="dui-btn" type="button" disabled>Sending…</button></div>
+      <div class="demo-row"><a class="dui-btn-sm" href="#buttons">Try it</a><a class="dui-btn-sm-ghost" href="#buttons">Details</a><button class="dui-btn-sm" type="button"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Play</button><a class="dui-btn-sm-ghost dui-has-count" href="#buttons">You<span class="dui-count">3<span class="dui-sr-only"> things need you</span></span></a><a class="dui-link" href="#buttons">How it works</a></div>
+      <p class="cap">One black pill per group. The count only shows things waiting on this person.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="badges" aria-labelledby="bd-h">
+    <h2 id="bd-h" class="dui-h2"><b>Badges</b></h2>
+    <div class="demo">
+      <div class="demo-row"><span class="dui-badge">Live</span><span class="dui-badge">Beta</span><span class="dui-badge">Idea</span><span class="dui-badge-solid">Featured</span><span class="dui-badge-soft">v0.3</span><span class="dui-badge-soft">v1.0</span></div>
+      <p class="cap">Outline for status, solid for one highlight, soft grey for versions.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="forms" aria-labelledby="f-h">
+    <h2 id="f-h" class="dui-h2"><b>Forms</b></h2>
+    <div class="demo">
+      <div class="form-demo">
+        <div class="dui-problems" role="note"><p>Two things to fix before this can go out.</p><ul><li><a href="#f-name">Project name</a>: add a name, up to 40 characters.</li><li><a href="#f-link">Link</a>: add a link that starts with https://.</li></ul></div>
+        <input class="dui-field" type="email" placeholder="you@example.com" aria-label="Email">
+        <div class="group"><label class="dui-label" for="f-name">Project name</label><input class="dui-input" id="f-name" aria-invalid="true" aria-describedby="f-name-e"><p class="dui-field-error" id="f-name-e">Add a name, up to 40 characters.</p></div>
+        <div class="group"><label class="dui-label" for="f-one">One line <span class="dui-hint">What it does, and who it's for.</span></label><textarea class="dui-textarea" id="f-one">Split a minibus taxi fare without counting coins at the front.</textarea><span class="dui-counter">63/70</span></div>
+        <div class="group"><label class="dui-label" for="f-link">Link</label><input class="dui-input" id="f-link" value="taxifare.example" aria-invalid="true"></div>
+        <div class="group"><label class="dui-label" for="f-city">City <span class="dui-optional">(optional)</span></label><select class="dui-select" id="f-city"><option>Johannesburg</option><option>Durban</option></select></div>
+        <label class="dui-choice"><input type="radio" name="f-stage" checked><span><b>Live</b><br><span class="dui-hint">Anyone can use it today.</span></span></label>
+        <label class="dui-choice"><input type="radio" name="f-stage"><span><b>Beta</b><br><span class="dui-hint">A few people use it.</span></span></label>
+        <label class="dui-check"><input type="checkbox"> Tell me when someone tries it.</label>
+        <div class="dui-actions"><button class="dui-btn" type="button">Send for review</button><button class="dui-btn-ghost" type="button">Save draft</button></div>
+      </div>
+      <p class="cap">Errors are black and bold with a small "!" disc. Ticks start unticked. Mark what's optional.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="cards" aria-labelledby="cd-h">
+    <h2 id="cd-h" class="dui-h2"><b>Cards</b></h2>
+    <div class="dui-grid dui-grid--3">
+      <a class="dui-card" href="#cards">
+        <div style="display:flex;align-items:center;gap:10px"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">TM</span></span><div style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:15px">Thandi Mokoena</b><span class="dui-meta" style="font-size:13px">Umhlanga</span></div><span class="dui-badge-soft">v0.3</span></div>
+        <h3 class="dui-card__title">Lift Club</h3>
+        <p class="dui-card__text">Shared school lifts for parents in the same suburb.</p>
+        <div class="dui-card__foot"><span class="dui-btn-sm">Try it</span><span class="dui-btn-sm-ghost">Details</span></div>
+      </a>
+      <a class="dui-card dui-card--flush" href="#cards">
+        <div class="dui-card__media"><span style="position:absolute;inset:0;display:grid;place-items:center;background:var(--dui-grey-50)"><span class="dui-mark" style="--mark-size:6rem"><span class="dui-mark__inner">SN</span><span class="dui-mark__version">v0.2</span></span></span><span class="dui-badge-solid" style="position:absolute;top:12px;left:12px">Featured</span></div>
+        <div class="dui-card__body"><h3 class="dui-h4">Orlando West run</h3><p class="dui-card__text">No screenshot yet, so the mark fills the frame.</p><p class="dui-note"><b>Needs:</b> one more driver</p></div>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="dui-feature" style="padding:24px"><span class="dui-eyebrow">Feature card</span><h3 class="dui-h3" style="margin-top:8px">One per page, at most</h3></div>
+        <div class="dui-panel"><b>Panel</b><p class="dui-meta" style="margin-top:4px">Supporting content on grey-50.</p></div>
+        <ul class="dui-rows"><li class="dui-row"><span class="dui-badge-soft">v0.4</span><b>Counts work offline</b></li><li class="dui-row"><span class="dui-badge-soft">v0.3</span><b>isiZulu voice input</b></li></ul>
+      </div>
+    </div>
+    <p class="cap">Hover turns the border black. No lift, no shadow.</p>
+  </section>
+
+  <section class="dui-section spec" id="mark" aria-labelledby="m-h">
+    <h2 id="m-h" class="dui-h2">Signature <b>mark</b></h2>
+    <div class="demo">
+      <div class="demo-row" style="gap:28px;align-items:flex-end">
+        <span class="dui-mark" data-live="false" style="--mark-size:6rem"><span class="dui-mark__inner">ND</span><span class="dui-mark__version">v0.1</span></span>
+        <span class="dui-mark" style="--mark-size:6rem"><span class="dui-mark__inner">ND</span><span class="dui-mark__version">v1.0</span></span>
+        <span class="dui-mark" style="--mark-size:6rem"><span class="dui-mark__inner">KM</span><span class="dui-mark__dot" style="--mark-colour:#ff4f1f"></span></span>
+        <span class="dui-mark dui-mark--plain" style="--mark-size:6rem"><span class="dui-mark__inner">LJ</span></span>
+        <span class="dui-mark dui-mark--group" style="--mark-size:6rem"><span class="dui-mark__inner">DM</span></span>
+      </div>
+      <p class="cap">Not live (dashed), live (solid), an earned dot in someone else's colour, a person with no signature of their own (thin black), a group (double black).</p>
+      <div class="demo-row" style="align-items:center">
+        <span class="dui-mark" style="--mark-size:1.25rem;border-width:3px;padding:0"><span class="dui-mark__inner" style="background:none"></span></span>
+        <span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">TM</span></span>
+        <span class="dui-mark" style="--mark-size:4rem"><span class="dui-mark__inner">TM</span></span>
+        <span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v0.3</span></span>
+        <span class="dui-mark" style="--mark-size:9.5rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v0.3</span></span>
+      </div>
+      <p class="cap">Sizes: 20 in the logo, 36 in a card, 64 in a list, 108 in a faces row, 152 on a profile.</p>
+      <div class="demo-row" style="align-items:center">
+        <span class="dui-mark" style="--mark-size:4rem;--mark-colour:#ff4f1f"><span class="dui-mark__inner">A</span></span>
+        <span class="dui-mark" style="--mark-size:4rem;--mark-colour:#1f3bff"><span class="dui-mark__inner">B</span></span>
+        <span class="dui-mark" style="--mark-size:4rem;--mark-colour:#7a2cff"><span class="dui-mark__inner">C</span></span>
+        <span class="dui-mark" style="--mark-size:4rem;--mark-colour:#000"><span class="dui-mark__inner">D</span></span>
+      </div>
+      <p class="cap">If every person in your product gets a colour, keep the set to five or fewer, saturated and easy to tell apart. Still only on marks.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="nav" aria-labelledby="n-h">
+    <h2 id="n-h" class="dui-h2">Menu and <b>tabs</b></h2>
+    <div class="dui-grid">
+      <div class="demo">
+        <div class="dui-tabs" role="tablist" aria-label="Example tabs">
+          <button class="dui-tab" role="tab" aria-selected="true" type="button">All</button>
+          <button class="dui-tab" role="tab" aria-selected="false" type="button">Live</button>
+          <button class="dui-tab" role="tab" aria-selected="false" type="button">Beta</button>
+        </div>
+        <p class="cap">Tabs are pills. The open one is black.</p>
+        <div class="dui-container dui-header" style="padding:0;border-top:1px solid var(--dui-grey-200);padding-top:16px">
+          <span class="dui-logo">your name</span>
+          <span class="dui-nav" style="gap:16px"><a href="#nav" aria-current="page">Shipped</a><a href="#nav">People</a></span>
+        </div>
+        <p class="cap">The current page is bold, never coloured.</p>
+      </div>
+      <div class="demo menu-demo">
+        <div class="dui-menu__panel" role="menu" aria-label="Example menu">
+          <p class="dui-meta" style="padding:8px 16px">Signed in as <b style="color:#000">Kagiso</b></p>
+          <a class="dui-menu__item" href="#nav" aria-current="page">Your page</a>
+          <a class="dui-menu__item" href="#nav">Updates <span class="dui-meta" style="color:#000;font-weight:600">2 need you</span></a>
+          <a class="dui-menu__item" href="#nav">Settings</a>
+          <div class="dui-menu__sep"></div>
+          <button class="dui-menu__item" type="button" style="font-weight:600">Sign out</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="notices" aria-labelledby="no-h">
+    <h2 id="no-h" class="dui-h2"><b>Notices</b></h2>
+    <div class="dui-grid">
+      <p class="dui-status" role="note">You're signed in as <b>naledi@example.com</b>.</p>
+      <div class="dui-empty">
+        <span class="dui-mark dui-mark--plain" data-live="false" style="--mark-size:4rem"><span class="dui-mark__inner">+</span></span>
+        <p>Your launches show up here once they're live.</p>
+        <a class="dui-btn-sm" href="#notices">Share your first one</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>distinctUI</b> distinctui.versionone.co.za</span>
+  <span>The system behind Version One. MIT licence.</span>
+  <nav aria-label="More"><a href="/">Home</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://versionone.co.za">Version One</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/*
+ * distinctUI for Tailwind CSS v4. Import after tailwindcss:
+ *   @import "tailwindcss";
+ *   @import "./distinctui-tailwind.css";
+ * Set --color-signature to your one colour.
+ * MIT licence · https://distinctui.versionone.co.za
+ */
+@theme {
+  --font-sans: "Bricolage Grotesque", "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Clear Tailwind's palette so no stray blue-500 sneaks in. */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey-50: #fafafa;
+  --color-grey-100: #f2f2f2;
+  --color-grey-200: #e5e5e5;
+  --color-grey-400: #a3a3a3;
+  --color-grey-600: #6b6b6b;
+  --color-grey-800: #262626;
+  --color-signature: #000000;
+
+  --radius-input: 14px;
+  --radius-note: 12px;
+  --radius-panel: 16px;
+  --radius-card: 22px;
+  --radius-menu: 24px;
+  --radius-feature: 28px;
+
+  --shadow-float: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+:root { color-scheme: light; }
+
+:focus-visible { outline: 2px solid var(--color-black); outline-offset: 2px; }
+
+html {
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full border border-black bg-black px-6 py-3 font-semibold whitespace-nowrap text-white transition-opacity hover:opacity-85 disabled:opacity-40; }
+  .btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-full border border-black bg-white px-6 py-3 font-semibold whitespace-nowrap text-black transition-colors hover:bg-grey-100; }
+  .btn-sm { @apply inline-flex items-center justify-center gap-2 rounded-full border border-black bg-black px-4 py-2 text-sm font-semibold whitespace-nowrap text-white transition-opacity hover:opacity-85 disabled:opacity-40; }
+  .btn-sm-ghost { @apply inline-flex items-center justify-center gap-2 rounded-full border border-grey-200 bg-white px-4 py-2 text-sm font-semibold whitespace-nowrap text-black transition-colors hover:border-black; }
+
+  .field { @apply w-full rounded-full border border-grey-200 bg-white px-5 py-3 text-black placeholder:text-grey-400 focus:border-black focus:outline-none; }
+  .label { @apply flex flex-col gap-1.5 text-sm font-medium; }
+  .input { @apply w-full rounded-input border border-grey-200 bg-white px-4 py-3 text-base font-normal text-black placeholder:text-grey-400 focus:border-black focus:outline-none; }
+
+  .card { @apply flex min-w-0 flex-col gap-4 rounded-card border border-grey-200 bg-white p-6 transition-colors; }
+  .feature { @apply rounded-feature border-[1.5px] border-black p-6 sm:p-10; }
+
+  .heading { @apply text-4xl font-light tracking-[-0.035em] text-balance sm:text-5xl [&_b]:font-bold; }
+  .hero { @apply text-[2.5rem] leading-[1.02] font-light tracking-[-0.04em] text-balance sm:text-6xl lg:text-[4.75rem] [&_b]:font-bold; }
+
+  /* The signature mark. Dashed until live. Size with --mark-size. */
+  .mark {
+    --mark-size: 4rem;
+    --mark-colour: var(--color-signature);
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: var(--mark-size);
+    height: var(--mark-size);
+    border-radius: 9999px;
+    border: calc(var(--mark-size) * 0.06) solid var(--mark-colour);
+    padding: calc(var(--mark-size) * 0.06);
+  }
+  .mark[data-live="false"] { border-style: dashed; }
+  .mark__inner { @apply grid h-full w-full place-items-center overflow-hidden rounded-full bg-grey-100 font-medium; font-size: calc(var(--mark-size) * 0.32); }
+  .mark__version {
+    @apply absolute left-1/2 -translate-x-1/2 rounded-full border-[3px] border-white bg-black font-semibold whitespace-nowrap text-white;
+    bottom: calc(var(--mark-size) * -0.08);
+    padding: 0.15em 0.7em;
+    font-size: clamp(0.625rem, calc(var(--mark-size) * 0.12), 1.25rem);
+    line-height: 1.4;
+  }
+}

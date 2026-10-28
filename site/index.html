@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>distinctUI</title>
+<meta name="description" content="A free, open-source design skill for Claude. Black, white and grey, one typeface, black pill buttons, and one signature mark in one colour. The system behind Version One.">
+<meta property="og:title" content="distinctUI">
+<meta property="og:description" content="Black, white, grey. Then one mark that's yours. The design system behind Version One, as a Claude skill.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="/assets/distinctui.css">
+<link rel="stylesheet" href="/site.css">
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="/">distinctUI</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="wide-nav"><a href="#rules">Rules</a><a href="/components.html">Components</a><a href="#examples">Examples</a></span>
+    <a class="dui-btn-sm" href="https://github.com/VenusOne-Lee/distinctui">GitHub</a>
+  </nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:64px">
+  <section class="hero" aria-labelledby="hero-h">
+    <span class="dui-mark" data-live="false" style="--mark-size:5.5rem"><span class="dui-mark__inner">dUI</span><span class="dui-mark__version">v0.1</span></span>
+    <h1 id="hero-h" class="dui-hero" style="max-width:15ch">Black, white, grey. Then one mark that's <b>yours</b>.</h1>
+    <p class="dui-lede">A free design skill for Claude. Lots of white space, one typeface, black pill buttons, and a single signature colour you choose. It's the system behind Version One.</p>
+    <div class="install">
+      <code id="cmd">npx skills add VenusOne-Lee/distinctui</code>
+      <button class="dui-btn-sm" type="button" id="copy">Copy</button>
+    </div>
+    <p class="dui-meta">Or in Claude Code: <code>/plugin marketplace add VenusOne-Lee/distinctui</code>, then <code>/plugin install distinctui</code>.</p>
+  </section>
+
+  <section class="dui-section" aria-labelledby="spec-h">
+    <h2 id="spec-h" class="dui-h2">The whole system on <b>one screen</b></h2>
+    <div class="dui-grid dui-grid--3">
+      <div class="dui-card">
+        <span class="dui-eyebrow">Type</span>
+        <span class="aa">Aa<b>Aa</b></span>
+        <p class="dui-meta">Bricolage Grotesque. Headings light, with the word that matters in bold.</p>
+      </div>
+      <div class="dui-card">
+        <span class="dui-eyebrow">Colour</span>
+        <span class="swatches" aria-label="Black, four greys, white and the signature colour">
+          <i style="background:#000"></i><i style="background:#6b6b6b"></i><i style="background:#a3a3a3"></i><i style="background:#e5e5e5"></i><i style="background:#fff"></i><i class="sig"></i>
+        </span>
+        <p class="dui-meta">Black, white and greys. One signature colour, on the mark and nowhere else.</p>
+      </div>
+      <div class="dui-card">
+        <span class="dui-eyebrow">Signature mark</span>
+        <span class="marks">
+          <span class="dui-mark" data-live="false" style="--mark-size:4rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v0.1</span></span>
+          <span class="dui-mark" style="--mark-size:4rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v1.0</span></span>
+        </span>
+        <p class="dui-meta">Dashed until it's live. Solid the day it ships, with a small version label.</p>
+      </div>
+      <div class="dui-card">
+        <span class="dui-eyebrow">Buttons</span>
+        <span class="dui-actions"><span class="dui-btn-sm">Share a launch</span><span class="dui-btn-sm-ghost">Details</span></span>
+        <p class="dui-meta">Black pills for the main action. One per group.</p>
+      </div>
+      <div class="dui-card">
+        <span class="dui-eyebrow">Fields</span>
+        <input class="dui-field" placeholder="you@example.com" aria-label="Email example" tabindex="-1">
+        <p class="dui-meta">A pill for one line. Soft corners on longer forms.</p>
+      </div>
+      <div class="dui-card">
+        <span class="dui-eyebrow">Errors</span>
+        <p class="dui-field-error">Add a link that starts with https://.</p>
+        <p class="dui-meta">Black and bold, never red. Say the field and the fix.</p>
+      </div>
+    </div>
+    <a class="dui-btn-ghost" href="/components.html" style="align-self:flex-start">See every component</a>
+  </section>
+
+  <section class="dui-section" id="rules" aria-labelledby="rules-h">
+    <h2 id="rules-h" class="dui-h2">Twelve <b>rules</b></h2>
+    <ol class="dui-rows rules">
+      <li class="dui-row"><span class="n">1</span><div><b>Light only.</b> <span class="dui-meta">White background, black text. No dark mode, no dark sections.</span></div></li>
+      <li class="dui-row"><span class="n">2</span><div><b>Black, white and four greys.</b> <span class="dui-meta">No blue links, red errors, green ticks or gradients.</span></div></li>
+      <li class="dui-row"><span class="n">3</span><div><b>One signature colour, only on the mark.</b> <span class="dui-meta">If something needs to stand out, use black, weight or space.</span></div></li>
+      <li class="dui-row"><span class="n">4</span><div><b>One typeface.</b> <span class="dui-meta">Bricolage Grotesque for everything. Monospace only for code.</span></div></li>
+      <li class="dui-row"><span class="n">5</span><div><b>Light headings, one bold word.</b> <span class="dui-meta">"Just <b style="color:#000">shipped</b>". Tight tracking.</span></div></li>
+      <li class="dui-row"><span class="n">6</span><div><b>Main actions are black pills.</b> <span class="dui-meta">The second action is outlined. The third is a text link.</span></div></li>
+      <li class="dui-row"><span class="n">7</span><div><b>White space before borders, borders before shadows.</b> <span class="dui-meta">The only shadow is on a floating menu.</span></div></li>
+      <li class="dui-row"><span class="n">8</span><div><b>Pills for what you press, soft corners for what you read.</b> <span class="dui-meta">Cards 22px, the feature card 28px.</span></div></li>
+      <li class="dui-row"><span class="n">9</span><div><b>Dashed until live.</b> <span class="dui-meta">The mark goes solid when the thing ships.</span></div></li>
+      <li class="dui-row"><span class="n">10</span><div><b>Errors are black and bold.</b> <span class="dui-meta">Name the field and the fix.</span></div></li>
+      <li class="dui-row"><span class="n">11</span><div><b>Hover is a black edge, not a lift.</b> <span class="dui-meta">No scale, no glow.</span></div></li>
+      <li class="dui-row"><span class="n">12</span><div><b>Write plainly.</b> <span class="dui-meta">Buttons say what happens. Sentence case. No "Oops".</span></div></li>
+    </ol>
+  </section>
+
+  <section class="dui-section" id="examples" aria-labelledby="ex-h">
+    <h2 id="ex-h" class="dui-h2">Four <b>examples</b></h2>
+    <p class="dui-body">Whole pages built only from the skill, with invented people. Claude opens these before building something similar.</p>
+    <div class="dui-grid dui-grid--4">
+      <a class="dui-card" href="/examples/landing.html"><h3 class="dui-h4">Launch page</h3><p class="dui-meta">Hero, faces row, card grid, feature card, steps.</p></a>
+      <a class="dui-card" href="/examples/profile.html"><h3 class="dui-h4">Profile</h3><p class="dui-meta">A person with their mark, a build log and a help ask.</p></a>
+      <a class="dui-card" href="/examples/form.html"><h3 class="dui-h4">Long form</h3><p class="dui-meta">Every field, with the error states showing.</p></a>
+      <a class="dui-card" href="/examples/list.html"><h3 class="dui-h4">Directory</h3><p class="dui-meta">Tabs, search, a menu, media cards, an empty state.</p></a>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="get-h">
+    <div class="dui-feature credit">
+      <span class="dui-mark" style="--mark-size:6rem;--mark-colour:#000"><span class="dui-mark__inner">v1</span></span>
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <h2 id="get-h" class="dui-h2">Made for <b>Version One</b></h2>
+        <p class="dui-body">distinctUI is the look of <a class="dui-link" href="https://versionone.co.za">versionone.co.za</a>, where South African builders share what they've shipped. Someone asked for it, so here it is. The rings in flag colours stay Version One's. Everything else is yours to use, under the MIT licence.</p>
+        <div class="dui-actions"><a class="dui-btn-sm" href="https://versionone.co.za">Visit Version One</a><a class="dui-btn-sm-ghost" href="https://github.com/VenusOne-Lee/distinctui">Read the code</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>distinctUI</b> distinctui.versionone.co.za</span>
+  <span>The system behind Version One. MIT licence.</span>
+  <nav aria-label="More"><a href="/components.html">Components</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://versionone.co.za">Version One</a></nav>
+</footer>
+<script>
+  document.getElementById("copy").addEventListener("click", async (e) => {
+    const text = document.getElementById("cmd").textContent;
+    try { await navigator.clipboard.writeText(text); e.target.textContent = "Copied"; }
+    catch { getSelection().selectAllChildren(document.getElementById("cmd")); }
+    setTimeout(() => (e.target.textContent = "Copy"), 2000);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Lift Club</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: a launch page. The signature is Lift Club's cobalt. All people and products here are invented. */
+  :root { --dui-signature: #1f3bff; }
+  .hero { display: flex; flex-direction: column; align-items: center; gap: 24px; padding-top: 56px; text-align: center; }
+  @media (min-width: 640px) { .hero { padding-top: 96px; } }
+  .faces { display: flex; gap: 28px; overflow-x: auto; padding: 8px 4px 16px; margin-top: 40px; max-width: 100%; }
+  .face { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 6.75rem; flex-shrink: 0; }
+  .face b { font-size: 15px; } .face span.dui-meta { font-size: 13px; text-align: center; }
+  .head-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px; }
+  .who { display: flex; align-items: center; gap: 10px; }
+  .who > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .who b, .who .dui-meta { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .who .dui-meta { font-size: 13px; }
+  .week { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 768px) { .week { grid-template-columns: auto minmax(0, 1fr); gap: 48px; } }
+  .steps { counter-reset: step; }
+  .steps .dui-row { align-items: flex-start; padding-block: 20px; }
+  .steps .n { font-size: 2.25rem; font-weight: 300; letter-spacing: -0.04em; line-height: 1; width: 3rem; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">lift club</a>
+  <nav class="dui-nav" aria-label="Main">
+    <a class="dui-btn-sm" href="#">Start a club</a>
+    <a class="dui-btn-sm-ghost" href="#">Sign in</a>
+  </nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="hero" aria-labelledby="hero-h">
+    <h1 id="hero-h" class="dui-hero" style="max-width:16ch">School lifts, <b>shared</b> with the parents next door.</h1>
+    <p class="dui-lede">One car, four families, no group chat chaos.</p>
+    <div class="dui-actions" style="justify-content:center">
+      <a class="dui-btn" href="#">Start a club</a>
+      <a class="dui-btn-ghost" href="#how">See how it works</a>
+    </div>
+    <ul class="faces" aria-label="Clubs that started this month" style="list-style:none;margin:40px 0 0">
+      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">4 cars</span></span><b>Thandi</b><span class="dui-meta">Umhlanga</span></li>
+      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner">SN</span><span class="dui-mark__version">3 cars</span></span><b>Sipho</b><span class="dui-meta">Soweto</span></li>
+      <li class="face"><span class="dui-mark" style="--mark-size:6.75rem"><span class="dui-mark__inner">AK</span><span class="dui-mark__version">2 cars</span></span><b>Aisha</b><span class="dui-meta">Rondebosch</span></li>
+      <li class="face"><span class="dui-mark" data-live="false" style="--mark-size:6.75rem"><span class="dui-mark__inner">PV</span></span><b>Pieter</b><span class="dui-meta">Finding parents</span></li>
+      <li class="face" aria-hidden="true"><span class="dui-mark dui-mark--plain" data-live="false" style="--mark-size:6.75rem"><span class="dui-mark__inner">+</span></span><b style="color:var(--dui-grey-600)">Your club</b></li>
+    </ul>
+  </section>
+
+  <section class="dui-section" aria-labelledby="new-h">
+    <div class="head-row">
+      <h2 id="new-h" class="dui-h2">Just <b>started</b></h2>
+      <a class="dui-link dui-meta" href="#">See all 38 clubs</a>
+    </div>
+    <div class="dui-grid dui-grid--4">
+      <article class="dui-card">
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">TM</span></span><div><b>Thandi Mokoena</b><span class="dui-meta">Umhlanga</span></div><span class="dui-badge-soft">4 cars</span></div>
+        <h3 class="dui-card__title">Glenashley Primary mornings</h3>
+        <p class="dui-card__text">Weekday drop-offs at 07:10, two seats free on Thursdays.</p>
+        <div class="dui-card__foot"><a class="dui-btn-sm" href="#">Ask to join</a></div>
+      </article>
+      <article class="dui-card">
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">SN</span></span><div><b>Sipho Ndlovu</b><span class="dui-meta">Soweto</span></div><span class="dui-badge-soft">3 cars</span></div>
+        <h3 class="dui-card__title">Orlando West high school run</h3>
+        <p class="dui-card__text">Afternoon pick-ups after sport, Monday to Thursday.</p>
+        <div class="dui-card__foot"><a class="dui-btn-sm" href="#">Ask to join</a></div>
+      </article>
+      <article class="dui-card">
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem"><span class="dui-mark__inner">AK</span></span><div><b>Aisha Khan</b><span class="dui-meta">Rondebosch</span></div><span class="dui-badge-soft">2 cars</span></div>
+        <h3 class="dui-card__title">Swimming galas, every second Saturday</h3>
+        <p class="dui-card__text">Two parents, one minibus, and a spare booster seat.</p>
+        <div class="dui-card__foot"><a class="dui-btn-sm" href="#">Ask to join</a></div>
+      </article>
+      <article class="dui-card">
+        <div class="who"><span class="dui-mark" data-live="false" style="--mark-size:2.25rem"><span class="dui-mark__inner">PV</span></span><div><b>Pieter van Wyk</b><span class="dui-meta">Bloemfontein</span></div><span class="dui-badge">Forming</span></div>
+        <h3 class="dui-card__title">Grey College early bus</h3>
+        <p class="dui-card__text">Looking for two more families on the Langenhoven Park side.</p>
+        <p class="dui-note"><b>Needs:</b> one more driver</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="week-h">
+    <h2 id="week-h" class="dui-h2">Club of the <b>month</b></h2>
+    <div class="dui-feature week">
+      <span class="dui-mark" style="--mark-size:9rem;justify-self:center"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">4 cars</span></span>
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <span class="dui-eyebrow"><span class="dui-badge-solid" style="text-transform:none;letter-spacing:0">Club of the month</span></span>
+        <h3 class="dui-h1">Thandi runs <b>Glenashley mornings</b></h3>
+        <p class="dui-body" style="font-size:17px">Four families, 212 lifts since February, and not one missed bell.</p>
+        <div class="dui-actions"><a class="dui-btn-sm" href="#">Meet Thandi</a><a class="dui-btn-sm-ghost" href="#">See the club</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dui-section" id="how" aria-labelledby="how-h">
+    <h2 id="how-h" class="dui-h2">How it <b>works</b></h2>
+    <ol class="dui-rows steps" style="max-width:42rem">
+      <li class="dui-row"><span class="n">1</span><div><h3 class="dui-h4">Start a club</h3><p class="dui-body">Pick the school and the times. Your ring stays dashed until a second family joins.</p></div></li>
+      <li class="dui-row"><span class="n">2</span><div><h3 class="dui-h4">Invite the parents you know</h3><p class="dui-body">Send a link. Nobody sees your address until you say yes.</p></div></li>
+      <li class="dui-row"><span class="n">3</span><div><h3 class="dui-h4">Share the week</h3><p class="dui-body">Everyone sees who's driving when, and swaps in one tap.</p></div></li>
+    </ol>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>lift club</b> liftclub.example</span>
+  <span>Fewer cars at the gate.</span>
+  <nav aria-label="More"><a href="#">Help</a><a href="#">Privacy</a><a href="#">Feedback</a></nav>
+</footer>
+</body>
+</html>

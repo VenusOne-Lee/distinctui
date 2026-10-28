@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Naledi Dube</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: a person's page. Each person has their own colour here, so the mark sets --mark-colour. Invented person. */
+  :root { --dui-signature: #000000; }
+  .top { display: grid; gap: 32px; padding-top: 40px; }
+  @media (min-width: 768px) { .top { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 48px; padding-top: 72px; } }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .facts span { font-size: 15px; color: var(--dui-grey-600); }
+  .facts b { color: var(--dui-black); font-weight: 600; }
+  .log .dui-row { align-items: baseline; }
+  .log .v { width: 4rem; flex-shrink: 0; }
+  .log .when { margin-left: auto; white-space: nowrap; }
+  .two { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .two { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: start; } }
+  .backers { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#" style="--dui-signature:#000">makers</a>
+  <nav class="dui-nav" aria-label="Main">
+    <a class="dui-btn-sm" href="#">Share</a>
+    <a class="dui-btn-sm-ghost dui-has-count" href="#">You<span class="dui-count">2<span class="dui-sr-only"> things need you</span></span></a>
+  </nav>
+</header>
+
+<main class="dui-container" style="padding-bottom:96px">
+  <section class="top" aria-labelledby="name-h">
+    <span class="dui-mark" style="--mark-size:9.5rem;--mark-colour:#ff4f1f;justify-self:start">
+      <span class="dui-mark__inner">ND</span>
+      <span class="dui-mark__version">v0.4</span>
+      <span class="dui-mark__dot" style="--mark-colour:#1f3bff"></span>
+    </span>
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+      <h1 id="name-h" class="dui-h1">Naledi is building <b>Spaza Stock</b></h1>
+      <p class="dui-lede">Stock counts for spaza shops, by voice, in isiZulu and English.</p>
+      <div class="facts"><span><b>Pietermaritzburg</b></span><span><b>2</b> projects</span><span><b>14</b> people tried it</span></div>
+      <div class="dui-actions"><a class="dui-btn-sm" href="#">Try Spaza Stock</a><a class="dui-btn-sm-ghost" href="#">Follow</a><a class="dui-btn-sm-ghost" href="#">Get in touch</a></div>
+    </div>
+  </section>
+
+  <div class="dui-section two">
+    <section aria-labelledby="log-h" style="display:flex;flex-direction:column;gap:24px">
+      <h2 id="log-h" class="dui-h2">Build <b>log</b></h2>
+      <ol class="dui-rows log">
+        <li class="dui-row"><span class="v"><span class="dui-badge-soft">v0.4</span></span><div><b>Counts work offline</b><p class="dui-meta">Answers the ask from Sibusiso, who tested it in Imbali.</p></div><span class="dui-meta when">12 Oct</span></li>
+        <li class="dui-row"><span class="v"><span class="dui-badge-soft">v0.3</span></span><div><b>isiZulu voice input</b><p class="dui-meta">Three shop owners helped with the word list.</p></div><span class="dui-meta when">28 Sep</span></li>
+        <li class="dui-row"><span class="v"><span class="dui-badge-soft">v0.2</span></span><div><b>Low stock list</b></div><span class="dui-meta when">9 Sep</span></li>
+        <li class="dui-row"><span class="v"><span class="dui-badge-soft">v0.1</span></span><div><b>First version</b></div><span class="dui-meta when">21 Aug</span></li>
+      </ol>
+    </section>
+
+    <aside style="display:flex;flex-direction:column;gap:20px">
+      <div class="dui-feature" style="padding:24px;display:flex;flex-direction:column;gap:12px">
+        <span class="dui-eyebrow">Help wanted</span>
+        <h3 class="dui-h3">Test it in a shop near you</h3>
+        <p class="dui-body">Ten minutes with the shop owner, then two questions. Any township in KZN.</p>
+        <div class="dui-actions"><a class="dui-btn-sm" href="#">Offer help</a></div>
+      </div>
+      <div class="dui-panel" style="display:flex;flex-direction:column;gap:12px">
+        <b>Backed by</b>
+        <div class="backers">
+          <span class="dui-mark dui-mark--plain" style="--mark-size:2.75rem"><span class="dui-mark__inner" style="font-size:13px">SM</span></span>
+          <span class="dui-mark dui-mark--plain" style="--mark-size:2.75rem"><span class="dui-mark__inner" style="font-size:13px">KP</span></span>
+          <span class="dui-mark dui-mark--plain" style="--mark-size:2.75rem"><span class="dui-mark__inner" style="font-size:13px">LJ</span></span>
+          <span class="dui-mark dui-mark--group" style="--mark-size:2.75rem"><span class="dui-mark__inner" style="font-size:13px">DB</span></span>
+        </div>
+        <p class="dui-meta">Three supporters and one community, Durban Makers.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>makers</b> makers.example</span>
+  <span>Example page from distinctUI. Naledi is invented.</span>
+  <nav aria-label="More"><a href="#">Privacy</a><a href="#">Help</a></nav>
+</footer>
+</body>
+</html>

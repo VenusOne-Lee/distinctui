@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Makers directory</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: a list of people and projects with tabs, a menu, media cards and an empty state.
+     Each maker has their own colour from a set of four. All invented. */
+  :root { --dui-signature: #000; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  .search { max-width: 22rem; }
+  .who { display: flex; align-items: center; gap: 10px; }
+  .who b { flex: 1; min-width: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tag { position: absolute; top: 12px; left: 12px; }
+  .shot { position: absolute; inset: 0; display: grid; place-items: center; background: var(--dui-grey-50); }
+  .shot-ui { position: absolute; inset: 14% 12% 0; border-radius: 14px 14px 0 0; background: var(--dui-white); border: 1px solid var(--dui-grey-200); border-bottom: 0; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .shot-ui i { display: block; height: 8px; border-radius: 99px; background: var(--dui-grey-200); }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">makers</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="#" aria-current="page">Shipped</a><a href="#">Makers</a></span>
+    <a class="dui-btn-sm" href="#">Share</a>
+    <details class="dui-menu">
+      <summary class="dui-btn-sm-ghost">You</summary>
+      <div class="dui-menu__panel">
+        <p class="dui-meta" style="padding:8px 16px">Signed in as <b style="color:var(--dui-black)">Kagiso</b></p>
+        <a class="dui-menu__item" href="#">Your page</a>
+        <a class="dui-menu__item" href="#">Updates <span class="dui-meta" style="font-weight:600;color:var(--dui-black)">2 need you</span></a>
+        <a class="dui-menu__item" href="#">Settings</a>
+        <div class="dui-menu__sep"></div>
+        <button class="dui-menu__item" type="button" style="font-weight:600">Sign out</button>
+      </div>
+    </details>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav" aria-label="Sections"><a href="#" aria-current="page">Shipped</a><a href="#">Makers</a></nav>
+
+<main class="dui-container" style="padding-block:32px 96px;display:flex;flex-direction:column;gap:32px">
+  <h1 class="dui-h1">Everything <b>shipped</b></h1>
+  <div class="bar">
+    <div class="dui-tabs" role="tablist" aria-label="Show">
+      <button class="dui-tab" role="tab" aria-selected="true">All</button>
+      <button class="dui-tab" role="tab" aria-selected="false">Live</button>
+      <button class="dui-tab" role="tab" aria-selected="false">Beta</button>
+      <button class="dui-tab" role="tab" aria-selected="false">Needs help</button>
+    </div>
+    <input class="dui-field search" type="search" placeholder="Search projects" aria-label="Search projects">
+  </div>
+
+  <div class="dui-grid dui-grid--3">
+    <a class="dui-card dui-card--flush" href="#">
+      <div class="dui-card__media"><span class="shot"><span class="shot-ui"><i style="width:60%;background:#000"></i><i></i><i style="width:80%"></i><i style="width:70%"></i></span></span><span class="dui-badge-solid tag">Featured</span></div>
+      <div class="dui-card__body">
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem;--mark-colour:#ff4f1f"><span class="dui-mark__inner">ND</span></span><b>Spaza Stock</b><span class="dui-badge">Beta</span></div>
+        <p class="dui-card__text">Stock counts for spaza shops, by voice, in isiZulu and English.</p>
+        <p class="dui-meta" style="margin-top:auto">Naledi Dube · v0.4</p>
+        <p class="dui-note"><b>Needs:</b> testers in KZN</p>
+      </div>
+    </a>
+    <a class="dui-card dui-card--flush" href="#">
+      <div class="dui-card__media"><span class="shot"><span class="dui-mark" style="--mark-size:7.5rem;--mark-colour:#1f3bff"><span class="dui-mark__inner">KM</span><span class="dui-mark__version">v1.2</span></span></span></div>
+      <div class="dui-card__body">
+        <div class="who"><span class="dui-mark" style="--mark-size:2.25rem;--mark-colour:#1f3bff"><span class="dui-mark__inner">KM</span></span><b>Taxi Fare</b><span class="dui-badge">Live</span></div>
+        <p class="dui-card__text">Split a minibus taxi fare without counting coins at the front.</p>
+        <p class="dui-meta" style="margin-top:auto">Kagiso Molefe · v1.2</p>
+      </div>
+    </a>
+    <a class="dui-card dui-card--flush" href="#">
+      <div class="dui-card__media"><span class="shot"><span class="shot-ui"><i style="width:40%;background:#000"></i><i style="width:90%"></i><i></i><i style="width:50%"></i></span></span></div>
+      <div class="dui-card__body">
+        <div class="who"><span class="dui-mark" data-live="false" style="--mark-size:2.25rem;--mark-colour:#7a2cff"><span class="dui-mark__inner">LJ</span></span><b>Loadshed Planner, for small bakeries in Gqeberha</b><span class="dui-badge">Idea</span></div>
+        <p class="dui-card__text">Plan oven time around the schedule, with a reminder an hour before.</p>
+        <p class="dui-meta" style="margin-top:auto">Lerato Jacobs · v0.1</p>
+      </div>
+    </a>
+  </div>
+
+  <section class="dui-section" style="padding-top:48px" aria-labelledby="follow-h">
+    <h2 id="follow-h" class="dui-h2">From people you <b>follow</b></h2>
+    <div class="dui-empty">
+      <span class="dui-mark dui-mark--plain" data-live="false" style="--mark-size:4rem"><span class="dui-mark__inner">+</span></span>
+      <p>When someone you follow ships a new version, it shows up here.</p>
+      <a class="dui-btn-sm" href="#">Find makers to follow</a>
+    </div>
+  </section>
+</main>
+</body>
+</html>

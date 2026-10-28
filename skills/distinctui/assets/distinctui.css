@@ -1,0 +1,588 @@
+/*
+ * distinctUI, the system behind Version One.
+ * https://distinctui.versionone.co.za · MIT licence
+ *
+ * Black, white and grey, one typeface, lots of white space and black pill
+ * buttons. The only colour is your signature colour, and it lives on your
+ * signature mark. Light only, by design.
+ *
+ * Load the font first:
+ * <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+ */
+
+/* ---------------------------------------------------------------- Tokens */
+
+:root {
+  color-scheme: light;
+
+  /* Colour: four greys between black and white. Nothing else. */
+  --dui-white: #ffffff;
+  --dui-black: #000000;
+  --dui-grey-50: #fafafa;
+  --dui-grey-100: #f2f2f2;
+  --dui-grey-200: #e5e5e5;
+  --dui-grey-400: #a3a3a3;
+  --dui-grey-600: #6b6b6b;
+  --dui-grey-800: #262626;
+
+  /* Your one colour. Set it once; it only ever appears on the mark. */
+  --dui-signature: #000000;
+
+  /* Type */
+  --dui-font: "Bricolage Grotesque", "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --dui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --dui-text-xs: 0.75rem;    /* 12: badges, counters */
+  --dui-text-sm: 0.875rem;   /* 14: meta, hints, footers */
+  --dui-text-md: 0.9375rem;  /* 15: menus, compact rows */
+  --dui-text-base: 1rem;     /* 16: body */
+  --dui-text-lg: 1.125rem;   /* 18: lede */
+  --dui-text-xl: 1.25rem;    /* 20: card titles */
+  --dui-text-2xl: 1.625rem;  /* 26: card headline */
+  --dui-text-3xl: 2.25rem;   /* 36: section heading, phone */
+  --dui-text-4xl: 3rem;      /* 48: section heading */
+  --dui-text-5xl: 3.75rem;   /* 60: hero, tablet */
+  --dui-text-6xl: 4.75rem;   /* 76: hero */
+
+  --dui-tracking-tight: -0.035em;
+  --dui-tracking-tighter: -0.04em;
+  --dui-tracking-label: 0.08em;
+
+  /* Space: a 4px base. Sections breathe at 80 to 112. */
+  --dui-space-1: 0.25rem;
+  --dui-space-2: 0.5rem;
+  --dui-space-3: 0.75rem;
+  --dui-space-4: 1rem;
+  --dui-space-5: 1.25rem;
+  --dui-space-6: 1.5rem;
+  --dui-space-8: 2rem;
+  --dui-space-10: 2.5rem;
+  --dui-space-14: 3.5rem;
+  --dui-space-20: 5rem;
+  --dui-space-28: 7rem;
+
+  /* Radius: pills for anything you press or type one line into, soft
+     corners for things you read. */
+  --dui-radius-input: 14px;
+  --dui-radius-note: 12px;
+  --dui-radius-panel: 16px;
+  --dui-radius-card: 22px;
+  --dui-radius-menu: 24px;
+  --dui-radius-feature: 28px;
+  --dui-radius-pill: 9999px;
+
+  /* The one shadow, for things that float over the page (menus). */
+  --dui-shadow-float: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  --dui-page-max: 72rem;
+  --dui-read-max: 42rem;
+}
+
+/* ------------------------------------------------------------------ Base */
+
+:where(.dui-page, .dui-page *, .dui-page *::before, .dui-page *::after,
+.dui, .dui *, .dui *::before, .dui *::after) { box-sizing: border-box; }
+.dui-page { margin: 0; }
+
+.dui,
+.dui-page {
+  background: var(--dui-white);
+  color: var(--dui-black);
+  font-family: var(--dui-font);
+  font-size: var(--dui-text-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+:where(.dui, .dui-page) :focus-visible {
+  outline: 2px solid var(--dui-black);
+  outline-offset: 2px;
+}
+:where(.dui, .dui-page) a { color: inherit; }
+
+.dui-container {
+  width: 100%;
+  max-width: var(--dui-page-max);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 640px) {
+  .dui-container {
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+}
+.dui-section { display: flex; flex-direction: column; gap: var(--dui-space-8); padding-top: var(--dui-space-20); }
+@media (min-width: 640px) { .dui-section { padding-top: var(--dui-space-28); } }
+
+/* ------------------------------------------------------------------ Type */
+
+/* Headings are light, with the word that matters in bold:
+   <h2 class="dui-h2">Just <b>shipped</b></h2> */
+.dui-hero,
+.dui-h1,
+.dui-h2 {
+  margin: 0;
+  font-weight: 300;
+  text-wrap: balance;
+}
+.dui-hero b, .dui-h1 b, .dui-h2 b,
+.dui-hero strong, .dui-h1 strong, .dui-h2 strong { font-weight: 700; }
+.dui-hero {
+  font-size: 2.5rem;
+  line-height: 1.02;
+  letter-spacing: var(--dui-tracking-tighter);
+}
+@media (min-width: 640px) { .dui-hero { font-size: var(--dui-text-5xl); } }
+@media (min-width: 1024px) { .dui-hero { font-size: var(--dui-text-6xl); } }
+.dui-h1 {
+  font-size: var(--dui-text-3xl);
+  line-height: 1.04;
+  letter-spacing: var(--dui-tracking-tighter);
+}
+@media (min-width: 640px) { .dui-h1 { font-size: 3.375rem; } }
+.dui-h2 {
+  font-size: var(--dui-text-3xl);
+  line-height: 1.08;
+  letter-spacing: var(--dui-tracking-tight);
+}
+@media (min-width: 640px) { .dui-h2 { font-size: var(--dui-text-4xl); } }
+.dui-h3 {
+  margin: 0;
+  font-size: var(--dui-text-2xl);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.dui-h4 { margin: 0; font-size: var(--dui-text-xl); font-weight: 700; letter-spacing: -0.02em; }
+.dui-lede { margin: 0; font-size: var(--dui-text-lg); color: var(--dui-grey-600); max-width: 60ch; }
+.dui-body { margin: 0; color: var(--dui-grey-800); max-width: 65ch; }
+.dui-meta { margin: 0; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+.dui-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--dui-tracking-label);
+  text-transform: uppercase;
+  color: var(--dui-grey-600);
+}
+.dui-link { text-decoration: underline; text-underline-offset: 4px; }
+.dui-link:hover { color: var(--dui-black); }
+
+/* --------------------------------------------------------------- Buttons */
+
+.dui-btn,
+.dui-btn-ghost,
+.dui-btn-sm,
+.dui-btn-sm-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dui-space-2);
+  border-radius: var(--dui-radius-pill);
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.15s, background-color 0.15s, border-color 0.15s;
+}
+.dui-btn {
+  background: var(--dui-black);
+  color: var(--dui-white);
+  border: 1px solid var(--dui-black);
+  padding: 0.75rem 1.5rem;
+  font-size: var(--dui-text-base);
+}
+.dui-btn:hover { opacity: 0.85; }
+.dui-btn-ghost {
+  background: var(--dui-white);
+  color: var(--dui-black);
+  border: 1px solid var(--dui-black);
+  padding: 0.75rem 1.5rem;
+  font-size: var(--dui-text-base);
+}
+.dui-btn-ghost:hover { background: var(--dui-grey-100); }
+.dui-btn-sm {
+  background: var(--dui-black);
+  color: var(--dui-white);
+  border: 1px solid var(--dui-black);
+  padding: 0.5rem 1rem;
+  font-size: var(--dui-text-sm);
+}
+.dui-btn-sm:hover { opacity: 0.85; }
+.dui-btn-sm-ghost {
+  background: var(--dui-white);
+  color: var(--dui-black);
+  border: 1px solid var(--dui-grey-200);
+  padding: 0.5rem 1rem;
+  font-size: var(--dui-text-sm);
+}
+.dui-btn-sm-ghost:hover { border-color: var(--dui-black); }
+.dui-btn:disabled, .dui-btn-ghost:disabled, .dui-btn-sm:disabled, .dui-btn-sm-ghost:disabled,
+[aria-disabled="true"].dui-btn, [aria-disabled="true"].dui-btn-sm { opacity: 0.4; cursor: not-allowed; }
+.dui-btn svg, .dui-btn-sm svg, .dui-btn-ghost svg, .dui-btn-sm-ghost svg { width: 0.875rem; height: 0.875rem; fill: currentColor; }
+.dui-actions { display: flex; flex-wrap: wrap; gap: 0.625rem; }
+
+/* A number on a button: only for things waiting on this person. */
+.dui-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: grid;
+  place-items: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.25rem;
+  border-radius: var(--dui-radius-pill);
+  border: 2px solid var(--dui-white);
+  background: var(--dui-black);
+  color: var(--dui-white);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.dui-has-count { position: relative; }
+
+/* ---------------------------------------------------------------- Badges */
+
+.dui-badge,
+.dui-badge-solid,
+.dui-badge-soft {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dui-space-1);
+  border-radius: var(--dui-radius-pill);
+  padding: 0.125rem 0.625rem;
+  font-size: var(--dui-text-xs);
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.dui-badge { border: 1px solid var(--dui-grey-400); color: var(--dui-black); }        /* a status: Live, Beta */
+.dui-badge-solid { background: var(--dui-black); color: var(--dui-white); }            /* a highlight: Featured */
+.dui-badge-soft { background: var(--dui-grey-100); color: var(--dui-black); font-size: 0.8125rem; padding: 0.25rem 0.625rem; } /* a version: v0.3 */
+
+/* ------------------------------------------------------------ Form fields */
+
+.dui-label { display: flex; flex-direction: column; gap: 0.375rem; font-size: var(--dui-text-sm); font-weight: 500; }
+.dui-hint { font-size: var(--dui-text-sm); font-weight: 400; color: var(--dui-grey-600); }
+.dui-optional { font-weight: 400; color: var(--dui-grey-600); }
+
+/* One line you type into on its own (email, search): a pill. */
+.dui-field {
+  width: 100%;
+  border-radius: var(--dui-radius-pill);
+  border: 1px solid var(--dui-grey-200);
+  background: var(--dui-white);
+  padding: 0.75rem 1.25rem;
+  font: inherit;
+  font-size: var(--dui-text-base);
+  color: var(--dui-black);
+}
+/* Fields on a longer form: soft corners, so they sit well beside textareas. */
+.dui-input,
+.dui-select,
+.dui-textarea {
+  width: 100%;
+  border-radius: var(--dui-radius-input);
+  border: 1px solid var(--dui-grey-200);
+  background: var(--dui-white);
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: var(--dui-text-base);
+  font-weight: 400;
+  color: var(--dui-black);
+}
+.dui-textarea { resize: vertical; min-height: 7rem; line-height: 1.5; }
+.dui-select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+}
+.dui-field::placeholder, .dui-input::placeholder, .dui-textarea::placeholder { color: var(--dui-grey-400); }
+.dui-field:focus, .dui-input:focus, .dui-select:focus, .dui-textarea:focus { outline: none; border-color: var(--dui-black); }
+.dui-field[aria-invalid="true"], .dui-input[aria-invalid="true"], .dui-select[aria-invalid="true"], .dui-textarea[aria-invalid="true"] {
+  border-color: var(--dui-black);
+  border-width: 1.5px;
+}
+.dui-counter { align-self: flex-end; font-size: var(--dui-text-xs); color: var(--dui-grey-600); font-variant-numeric: tabular-nums; }
+.dui-counter[data-near="true"] { color: var(--dui-black); font-weight: 600; }
+
+/* Ticks and choices: native controls in black. Consent boxes start unticked. */
+.dui-check { display: flex; align-items: flex-start; gap: 0.625rem; font-size: var(--dui-text-md); line-height: 1.45; }
+.dui-check input { accent-color: var(--dui-black); width: 1.125rem; height: 1.125rem; margin: 0.125rem 0 0; flex-shrink: 0; }
+input[type="range"].dui-range { accent-color: var(--dui-black); width: 100%; }
+
+/* A choice shown as a card (pick one of three). */
+.dui-choice {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  border: 1px solid var(--dui-grey-200);
+  border-radius: var(--dui-radius-panel);
+  padding: 1rem 1.125rem;
+  cursor: pointer;
+}
+.dui-choice input { accent-color: var(--dui-black); margin-top: 0.25rem; }
+.dui-choice:has(input:checked) { border-color: var(--dui-black); box-shadow: 0 0 0 1px var(--dui-black); }
+
+/* Errors: black and bold, never red. Red belongs to nobody but a signature. */
+.dui-field-error { display: flex; align-items: flex-start; gap: 0.5rem; margin: 0; font-size: var(--dui-text-sm); font-weight: 600; }
+.dui-field-error::before,
+.dui-alert-mark {
+  content: "!";
+  display: inline-grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--dui-black);
+  color: var(--dui-white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+}
+/* At the top of a form after a failed submit: name each field, link to it. */
+.dui-problems { border-radius: var(--dui-radius-panel); background: var(--dui-grey-100); padding: 1rem 1.25rem; }
+.dui-problems p { margin: 0; font-weight: 600; }
+.dui-problems ul { margin: 0.5rem 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.375rem; font-size: var(--dui-text-sm); }
+.dui-problems a { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+
+/* ----------------------------------------------------------------- Cards */
+
+/* Things you read and open. Border goes black on hover, no lift, no shadow. */
+.dui-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dui-space-4);
+  border: 1px solid var(--dui-grey-200);
+  border-radius: var(--dui-radius-card);
+  background: var(--dui-white);
+  padding: var(--dui-space-6);
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
+.dui-card--flush { padding: 0; overflow: hidden; gap: 0; }
+.dui-card__media { position: relative; aspect-ratio: 16 / 10; background: var(--dui-grey-100); }
+.dui-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.dui-card__body { display: flex; flex: 1; flex-direction: column; gap: 0.625rem; padding: var(--dui-space-5); }
+.dui-card__title { margin: 0; font-size: var(--dui-text-2xl); line-height: 1.15; font-weight: 700; letter-spacing: -0.03em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dui-card__text { margin: 0; color: var(--dui-grey-800); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dui-card__foot { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.625rem; align-items: center; }
+
+/* The one thing on a page that matters most this week: a black edge. */
+.dui-feature {
+  border: 1.5px solid var(--dui-black);
+  border-radius: var(--dui-radius-feature);
+  padding: var(--dui-space-6);
+}
+@media (min-width: 640px) { .dui-feature { padding: var(--dui-space-10); } }
+
+/* A grey note inside a card: "Needs: testers". */
+.dui-note { margin: 0; border-radius: var(--dui-radius-note); background: var(--dui-grey-50); padding: 0.625rem 0.75rem; font-size: var(--dui-text-sm); }
+.dui-note b { font-weight: 700; }
+
+/* A grey panel for supporting content (tips, a summary, an empty state). */
+.dui-panel { border-radius: var(--dui-radius-panel); background: var(--dui-grey-50); padding: var(--dui-space-5); }
+
+.dui-grid { display: grid; gap: var(--dui-space-4); }
+@media (min-width: 640px) { .dui-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--dui-space-6); } }
+@media (min-width: 1024px) { .dui-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } .dui-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* A list of rows with hairlines between them. */
+.dui-rows { display: flex; flex-direction: column; border-top: 1px solid var(--dui-grey-200); margin: 0; padding: 0; list-style: none; }
+.dui-row { display: flex; align-items: center; gap: var(--dui-space-4); padding: var(--dui-space-4) 0; border-bottom: 1px solid var(--dui-grey-200); min-width: 0; }
+.dui-row > * { min-width: 0; }
+
+/* --------------------------------------------------------- Signature mark */
+
+/*
+ * The one place colour lives. Dashed until the thing it stands for is live,
+ * solid once it is, with a small black version label.
+ * <span class="dui-mark" data-live="false" style="--mark-size:4rem">
+ *   <span class="dui-mark__inner">TM</span>
+ *   <span class="dui-mark__version">v0.1</span>
+ * </span>
+ */
+.dui-mark {
+  --mark-size: 4rem;
+  --mark-colour: var(--dui-signature);
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--mark-size);
+  height: var(--mark-size);
+  border-radius: 50%;
+  border: calc(var(--mark-size) * 0.06) solid var(--mark-colour);
+  padding: calc(var(--mark-size) * 0.06);
+}
+.dui-mark[data-live="false"] { border-style: dashed; }
+.dui-mark__inner {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--dui-grey-100);
+  font-weight: 500;
+  font-size: calc(var(--mark-size) * 0.32);
+}
+.dui-mark__inner img { width: 100%; height: 100%; object-fit: cover; }
+.dui-mark__version {
+  position: absolute;
+  bottom: calc(var(--mark-size) * -0.08);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 3px solid var(--dui-white);
+  border-radius: var(--dui-radius-pill);
+  background: var(--dui-black);
+  color: var(--dui-white);
+  padding: 0.15em 0.7em;
+  font-size: clamp(0.625rem, calc(var(--mark-size) * 0.12), 1.25rem);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+/* A small earned dot in someone else's colour (set --mark-colour on it). */
+.dui-mark__dot {
+  position: absolute;
+  right: 3%;
+  bottom: 3%;
+  width: max(0.625rem, calc(var(--mark-size) * 0.2));
+  height: max(0.625rem, calc(var(--mark-size) * 0.2));
+  border-radius: 50%;
+  background: var(--mark-colour);
+  border: max(2px, calc(var(--mark-size) * 0.025)) solid var(--dui-white);
+}
+/* People without a signature of their own (supporters, visitors): thin black. */
+.dui-mark--plain { --mark-colour: var(--dui-black); border-width: calc(var(--mark-size) * 0.035); }
+/* A group, not a person: a black double ring. */
+.dui-mark--group { --mark-colour: var(--dui-black); border-style: double; border-width: max(4px, calc(var(--mark-size) * 0.08)); }
+
+/* The logo: a small ring in the signature colour, then the name in lower case. */
+.dui-logo { display: inline-flex; align-items: center; gap: 0.625rem; font-size: var(--dui-text-lg); font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; text-decoration: none; color: inherit; }
+.dui-logo::before { content: ""; width: 1.25rem; height: 1.25rem; border-radius: 50%; border: 3px solid var(--dui-signature); flex-shrink: 0; }
+
+/* -------------------------------------------------------- Header & footer */
+
+.dui-header { display: flex; align-items: center; justify-content: space-between; gap: var(--dui-space-4); padding-block: var(--dui-space-6); }
+.dui-nav { display: flex; align-items: center; gap: var(--dui-space-3); }
+@media (min-width: 640px) { .dui-nav { gap: var(--dui-space-6); } }
+/* Text links in the header hide on phones; give them a second row there (see components.md). */
+.dui-nav__links { display: none; gap: var(--dui-space-6); }
+@media (min-width: 1024px) { .dui-nav__links { display: flex; } }
+.dui-subnav { display: flex; gap: var(--dui-space-5); overflow-x: auto; padding-bottom: var(--dui-space-2); font-size: var(--dui-text-md); }
+.dui-subnav a { flex-shrink: 0; padding-block: var(--dui-space-2); text-decoration: none; }
+.dui-subnav a[aria-current="page"] { font-weight: 700; }
+@media (min-width: 1024px) { .dui-subnav { display: none; } }
+.dui-nav a { text-decoration: none; }
+.dui-nav a:hover { text-decoration: underline; }
+.dui-nav a[aria-current="page"] { font-weight: 700; }
+.dui-footer { display: flex; flex-direction: column; gap: var(--dui-space-6); padding-block: var(--dui-space-14) var(--dui-space-10); font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+.dui-footer b { color: var(--dui-black); font-weight: 700; }
+.dui-footer nav { display: flex; flex-wrap: wrap; gap: var(--dui-space-2) var(--dui-space-5); }
+.dui-footer a { text-decoration: none; }
+.dui-footer a:hover { color: var(--dui-black); text-decoration: underline; }
+@media (min-width: 1024px) { .dui-footer { flex-direction: row; align-items: center; justify-content: space-between; } }
+
+/* -------------------------------------------------------------- Menu */
+
+.dui-menu { position: relative; }
+.dui-menu > summary { list-style: none; cursor: pointer; user-select: none; }
+.dui-menu > summary::-webkit-details-marker { display: none; }
+.dui-menu[open] > summary { border-color: var(--dui-black); }
+.dui-menu__panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 20;
+  margin-top: var(--dui-space-2);
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  padding: var(--dui-space-2);
+  border: 1px solid var(--dui-grey-200);
+  border-radius: var(--dui-radius-menu);
+  background: var(--dui-white);
+  box-shadow: var(--dui-shadow-float);
+  font-size: var(--dui-text-md);
+}
+.dui-menu__item { display: flex; align-items: center; justify-content: space-between; min-height: 2.75rem; padding: 0 1rem; border-radius: var(--dui-radius-pill); text-decoration: none; background: none; border: 0; font: inherit; text-align: left; cursor: pointer; color: inherit; }
+.dui-menu__item:hover { background: var(--dui-grey-100); }
+.dui-menu__item[aria-current="page"] { font-weight: 700; }
+.dui-menu__sep { border-top: 1px solid var(--dui-grey-200); margin: var(--dui-space-1) 0; }
+
+/* ---------------------------------------------------------------- Tabs */
+
+/* Tabs are pills: the open one black, the rest outlined. */
+.dui-tabs { display: flex; flex-wrap: wrap; gap: var(--dui-space-2); }
+.dui-tab {
+  display: inline-flex; align-items: center; gap: var(--dui-space-2);
+  border-radius: var(--dui-radius-pill);
+  border: 1px solid var(--dui-grey-200);
+  background: var(--dui-white);
+  color: var(--dui-black);
+  padding: 0.5rem 1rem;
+  font: inherit; font-size: var(--dui-text-sm); font-weight: 600;
+  cursor: pointer;
+}
+.dui-tab:hover { border-color: var(--dui-black); }
+.dui-tab[aria-selected="true"] { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); }
+
+/* -------------------------------------------------------------- Notices */
+
+/* Something just happened ("You're signed in"): a black outline and a tick. */
+.dui-status {
+  display: flex; align-items: center; gap: 0.75rem;
+  border: 1.5px solid var(--dui-black);
+  border-radius: var(--dui-radius-menu);
+  padding: 0.75rem 1.25rem;
+  font-size: var(--dui-text-md);
+}
+.dui-status::before {
+  content: "✓";
+  display: grid; place-items: center;
+  width: 1.5rem; height: 1.5rem; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--dui-black); color: var(--dui-white);
+  font-size: var(--dui-text-xs); font-weight: 700;
+}
+
+/* Nothing here yet: say what will show up and give the one next step. */
+.dui-empty {
+  display: flex; flex-direction: column; align-items: center; gap: var(--dui-space-4);
+  border: 1px dashed var(--dui-grey-400);
+  border-radius: var(--dui-radius-card);
+  padding: var(--dui-space-10) var(--dui-space-6);
+  text-align: center;
+}
+.dui-empty p { margin: 0; max-width: 40ch; color: var(--dui-grey-600); }
+
+/* A link landed here: outline it, then fade. */
+.dui-flash { border-radius: 1rem; outline: 3px solid var(--dui-black); outline-offset: 8px; animation: dui-flash 3s ease-out forwards; }
+@keyframes dui-flash { 0%, 60% { outline-color: var(--dui-black); } 100% { outline-color: transparent; } }
+
+/* ------------------------------------------------------------- Utilities */
+
+.dui-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.dui-skip { position: absolute; left: -9999px; }
+.dui-skip:focus { left: 1rem; top: 1rem; z-index: 50; border-radius: var(--dui-radius-pill); background: var(--dui-black); color: var(--dui-white); padding: 0.5rem 1rem; font-weight: 600; }
+.dui-tabular { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dui-flash { animation: none; }
+  .dui-btn, .dui-btn-ghost, .dui-btn-sm, .dui-btn-sm-ghost, .dui-card { transition: none; }
+}

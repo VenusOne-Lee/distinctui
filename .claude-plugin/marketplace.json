@@ -1,0 +1,12 @@
+{
+  "name": "distinctui",
+  "owner": { "name": "Version One", "url": "https://versionone.co.za" },
+  "plugins": [
+    {
+      "name": "distinctui",
+      "source": "./",
+      "description": "Calm black, white and grey interfaces with one signature mark in one colour. The design system behind Version One.",
+      "version": "0.1.0"
+    }
+  ]
+}
