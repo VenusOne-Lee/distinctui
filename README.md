@@ -29,6 +29,25 @@ Then ask Claude for the look: "Build the sign-up page in distinctUI. Our signatu
 
 ## Use the CSS without Claude
 
+From npm:
+
+```
+npm install distinctui
+```
+
+```js
+import "distinctui";              // distinctui.css
+import "distinctui/distinctui.js"; // optional motion and interaction
+// also: distinctui/tailwind.css, distinctui/tokens.json, distinctui/icons.svg
+```
+
+Or straight from a CDN, no build step:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/distinctui@0.2.0/skills/distinctui/assets/distinctui.css">
+<script src="https://cdn.jsdelivr.net/npm/distinctui@0.2.0/skills/distinctui/assets/distinctui.js" defer></script>
+```
+
 Plain CSS:
 
 ```html
