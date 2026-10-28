@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Set up your shop · Spaza Stock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: onboarding, step 2 of 4. Steps on top, one question group per screen, a live preview of the
+     shop's mark (dashed until the first full count), Back and Continue at the bottom. Invented product. */
+  :root { --dui-signature: #1f3bff; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+  .flow { display: grid; gap: 40px; padding-top: 24px; }
+  @media (min-width: 960px) { .flow { grid-template-columns: minmax(0, 1fr) 20rem; gap: 72px; align-items: start; } }
+  .dui-form { display: flex; flex-direction: column; gap: 24px; max-width: 36rem; }
+  .choices { display: grid; gap: 10px; }
+  @media (min-width: 640px) { .choices { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; border: 0; margin: 0; padding: 0; }
+  .langs label { position: relative; }
+  .langs input { position: absolute; opacity: 0; inset: 0; }
+  .langs input:checked + span { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); }
+  .langs input:focus-visible + span { outline: 2px solid var(--dui-black); outline-offset: 2px; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--dui-grey-200); padding-top: 24px; }
+  .preview { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 32px 24px; }
+  @media (min-width: 960px) { .preview { position: sticky; top: 24px; } }
+</style>
+</head>
+<body class="dui-page">
+<div class="dui-container">
+  <div class="top">
+    <a class="dui-logo" href="#">spaza stock</a>
+    <a class="dui-link dui-meta" href="#">Save and finish later</a>
+  </div>
+  <ol class="dui-steps" aria-label="Setting up">
+    <li data-done="true"><span>Your account</span></li>
+    <li aria-current="step"><span>Your shop</span></li>
+    <li><span>Your items</span></li>
+    <li><span>Your people</span></li>
+  </ol>
+</div>
+
+<main id="main" class="dui-container flow" style="padding-bottom:96px">
+  <section aria-labelledby="s-h" style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span class="dui-eyebrow">Step 2 of 4</span>
+      <h1 id="s-h" class="dui-h1">Tell us about your <b>shop</b></h1>
+      <p class="dui-lede">So the app uses your words and your hours. You can change all of this later.</p>
+    </div>
+
+    <form class="dui-form" action="#">
+      <label class="dui-label" for="shop">Shop name <span class="dui-hint">What people call it, not the registered name.</span>
+        <input class="dui-input" id="shop" value="Mama Dee's" maxlength="40">
+      </label>
+
+      <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+        <legend class="dui-label" style="margin-bottom:10px">What kind of shop?</legend>
+        <div class="choices">
+          <label class="dui-choice"><input type="radio" name="kind" checked><span><b>Spaza or tuck shop</b><br><span class="dui-hint">Groceries, airtime, a bit of everything.</span></span></label>
+          <label class="dui-choice"><input type="radio" name="kind"><span><b>Hair or beauty</b><br><span class="dui-hint">Products you use and sell.</span></span></label>
+          <label class="dui-choice"><input type="radio" name="kind"><span><b>Food stall</b><br><span class="dui-hint">Ingredients that run out by the day.</span></span></label>
+          <label class="dui-choice"><input type="radio" name="kind"><span><b>Something else</b><br><span class="dui-hint">We'll keep it general.</span></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="langs">
+        <legend class="dui-label" style="margin-bottom:10px">Count in <span class="dui-hint">Pick all you use at the counter.</span></legend>
+        <label><input type="checkbox" checked><span class="dui-tab">isiZulu</span></label>
+        <label><input type="checkbox" checked><span class="dui-tab">English</span></label>
+        <label><input type="checkbox"><span class="dui-tab">Sesotho</span></label>
+        <label><input type="checkbox"><span class="dui-tab">Afrikaans</span></label>
+        <label><input type="checkbox"><span class="dui-tab">Setswana</span></label>
+      </fieldset>
+
+      <label class="dui-switch">Remind me to count on Sunday evenings <input type="checkbox" role="switch" checked></label>
+
+      <div class="foot">
+        <a class="dui-btn-ghost" href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg> Back</a>
+        <button class="dui-btn" type="submit">Continue <svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </div>
+    </form>
+  </section>
+
+  <aside class="dui-panel preview" aria-label="Preview">
+    <span class="dui-eyebrow">How others see it</span>
+    <span class="dui-mark" data-live="false" style="--mark-size:7rem"><span class="dui-mark__inner">MD</span><span class="dui-mark__version">Setting up</span></span>
+    <b style="font-size:1.25rem;margin-top:8px">Mama Dee's</b>
+    <p class="dui-meta">Spaza · Counts in isiZulu and English</p>
+    <p class="dui-note" style="background:var(--dui-white)">Your ring turns solid after your first full count.</p>
+  </aside>
+</main>
+</body>
+</html>

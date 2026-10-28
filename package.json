@@ -10,7 +10,9 @@
   "exports": {
     ".": "./skills/distinctui/assets/distinctui.css",
     "./distinctui.css": "./skills/distinctui/assets/distinctui.css",
-    "./tailwind.css": "./skills/distinctui/assets/tailwind.css"
+    "./tailwind.css": "./skills/distinctui/assets/tailwind.css",
+    "./tokens.json": "./skills/distinctui/assets/tokens.json",
+    "./icons.svg": "./skills/distinctui/assets/icons.svg"
   },
   "files": ["skills/distinctui"],
   "private": true,

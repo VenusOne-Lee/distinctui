@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>About · Ikhaya Labs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: an about page for a small studio. Signature is vermilion, on the logo and faces only.
+     The studio, its people and its numbers are invented. */
+  :root { --dui-signature: #ff4f1f; }
+  .hero { display: flex; flex-direction: column; align-items: center; gap: 24px; padding-top: 56px; text-align: center; }
+  @media (min-width: 640px) { .hero { padding-top: 96px; } }
+  .wide { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--dui-radius-feature); background: var(--dui-grey-100); }
+  @media (min-width: 900px) { .wide { aspect-ratio: 21 / 9; } }
+  .two { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 64px; } }
+  .two p { font-size: 1.125rem; line-height: 1.7; }
+  .stats { display: grid; gap: 16px; margin: 0; }
+  @media (min-width: 640px) { .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
+  .stats div { border-top: 1px solid var(--dui-black); padding-top: 16px; }
+  .stats dt { font-size: 3.25rem; font-weight: 300; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stats dt b { font-weight: 700; }
+  .stats dd { margin: 8px 0 0; color: var(--dui-grey-600); }
+  .belief .dui-row { align-items: flex-start; padding-block: 20px; }
+  .belief .n { width: 3rem; flex-shrink: 0; font-size: 1.5rem; font-weight: 300; color: var(--dui-grey-600); font-variant-numeric: tabular-nums; }
+  .join { display: grid; gap: 24px; align-items: center; }
+  @media (min-width: 768px) { .join { grid-template-columns: minmax(0, 1fr) auto; } }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">ikhaya labs</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="about.html" aria-current="page">About</a><a href="team.html">Team</a><a href="blog.html">Notes</a><a href="careers.html">Careers</a></span>
+    <a class="dui-btn-sm" href="contact.html">Talk to us</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav" aria-label="Sections"><a href="about.html" aria-current="page">About</a><a href="team.html">Team</a><a href="blog.html">Notes</a><a href="careers.html">Careers</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="hero" aria-labelledby="hero-h">
+    <span class="dui-eyebrow">About us</span>
+    <h1 id="hero-h" class="dui-hero" style="max-width:15ch">Small software for the shops on <b>your street</b>.</h1>
+    <p class="dui-lede">Nine people in Braamfontein, making tools that work on a cheap phone and a bad signal.</p>
+  </section>
+
+  <section class="dui-section" style="padding-top:56px" aria-label="Our studio">
+    <img class="wide" src="img/scene-desk.jpg" alt="A desk by a window over Johannesburg, with a laptop and pencil sketches of app screens">
+  </section>
+
+  <section class="dui-section" aria-labelledby="why-h">
+    <div class="two">
+      <h2 id="why-h" class="dui-h2">Why we <b>started</b></h2>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p class="dui-body">In 2023 our founder's aunt ran out of bread on a Saturday morning for the third week in a row. She counted stock in a school exercise book, and the book was always a day behind.</p>
+        <p class="dui-body">Every stock app we found wanted a laptop, a card and fibre. So we built one that listens to you count out loud, works offline and costs less than a loaf a week. Then shop owners asked for three more things, and we built those too.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="num-h">
+    <h2 id="num-h" class="dui-h2">So <b>far</b></h2>
+    <dl class="stats dui-reveal">
+      <div><dt><b data-count="2340">2,340</b></dt><dd>shops counting with us, in seven provinces</dd></div>
+      <div><dt><b>4</b> apps</dt><dd>stock, lay-bys, supplier orders and a till</dd></div>
+      <div><dt><b>R0</b></dt><dd>for any shop with fewer than 100 items</dd></div>
+    </dl>
+  </section>
+
+  <section class="dui-section" aria-labelledby="bel-h">
+    <h2 id="bel-h" class="dui-h2">What we <b>believe</b></h2>
+    <ol class="dui-rows belief dui-reveal" style="max-width:48rem">
+      <li class="dui-row"><span class="n">01</span><div><h3 class="dui-h4">The phone in your pocket is enough</h3><p class="dui-body">If it needs a laptop or fibre, we haven't finished building it.</p></div></li>
+      <li class="dui-row"><span class="n">02</span><div><h3 class="dui-h4">Speak the shop's language</h3><p class="dui-body">isiZulu, Sesotho, Afrikaans and English, in the words people use at the counter.</p></div></li>
+      <li class="dui-row"><span class="n">03</span><div><h3 class="dui-h4">Your numbers are yours</h3><p class="dui-body">We never sell shop data. Export it, or delete it, from Settings.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="dui-section" aria-labelledby="team-h">
+    <h2 id="team-h" class="dui-h2">Who's <b>here</b></h2>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px">
+      <div class="dui-stack dui-reveal-draw">
+        <span class="dui-mark" data-ring="1" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="img/portrait-9.jpg" alt=""></span></span>
+        <span class="dui-mark" data-ring="2" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="img/portrait-2.jpg" alt=""></span></span>
+        <span class="dui-mark" data-ring="3" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="img/portrait-11.jpg" alt=""></span></span>
+        <span class="dui-mark" data-ring="4" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span>
+        <span class="dui-mark" data-ring="5" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span></span>
+        <span class="dui-stack__more">and four more</span>
+      </div>
+      <a class="dui-btn-sm-ghost" href="team.html">Meet the team</a>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-label="Work with us">
+    <div class="dui-feature join">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 class="dui-h2">Build with <b>us</b></h2>
+        <p class="dui-body">Two roles open, both in Braamfontein three days a week.</p>
+      </div>
+      <div class="dui-actions"><a class="dui-btn" href="careers.html">See the roles</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>ikhaya labs</b> ikhayalabs.example</span>
+  <span>Example page from distinctUI. The studio is invented.</span>
+  <nav aria-label="More"><a href="about.html">About</a><a href="team.html">Team</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a><a href="#">Privacy</a></nav>
+</footer>
+</body>
+</html>

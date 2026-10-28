@@ -1,6 +1,6 @@
 # Tokens
 
-Copy these by value when you can't use `assets/distinctui.css` (native apps, email, canvas).
+Copy these by value when you can't use `assets/distinctui.css` (native apps, email, canvas). The same values are in `assets/tokens.json` in the W3C design tokens format, which Tokens Studio for Figma and Style Dictionary read directly.
 
 ## Colour
 

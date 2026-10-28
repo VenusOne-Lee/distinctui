@@ -76,14 +76,19 @@ skills/distinctui/
   assets/distinctui.css    every token and component, as plain CSS
   assets/tailwind.css      the same tokens as a Tailwind v4 theme
   assets/distinctui.js     optional motion and interaction, driven by attributes
+  assets/tokens.json       the tokens as JSON, for Figma (Tokens Studio) and Style Dictionary
+  assets/icons.svg         25 Lucide outline icons as one sprite
   references/tokens.md     colour, type, space, radius, mark, motion
   references/components.md markup for every component
   references/motion.md     how things move, and when they don't
   references/voice.md      how the words sound
+  references/imagery.md    photos, icons and charts
   references/review.md     the checklist Claude runs before it's done
   references/swiftui.md    the SwiftUI package, what maps to what, phone rules
-  examples/                eleven templates: landing, profile, directory, dashboard,
-                           article, pricing, sign-in, settings, changelog, form, email
+  examples/                27 templates: landing, about, team, careers, contact, blog,
+                           article, case study, pricing, waitlist, onboarding, sign-in,
+                           dashboard, profile, directory, search, settings, changelog,
+                           form, product, checkout, help, docs, status, 404, error, email
 site/                      distinctui.com
 Package.swift              the Swift package
 swift/Sources/DistinctUI   tokens, type, pills, marks, cards and forms in SwiftUI, with the font

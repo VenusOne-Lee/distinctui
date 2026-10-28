@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Page not found · Spaza Stock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a 404. An empty dashed mark (nothing lives here), what probably happened, search,
+     and the three places people usually meant. Invented product. */
+  :root { --dui-signature: #1f3bff; }
+  .lost { display: flex; flex-direction: column; align-items: center; gap: 22px; padding-top: 56px; text-align: center; }
+  @media (min-width: 640px) { .lost { padding-top: 96px; } }
+  .ask { display: flex; gap: 8px; width: 100%; max-width: 30rem; }
+  .places { max-width: 34rem; margin-inline: auto; width: 100%; }
+  .places a { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-decoration: none; font-weight: 600; }
+  .places a:hover { text-decoration: underline; text-underline-offset: 4px; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">spaza stock</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm" href="#">Open the app</a></nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="lost" aria-labelledby="l-h">
+    <span class="dui-mark dui-mark--empty" style="--mark-size:8rem"><span class="dui-mark__inner" style="font-weight:300;letter-spacing:-0.04em">404</span></span>
+    <h1 id="l-h" class="dui-h1" style="max-width:16ch">Nothing lives at this <b>address</b></h1>
+    <p class="dui-lede" style="max-width:40ch">The link may be old, or a letter went missing. It happens. Search, or try one of these.</p>
+    <form class="ask" role="search" action="search.html">
+      <input class="dui-field" type="search" name="q" placeholder="What were you looking for?" aria-label="Search">
+      <button class="dui-btn" type="submit">Search</button>
+    </form>
+  </section>
+
+  <section style="padding-top:48px" aria-label="Places people usually mean">
+    <ul class="dui-rows places">
+      <li class="dui-row"><a href="#">Home <svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a></li>
+      <li class="dui-row"><a href="help.html">Help centre <svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a></li>
+      <li class="dui-row"><a href="docs.html">Docs <svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a></li>
+    </ul>
+    <p class="dui-meta" style="text-align:center;margin-top:24px">Followed a link from our site? <a class="dui-link" href="contact.html">Tell us where</a> and we'll fix it.</p>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>spaza stock</b> spazastock.example</span>
+  <span>Example page from distinctUI. The product is invented.</span>
+  <nav aria-label="More"><a href="help.html">Help</a><a href="status.html">Status</a></nav>
+</footer>
+</body>
+</html>

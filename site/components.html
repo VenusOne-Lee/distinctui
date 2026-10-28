@@ -28,7 +28,7 @@
     <h1 class="dui-h1">Every <b>component</b></h1>
     <p class="dui-lede">Live, from <code>distinctui.css</code>. The markup for each is in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/components.md">components.md</a>.</p>
     <nav class="toc" aria-label="On this page">
-      <a class="dui-btn-sm-ghost" href="#colour">Colour</a><a class="dui-btn-sm-ghost" href="#palettes">Palettes</a><a class="dui-btn-sm-ghost" href="#type">Type</a><a class="dui-btn-sm-ghost" href="#shape">Shape</a><a class="dui-btn-sm-ghost" href="#buttons">Buttons</a><a class="dui-btn-sm-ghost" href="#badges">Badges</a><a class="dui-btn-sm-ghost" href="#forms">Forms</a><a class="dui-btn-sm-ghost" href="#cards">Cards</a><a class="dui-btn-sm-ghost" href="#mark">Mark</a><a class="dui-btn-sm-ghost" href="#nav">Menu and tabs</a><a class="dui-btn-sm-ghost" href="#notices">Notices</a><a class="dui-btn-sm-ghost" href="#motion">Motion</a>
+      <a class="dui-btn-sm-ghost" href="#colour">Colour</a><a class="dui-btn-sm-ghost" href="#palettes">Palettes</a><a class="dui-btn-sm-ghost" href="#type">Type</a><a class="dui-btn-sm-ghost" href="#shape">Shape</a><a class="dui-btn-sm-ghost" href="#buttons">Buttons</a><a class="dui-btn-sm-ghost" href="#badges">Badges</a><a class="dui-btn-sm-ghost" href="#forms">Forms</a><a class="dui-btn-sm-ghost" href="#cards">Cards</a><a class="dui-btn-sm-ghost" href="#mark">Mark</a><a class="dui-btn-sm-ghost" href="#nav">Menu and tabs</a><a class="dui-btn-sm-ghost" href="#notices">Notices</a><a class="dui-btn-sm-ghost" href="#motion">Motion</a><a class="dui-btn-sm-ghost" href="#furniture">Furniture</a><a class="dui-btn-sm-ghost" href="#content">Tables</a><a class="dui-btn-sm-ghost" href="#controls">Switches</a><a class="dui-btn-sm-ghost" href="#icons">Icons</a>
     </nav>
   </div>
 
@@ -266,6 +266,65 @@
       </div>
       <p class="dui-empty" data-filter-empty hidden style="margin-top:16px">Nothing paused. Good.</p>
       <p class="cap">Filter tabs: <code>data-filter</code> on the tabs, <code>data-tags</code> on the items. What stays settles back in.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="furniture" aria-labelledby="pf-h">
+    <h2 id="pf-h" class="dui-h2">Page <b>furniture</b></h2>
+    <div class="demo">
+      <ol class="dui-crumbs"><li><a href="#furniture">Docs</a></li><li><a href="#furniture">Start</a></li><li aria-current="page">Import your list</li></ol>
+      <p class="cap">Breadcrumbs, when pages nest three deep or more. The page you're on isn't a link.</p>
+      <ol class="dui-steps" aria-label="Example steps" style="max-width:32rem"><li data-done="true"><span>Bag</span></li><li aria-current="step"><span>Delivery</span></li><li><span>Pay</span></li></ol>
+      <p class="cap">Steps through a flow. Done and current are black.</p>
+      <label class="dui-label" style="max-width:24rem">Profile 60% done <progress class="dui-progress" max="100" value="60">60%</progress></label>
+      <ul class="dui-pager"><li><span aria-current="page">1</span></li><li><a href="#furniture">2</a></li><li><a href="#furniture">3</a></li><li><span class="dui-pager__gap">…</span></li><li><a href="#furniture">8</a></li><li><a href="#furniture" style="padding:0 1.25rem">Next</a></li></ul>
+      <p class="cap">Page numbers are pills. The current one is black.</p>
+      <nav class="dui-sidenav" aria-label="Example side menu" style="max-width:14rem"><div><h2>Start</h2><ul><li><a href="#furniture">Install</a></li><li><a href="#furniture" aria-current="page">Import your list</a></li><li><a href="#furniture">Your first count</a></li></ul></div></nav>
+      <p class="cap">A side menu for docs and help: the current page is bold with a black edge.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="content" aria-labelledby="ct-h">
+    <h2 id="ct-h" class="dui-h2">Tables, questions and <b>code</b></h2>
+    <div class="demo">
+      <div class="dui-table-wrap" style="max-width:32rem"><table class="dui-table"><thead><tr><th>Item</th><th class="dui-num">Qty</th><th class="dui-num">Price</th></tr></thead><tbody><tr><td>Speckled mug</td><td class="dui-num">2</td><td class="dui-num">R640</td></tr><tr><td>Side plates, pair</td><td class="dui-num">1</td><td class="dui-num">R420</td></tr></tbody><tfoot><tr><td>Total</td><td></td><td class="dui-num">R1,060</td></tr></tfoot></table></div>
+      <p class="cap">A black line under the header, hairlines between rows, numbers on the right. No stripes.</p>
+      <div class="dui-accordion" style="max-width:32rem"><details open><summary>Does it work offline?</summary><p>Yes. Counts save on the phone and sync later.</p></details><details><summary>Can I pay in cash?</summary><p>Not yet.</p></details></div>
+      <pre class="dui-code" style="max-width:32rem"><code>npx skills add VenusOne-Lee/distinctui</code></pre>
+      <p class="cap">Code people copy sits in a grey panel and scrolls sideways rather than wrapping.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="controls" aria-labelledby="cl-h">
+    <h2 id="cl-h" class="dui-h2">Switches, chips and <b>faces</b></h2>
+    <div class="demo">
+      <label class="dui-switch" style="max-width:24rem">Remind me on Sundays <input type="checkbox" role="switch" checked></label>
+      <label class="dui-switch" style="max-width:24rem">Email me about new pieces <input type="checkbox" role="switch"></label>
+      <p class="cap">A switch saves straight away. Consent is never a switch: it's an unticked box, one per purpose.</p>
+      <div class="demo-row"><button class="dui-chip" type="button">Help</button><button class="dui-chip" type="button">Last year</button></div>
+      <p class="cap">Filters that are on. Press one to remove it.</p>
+      <div class="dui-stack">
+        <span class="dui-mark" data-ring="1" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-9.jpg" alt=""></span></span>
+        <span class="dui-mark" data-ring="2" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-10.jpg" alt=""></span></span>
+        <span class="dui-mark" data-ring="3" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-11.jpg" alt=""></span></span>
+        <span class="dui-mark" data-ring="4" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span>
+        <span class="dui-stack__more">and 12 more</span>
+      </div>
+      <p class="cap">Who else is here. Five faces at most, then say how many more.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:20rem"><span class="dui-skeleton" style="width:70%"></span><span class="dui-skeleton" style="width:45%"></span></div>
+      <p class="cap">Loading shapes, only after 300ms, in the shape of what's coming.</p>
+      <div class="demo-row"><button class="dui-btn-sm-ghost" type="button" onclick="document.getElementById('dlg').showModal()">Open a dialog</button></div>
+      <dialog class="dui-dialog" id="dlg"><h3 class="dui-h4">Delete Lift Club?</h3><p class="dui-body">Its page and its 14 versions go for good.</p><form method="dialog" class="dui-actions"><button class="dui-btn" value="delete">Delete it</button><button class="dui-btn-ghost" value="cancel">Keep it</button></form></dialog>
+      <p class="cap">A dialog only for a question that must be answered first. The veil behind is white, never dark.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="icons" aria-labelledby="ic-h">
+    <h2 id="ic-h" class="dui-h2"><b>Icons</b></h2>
+    <div class="demo">
+      <div class="icons"><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#search"/></svg><span>search</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#arrow-right"/></svg><span>arrow-right</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#arrow-left"/></svg><span>arrow-left</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#check"/></svg><span>check</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#x"/></svg><span>x</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#plus"/></svg><span>plus</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#minus"/></svg><span>minus</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#mail"/></svg><span>mail</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#message"/></svg><span>message</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#map-pin"/></svg><span>map-pin</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#clock"/></svg><span>clock</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#lock"/></svg><span>lock</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#bag"/></svg><span>bag</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#truck"/></svg><span>truck</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#copy"/></svg><span>copy</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#external"/></svg><span>external</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#download"/></svg><span>download</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#refresh"/></svg><span>refresh</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#home"/></svg><span>home</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#bell"/></svg><span>bell</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#settings"/></svg><span>settings</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#user"/></svg><span>user</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#calendar"/></svg><span>calendar</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#phone"/></svg><span>phone</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#play"/></svg><span>play</span></span></div>
+      <div class="demo-row"><a class="dui-btn-sm-ghost" href="#icons"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#bag"/></svg> Bag</a><a class="dui-btn-sm" href="#icons">Continue <svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></a><button class="dui-icon-btn" type="button" aria-label="Close"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#x"/></svg></button></div>
+      <p class="cap">Lucide outlines in <code>icons.svg</code>, drawn in the text colour, next to a word. Never filled, never coloured.</p>
     </div>
   </section>
 </main>

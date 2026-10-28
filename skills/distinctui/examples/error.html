@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Something went wrong · Spaza Stock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a server error and the two other states people meet when things break: offline, and
+     planned maintenance. Black and bold, never red. Says whose fault it is and what's safe. Invented product. */
+  :root { --dui-signature: #1f3bff; }
+  .broke { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding-top: 48px; max-width: 40rem; }
+  @media (min-width: 640px) { .broke { padding-top: 88px; } }
+  .alert { display: inline-grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: var(--dui-black); color: var(--dui-white); font-size: 1.75rem; font-weight: 700; }
+  .ref { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .others { display: grid; gap: 16px; }
+  @media (min-width: 768px) { .others { grid-template-columns: 1fr 1fr; gap: 24px; } }
+  .others .dui-card { gap: 12px; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">spaza stock</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm-ghost" href="status.html">Status</a></nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="broke" aria-labelledby="b-h">
+    <span class="alert" aria-hidden="true">!</span>
+    <h1 id="b-h" class="dui-h1">That one's on <b>us</b></h1>
+    <p class="dui-lede">Something broke on our side while loading your low stock list. Your counts are safe on your phone and nothing was lost.</p>
+    <div class="dui-actions">
+      <button class="dui-btn" type="button" onclick="location.reload()"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#refresh"/></svg> Try again</button>
+      <a class="dui-btn-ghost" href="#">Back to your shop</a>
+    </div>
+    <div class="ref dui-meta">If it keeps happening, send us this code: <code>ERR-7Q4K-1432</code></div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="o-h">
+    <h2 id="o-h" class="dui-h2">Two other <b>states</b></h2>
+    <div class="others">
+      <div class="dui-card">
+        <span class="dui-badge" style="align-self:flex-start">Offline</span>
+        <h3 class="dui-h4">You're offline</h3>
+        <p class="dui-body">Keep counting. We'll send everything when you're back, and show a tick on each count once it's sent.</p>
+        <div class="dui-card__foot"><span class="dui-meta"><b style="color:var(--dui-black)">14 counts</b> waiting to send</span></div>
+      </div>
+      <div class="dui-card">
+        <span class="dui-badge" style="align-self:flex-start">Planned</span>
+        <h3 class="dui-h4">Back at 23:30</h3>
+        <p class="dui-body">We're moving to a bigger database tonight from 22:00. Counting works on your phone the whole time.</p>
+        <div class="dui-card__foot"><a class="dui-link dui-meta" href="status.html">Follow on the status page</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

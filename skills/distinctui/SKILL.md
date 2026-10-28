@@ -39,11 +39,15 @@ All components, their markup and when to use each are in `references/components.
 - Type: hero, h1, h2 (light with a bold word), h3 card headline, lede, body, meta, eyebrow label
 - Buttons: `dui-btn`, `dui-btn-ghost`, `dui-btn-sm`, `dui-btn-sm-ghost`, count badge
 - Badges: outline status, solid highlight, soft version chip
-- Forms: label and hint, pill field, input, select, textarea, counter, checkbox, choice cards, field error, form problems banner
+- Forms: label and hint, pill field, input, select, textarea, counter, checkbox, switch, choice cards, field error, form problems banner
 - Cards: card, media card, feature card, note, panel, rows
 - Signature mark: empty, initials or photo inside; sizes, dashed/solid, version label, earned dot, plain and group variants, logo
-- Page: header with nav, footer, menu, pill tabs, status notice, empty state, flash
+- Page: header with nav, footer, menu, pill tabs, breadcrumbs, side menu, page numbers, steps, progress bar, status notice, empty state, flash
+- Content: questions that open in place, table, code block, filter chips, a stack of faces, dialog, loading shapes
+- Icons: Lucide outlines from `assets/icons.svg`, black, next to a word
 - Motion (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, bars grow, filter tabs, toggle
+
+Photos, icons and charts have their own rules in `references/imagery.md`. Tokens for Figma (Tokens Studio) or Style Dictionary are in `assets/tokens.json`.
 
 For SwiftUI, every one of these is a view or modifier in the `DistinctUI` package (`DUIMark`, `DUITitle`, `.buttonStyle(.duiPrimary)`, `.duiCard()` and so on). The full map, the phone-specific rules and six example screens are in `references/swiftui.md`.
 
@@ -52,18 +56,34 @@ Worked pages are in `examples/`. Open the closest one before building a similar 
 | Template | Use it for |
 |---|---|
 | `landing.html` | A launch or marketing page |
-| `profile.html` | A person or team page |
-| `list.html` | A directory, feed or search results |
-| `dashboard.html` | An owner's home: what needs them, numbers, activity |
+| `about.html` | Who you are, why you started, numbers, beliefs |
+| `team.html` | Everyone in their ring, plus an open seat |
+| `careers.html` | Open roles with salaries, how you hire |
+| `contact.html` | A short contact form with the privacy note beside it |
+| `blog.html` | A blog or news index with a lead story and page numbers |
 | `article.html` | A story, blog post or long read |
+| `case-study.html` | A portfolio piece: facts, problem, what shipped, results |
 | `pricing.html` | Plans and questions |
+| `waitlist.html` | Something not live yet: one field, a dashed mark |
+| `onboarding.html` | A first-run flow with steps and a live preview |
 | `signin.html` | Sign in with an email link or passkey |
+| `dashboard.html` | An owner's home: what needs them, numbers, activity |
+| `profile.html` | A person or team page |
+| `list.html` | A directory or feed |
+| `search.html` | Search results with filters and a no-results state |
 | `settings.html` | Account, emails, your data, delete account |
 | `changelog.html` | Versions and what changed |
 | `form.html` | Any long form, with error states |
+| `product.html` | One product in a shop |
+| `checkout.html` | Delivery and an order summary |
+| `help.html` | A help centre: search, topics, questions, a person |
+| `docs.html` | Documentation with a side menu and code |
+| `status.html` | Uptime and incidents, without traffic-light colours |
+| `notfound.html` | A 404 page |
+| `error.html` | A server error, offline and maintenance |
 | `email.html` | A transactional email (tables and inline styles) |
 
-The example photos in `examples/img/` are AI-generated people who don't exist. Replace them with your own.
+The example photos in `examples/img/` are AI-generated people, places and products that don't exist. Replace them with your own.
 
 ## Layout
 

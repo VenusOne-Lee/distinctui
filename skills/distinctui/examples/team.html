@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Team · Ikhaya Labs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a team page. Each person keeps one ring from the Signal palette; an open role is an
+     empty dashed seat. Everyone here is invented, and the photos are AI-generated. */
+  :root { --dui-signature: #ff4f1f; }
+  .people { display: grid; gap: 40px 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+  @media (min-width: 768px) { .people { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 24px; } }
+  @media (min-width: 1024px) { .people { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .person { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
+  .person .dui-mark { margin-bottom: 10px; --mark-size: 7rem; }
+  @media (min-width: 640px) { .person .dui-mark { --mark-size: 8.5rem; } }
+  .person b { font-size: 1.125rem; letter-spacing: -0.01em; }
+  .person a { font-size: var(--dui-text-sm); }
+  .seat b { color: var(--dui-grey-600); }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">ikhaya labs</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="about.html">About</a><a href="team.html" aria-current="page">Team</a><a href="blog.html">Notes</a><a href="careers.html">Careers</a></span>
+    <a class="dui-btn-sm" href="contact.html">Talk to us</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav" aria-label="Sections"><a href="about.html">About</a><a href="team.html" aria-current="page">Team</a><a href="blog.html">Notes</a><a href="careers.html">Careers</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
+    <h1 class="dui-h1">Nine people, <b>one street</b></h1>
+    <p class="dui-lede">Most of us grew up behind a shop counter, or next door to one.</p>
+  </div>
+
+  <section class="dui-section" style="padding-top:56px" aria-labelledby="t-h">
+    <h2 id="t-h" class="dui-sr-only">The team</h2>
+    <ul class="people dui-reveal-draw">
+      <li class="person"><span class="dui-mark" data-ring="1"><span class="dui-mark__inner"><img src="img/portrait-9.jpg" alt=""></span></span><b>Nomsa Dlamini</b><span class="dui-meta">Founder · Braamfontein</span><a class="dui-link" href="#">Notes by Nomsa</a></li>
+      <li class="person"><span class="dui-mark" data-ring="2"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span><b>Ravi Naidoo</b><span class="dui-meta">Engineering · Durban</span></li>
+      <li class="person"><span class="dui-mark" data-ring="3"><span class="dui-mark__inner"><img src="img/portrait-11.jpg" alt=""></span></span><b>Chanté Adams</b><span class="dui-meta">Design · Mitchells Plain</span></li>
+      <li class="person"><span class="dui-mark" data-ring="4"><span class="dui-mark__inner"><img src="img/portrait-2.jpg" alt=""></span></span><b>Bongani Zulu</b><span class="dui-meta">Shop visits · Soweto</span></li>
+      <li class="person"><span class="dui-mark" data-ring="5"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span></span><b>Lerato Mahlangu</b><span class="dui-meta">Support · Pretoria</span></li>
+      <li class="person"><span class="dui-mark" data-ring="1"><span class="dui-mark__inner"><img src="img/portrait-7.jpg" alt=""></span></span><b>Imraan Patel</b><span class="dui-meta">Engineering · Lenasia</span></li>
+      <li class="person"><span class="dui-mark" data-ring="2"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span><b>Palesa Mokoena</b><span class="dui-meta">Product · Braamfontein</span></li>
+      <li class="person"><span class="dui-mark" data-ring="3"><span class="dui-mark__inner"><img src="img/portrait-12.jpg" alt=""></span></span><b>Johan Botha</b><span class="dui-meta">Finance · Stellenbosch</span></li>
+      <li class="person"><span class="dui-mark" data-ring="4" data-live="false"><span class="dui-mark__inner">AM</span><span class="dui-mark__version">Starts Nov</span></span><b>Ayanda Mthethwa</b><span class="dui-meta">Engineering · Gqeberha</span></li>
+      <li class="person seat"><span class="dui-mark dui-mark--empty"><span class="dui-mark__inner">+</span></span><b>Your seat</b><span class="dui-meta">Android engineer</span><a class="dui-link" href="careers.html">See the role</a></li>
+    </ul>
+  </section>
+
+  <section class="dui-section" aria-labelledby="adv-h">
+    <h2 id="adv-h" class="dui-h2">People who <b>help</b></h2>
+    <ul class="dui-rows" style="max-width:48rem">
+      <li class="dui-row"><span class="dui-mark dui-mark--plain" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="img/portrait-6.jpg" alt=""></span></span><div style="flex:1"><b>Uncle Sam Khumalo</b><p class="dui-meta">Ran a spaza in Alexandra for 31 years. Tests everything first.</p></div></li>
+      <li class="dui-row"><span class="dui-mark dui-mark--plain" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="img/portrait-8.jpg" alt=""></span></span><div style="flex:1"><b>Dr Fatima Essop</b><p class="dui-meta">Teaches retail economics. Keeps our numbers honest.</p></div></li>
+      <li class="dui-row"><span class="dui-mark dui-mark--group" style="--mark-size:3rem"><span class="dui-mark__inner">SA</span></span><div style="flex:1"><b>The Soweto shop owners' circle</b><p class="dui-meta">Twelve shops who try every version before you do.</p></div></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>ikhaya labs</b> ikhayalabs.example</span>
+  <span>Example page from distinctUI. Everyone here is invented.</span>
+  <nav aria-label="More"><a href="about.html">About</a><a href="team.html">Team</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a><a href="#">Privacy</a></nav>
+</footer>
+</body>
+</html>

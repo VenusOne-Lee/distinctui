@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Contact · Ikhaya Labs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a contact page. A short form with only what's needed, the privacy note beside it,
+     and other ways to reach a person. Addresses and numbers are invented. */
+  :root { --dui-signature: #ff4f1f; }
+  .wrap { display: grid; gap: 48px; padding-top: 32px; }
+  @media (min-width: 960px) { .wrap { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 72px; } }
+  .dui-form { display: flex; flex-direction: column; gap: 20px; }
+  .pair { display: grid; gap: 20px; align-items: end; }
+  @media (min-width: 640px) { .pair { grid-template-columns: 1fr 1fr; } }
+  .ways { display: flex; flex-direction: column; gap: 16px; }
+  .ways .dui-row { align-items: flex-start; }
+  .ways .dui-row > div { display: flex; flex-direction: column; gap: 2px; }
+  .person { display: flex; align-items: center; gap: 14px; }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">ikhaya labs</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="about.html">About</a><a href="team.html">Team</a><a href="blog.html">Notes</a><a href="careers.html">Careers</a></span>
+    <a class="dui-btn-sm" href="contact.html" aria-current="page">Talk to us</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav" aria-label="Sections"><a href="about.html">About</a><a href="team.html">Team</a><a href="blog.html">Notes</a><a href="careers.html">Careers</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div class="wrap">
+    <section aria-labelledby="c-h" style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h1 id="c-h" class="dui-h1">Talk to a <b>person</b></h1>
+        <p class="dui-lede">A real one, usually Lerato. We answer within one working day.</p>
+      </div>
+
+      <form class="dui-form" action="#" novalidate>
+        <div class="pair">
+          <label class="dui-label" for="name">Your name
+            <input class="dui-input" id="name" name="name" autocomplete="name">
+          </label>
+          <label class="dui-label" for="email">Email <span class="dui-hint">So we can reply. Nothing else.</span>
+            <input class="dui-input" id="email" name="email" type="email" autocomplete="email">
+          </label>
+        </div>
+        <label class="dui-label" for="topic">What's it about?
+          <select class="dui-select" id="topic" name="topic">
+            <option>Help with an app</option>
+            <option>Using it in my shop</option>
+            <option>Working with us</option>
+            <option>Press</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label class="dui-label" for="msg">Message
+          <textarea class="dui-textarea" id="msg" name="message" maxlength="1500" rows="6"></textarea>
+        </label>
+        <span class="dui-counter" style="margin-top:-12px">0/1500</span>
+        <label class="dui-label" for="shop">Shop name <span class="dui-optional">(optional)</span>
+          <input class="dui-input" id="shop" name="shop">
+        </label>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+          <button class="dui-btn" type="submit">Send message</button>
+          <p class="dui-meta">We use this only to answer you. <a class="dui-link" href="#">Privacy</a></p>
+        </div>
+      </form>
+    </section>
+
+    <aside class="ways" aria-labelledby="w-h">
+      <h2 id="w-h" class="dui-h4">Other ways in</h2>
+      <ul class="dui-rows">
+        <li class="dui-row"><div><b>Email</b><a class="dui-link dui-meta" href="#">hello@ikhayalabs.example</a></div></li>
+        <li class="dui-row"><div><b>WhatsApp</b><span class="dui-meta">071 000 0000, weekdays 08:00 to 17:00</span></div></li>
+        <li class="dui-row"><div><b>Visit</b><span class="dui-meta">3rd floor, 44 Juta Street, Braamfontein. Ring the bell marked Ikhaya.</span></div></li>
+        <li class="dui-row"><div><b>Press</b><a class="dui-link dui-meta" href="#">press@ikhayalabs.example</a></div></li>
+      </ul>
+      <div class="dui-panel person">
+        <span class="dui-mark" data-ring="5" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span></span>
+        <div><b>Lerato Mahlangu</b><p class="dui-meta">Reads every message. Answers most of them.</p></div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>ikhaya labs</b> ikhayalabs.example</span>
+  <span>Example page from distinctUI. Addresses and numbers are invented.</span>
+  <nav aria-label="More"><a href="about.html">About</a><a href="team.html">Team</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a><a href="#">Privacy</a></nav>
+</footer>
+</body>
+</html>

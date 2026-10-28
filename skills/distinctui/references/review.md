@@ -38,6 +38,12 @@ Go through every line. Fix what fails, then tell the user in one line what you c
 - [ ] Cards in a row are the same height; titles clamp at 2 lines, text at 3.
 - [ ] Works at 375px with no sideways scroll; tap targets at least 44px.
 
+## Photos, icons and charts
+- [ ] No text on top of a photo, and no colour wash or gradient over one.
+- [ ] Faces sit inside a mark, not as loose rectangles.
+- [ ] Icons are Lucide outlines in the text colour, next to a word, with `aria-hidden="true"`.
+- [ ] Charts are black and greys, two series at most, with the key number written out.
+
 ## Words
 - [ ] Buttons say what happens.
 - [ ] Errors name the field and the fix, in black with the "!" disc, and a banner at the top lists them with links.
