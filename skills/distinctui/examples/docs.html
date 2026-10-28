@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Import your stock list · Spaza Stock docs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a docs page. Side menu, breadcrumbs, one reading column, code you copy, a table,
+     and next/previous at the end. On phones the side menu moves under the page. Invented product. */
+  :root { --dui-signature: #1f3bff; }
+  .docs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; padding-top: 24px; }
+  .docs .dui-sidenav { order: 2; border-top: 1px solid var(--dui-grey-200); padding-top: 32px; }
+  @media (min-width: 1024px) {
+    .docs { grid-template-columns: 14rem minmax(0, 1fr) 12rem; gap: 56px; }
+    .docs .dui-sidenav { order: 0; position: sticky; top: 24px; align-self: start; border: 0; padding: 0; }
+  }
+  .doc { display: flex; flex-direction: column; gap: 20px; max-width: 42rem; min-width: 0; }
+  .doc h2 { margin: 24px 0 0; font-size: 1.75rem; font-weight: 300; letter-spacing: -0.035em; scroll-margin-top: 24px; }
+  .doc h2 b { font-weight: 700; }
+  .doc p, .doc li { line-height: 1.7; }
+  .doc ol:not(.dui-crumbs) { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 8px; }
+  .toc { display: none; }
+  @media (min-width: 1024px) { .toc { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 24px; align-self: start; font-size: var(--dui-text-sm); } }
+  .toc a { text-decoration: none; color: var(--dui-grey-600); }
+  .toc a:hover { color: var(--dui-black); }
+  .toc a[aria-current="true"] { color: var(--dui-black); font-weight: 600; }
+  .next { display: grid; gap: 12px; margin-top: 32px; }
+  @media (min-width: 640px) { .next { grid-template-columns: 1fr 1fr; } }
+  .next .dui-card { gap: 4px; padding: 18px 20px; }
+  .search { display: none; }
+  @media (min-width: 768px) { .search { display: block; width: 16rem; padding-block: 0.5rem; font-size: var(--dui-text-sm); } }
+  .wide-only { display: none; }
+  @media (min-width: 640px) { .wide-only { display: inline-flex; } }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">spaza stock <span class="dui-badge" style="font-weight:500">Docs</span></a>
+  <nav class="dui-nav" aria-label="Main">
+    <input class="dui-field search" type="search" placeholder="Search the docs" aria-label="Search the docs">
+    <a class="dui-btn-sm-ghost wide-only" href="help.html">Help</a>
+    <a class="dui-btn-sm" href="#">Open the app</a>
+  </nav>
+</header>
+
+<div class="dui-container docs">
+  <nav class="dui-sidenav" aria-label="Docs">
+    <div><h2>Start</h2><ul><li><a href="#">What Spaza Stock does</a></li><li><a href="#">Install on Android</a></li><li><a href="#" aria-current="page">Import your stock list</a></li><li><a href="#">Your first count</a></li></ul></div>
+    <div><h2>Everyday</h2><ul><li><a href="#">Counting out loud</a></li><li><a href="#">Low stock list</a></li><li><a href="#">Working offline</a></li><li><a href="#">More than one phone</a></li></ul></div>
+    <div><h2>For developers</h2><ul><li><a href="#">API keys</a></li><li><a href="#">Items API</a></li><li><a href="#">Webhooks</a></li></ul></div>
+  </nav>
+
+  <main id="main" class="doc">
+    <ol class="dui-crumbs"><li><a href="#">Docs</a></li><li><a href="#">Start</a></li><li aria-current="page">Import your stock list</li></ol>
+    <h1 class="dui-h1">Import your <b>stock list</b></h1>
+    <p class="dui-lede">Already keep a list in Excel or Google Sheets? Bring it in once, then count by voice from there. About five minutes.</p>
+
+    <h2 id="file">Get the <b>file</b> ready</h2>
+    <p class="dui-body">Save your list as a CSV with these columns. The first row must be the column names. Extra columns are ignored.</p>
+    <div class="dui-table-wrap">
+      <table class="dui-table">
+        <thead><tr><th>Column</th><th>What goes in it</th><th>Needed</th></tr></thead>
+        <tbody>
+          <tr><td><code>name</code></td><td>What you call it at the counter, like <i>White bread</i></td><td>Yes</td></tr>
+          <tr><td><code>count</code></td><td>How many you have now</td><td>Yes</td></tr>
+          <tr><td><code>low_at</code></td><td>Warn me when it drops to this</td><td>No</td></tr>
+          <tr><td><code>price</code></td><td>Selling price in rand, like <code>18.50</code></td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <pre class="dui-code"><code>name,count,low_at,price
+White bread,14,5,18.50
+Maize meal 5kg,8,3,72.00
+Airtime R10,40,10,10.00</code></pre>
+
+    <h2 id="upload">Bring it <b>in</b></h2>
+    <ol>
+      <li>Open Spaza Stock and tap <b>You</b>, then <b>Import a list</b>.</li>
+      <li>Pick the CSV file from your phone, Google Drive or WhatsApp.</li>
+      <li>Check the preview. Rows with a problem are marked, with what to fix.</li>
+      <li>Tap <b>Import</b>. Your items show up straight away.</li>
+    </ol>
+    <p class="dui-note"><b>Tip:</b> Import doesn't delete anything. Items with the same name get the new count.</p>
+
+    <h2 id="api">With the <b>API</b></h2>
+    <p class="dui-body">Sending the same list from your till or website? Post it to the items endpoint with your key from <b>Settings → API keys</b>.</p>
+    <pre class="dui-code"><code>curl https://api.spazastock.example/v1/items/import \
+  -H "Authorization: Bearer $SPAZA_KEY" \
+  -F "file=@stock.csv"</code></pre>
+
+    <nav class="next" aria-label="More docs">
+      <a class="dui-card" href="#"><span class="dui-meta">Back</span><b>Install on Android</b></a>
+      <a class="dui-card" href="#" style="text-align:right"><span class="dui-meta">Next</span><b>Your first count</b></a>
+    </nav>
+    <p class="dui-meta">Was this clear? <a class="dui-link" href="#">Tell us what's missing</a>. Updated 14 Oct.</p>
+  </main>
+
+  <nav class="toc" aria-label="On this page">
+    <span class="dui-eyebrow">On this page</span>
+    <a href="#file" aria-current="true">Get the file ready</a>
+    <a href="#upload">Bring it in</a>
+    <a href="#api">With the API</a>
+  </nav>
+</div>
+
+<footer class="dui-container dui-footer">
+  <span><b>spaza stock</b> spazastock.example</span>
+  <span>Example page from distinctUI. The product is invented.</span>
+  <nav aria-label="More"><a href="help.html">Help</a><a href="status.html">Status</a><a href="#">Privacy</a></nav>
+</footer>
+</body>
+</html>

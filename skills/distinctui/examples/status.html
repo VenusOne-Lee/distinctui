@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Status · Spaza Stock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a status page with no traffic-light colours. Working is an outline badge, a problem is
+     solid black with the "!" disc, and the 90-day strip uses black for days with trouble. Invented product. */
+  :root { --dui-signature: #1f3bff; }
+  .part { flex-wrap: wrap; gap: 10px 16px; padding-block: 18px; }
+  .part > div:first-child { flex: 1 1 12rem; display: flex; flex-direction: column; gap: 2px; }
+  .days { flex-basis: 100%; min-width: 0; display: grid; grid-template-columns: repeat(90, minmax(0, 1fr)); gap: 2px; width: 100%; height: 28px; }
+  .days i { border-radius: 2px; background: var(--dui-grey-200); }
+  .days i[data-bad] { background: var(--dui-black); }
+  .days-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; justify-content: space-between; width: 100%; font-size: var(--dui-text-xs); color: var(--dui-grey-600); }
+  .bad { display: inline-flex; align-items: center; gap: 6px; }
+  .bad::before { content: "!"; display: inline-grid; place-items: center; width: 0.9rem; height: 0.9rem; border-radius: 50%; background: var(--dui-white); color: var(--dui-black); font-size: 0.6rem; font-weight: 700; }
+  .incident { flex-direction: column; align-items: flex-start; gap: 8px; padding-block: 20px; }
+  .tl { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: var(--dui-text-md); }
+  .tl b { display: inline-block; min-width: 7.5rem; }
+  .wide-only { display: none; }
+  @media (min-width: 640px) { .wide-only { display: inline-flex; } }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">spaza stock <span class="dui-badge" style="font-weight:500">Status</span></a>
+  <nav class="dui-nav" aria-label="Main">
+    <a class="dui-btn-sm-ghost wide-only" href="help.html">Help</a>
+    <a class="dui-btn-sm" href="#subscribe">Get updates</a>
+  </nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px;max-width:56rem">
+  <div style="display:flex;flex-direction:column;gap:20px;padding-top:32px">
+    <h1 class="dui-h1">Mostly <b>working</b></h1>
+    <p class="dui-status" role="status">Counting, sync and the app are working. Supplier orders are slow, and we're on it.</p>
+    <p class="dui-meta">Checked every minute. Last check 14:32 SAST.</p>
+  </div>
+
+  <section class="dui-section" style="padding-top:56px" aria-labelledby="p-h">
+    <h2 id="p-h" class="dui-h2">Each <b>part</b></h2>
+    <ul class="dui-rows">
+      <li class="dui-row part"><div><b>Counting and the app</b><span class="dui-meta">99.98% over 90 days</span></div><span class="dui-badge">Working</span>
+        <div class="days" aria-hidden="true"></div></li>
+      <li class="dui-row part"><div><b>Sync between phones</b><span class="dui-meta">99.91% over 90 days</span></div><span class="dui-badge">Working</span>
+        <div class="days" aria-hidden="true" data-bad="12 47"></div></li>
+      <li class="dui-row part"><div><b>Supplier orders</b><span class="dui-meta">99.62% over 90 days</span></div><span class="dui-badge-solid bad">Slow</span>
+        <div class="days" aria-hidden="true" data-bad="30 31 89"></div></li>
+      <li class="dui-row part"><div><b>API</b><span class="dui-meta">100% over 90 days</span></div><span class="dui-badge">Working</span>
+        <div class="days" aria-hidden="true"></div></li>
+    </ul>
+    <div class="days-legend"><span>90 days ago</span><span>Black is a day with a problem</span><span>Today</span></div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="i-h">
+    <h2 id="i-h" class="dui-h2">What <b>happened</b></h2>
+    <ul class="dui-rows">
+      <li class="dui-row incident">
+        <span class="dui-badge-solid bad">Now</span>
+        <h3 class="dui-h4">Supplier orders take up to 10 minutes to send</h3>
+        <ul class="tl">
+          <li><b>14:20 Update</b>A supplier's system is answering slowly. Orders are queued, none are lost.</li>
+          <li><b>13:55 Found it</b>Orders to two wholesalers in Gauteng are waiting.</li>
+        </ul>
+      </li>
+      <li class="dui-row incident">
+        <span class="dui-badge">Fixed · 26 Sep</span>
+        <h3 class="dui-h4">Sync paused for 40 minutes</h3>
+        <p class="dui-body">A database update took longer than planned. Counts stayed on phones and sent once it was done. We now run updates after 22:00.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="dui-section" id="subscribe" aria-labelledby="s-h">
+    <div class="dui-panel" style="padding:28px;display:flex;flex-direction:column;gap:14px">
+      <h2 id="s-h" class="dui-h4">Hear about problems first</h2>
+      <form style="display:flex;flex-wrap:wrap;gap:8px" action="#">
+        <input class="dui-field" type="email" placeholder="you@example.com" aria-label="Email" style="flex:1 1 16rem">
+        <button class="dui-btn" type="submit">Email me</button>
+      </form>
+      <p class="dui-meta">Only when something breaks and when it's fixed. Unsubscribe in one tap. <a class="dui-link" href="#">Privacy</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>spaza stock</b> spazastock.example</span>
+  <span>Example page from distinctUI. The product is invented.</span>
+  <nav aria-label="More"><a href="docs.html">Docs</a><a href="help.html">Help</a></nav>
+</footer>
+<script>
+  // Draws the 90-day strips; data-bad lists the day numbers (0-89) with a problem.
+  document.querySelectorAll(".days").forEach((el) => {
+    const bad = (el.dataset.bad || "").split(" ").filter(Boolean).map(Number);
+    for (let d = 0; d < 90; d++) {
+      const i = document.createElement("i");
+      if (bad.includes(d)) i.dataset.bad = "";
+      el.append(i);
+    }
+  });
+</script>
+</body>
+</html>

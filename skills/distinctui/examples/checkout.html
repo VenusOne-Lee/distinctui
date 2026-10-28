@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Checkout · Clayhouse</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: checkout, delivery step. Steps on top, only the fields delivery needs, delivery as choice
+     cards, an order summary table, and one black pill. Marketing is a separate unticked box.
+     Invented studio and prices. */
+  :root { --dui-signature: #b5452b; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+  .co { display: grid; gap: 40px; padding-top: 32px; }
+  @media (min-width: 960px) { .co { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: start; } }
+  .dui-form { display: flex; flex-direction: column; gap: 20px; }
+  .pair { display: grid; gap: 20px; align-items: end; }
+  @media (min-width: 640px) { .pair { grid-template-columns: 1fr 1fr; } }
+  .choice-row { display: flex; justify-content: space-between; gap: 12px; width: 100%; }
+  .sum { display: flex; flex-direction: column; gap: 20px; }
+  @media (min-width: 960px) { .sum { position: sticky; top: 24px; } }
+  .item { display: flex; align-items: center; gap: 12px; }
+  .item img { width: 3.5rem; height: 3.5rem; border-radius: 12px; object-fit: cover; background: var(--dui-grey-100); flex-shrink: 0; }
+  .safe { display: flex; align-items: center; gap: 8px; justify-content: center; }
+</style>
+</head>
+<body class="dui-page">
+<div class="dui-container">
+  <div class="top">
+    <a class="dui-logo" href="#">clayhouse</a>
+    <span class="dui-meta safe"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg> Secure checkout</span>
+  </div>
+  <ol class="dui-steps" aria-label="Checkout">
+    <li data-done="true"><span>Bag</span></li>
+    <li aria-current="step"><span>Delivery</span></li>
+    <li><span>Pay</span></li>
+  </ol>
+</div>
+
+<main id="main" class="dui-container co" style="padding-bottom:96px">
+  <section aria-labelledby="d-h" style="display:flex;flex-direction:column;gap:24px">
+    <h1 id="d-h" class="dui-h1">Where should it <b>go</b>?</h1>
+    <form class="dui-form" action="#" novalidate>
+      <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+        <legend class="dui-label" style="margin-bottom:10px">Delivery</legend>
+        <label class="dui-choice"><input type="radio" name="ship" checked><span class="choice-row"><span><b>Courier to your door</b><br><span class="dui-hint">2 to 4 working days, anywhere in SA.</span></span><b>R95</b></span></label>
+        <label class="dui-choice"><input type="radio" name="ship"><span class="choice-row"><span><b>Collect in Woodstock</b><br><span class="dui-hint">Ready tomorrow from 10:00. We'll SMS you.</span></span><b>Free</b></span></label>
+      </fieldset>
+
+      <div class="pair">
+        <label class="dui-label" for="fn">Name <input class="dui-input" id="fn" autocomplete="name" value="Thabo Molefe"></label>
+        <label class="dui-label" for="ph">Cell number <span class="dui-hint">For the courier only.</span><input class="dui-input" id="ph" type="tel" autocomplete="tel" value="082 000 0000"></label>
+      </div>
+      <label class="dui-label" for="em">Email <span class="dui-hint">For your receipt and tracking link.</span><input class="dui-input" id="em" type="email" autocomplete="email" value="thabo@example.com"></label>
+      <label class="dui-label" for="ad">Street address <input class="dui-input" id="ad" autocomplete="street-address" aria-invalid="true" aria-describedby="ad-e"></label>
+      <p class="dui-field-error" id="ad-e">Add a street address so the courier can find you.</p>
+      <div class="pair">
+        <label class="dui-label" for="sb">Suburb <input class="dui-input" id="sb" value="Observatory"></label>
+        <label class="dui-label" for="pc">Postal code <input class="dui-input" id="pc" inputmode="numeric" maxlength="4" value="7925"></label>
+      </div>
+      <label class="dui-label" for="nt">Note for the courier <span class="dui-optional">(optional)</span><input class="dui-input" id="nt" placeholder="Gate code, dogs, best time"></label>
+
+      <label class="dui-check"><input type="checkbox" name="news"> Email me when new pieces come out of the kiln. About once a month.</label>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding-top:8px">
+        <button class="dui-btn" type="submit">Continue to pay</button>
+        <a class="dui-link dui-meta" href="product.html">Back to the bag</a>
+      </div>
+      <p class="dui-meta">We share your name, number and address with the courier, and nothing else. <a class="dui-link" href="#">Privacy</a></p>
+    </form>
+  </section>
+
+  <aside class="dui-panel sum" aria-labelledby="s-h" style="padding:24px">
+    <h2 id="s-h" class="dui-h4">Your order</h2>
+    <div class="dui-table-wrap">
+      <table class="dui-table">
+        <caption class="dui-sr-only">Items and totals</caption>
+        <thead><tr><th>Item</th><th class="dui-num">Price</th></tr></thead>
+        <tbody>
+          <tr><td><span class="item"><img src="img/ware-mug.jpg" alt=""><span><b>Speckled mug</b><br><span class="dui-meta">Oat · 2 × R320</span></span></span></td><td class="dui-num">R640</td></tr>
+          <tr><td><span class="item"><img src="img/ware-plates.jpg" alt=""><span><b>Side plates, pair</b><br><span class="dui-meta">Terracotta · 1 × R420</span></span></span></td><td class="dui-num">R420</td></tr>
+          <tr><td>Courier</td><td class="dui-num">R95</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total, with VAT</td><td class="dui-num">R1,155</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="dui-note" style="background:var(--dui-white)"><b>R45 more</b> and courier is free.</p>
+  </aside>
+</main>
+</body>
+</html>

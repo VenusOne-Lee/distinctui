@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Taxi Tally · Coming soon</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a waitlist for something not live yet, so its mark is dashed. One email field,
+     consent as its own unticked box, who's already waiting, what comes when, and the "you're in" state.
+     Invented product. */
+  :root { --dui-signature: #e8a800; }
+  .hero { display: flex; flex-direction: column; align-items: center; gap: 22px; padding-top: 48px; text-align: center; }
+  @media (min-width: 640px) { .hero { padding-top: 88px; } }
+  .join { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 30rem; text-align: left; }
+  .join .row { display: flex; gap: 8px; }
+  .when .dui-row { align-items: flex-start; padding-block: 18px; }
+  .when .dui-mark { margin-top: 2px; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">taxi tally</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm-ghost" href="#faq">Questions</a></nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="hero" aria-labelledby="w-h">
+    <span class="dui-mark" data-live="false" style="--mark-size:6.5rem"><span class="dui-mark__inner"><svg class="dui-icon" aria-hidden="true" style="width:2.25rem;height:2.25rem"><use href="../assets/icons.svg#truck"/></svg></span><span class="dui-mark__version">v0.1 soon</span></span>
+    <h1 id="w-h" class="dui-hero" style="max-width:14ch">Know your taxi's day <b>before</b> it ends</h1>
+    <p class="dui-lede" style="max-width:42ch">Fares, fuel and trips for minibus owners, counted on the driver's phone. Testing in Tembisa from January.</p>
+
+    <form class="join" action="#">
+      <div class="row">
+        <input class="dui-field" type="email" autocomplete="email" placeholder="you@example.com" aria-label="Email">
+        <button class="dui-btn" type="submit">Join the list</button>
+      </div>
+      <label class="dui-check"><input type="checkbox" name="test"> I own a taxi and want to test it in January.</label>
+      <p class="dui-meta">One email when it's ready. Nothing else, and you can leave the list from that email. <a class="dui-link" href="#">Privacy</a></p>
+    </form>
+
+    <div class="dui-stack dui-reveal-draw" style="margin-top:8px">
+      <span class="dui-mark dui-mark--plain" style="--mark-size:2.5rem"><span class="dui-mark__inner"><img src="img/portrait-2.jpg" alt=""></span></span>
+      <span class="dui-mark dui-mark--plain" style="--mark-size:2.5rem"><span class="dui-mark__inner"><img src="img/portrait-6.jpg" alt=""></span></span>
+      <span class="dui-mark dui-mark--plain" style="--mark-size:2.5rem"><span class="dui-mark__inner"><img src="img/portrait-8.jpg" alt=""></span></span>
+      <span class="dui-mark dui-mark--plain" style="--mark-size:2.5rem"><span class="dui-mark__inner">TK</span></span>
+      <span class="dui-stack__more"><b style="color:var(--dui-black)"><span data-count="212">212</span> people</b> waiting, 38 of them owners</span>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="in-h" style="max-width:40rem;margin-inline:auto">
+    <span class="dui-eyebrow">After someone joins</span>
+    <p class="dui-status" role="status" id="in-h">You're number 213. We'll email you once, when it's ready.</p>
+  </section>
+
+  <section class="dui-section" aria-labelledby="t-h" style="max-width:48rem">
+    <h2 id="t-h" class="dui-h2">What comes <b>when</b></h2>
+    <ol class="dui-rows when">
+      <li class="dui-row"><span class="dui-mark" style="--mark-size:1.75rem"><span class="dui-mark__inner"></span></span><div><h3 class="dui-h4">October: talking to owners</h3><p class="dui-body">Forty conversations at ranks in Tembisa and Ivory Park. Done.</p></div></li>
+      <li class="dui-row"><span class="dui-mark" data-live="false" style="--mark-size:1.75rem"><span class="dui-mark__inner"></span></span><div><h3 class="dui-h4">January: ten taxis</h3><p class="dui-body">Drivers count fares on their phone. Owners see the day on theirs.</p></div></li>
+      <li class="dui-row"><span class="dui-mark dui-mark--empty" style="--mark-size:1.75rem"><span class="dui-mark__inner"></span></span><div><h3 class="dui-h4">March: everyone on this list</h3><p class="dui-body">Free for your first taxi, for good.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="dui-section" id="faq" aria-labelledby="q-h" style="max-width:48rem">
+    <h2 id="q-h" class="dui-h2">Fair <b>questions</b></h2>
+    <div class="dui-accordion">
+      <details><summary>Does the driver need data?</summary><p>No. Counts save on the phone and send when there's a signal.</p></details>
+      <details><summary>Will you track where the taxi goes?</summary><p>No. We count trips and fares, not location.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>taxi tally</b> taxitally.example</span>
+  <span>Example page from distinctUI. The product is invented.</span>
+  <nav aria-label="More"><a href="#">Privacy</a></nav>
+</footer>
+</body>
+</html>

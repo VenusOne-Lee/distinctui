@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Search: offline · Spaza Stock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: search results. The query stays in the box, filters show as chips you can remove,
+     matches are bold (never highlighted in colour), and the no-results state gives a way on. Invented product. */
+  :root { --dui-signature: #1f3bff; }
+  .q { display: flex; gap: 8px; max-width: 40rem; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; }
+  .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .hit { flex-direction: column; align-items: flex-start; gap: 6px; padding-block: 20px; }
+  .hit a.title { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; text-decoration: none; }
+  .hit a.title:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .hit p { margin: 0; color: var(--dui-grey-800); max-width: 65ch; }
+  mark { background: none; color: var(--dui-black); font-weight: 700; }
+  .who { display: flex; align-items: center; gap: 8px; }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">spaza stock <span class="dui-badge" style="font-weight:500">Help</span></a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="docs.html">Docs</a><a href="help.html">Help</a></span>
+    <a class="dui-btn-sm" href="#">Open the app</a>
+  </nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div style="display:flex;flex-direction:column;gap:20px;padding-top:24px">
+    <h1 class="dui-sr-only">Search</h1>
+    <form class="q" role="search">
+      <input class="dui-field" type="search" name="q" value="offline" aria-label="Search">
+      <button class="dui-btn" type="submit">Search</button>
+    </form>
+    <div class="bar">
+      <p class="dui-body" role="status"><b>12 results</b> for “offline”</p>
+      <div class="chips">
+        <button class="dui-chip" type="button" aria-label="Remove filter: Help">Help</button>
+        <button class="dui-chip" type="button" aria-label="Remove filter: Last year">Last year</button>
+        <button class="dui-link dui-meta" type="button" style="background:none;border:0;font:inherit;font-size:var(--dui-text-sm);cursor:pointer;padding:8px 4px">Clear all</button>
+      </div>
+    </div>
+    <div class="dui-tabs" role="tablist" aria-label="Where">
+      <button class="dui-tab" role="tab" aria-selected="false">Everywhere <span class="dui-meta">31</span></button>
+      <button class="dui-tab" role="tab" aria-selected="true">Help 12</button>
+      <button class="dui-tab" role="tab" aria-selected="false">Docs <span class="dui-meta">15</span></button>
+      <button class="dui-tab" role="tab" aria-selected="false">Notes <span class="dui-meta">4</span></button>
+    </div>
+  </div>
+
+  <section style="padding-top:24px" aria-label="Results">
+    <ul class="dui-rows">
+      <li class="dui-row hit">
+        <ol class="dui-crumbs"><li>Help</li><li>Counting</li></ol>
+        <a class="title" href="#">My count didn't save when the signal dropped</a>
+        <p>It did, on your phone. Counts made <mark>offline</mark> sync when you're back, usually within a minute. The cloud on the count turns solid once it's sent.</p>
+      </li>
+      <li class="dui-row hit">
+        <ol class="dui-crumbs"><li>Docs</li><li>Everyday</li></ol>
+        <a class="title" href="docs.html">Working <mark>offline</mark></a>
+        <p>Everything except paying for a plan works with no signal. Here's what waits for a connection, and for how long it keeps.</p>
+      </li>
+      <li class="dui-row hit">
+        <ol class="dui-crumbs"><li>Help</li><li>Phones and people</li></ol>
+        <a class="title" href="#">Two phones counted the same item while <mark>offline</mark></a>
+        <p>We keep both counts and ask you which one is right the next time either phone is online.</p>
+      </li>
+      <li class="dui-row hit">
+        <ol class="dui-crumbs"><li>Notes</li></ol>
+        <a class="title" href="blog.html"><mark>Offline</mark> first, for real this time</a>
+        <span class="who"><span class="dui-mark" data-ring="2" style="--mark-size:1.75rem"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span><span class="dui-meta">Ravi Naidoo · 23 Sep</span></span>
+      </li>
+    </ul>
+    <nav aria-label="More results" style="padding-top:28px">
+      <ul class="dui-pager"><li><span aria-current="page">1</span></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#" style="padding:0 1.25rem">Next</a></li></ul>
+    </nav>
+  </section>
+
+  <section class="dui-section" aria-labelledby="none-h">
+    <span class="dui-eyebrow">When nothing matches</span>
+    <div class="dui-empty">
+      <span class="dui-mark dui-mark--empty" style="--mark-size:4rem"><span class="dui-mark__inner">?</span></span>
+      <h2 id="none-h" class="dui-h4">Nothing for “lay-by reminders sms”</h2>
+      <p>Try fewer words, or one of these: <a class="dui-link" href="#">lay-by</a>, <a class="dui-link" href="#">reminders</a>, <a class="dui-link" href="#">SMS</a>.</p>
+      <a class="dui-btn-sm" href="contact.html">Ask a person</a>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>spaza stock</b> spazastock.example</span>
+  <span>Example page from distinctUI. The product is invented.</span>
+  <nav aria-label="More"><a href="docs.html">Docs</a><a href="help.html">Help</a><a href="status.html">Status</a></nav>
+</footer>
+</body>
+</html>

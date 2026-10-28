@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Careers · Ikhaya Labs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a careers page. Open roles as rows, how hiring works as steps, questions that open in place.
+     The studio, roles and salaries are invented. */
+  :root { --dui-signature: #ff4f1f; }
+  .intro { display: grid; gap: 32px; padding-top: 32px; align-items: center; }
+  @media (min-width: 900px) { .intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 56px; } }
+  .intro img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--dui-radius-card); }
+  .role { flex-wrap: wrap; padding-block: 20px; }
+  .role > div { flex: 1 1 18rem; display: flex; flex-direction: column; gap: 4px; }
+  .role .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .perks { display: grid; gap: 16px; }
+  @media (min-width: 640px) { .perks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
+  @media (min-width: 1024px) { .perks { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .hire { counter-reset: s; }
+  .hire .dui-row { align-items: flex-start; padding-block: 18px; }
+  .hire .n { width: 2.5rem; flex-shrink: 0; font-size: 1.5rem; font-weight: 300; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">ikhaya labs</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="about.html">About</a><a href="team.html">Team</a><a href="blog.html">Notes</a><a href="careers.html" aria-current="page">Careers</a></span>
+    <a class="dui-btn-sm" href="contact.html">Talk to us</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav" aria-label="Sections"><a href="about.html">About</a><a href="team.html">Team</a><a href="blog.html">Notes</a><a href="careers.html" aria-current="page">Careers</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="intro" aria-labelledby="c-h">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h1 id="c-h" class="dui-h1">Build for the shop on the <b>corner</b></h1>
+      <p class="dui-lede">We're nine people now and want to be twelve by March. Every role spends one day a month behind a real counter.</p>
+      <div class="dui-actions"><a class="dui-btn" href="#roles">See open roles</a><a class="dui-btn-ghost" href="team.html">Meet the team</a></div>
+    </div>
+    <img src="img/scene-meetup.jpg" alt="Our monthly shop owners' evening: people on chairs facing a screen in a brick warehouse">
+  </section>
+
+  <section class="dui-section" id="roles" aria-labelledby="r-h">
+    <h2 id="r-h" class="dui-h2">Open <b>roles</b></h2>
+    <ul class="dui-rows">
+      <li class="dui-row role">
+        <div><h3 class="dui-h4">Android engineer</h3><p class="dui-meta">Make the stock app fast on a R1,200 phone. Kotlin, offline sync.</p>
+          <div class="tags"><span class="dui-badge">Engineering</span><span class="dui-badge">Braamfontein or remote in SA</span><span class="dui-badge">R55k to R70k a month</span></div></div>
+        <a class="dui-btn-sm" href="#">Read and apply</a>
+      </li>
+      <li class="dui-row role">
+        <div><h3 class="dui-h4">Shop visits lead, Gauteng</h3><p class="dui-meta">Visit ten shops a week, teach, listen, and bring back what's broken.</p>
+          <div class="tags"><span class="dui-badge">Field</span><span class="dui-badge">Soweto and Alexandra</span><span class="dui-badge">R28k a month, car allowance</span></div></div>
+        <a class="dui-btn-sm" href="#">Read and apply</a>
+      </li>
+      <li class="dui-row role">
+        <div><h3 class="dui-h4">Don't see your role?</h3><p class="dui-meta">Tell us what you'd build. We read every note, and reply within two weeks.</p></div>
+        <a class="dui-btn-sm-ghost" href="contact.html">Write to us</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="dui-section" aria-labelledby="p-h">
+    <h2 id="p-h" class="dui-h2">What you <b>get</b></h2>
+    <div class="perks dui-reveal">
+      <div class="dui-panel"><h3 class="dui-h4">The salary, up front</h3><p class="dui-meta" style="margin-top:8px">Every role shows its range. No guessing, no haggling.</p></div>
+      <div class="dui-panel"><h3 class="dui-h4">Three days in, two out</h3><p class="dui-meta" style="margin-top:8px">Tuesday to Thursday together. The rest from wherever you work best.</p></div>
+      <div class="dui-panel"><h3 class="dui-h4">Data and a phone</h3><p class="dui-meta" style="margin-top:8px">50GB a month and the same cheap phone our shops use.</p></div>
+      <div class="dui-panel"><h3 class="dui-h4">Twenty days off</h3><p class="dui-meta" style="margin-top:8px">Plus your birthday, and the week between Christmas and New Year.</p></div>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="h-h" style="max-width:48rem">
+    <h2 id="h-h" class="dui-h2">How we <b>hire</b></h2>
+    <ol class="dui-rows hire">
+      <li class="dui-row"><span class="n">1</span><div><h3 class="dui-h4">A 20-minute call</h3><p class="dui-body">With the person you'd work with most, not a recruiter.</p></div></li>
+      <li class="dui-row"><span class="n">2</span><div><h3 class="dui-h4">A paid half-day</h3><p class="dui-body">A real small problem, paid at R2,500. No unpaid take-home work.</p></div></li>
+      <li class="dui-row"><span class="n">3</span><div><h3 class="dui-h4">A morning at a shop</h3><p class="dui-body">Meet a shop owner who uses our apps, then the team for lunch.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="dui-section" aria-labelledby="q-h" style="max-width:48rem">
+    <h2 id="q-h" class="dui-h2">Good <b>questions</b></h2>
+    <div class="dui-accordion">
+      <details open><summary>Do I need a degree?</summary><p>No. Show us something you made, or tell us about a problem you fixed.</p></details>
+      <details><summary>What happens to my CV?</summary><p>Only the people hiring for that role see it. We delete it six months after the role closes, unless you ask us to keep it.</p></details>
+      <details><summary>Can I apply in isiZulu or Afrikaans?</summary><p>Yes. Write in the language you think in.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>ikhaya labs</b> ikhayalabs.example</span>
+  <span>Example page from distinctUI. The roles are invented.</span>
+  <nav aria-label="More"><a href="about.html">About</a><a href="team.html">Team</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a><a href="#">Privacy</a></nav>
+</footer>
+</body>
+</html>

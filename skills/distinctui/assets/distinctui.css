@@ -686,6 +686,121 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 /* Bars grow up from the baseline when their chart is seen. */
 .dui-js .dui-grow > * { transform: scaleY(0); transform-origin: bottom; }
 .dui-js .dui-grow.is-in > * { transform: none; transition: transform var(--dui-dur-slow) var(--dui-ease); transition-delay: calc(var(--dui-i, 0) * 50ms); }
+/* ------------------------------------------------------ Page furniture */
+
+/* Where you are: "Docs / Getting started / Install". Last item is the page. */
+.dui-crumbs { display: flex; flex-wrap: wrap; gap: var(--dui-space-2); margin: 0; padding: 0; list-style: none; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+.dui-crumbs li + li::before { content: "/"; margin-right: var(--dui-space-2); color: var(--dui-grey-400); }
+.dui-crumbs a { text-decoration: none; }
+.dui-crumbs a:hover { color: var(--dui-black); text-decoration: underline; text-underline-offset: 4px; }
+.dui-crumbs [aria-current="page"] { color: var(--dui-black); font-weight: 600; }
+
+/* More pages of results: pills, the current one black. */
+.dui-pager { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dui-space-2); margin: 0; padding: 0; list-style: none; }
+.dui-pager a, .dui-pager span {
+  display: inline-grid; place-items: center;
+  min-width: 2.75rem; height: 2.75rem; padding: 0 0.875rem;
+  border-radius: var(--dui-radius-pill); border: 1px solid var(--dui-grey-200);
+  font-size: var(--dui-text-sm); font-weight: 600; text-decoration: none; font-variant-numeric: tabular-nums;
+}
+.dui-pager a:hover { border-color: var(--dui-black); }
+.dui-pager [aria-current="page"] { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); }
+.dui-pager .dui-pager__gap { border: 0; min-width: 1.5rem; padding: 0; color: var(--dui-grey-600); }
+
+/* Questions and answers, or anything that opens in place. */
+.dui-accordion { border-top: 1px solid var(--dui-grey-200); }
+.dui-accordion details { border-bottom: 1px solid var(--dui-grey-200); padding: 1.125rem 0; }
+.dui-accordion summary { display: flex; justify-content: space-between; gap: var(--dui-space-4); cursor: pointer; list-style: none; font-weight: 600; }
+.dui-accordion summary::-webkit-details-marker { display: none; }
+.dui-accordion summary::after { content: "+"; flex-shrink: 0; font-size: 1.4rem; font-weight: 300; line-height: 1; }
+.dui-accordion details[open] summary::after { content: "\2013"; }
+.dui-accordion details > :not(summary) { margin: 0.625rem 0 0; color: var(--dui-grey-800); max-width: 62ch; }
+
+/* Steps through a flow (onboarding, checkout): done ticks, the current one black. */
+.dui-steps { display: flex; gap: var(--dui-space-2); margin: 0; padding: 0; list-style: none; counter-reset: dui-step; font-size: var(--dui-text-sm); }
+.dui-steps li { counter-increment: dui-step; display: flex; flex: 1; flex-direction: column; gap: var(--dui-space-2); min-width: 0; color: var(--dui-grey-600); }
+.dui-steps li::before { content: ""; height: 4px; border-radius: var(--dui-radius-pill); background: var(--dui-grey-200); }
+.dui-steps li[data-done="true"]::before, .dui-steps li[aria-current="step"]::before { background: var(--dui-black); }
+.dui-steps li[aria-current="step"] { color: var(--dui-black); font-weight: 600; }
+.dui-steps span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 639px) { .dui-steps li:not([aria-current="step"]) span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); } }
+
+/* How far along: a black bar on grey. Say the number in words beside it. */
+.dui-progress { appearance: none; width: 100%; height: 0.5rem; border: 0; border-radius: var(--dui-radius-pill); background: var(--dui-grey-100); overflow: hidden; }
+.dui-progress::-webkit-progress-bar { background: var(--dui-grey-100); border-radius: var(--dui-radius-pill); }
+.dui-progress::-webkit-progress-value { background: var(--dui-black); border-radius: var(--dui-radius-pill); }
+.dui-progress::-moz-progress-bar { background: var(--dui-black); border-radius: var(--dui-radius-pill); }
+
+/* On or off, saved straight away: a black switch. For choices that wait for
+   a Save button, use a checkbox instead. */
+.dui-switch { display: flex; align-items: center; justify-content: space-between; gap: var(--dui-space-4); min-height: 2.75rem; font-size: var(--dui-text-md); cursor: pointer; }
+.dui-switch input {
+  appearance: none; position: relative; flex-shrink: 0; margin: 0; cursor: pointer;
+  width: 2.75rem; height: 1.625rem; border-radius: var(--dui-radius-pill);
+  background: var(--dui-grey-200); transition: background-color var(--dui-dur) var(--dui-ease);
+}
+.dui-switch input::after {
+  content: ""; position: absolute; top: 3px; left: 3px;
+  width: 1.25rem; height: 1.25rem; border-radius: 50%;
+  background: var(--dui-white); transition: transform var(--dui-dur) var(--dui-ease);
+}
+.dui-switch input:checked { background: var(--dui-black); }
+.dui-switch input:checked::after { transform: translateX(1.125rem); }
+
+/* Numbers in rows and columns. Hairlines, no stripes, numbers right-aligned. */
+.dui-table-wrap { overflow-x: auto; }
+.dui-table { width: 100%; border-collapse: collapse; font-size: var(--dui-text-md); }
+.dui-table th { text-align: left; font-size: var(--dui-text-sm); font-weight: 500; color: var(--dui-grey-600); padding: 0 var(--dui-space-4) var(--dui-space-3) 0; border-bottom: 1px solid var(--dui-black); white-space: nowrap; }
+.dui-table td { padding: var(--dui-space-4) var(--dui-space-4) var(--dui-space-4) 0; border-bottom: 1px solid var(--dui-grey-200); vertical-align: top; }
+.dui-table th:last-child, .dui-table td:last-child { padding-right: 0; }
+.dui-table .dui-num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dui-table tfoot td { border-bottom: 0; font-weight: 700; }
+
+/* Code people copy. Grey panel, monospace, scrolls sideways rather than wrapping. */
+.dui-code { margin: 0; border-radius: var(--dui-radius-panel); background: var(--dui-grey-50); border: 1px solid var(--dui-grey-200); padding: var(--dui-space-4) var(--dui-space-5); overflow-x: auto; font-family: var(--dui-mono); font-size: 0.875rem; line-height: 1.6; color: var(--dui-black); }
+:where(.dui, .dui-page) :not(pre) > code { font-family: var(--dui-mono); font-size: 0.875em; background: var(--dui-grey-100); border-radius: 6px; padding: 0.1em 0.35em; }
+
+/* A side menu for long sets of pages (docs, help). Current page bold with a black edge. */
+.dui-sidenav { display: flex; flex-direction: column; gap: var(--dui-space-6); font-size: var(--dui-text-md); }
+.dui-sidenav h2 { margin: 0 0 var(--dui-space-2); font-size: var(--dui-text-sm); font-weight: 500; color: var(--dui-grey-600); }
+.dui-sidenav ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.dui-sidenav a { display: block; padding: 0.375rem 0 0.375rem 0.875rem; border-left: 1px solid var(--dui-grey-200); text-decoration: none; }
+.dui-sidenav a:hover { border-left-color: var(--dui-black); }
+.dui-sidenav a[aria-current="page"] { border-left: 2px solid var(--dui-black); padding-left: calc(0.875rem - 1px); font-weight: 700; }
+
+/* Faces in a row, overlapping: who else is here. Each keeps its own ring. */
+.dui-stack { display: flex; align-items: center; padding-left: var(--dui-space-2); }
+.dui-stack > .dui-mark { margin-left: calc(var(--mark-size) * -0.22); box-shadow: 0 0 0 2px var(--dui-white); background: var(--dui-white); }
+.dui-stack__more { margin-left: var(--dui-space-3); font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+
+/* A question that needs an answer before going on. Native <dialog>, a white veil behind. */
+.dui-dialog {
+  width: min(28rem, calc(100% - 32px)); margin: auto; padding: var(--dui-space-6);
+  border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-feature);
+  background: var(--dui-white); color: var(--dui-black); box-shadow: var(--dui-shadow-float);
+  font-family: var(--dui-font);
+}
+.dui-dialog::backdrop { background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(4px); }
+.dui-dialog > * + * { margin-top: var(--dui-space-4); }
+
+/* Still loading: grey shapes where the words will be. Show after 300ms, not before. */
+.dui-skeleton { display: block; border-radius: var(--dui-radius-pill); background: var(--dui-grey-100); min-height: 0.875rem; animation: dui-pulse 1.4s ease-in-out infinite; }
+@keyframes dui-pulse { 50% { opacity: 0.5; } }
+
+/* A filter that's switched on. Press it to remove. */
+.dui-chip { display: inline-flex; align-items: center; gap: var(--dui-space-2); border-radius: var(--dui-radius-pill); border: 1px solid var(--dui-black); background: var(--dui-white); padding: 0.375rem 0.5rem 0.375rem 0.875rem; font: inherit; font-size: var(--dui-text-sm); font-weight: 500; cursor: pointer; color: var(--dui-black); }
+.dui-chip::after { content: "\00d7"; display: grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--dui-grey-100); font-size: 0.9rem; line-height: 1; }
+.dui-chip:hover::after { background: var(--dui-black); color: var(--dui-white); }
+
+/* Icons: Lucide outlines in currentColor, next to a word. assets/icons.svg holds the set.
+   <svg class="dui-icon" aria-hidden="true"><use href="icons.svg#search"/></svg> */
+svg.dui-icon,
+.dui-btn svg.dui-icon, .dui-btn-ghost svg.dui-icon, .dui-btn-sm svg.dui-icon, .dui-btn-sm-ghost svg.dui-icon {
+  width: 1.125em; height: 1.125em; flex-shrink: 0; vertical-align: -0.2em;
+  fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+}
+.dui-icon-btn { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 1px solid var(--dui-grey-200); background: var(--dui-white); color: var(--dui-black); cursor: pointer; }
+.dui-icon-btn:hover { border-color: var(--dui-black); }
 
 /* ------------------------------------------------------------- Utilities */
 
@@ -704,4 +819,7 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
     transition: none !important;
   }
   .dui-js .dui-reveal, .dui-js .dui-grow > * { opacity: 1; transform: none; }
+  .dui-flash, .dui-skeleton { animation: none; }
+  .dui-switch input, .dui-switch input::after { transition: none; }
+  .dui-btn, .dui-btn-ghost, .dui-btn-sm, .dui-btn-sm-ghost, .dui-card { transition: none; }
 }

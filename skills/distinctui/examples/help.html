@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Help · Spaza Stock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a help centre. Search first, then topics, the questions people ask most, and a person
+     to talk to. Invented product. */
+  :root { --dui-signature: #1f3bff; }
+  .hero { display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 48px; text-align: center; }
+  @media (min-width: 640px) { .hero { padding-top: 80px; } }
+  .ask { display: flex; gap: 8px; width: 100%; max-width: 34rem; }
+  .topic { gap: 10px; }
+  .topic .n { font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+  .stuck { display: grid; gap: 24px; align-items: center; }
+  @media (min-width: 768px) { .stuck { grid-template-columns: auto minmax(0, 1fr) auto; } }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">spaza stock <span class="dui-badge" style="font-weight:500">Help</span></a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="docs.html">Docs</a><a href="status.html">Status</a></span>
+    <a class="dui-btn-sm" href="#">Open the app</a>
+  </nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="hero" aria-labelledby="h-h">
+    <h1 id="h-h" class="dui-hero" style="max-width:14ch">How can we <b>help</b>?</h1>
+    <form class="ask" role="search" action="search.html">
+      <input class="dui-field" type="search" name="q" placeholder="Try “offline” or “second phone”" aria-label="Search help">
+      <button class="dui-btn" type="submit">Search</button>
+    </form>
+    <p class="dui-meta">Or ask in isiZulu, Sesotho or Afrikaans. Search understands all four.</p>
+  </section>
+
+  <section class="dui-section" aria-labelledby="t-h">
+    <h2 id="t-h" class="dui-h2">By <b>topic</b></h2>
+    <div class="dui-grid dui-grid--4">
+      <a class="dui-card topic dui-reveal" style="--dui-i:0" href="#"><h3 class="dui-h4">Getting started</h3><p class="dui-card__text">Install, import your list, first count.</p><span class="n dui-card__foot">9 answers</span></a>
+      <a class="dui-card topic dui-reveal" style="--dui-i:1" href="#"><h3 class="dui-h4">Counting</h3><p class="dui-card__text">Voice counts, fixing a mistake, low stock.</p><span class="n dui-card__foot">14 answers</span></a>
+      <a class="dui-card topic dui-reveal" style="--dui-i:2" href="#"><h3 class="dui-h4">Phones and people</h3><p class="dui-card__text">Adding a phone, a helper, or a second shop.</p><span class="n dui-card__foot">7 answers</span></a>
+      <a class="dui-card topic dui-reveal" style="--dui-i:3" href="#"><h3 class="dui-h4">Paying and your data</h3><p class="dui-card__text">Plans, invoices, export, delete your account.</p><span class="n dui-card__foot">11 answers</span></a>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="q-h" style="max-width:48rem">
+    <h2 id="q-h" class="dui-h2">Asked this <b>week</b></h2>
+    <div class="dui-accordion">
+      <details open><summary>My count didn't save when the signal dropped</summary><p>It did, on your phone. Counts sync when you're back online, usually within a minute. The little cloud on the count turns solid once it's sent.</p></details>
+      <details><summary>How do I let my helper count without seeing prices?</summary><p>Go to You → People → Add a helper. Helpers can count and see low stock, but not prices or money.</p></details>
+      <details><summary>Can I undo an import?</summary><p>Yes, for 24 hours. You → Import history → Undo. After that, edit items one by one.</p></details>
+      <details><summary>The app says my shop is “not live yet”</summary><p>Your ring stays dashed until you finish your first full count. Count everything once and it turns solid.</p></details>
+      <details><summary>How do I delete my account?</summary><p>You → Settings → Delete account. We email you a copy of your data first, then delete it within 30 days.</p></details>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="s-h">
+    <div class="dui-panel stuck" style="padding:28px">
+      <span class="dui-mark" data-ring="5" style="--mark-size:4rem"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span></span>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h2 id="s-h" class="dui-h4">Still stuck?</h2>
+        <p class="dui-body">Lerato answers on WhatsApp, weekdays 08:00 to 17:00. Most replies within an hour.</p>
+      </div>
+      <div class="dui-actions"><a class="dui-btn-sm" href="contact.html">Message Lerato</a><a class="dui-btn-sm-ghost" href="status.html">Check status</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>spaza stock</b> spazastock.example</span>
+  <span>Example page from distinctUI. The product is invented.</span>
+  <nav aria-label="More"><a href="docs.html">Docs</a><a href="status.html">Status</a><a href="#">Privacy</a></nav>
+</footer>
+</body>
+</html>

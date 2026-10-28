@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Notes · Ikhaya Labs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: a blog index. One feature story, then cards with the same height, then page numbers.
+     The posts and authors are invented. */
+  :root { --dui-signature: #ff4f1f; }
+  .lead { display: grid; gap: 24px; text-decoration: none; color: inherit; border-radius: var(--dui-radius-feature); }
+  @media (min-width: 900px) { .lead { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 48px; align-items: center; } }
+  .lead img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--dui-radius-feature); border: 1px solid var(--dui-grey-200); transition: border-color 0.15s; }
+  .lead:hover img { border-color: var(--dui-black); }
+  .lead:hover .dui-h2 { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+  .by { display: flex; align-items: center; gap: 10px; font-size: var(--dui-text-sm); }
+  .by span { color: var(--dui-grey-600); }
+  .dui-card__media img { object-position: center; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">ikhaya labs</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="dui-nav__links"><a href="about.html">About</a><a href="team.html">Team</a><a href="blog.html" aria-current="page">Notes</a><a href="careers.html">Careers</a></span>
+    <a class="dui-btn-sm" href="contact.html">Talk to us</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav" aria-label="Sections"><a href="about.html">About</a><a href="team.html">Team</a><a href="blog.html" aria-current="page">Notes</a><a href="careers.html">Careers</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
+    <h1 class="dui-h1">Field <b>notes</b></h1>
+    <p class="dui-lede">What we learn from shop owners, and what we build because of it. One a fortnight.</p>
+  </div>
+
+  <section class="dui-section" style="padding-top:48px" aria-label="Latest">
+    <a class="lead" href="article.html">
+      <img src="img/scene-shop.jpg" alt="Hands stacking bags of sugar on a shop shelf, a phone on the counter">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span><span class="dui-badge-solid">New</span></span>
+        <h2 class="dui-h2">Counting out loud: why voice beat <b>barcodes</b></h2>
+        <p class="dui-body">We spent a month in eleven shops. Nobody wanted to scan. Everyone was already saying the numbers.</p>
+        <span class="by"><span class="dui-mark" data-ring="1" style="--mark-size:2.25rem"><span class="dui-mark__inner"><img src="img/portrait-9.jpg" alt=""></span></span><b>Nomsa Dlamini</b><span>· 21 Oct · 6 min</span></span>
+      </div>
+    </a>
+  </section>
+
+  <section class="dui-section" aria-labelledby="all-h" data-filter-scope>
+    <div class="bar">
+      <h2 id="all-h" class="dui-h2">All <b>notes</b></h2>
+      <div class="dui-tabs" role="tablist" aria-label="Topics">
+        <button class="dui-tab" role="tab" aria-selected="true" data-filter="all" type="button">All</button>
+        <button class="dui-tab" role="tab" aria-selected="false" data-filter="shops" type="button">Shops</button>
+        <button class="dui-tab" role="tab" aria-selected="false" data-filter="building" type="button">Building</button>
+        <button class="dui-tab" role="tab" aria-selected="false" data-filter="team" type="button">Team</button>
+      </div>
+    </div>
+    <div class="dui-grid dui-grid--3">
+      <a class="dui-card dui-card--flush dui-reveal" style="--dui-i:0" data-tags="shops" href="article.html">
+        <div class="dui-card__media"><img src="img/scene-school.jpg" alt=""></div>
+        <div class="dui-card__body">
+          <span class="dui-eyebrow">Shops</span>
+          <h3 class="dui-card__title">The 07:15 rush: what a school gate does to a spaza's morning</h3>
+          <p class="dui-card__text">Bread, airtime and lunch money in fifteen minutes. We timed it.</p>
+          <p class="dui-meta dui-card__foot">Bongani Zulu · 7 Oct</p>
+        </div>
+      </a>
+      <a class="dui-card dui-card--flush dui-reveal" style="--dui-i:1" data-tags="building" href="article.html">
+        <div class="dui-card__media"><img src="img/product-a.jpg" alt=""></div>
+        <div class="dui-card__body">
+          <span class="dui-eyebrow">Building</span>
+          <h3 class="dui-card__title">Offline first, for real this time</h3>
+          <p class="dui-card__text">How we rebuilt sync so a count saved in a dead zone never gets lost.</p>
+          <p class="dui-meta dui-card__foot">Ravi Naidoo · 23 Sep</p>
+        </div>
+      </a>
+      <a class="dui-card dui-card--flush dui-reveal" style="--dui-i:2" data-tags="team" href="article.html">
+        <div class="dui-card__media"><img src="img/scene-meetup.jpg" alt=""></div>
+        <div class="dui-card__body">
+          <span class="dui-eyebrow">Team</span>
+          <h3 class="dui-card__title">Forty shop owners, one warehouse, no slides</h3>
+          <p class="dui-card__text">Notes from our first open evening, and the three things we're changing.</p>
+          <p class="dui-meta dui-card__foot">Palesa Mokoena · 9 Sep</p>
+        </div>
+      </a>
+      <a class="dui-card dui-card--flush dui-reveal" style="--dui-i:0" data-tags="building" href="article.html">
+        <div class="dui-card__media"><img src="img/scene-desk.jpg" alt=""></div>
+        <div class="dui-card__body">
+          <span class="dui-eyebrow">Building</span>
+          <h3 class="dui-card__title">Designing for a 5-inch screen in direct sunlight</h3>
+          <p class="dui-card__text">Why everything in our apps is black, white and big.</p>
+          <p class="dui-meta dui-card__foot">Chanté Adams · 26 Aug</p>
+        </div>
+      </a>
+      <a class="dui-card dui-card--flush dui-reveal" style="--dui-i:1" data-tags="shops" href="article.html">
+        <div class="dui-card__media"><img src="img/product-b.jpg" alt=""></div>
+        <div class="dui-card__body">
+          <span class="dui-eyebrow">Shops</span>
+          <h3 class="dui-card__title">Lay-bys are a loan. We treat them like one.</h3>
+          <p class="dui-card__text">What we learned from 600 lay-by books, and the reminders we send now.</p>
+          <p class="dui-meta dui-card__foot">Nomsa Dlamini · 12 Aug</p>
+        </div>
+      </a>
+      <a class="dui-card dui-card--flush dui-reveal" style="--dui-i:2" data-tags="team" href="article.html">
+        <div class="dui-card__media" style="display:grid;place-items:center;background:var(--dui-grey-50)"><span class="dui-mark" data-ring="3" style="--mark-size:5rem"><span class="dui-mark__inner"><img src="img/portrait-12.jpg" alt=""></span></span></div>
+        <div class="dui-card__body">
+          <span class="dui-eyebrow">Team</span>
+          <h3 class="dui-card__title">Why a Stellenbosch accountant joined a Braamfontein startup</h3>
+          <p class="dui-card__text">Johan on spreadsheets, spaza margins and his first taxi ride.</p>
+          <p class="dui-meta dui-card__foot">Johan Botha · 29 Jul</p>
+        </div>
+      </a>
+    </div>
+    <p class="dui-empty" data-filter-empty hidden>No notes here yet.</p>
+    <nav aria-label="More notes" style="display:flex;justify-content:center;padding-top:16px">
+      <ul class="dui-pager">
+        <li><span aria-current="page">1</span></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><span class="dui-pager__gap">…</span></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#" style="padding:0 1.25rem">Older notes</a></li>
+      </ul>
+    </nav>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>ikhaya labs</b> ikhayalabs.example</span>
+  <span>Example page from distinctUI. The posts are invented.</span>
+  <nav aria-label="More"><a href="about.html">About</a><a href="team.html">Team</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a><a href="#">RSS</a></nav>
+</footer>
+</body>
+</html>
