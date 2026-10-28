@@ -275,7 +275,7 @@ Markup uses the classes in `assets/distinctui.css`. Put `class="dui-page"` on `<
   </table>
 </div>
 
-<pre class="dui-code"><code>npm install distinctui</code></pre>
+<pre class="dui-code"><code>npm install @distinctui/css</code></pre>
 <p>Inline <code>code</code> gets a grey-100 pill.</p>
 ```
 
