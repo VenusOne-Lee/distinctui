@@ -1,6 +1,6 @@
 {
   // A static site on Workers static assets, served at distinctui.com.
-  // src/worker.js sends www and the old distinctui.versionone.co.za subdomain to distinctui.com.
+  // src/worker.js sends www.distinctui.com to distinctui.com.
   "name": "distinctui",
   "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
@@ -12,8 +12,7 @@
   },
   "routes": [
     { "pattern": "distinctui.com", "custom_domain": true },
-    { "pattern": "www.distinctui.com", "custom_domain": true },
-    { "pattern": "distinctui.versionone.co.za", "custom_domain": true }
+    { "pattern": "www.distinctui.com", "custom_domain": true }
   ],
   // Workers Builds runs `wrangler preview` on pull requests; it needs this block, even empty.
   "previews": {}
