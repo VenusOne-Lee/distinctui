@@ -42,6 +42,21 @@
     <p class="dui-meta">Plain CSS, Tailwind v4, or <a class="dui-link" href="/swiftui.html">SwiftUI for iPhone and iPad</a>.</p>
   </section>
 
+  <section class="dui-section" id="npm" aria-labelledby="npm-h">
+    <h2 id="npm-h" class="dui-h2">The CSS on its own, <b>from npm</b></h2>
+    <p class="dui-body">No Claude needed. The same classes, tokens, icons and motion, as the <a class="dui-link" href="https://www.npmjs.com/package/@distinctui/css">@distinctui/css</a> package.</p>
+    <div class="install" style="align-self:flex-start">
+      <code id="npm-cmd">npm install @distinctui/css</code>
+      <button class="dui-btn-sm" type="button" data-copy="npm-cmd">Copy</button>
+    </div>
+    <pre class="dui-code"><code>import "@distinctui/css";               // distinctui.css
+import "@distinctui/css/distinctui.js"; // optional motion
+// also: @distinctui/css/tailwind.css, /tokens.json, /icons.svg</code></pre>
+    <p class="dui-meta">Or from a CDN, with no build step:</p>
+    <pre class="dui-code"><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@distinctui/css@0.2/skills/distinctui/assets/distinctui.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/@distinctui/css@0.2/skills/distinctui/assets/distinctui.js" defer&gt;&lt;/script&gt;</code></pre>
+  </section>
+
   <section class="dui-section" id="watch" aria-labelledby="watch-h">
     <h2 id="watch-h" class="dui-h2">How to <b>use it</b></h2>
     <p class="dui-body">Set it up in Claude Code, Cursor, Codex or the Claude app, then ask for a page. There is a SwiftUI part too. Under two minutes, with captions.</p>
@@ -179,15 +194,15 @@
 <footer class="dui-container dui-footer">
   <span><b>distinctUI</b> distinctui.com</span>
   <span>The system behind Version One. MIT licence.</span>
-  <nav aria-label="More"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/swiftui.html">SwiftUI</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://versionone.co.za">Version One</a></nav>
+  <nav aria-label="More"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/swiftui.html">SwiftUI</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://www.npmjs.com/package/@distinctui/css">npm</a><a href="https://versionone.co.za">Version One</a></nav>
 </footer>
 <script>
-  document.getElementById("copy").addEventListener("click", async (e) => {
-    const text = document.getElementById("cmd").textContent;
-    try { await navigator.clipboard.writeText(text); e.target.textContent = "Copied"; }
-    catch { getSelection().selectAllChildren(document.getElementById("cmd")); }
+  document.querySelectorAll("#copy, [data-copy]").forEach((btn) => btn.addEventListener("click", async (e) => {
+    const code = document.getElementById(btn.dataset.copy || "cmd");
+    try { await navigator.clipboard.writeText(code.textContent); e.target.textContent = "Copied"; }
+    catch { getSelection().selectAllChildren(code); }
     setTimeout(() => (e.target.textContent = "Copy"), 2000);
-  });
+  }));
 </script>
 </body>
 </html>
