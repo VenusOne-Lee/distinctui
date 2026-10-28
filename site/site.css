@@ -80,3 +80,6 @@ code { font-family: var(--dui-mono); font-size: 0.88em; }
 pre.code { margin: 0; overflow-x: auto; border-radius: var(--dui-radius-panel); background: var(--dui-grey-50); border: 1px solid var(--dui-grey-200); padding: 20px; font-family: var(--dui-mono); font-size: 13px; line-height: 1.6; }
 .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: 8px; }
 .ico { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px; border-radius: var(--dui-radius-panel); background: var(--dui-grey-50); font-size: var(--dui-text-xs); color: var(--dui-grey-600); }
+
+/* Home hero: the empty mark, a plus waiting for yours. */
+.hero-plus .dui-mark__inner { background: var(--dui-white); border: 1px dashed var(--dui-grey-200); font-size: 2.25rem; font-weight: 300; line-height: 1; color: var(--dui-black); }
