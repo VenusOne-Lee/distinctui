@@ -384,7 +384,7 @@ input[type="range"].dui-range { accent-color: var(--dui-black); width: 100%; }
 a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 .dui-card--flush { padding: 0; overflow: hidden; gap: 0; }
 .dui-card__media { position: relative; aspect-ratio: 16 / 10; background: var(--dui-grey-100); }
-.dui-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.dui-card__media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .dui-card__body { display: flex; flex: 1; flex-direction: column; gap: 0.625rem; padding: var(--dui-space-5); }
 .dui-card__title { margin: 0; font-size: var(--dui-text-2xl); line-height: 1.15; font-weight: 700; letter-spacing: -0.03em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .dui-card__text { margin: 0; color: var(--dui-grey-800); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -449,7 +449,7 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
   font-weight: 500;
   font-size: calc(var(--mark-size) * 0.32);
 }
-.dui-mark__inner img { width: 100%; height: 100%; object-fit: cover; }
+.dui-mark .dui-mark__inner img { position: static; display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 .dui-mark__version {
   position: absolute;
   bottom: calc(var(--mark-size) * -0.08);
