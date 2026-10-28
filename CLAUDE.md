@@ -1,6 +1,6 @@
 # distinctUI
 
-An open-source design skill (`skills/distinctui/`) and its static site (`site/`, served at distinctui.versionone.co.za by Cloudflare Workers static assets).
+An open-source design skill (`skills/distinctui/`) and its static site (`site/`, served at distinctui.com by Cloudflare Workers static assets).
 
 - The rules in `skills/distinctui/SKILL.md` are the product. Change them deliberately, and keep `README.md`, `site/index.html` and `references/` in step.
 - `npm run build` copies the skill's CSS and examples into `dist/` beside the site pages. Don't copy them into `site/` by hand.

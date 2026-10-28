@@ -1,12 +1,20 @@
 {
-  // A static site on Workers static assets, served at distinctui.versionone.co.za.
+  // A static site on Workers static assets, served at distinctui.com.
+  // src/worker.js sends www and the old distinctui.versionone.co.za subdomain to distinctui.com.
   "name": "distinctui",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
   },
-  "routes": [{ "pattern": "distinctui.versionone.co.za", "custom_domain": true }],
+  "routes": [
+    { "pattern": "distinctui.com", "custom_domain": true },
+    { "pattern": "www.distinctui.com", "custom_domain": true },
+    { "pattern": "distinctui.versionone.co.za", "custom_domain": true }
+  ],
   // Workers Builds runs `wrangler preview` on pull requests; it needs this block, even empty.
   "previews": {}
 }
