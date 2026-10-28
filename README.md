@@ -50,6 +50,24 @@ Tailwind CSS v4:
 @theme { --color-signature: #1f3bff; }
 ```
 
+## Use it in SwiftUI
+
+The same look for iPhone and iPad apps, as a Swift package (iOS 17+). In Xcode, **File → Add Package Dependencies**, paste `https://github.com/VenusOne-Lee/distinctui` and add `DistinctUI`:
+
+```swift
+import DistinctUI
+
+WindowGroup {
+    RootView().distinctUI(signature: Color(duiHex: 0x1F3BFF), palette: .signal)
+}
+
+DUITitle("Just", bold: "shipped")
+DUIMark(photo: Image("naledi"), ring: 1, live: false, version: "v0.4", size: 64)
+Button("Try it") { }.buttonStyle(.duiPrimary)
+```
+
+Bricolage Grotesque is bundled with the package. The SwiftUI rules and the full component map are in [`references/swiftui.md`](skills/distinctui/references/swiftui.md). Six example screens are in `swift/Sources/DistinctUIExamples`; run them with the demo app in `swift/Demo`.
+
 ## What's inside
 
 ```
@@ -63,9 +81,14 @@ skills/distinctui/
   references/motion.md     how things move, and when they don't
   references/voice.md      how the words sound
   references/review.md     the checklist Claude runs before it's done
+  references/swiftui.md    the SwiftUI package, what maps to what, phone rules
   examples/                eleven templates: landing, profile, directory, dashboard,
                            article, pricing, sign-in, settings, changelog, form, email
 site/                      distinctui.com
+Package.swift              the Swift package
+swift/Sources/DistinctUI   tokens, type, pills, marks, cards and forms in SwiftUI, with the font
+swift/Sources/DistinctUIExamples  six example screens
+swift/Demo                 a demo app that runs them
 ```
 
 ## The twelve rules
@@ -93,6 +116,6 @@ npm run deploy   # Cloudflare Workers, custom domain distinctui.com
 
 ## Licence
 
-MIT, see [LICENSE](LICENSE). Bricolage Grotesque is by Mathieu Triay and is under the SIL Open Font Licence; it loads from Google Fonts and isn't included here.
+MIT, see [LICENSE](LICENSE). Bricolage Grotesque is by Mathieu Triay and is under the SIL Open Font Licence. On the web it loads from Google Fonts; the Swift package bundles a copy with its licence (`swift/Sources/DistinctUI/Resources/OFL.txt`).
 
 The Version One name and logo aren't part of this licence. The Mzansi palette uses the South African flag colours as Version One does. Every person and product in the examples is invented. The example photos are AI-generated and show people who don't exist.

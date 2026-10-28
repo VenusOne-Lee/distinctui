@@ -1,0 +1,35 @@
+# The demo app for the SwiftUI package. The .xcodeproj beside this file is generated from it:
+#   brew install xcodegen && xcodegen generate
+name: DistinctUIDemo
+options:
+  bundleIdPrefix: com.distinctui
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  DistinctUI:
+    path: ../..
+targets:
+  DistinctUIDemo:
+    type: application
+    platform: iOS
+    sources: [DistinctUIDemo]
+    dependencies:
+      - package: DistinctUI
+        product: DistinctUI
+      - package: DistinctUI
+        product: DistinctUIExamples
+    info:
+      path: DistinctUIDemo/Info.plist
+      properties:
+        CFBundleDisplayName: distinctUI
+        UILaunchScreen: {}
+        UIUserInterfaceStyle: Light
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.distinctui.demo
+        MARKETING_VERSION: "0.1"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1"
