@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Share a launch</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: a long form, shown after a failed submit so the error states are visible. */
+  :root { --dui-signature: #1f3bff; }
+  form { display: flex; flex-direction: column; gap: 24px; max-width: 36rem; }
+  .group { display: flex; flex-direction: column; gap: 6px; }
+  .choices { display: grid; gap: 10px; }
+  @media (min-width: 560px) { .choices { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  fieldset { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  legend { font-size: var(--dui-text-sm); font-weight: 500; margin-bottom: 6px; padding: 0; }
+  .preview { display: flex; align-items: center; gap: 16px; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">makers</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm-ghost" href="#">You</a></nav>
+</header>
+
+<main class="dui-container" style="padding-block:24px 96px;display:flex;flex-direction:column;gap:32px">
+  <p class="dui-status" role="status" style="max-width:36rem">Draft saved. You can come back to it from your page.</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <h1 class="dui-h1">Share a <b>launch</b></h1>
+    <p class="dui-lede">Takes about three minutes. We review every launch before it goes up, usually within a day.</p>
+  </div>
+
+  <form novalidate>
+    <div class="dui-problems" role="alert">
+      <p>Two things to fix before this can go for review.</p>
+      <ul>
+        <li><a href="#name">Project name</a>: add a name, up to 40 characters.</li>
+        <li><a href="#link">Link</a>: add a link that starts with https://.</li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <label class="dui-label" for="name">Project name</label>
+      <input class="dui-input" id="name" maxlength="40" aria-invalid="true" aria-describedby="name-error">
+      <p class="dui-field-error" id="name-error">Add a name, up to 40 characters.</p>
+    </div>
+
+    <div class="group">
+      <label class="dui-label" for="pitch">One line <span class="dui-hint">What it does, and who it's for.</span></label>
+      <textarea class="dui-textarea" id="pitch" maxlength="140">Stock counts for spaza shops, by voice, in isiZulu and English.</textarea>
+      <span class="dui-counter" aria-hidden="true">62/140</span>
+    </div>
+
+    <div class="group">
+      <label class="dui-label" for="link">Link</label>
+      <input class="dui-input" id="link" value="spazastock.example" aria-invalid="true" aria-describedby="link-error">
+      <p class="dui-field-error" id="link-error">Add a link that starts with https://.</p>
+    </div>
+
+    <fieldset>
+      <legend>Where is it at?</legend>
+      <div class="choices">
+        <label class="dui-choice"><input type="radio" name="stage"><span><b>Idea</b><br><span class="dui-hint">Not built yet.</span></span></label>
+        <label class="dui-choice"><input type="radio" name="stage" checked><span><b>Beta</b><br><span class="dui-hint">A few people use it.</span></span></label>
+        <label class="dui-choice"><input type="radio" name="stage"><span><b>Live</b><br><span class="dui-hint">Anyone can use it.</span></span></label>
+      </div>
+    </fieldset>
+
+    <div class="group">
+      <label class="dui-label" for="city">City <span class="dui-optional">(optional)</span></label>
+      <select class="dui-select" id="city"><option>Pietermaritzburg</option><option>Durban</option><option>Johannesburg</option><option>Cape Town</option></select>
+    </div>
+
+    <div class="dui-panel preview">
+      <span class="dui-mark" data-live="false" style="--mark-size:4rem"><span class="dui-mark__inner">ND</span><span class="dui-mark__version">v0.4</span></span>
+      <p class="dui-meta" style="color:var(--dui-grey-800)">Your ring stays dashed while this is in beta. It goes solid the day you mark it live.</p>
+    </div>
+
+    <fieldset>
+      <legend>Emails <span class="dui-optional">(optional, change any time)</span></legend>
+      <label class="dui-check"><input type="checkbox" name="tried"> Tell me when someone tries it.</label>
+      <label class="dui-check"><input type="checkbox" name="digest"> Send me the Friday round-up.</label>
+    </fieldset>
+
+    <div class="dui-actions">
+      <button class="dui-btn" type="submit">Send for review</button>
+      <button class="dui-btn-ghost" type="button">Save draft</button>
+    </div>
+    <p class="dui-meta">We use this to list your project. See the <a class="dui-link" href="#">privacy notice</a>.</p>
+  </form>
+</main>
+</body>
+</html>

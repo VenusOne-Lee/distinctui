@@ -1,0 +1,10 @@
+{
+  // A static site on Workers static assets, served at distinctui.versionone.co.za.
+  "name": "distinctui",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [{ "pattern": "distinctui.versionone.co.za", "custom_domain": true }]
+}
