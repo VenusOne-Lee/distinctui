@@ -1,21 +1,25 @@
 {
   "name": "distinctui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Calm black, white and grey interfaces with one signature mark in one colour. The design system behind Version One.",
   "license": "MIT",
   "homepage": "https://distinctui.com",
   "repository": { "type": "git", "url": "git+https://github.com/VenusOne-Lee/distinctui.git" },
   "keywords": ["design-system", "css", "tailwind", "claude", "skill", "monochrome"],
   "style": "skills/distinctui/assets/distinctui.css",
+  "unpkg": "skills/distinctui/assets/distinctui.css",
+  "jsdelivr": "skills/distinctui/assets/distinctui.css",
+  "sideEffects": ["*.css"],
   "exports": {
     ".": "./skills/distinctui/assets/distinctui.css",
     "./distinctui.css": "./skills/distinctui/assets/distinctui.css",
     "./tailwind.css": "./skills/distinctui/assets/tailwind.css",
+    "./distinctui.js": "./skills/distinctui/assets/distinctui.js",
     "./tokens.json": "./skills/distinctui/assets/tokens.json",
     "./icons.svg": "./skills/distinctui/assets/icons.svg"
   },
   "files": ["skills/distinctui"],
-  "private": true,
+  "publishConfig": { "access": "public" },
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "dev": "npm run build && wrangler dev",
