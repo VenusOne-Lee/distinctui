@@ -85,6 +85,15 @@
 
   --dui-page-max: 72rem;
   --dui-read-max: 42rem;
+
+  /* Motion: quick and quiet. Things settle, they don't bounce around.
+     Everything here turns off for people who ask for reduced motion. */
+  --dui-ease: cubic-bezier(0.2, 0, 0, 1);         /* settle: most things */
+  --dui-ease-pop: cubic-bezier(0.3, 1.5, 0.5, 1); /* one small overshoot: a mark going live */
+  --dui-dur-fast: 120ms;  /* press, hover */
+  --dui-dur: 200ms;       /* tabs, menus, fields */
+  --dui-dur-slow: 480ms;  /* reveals, a ring drawing in */
+  --dui-dur-live: 700ms;  /* dashed to solid */
 }
 
 /* ------------------------------------------------------------------ Base */
@@ -124,6 +133,9 @@
 }
 .dui-section { display: flex; flex-direction: column; gap: var(--dui-space-8); padding-top: var(--dui-space-20); }
 @media (min-width: 640px) { .dui-section { padding-top: var(--dui-space-28); } }
+
+/* hidden always wins, even over components that set display. */
+:where(.dui-page, .dui) [hidden] { display: none !important; }
 
 /* ------------------------------------------------------------------ Type */
 
@@ -196,8 +208,12 @@
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: opacity 0.15s, background-color 0.15s, border-color 0.15s;
+  transition: opacity var(--dui-dur-fast) var(--dui-ease), background-color var(--dui-dur-fast) var(--dui-ease), border-color var(--dui-dur-fast) var(--dui-ease), transform var(--dui-dur-fast) var(--dui-ease);
 }
+/* A toggle that's on (Follow, then Following) turns to the outlined pill. */
+.dui-btn-sm[aria-pressed="true"], .dui-btn[aria-pressed="true"] { background: var(--dui-white); color: var(--dui-black); border-color: var(--dui-black); opacity: 1; }
+/* A press sinks a little. */
+.dui-btn:active, .dui-btn-ghost:active, .dui-btn-sm:active, .dui-btn-sm-ghost:active, .dui-tab:active { transform: scale(0.97); }
 .dui-btn {
   background: var(--dui-black);
   color: var(--dui-white);
@@ -379,7 +395,7 @@ input[type="range"].dui-range { accent-color: var(--dui-black); width: 100%; }
   min-width: 0;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s;
+  transition: border-color var(--dui-dur) var(--dui-ease);
 }
 a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 .dui-card--flush { padding: 0; overflow: hidden; gap: 0; }
@@ -566,6 +582,7 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
   padding: 0.5rem 1rem;
   font: inherit; font-size: var(--dui-text-sm); font-weight: 600;
   cursor: pointer;
+  transition: background-color var(--dui-dur) var(--dui-ease), border-color var(--dui-dur) var(--dui-ease), color var(--dui-dur) var(--dui-ease), transform var(--dui-dur-fast) var(--dui-ease);
 }
 .dui-tab:hover { border-color: var(--dui-black); }
 .dui-tab[aria-selected="true"] { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); }
@@ -603,6 +620,73 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 .dui-flash { border-radius: 1rem; outline: 3px solid var(--dui-black); outline-offset: 8px; animation: dui-flash 3s ease-out forwards; }
 @keyframes dui-flash { 0%, 60% { outline-color: var(--dui-black); } 100% { outline-color: transparent; } }
 
+/* ---------------------------------------------------------------- Motion */
+
+/*
+ * Motion says what changed: a ring drawing in, a mark going live, a menu
+ * opening, a card arriving. Nothing loops, nothing moves on its own for
+ * attention, nothing lifts. distinctui.js adds the classes for you; you can
+ * also add them yourself.
+ */
+
+/* Menus open with a short fade and drop. */
+.dui-menu[open] .dui-menu__panel { animation: dui-drop var(--dui-dur) var(--dui-ease); transform-origin: top right; }
+@keyframes dui-drop { from { opacity: 0; transform: translateY(-4px) scale(0.98); } }
+
+/* Fields: the edge darkens smoothly. */
+.dui-field, .dui-input, .dui-textarea, .dui-select { transition: border-color var(--dui-dur) var(--dui-ease), box-shadow var(--dui-dur) var(--dui-ease); }
+
+/* Reveal on scroll: add .dui-reveal; distinctui.js adds .is-in when it's seen.
+   Stagger siblings with style="--dui-i: 2". */
+.dui-js .dui-reveal { opacity: 0; transform: translateY(12px); }
+.dui-js .dui-reveal.is-in {
+  opacity: 1; transform: none;
+  transition: opacity var(--dui-dur-slow) var(--dui-ease), transform var(--dui-dur-slow) var(--dui-ease);
+  transition-delay: calc(var(--dui-i, 0) * 60ms);
+}
+
+/* A ring draws itself in: a sweep round the circle, then the inside fades up.
+   The sweep runs on a copy of the ring, so nothing else is ever clipped. */
+@property --dui-sweep { syntax: "<angle>"; inherits: false; initial-value: 360deg; }
+.dui-mark.dui-draw { animation: dui-hide-ring var(--dui-dur-slow) var(--dui-ease) backwards; animation-delay: calc(var(--dui-i, 0) * 80ms); }
+.dui-mark.dui-draw::after {
+  content: ""; position: absolute; inset: calc(var(--mark-size) * -0.06);
+  border-radius: 50%; border-width: calc(var(--mark-size) * 0.06); border-style: inherit; border-color: var(--mark-colour);
+  -webkit-mask: conic-gradient(#000 var(--dui-sweep), transparent 0);
+  mask: conic-gradient(#000 var(--dui-sweep), transparent 0);
+  opacity: 0; pointer-events: none;
+  animation: dui-sweep var(--dui-dur-slow) var(--dui-ease) backwards;
+  animation-delay: inherit;
+}
+.dui-mark.dui-draw .dui-mark__inner { animation: dui-fade-in var(--dui-dur-slow) var(--dui-ease) backwards; animation-delay: calc(var(--dui-i, 0) * 80ms + 120ms); }
+@keyframes dui-hide-ring { from, to { border-color: transparent; } }
+@keyframes dui-sweep { from { --dui-sweep: 0deg; opacity: 1; } to { --dui-sweep: 360deg; opacity: 1; } }
+@keyframes dui-fade-in { from { opacity: 0; transform: scale(0.9); } }
+
+/* Going live: dashed turns solid with one small pop and a ring of colour
+   that spreads and fades. Set data-live="true" and add .dui-live-now. */
+.dui-mark.dui-live-now { animation: dui-live var(--dui-dur-live) var(--dui-ease-pop); }
+.dui-mark.dui-live-now::before {
+  content: ""; position: absolute; inset: calc(var(--mark-size) * -0.06);
+  border-radius: 50%; border: calc(var(--mark-size) * 0.06) solid var(--mark-colour);
+  animation: dui-ripple var(--dui-dur-live) var(--dui-ease) forwards; pointer-events: none;
+}
+.dui-mark.dui-live-now .dui-mark__version { animation: dui-label var(--dui-dur-live) var(--dui-ease-pop); }
+@keyframes dui-live { 0% { transform: scale(1); } 35% { transform: scale(0.92); } 100% { transform: scale(1); } }
+@keyframes dui-ripple { from { opacity: 0.5; transform: scale(1); } to { opacity: 0; transform: scale(1.45); } }
+@keyframes dui-label { 0%, 30% { opacity: 0; transform: translate(-50%, 6px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
+
+/* Filtered lists: items that stay settle back in. */
+.dui-js [data-tags].is-shown { animation: dui-settle var(--dui-dur) var(--dui-ease); }
+@keyframes dui-settle { from { opacity: 0; transform: scale(0.98); } }
+
+/* A number counting up to its value (data-count on the element). */
+.dui-count-up { font-variant-numeric: tabular-nums; }
+
+/* Bars grow up from the baseline when their chart is seen. */
+.dui-js .dui-grow > * { transform: scaleY(0); transform-origin: bottom; }
+.dui-js .dui-grow.is-in > * { transform: none; transition: transform var(--dui-dur-slow) var(--dui-ease); transition-delay: calc(var(--dui-i, 0) * 50ms); }
+
 /* ------------------------------------------------------------- Utilities */
 
 .dui-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -610,7 +694,14 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 .dui-skip:focus { left: 1rem; top: 1rem; z-index: 50; border-radius: var(--dui-radius-pill); background: var(--dui-black); color: var(--dui-white); padding: 0.5rem 1rem; font-weight: 600; }
 .dui-tabular { font-variant-numeric: tabular-nums; }
 
+/* Printed pages show everything. */
+@media print { .dui-js .dui-reveal, .dui-js .dui-grow > * { opacity: 1; transform: none; } }
+
+/* People who ask for less motion get none: everything lands in its final state. */
 @media (prefers-reduced-motion: reduce) {
-  .dui-flash { animation: none; }
-  .dui-btn, .dui-btn-ghost, .dui-btn-sm, .dui-btn-sm-ghost, .dui-card { transition: none; }
+  :where(.dui-page, .dui) *, :where(.dui-page, .dui) *::before, :where(.dui-page, .dui) *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .dui-js .dui-reveal, .dui-js .dui-grow > * { opacity: 1; transform: none; }
 }
