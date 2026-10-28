@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Sign in</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: sign in with an emailed link, and the "check your email" state beside it. */
+  :root { --dui-signature: #1f3bff; }
+  .wrap { display: grid; gap: 24px; padding-block: 48px 96px; }
+  @media (min-width: 900px) { .wrap { grid-template-columns: 1fr 1fr; gap: 32px; padding-top: 88px; } }
+  .box { display: flex; flex-direction: column; gap: 20px; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-feature); padding: 32px 24px; }
+  @media (min-width: 640px) { .box { padding: 44px 40px; } }
+  .or { display: flex; align-items: center; gap: 12px; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+  .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--dui-grey-200); }
+  .tag { font-size: 12px; color: var(--dui-grey-600); }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">lift club</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm-ghost" href="#">Join</a></nav>
+</header>
+
+<main class="dui-container wrap">
+  <section class="box" aria-labelledby="in-h">
+    <span class="tag">Step 1</span>
+    <h1 id="in-h" class="dui-h1">Sign <b>in</b></h1>
+    <p class="dui-lede">We'll email you a link. No password to remember.</p>
+    <form style="display:flex;flex-direction:column;gap:12px" onsubmit="return false">
+      <label class="dui-sr-only" for="email">Email</label>
+      <input class="dui-field" id="email" type="email" autocomplete="email" placeholder="you@example.com">
+      <button class="dui-btn" type="submit">Email me a link</button>
+    </form>
+    <p class="or">or</p>
+    <div class="dui-actions" style="flex-direction:column">
+      <button class="dui-btn-ghost" type="button">Use a passkey</button>
+    </div>
+    <p class="dui-meta">New here? <a class="dui-link" href="#">Join with an invite</a>. By signing in you agree to <a class="dui-link" href="#">how we run the site</a>.</p>
+  </section>
+
+  <section class="box" aria-labelledby="sent-h" style="align-items:flex-start">
+    <span class="tag">Step 2</span>
+    <span class="dui-mark" data-live="false" style="--mark-size:4.5rem"><span class="dui-mark__inner">@</span></span>
+    <h2 id="sent-h" class="dui-h1">Check your <b>email</b></h2>
+    <p class="dui-body">We sent a sign-in link to <b>naledi@example.com</b>. It works once, for 15 minutes.</p>
+    <div class="dui-panel" style="display:flex;flex-direction:column;gap:6px">
+      <b>Not there?</b>
+      <p class="dui-meta">Look in spam or promotions. Work email can hold links for a few minutes.</p>
+    </div>
+    <div class="dui-actions"><button class="dui-btn-sm-ghost" type="button">Send another link</button><button class="dui-btn-sm-ghost" type="button">Use a different email</button></div>
+  </section>
+</main>
+</body>
+</html>

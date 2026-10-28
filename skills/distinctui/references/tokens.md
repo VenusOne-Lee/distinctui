@@ -18,6 +18,24 @@ Copy these by value when you can't use `assets/distinctui.css` (native apps, ema
 
 Contrast: grey-600 on white is 5.3:1, so it is fine for text. grey-400 is 2.5:1, so only use it for placeholders and decoration, never for words someone must read.
 
+## Ring palettes
+
+When each person or project gets its own ring, give them a colour from one palette of five. The fifth is always black. Colours appear only on rings and their dots, never on buttons, text or backgrounds. Pick one palette per product and keep it.
+
+| Palette | 1 | 2 | 3 | 4 | 5 | Feel |
+|---|---|---|---|---|---|---|
+| Signal (default) | cobalt `#1f3bff` | vermilion `#ff4f1f` | violet `#7a2cff` | marigold `#e8a800` | black | Bright, digital, neutral |
+| Mzansi | red `#e03c31` | blue `#001489` | gold `#ffb81c` | green `#007749` | black | The South African flag, as Version One uses it |
+| Earth | terracotta `#b5452b` | ochre `#c8860a` | clay `#6b3e26` | indigo `#2e3a87` | black | Warm, handmade, grounded |
+| Coast | ocean `#0067a5` | coral `#ff5a4e` | teal `#00706b` | sand `#d9a400` | black | Fresh, open, outdoors |
+| Jacaranda | purple `#6f3fc7` | magenta `#c2185b` | sky `#2f80ed` | sunset `#f26b1d` | black | Playful, loud, city |
+
+Plain CSS: put `class="dui-palette-mzansi"` (or another) on `<html>`, then `data-ring="1"` to `"5"` on each mark. Tailwind: set `--color-ring-1` to `--color-ring-5`.
+
+Version One gives its five Mzansi rings meanings builders pick from: red Leap, blue Horizon, gold Value, green Roots, black Ubuntu. Those meanings are Version One's own, not official flag meanings. If your product gives rings meanings, write your own.
+
+Gold, marigold and sand are light against white (under 3:1), so keep their rings at least 3px wide and never rely on the colour alone to say something.
+
 ## Type
 
 Family: Bricolage Grotesque (variable, optical size 12 to 96, weight 200 to 800). Fallback: `ui-sans-serif, system-ui, sans-serif`.

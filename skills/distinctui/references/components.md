@@ -136,6 +136,9 @@ Markup uses the classes in `assets/distinctui.css`. Put `class="dui-page"` on `<
 ## Signature mark
 
 ```html
+<!-- Empty: nobody here yet, or no photo. A grey disc, dashed ring -->
+<span class="dui-mark dui-mark--plain" data-live="false" style="--mark-size:4rem"><span class="dui-mark__inner"></span></span>
+
 <!-- Not live yet: dashed -->
 <span class="dui-mark" data-live="false" style="--mark-size:4rem">
   <span class="dui-mark__inner">TM</span>
@@ -161,7 +164,8 @@ Markup uses the classes in `assets/distinctui.css`. Put `class="dui-page"` on `<
 ```
 
 - Set `--dui-signature` once on `:root`. If each person in your product has their own colour, set `--mark-colour` per mark, and keep that colour set small (five or fewer), saturated and distinct.
-- Photos sit inside the ring on grey-100. Initials when there is no photo.
+- Three fillings, in order of preference: a photo (face centred, cropped square), initials, or empty grey for a spot nobody holds yet.
+- Photos sit inside the ring on grey-100.
 - The logo is a small ring in the signature colour and the name in lower case.
 
 ## Header, footer and menu

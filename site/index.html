@@ -8,6 +8,10 @@
 <meta name="description" content="A free, open-source design skill for Claude. Black, white and grey, one typeface, black pill buttons, and one signature mark in one colour. The system behind Version One.">
 <meta property="og:title" content="distinctUI">
 <meta property="og:description" content="Black, white, grey. Then one mark that's yours. The design system behind Version One, as a Claude skill.">
+<meta property="og:image" content="https://distinctui.versionone.co.za/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
 <link rel="stylesheet" href="/assets/distinctui.css">
@@ -18,7 +22,7 @@
 <header class="dui-container dui-header">
   <a class="dui-logo" href="/">distinctUI</a>
   <nav class="dui-nav" aria-label="Main">
-    <span class="wide-nav"><a href="#rules">Rules</a><a href="/components.html">Components</a><a href="#examples">Examples</a></span>
+    <span class="wide-nav"><a href="#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a></span>
     <a class="dui-btn-sm" href="https://github.com/VenusOne-Lee/distinctui">GitHub</a>
   </nav>
 </header>
@@ -48,15 +52,16 @@
         <span class="swatches" aria-label="Black, four greys, white and the signature colour">
           <i style="background:#000"></i><i style="background:#6b6b6b"></i><i style="background:#a3a3a3"></i><i style="background:#e5e5e5"></i><i style="background:#fff"></i><i class="sig"></i>
         </span>
-        <p class="dui-meta">Black, white and greys. One signature colour, on the mark and nowhere else.</p>
+        <p class="dui-meta">Black, white and greys. Ring colours from one palette, on rings and nowhere else. <a class="dui-link" href="#palettes">Five palettes</a></p>
       </div>
       <div class="dui-card">
         <span class="dui-eyebrow">Signature mark</span>
         <span class="marks">
-          <span class="dui-mark" data-live="false" style="--mark-size:4rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v0.1</span></span>
-          <span class="dui-mark" style="--mark-size:4rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v1.0</span></span>
+          <span class="dui-mark dui-mark--empty" style="--mark-size:3.5rem"><span class="dui-mark__inner"></span></span>
+          <span class="dui-mark" data-live="false" style="--mark-size:3.5rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v0.1</span></span>
+          <span class="dui-mark" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span><span class="dui-mark__version">v1.0</span></span>
         </span>
-        <p class="dui-meta">Dashed until it's live. Solid the day it ships, with a small version label.</p>
+        <p class="dui-meta">Empty, initials or a photo inside. Dashed until it's live, solid the day it ships.</p>
       </div>
       <div class="dui-card">
         <span class="dui-eyebrow">Buttons</span>
@@ -77,12 +82,23 @@
     <a class="dui-btn-ghost" href="/components.html" style="align-self:flex-start">See every component</a>
   </section>
 
+  <section class="dui-section" id="palettes" aria-labelledby="pal-h">
+    <h2 id="pal-h" class="dui-h2">Five ring <b>palettes</b></h2>
+    <p class="dui-body">Everything stays black, white and grey. When every person or project gets a ring, give each one a colour from a single palette. Mzansi is the South African flag set Version One uses, with the meanings its builders pick from.</p>
+    <div class="pals">
+      <div class="pal dui-palette-signal"><div class="pal-head"><h3 class="dui-h4">Signal</h3><p class="dui-meta">Bright, digital, neutral. The default.</p><code>dui-palette-signal</code></div><div class="pal-rings"><span class="pal-ring"><span class="dui-mark" data-ring="1" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span class="pal-name">Cobalt</span></span><span class="pal-ring"><span class="dui-mark" data-ring="2" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span class="pal-name">Vermilion</span></span><span class="pal-ring"><span class="dui-mark" data-ring="3" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span class="pal-name">Violet</span></span><span class="pal-ring"><span class="dui-mark" data-ring="4" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-4.jpg" alt=""></span></span><span class="pal-name">Marigold</span></span><span class="pal-ring"><span class="dui-mark" data-ring="5" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span class="pal-name">Black</span></span></div></div>
+      <div class="pal dui-palette-mzansi"><div class="pal-head"><h3 class="dui-h4">Mzansi</h3><p class="dui-meta">The South African flag, as Version One uses it.</p><code>dui-palette-mzansi</code></div><div class="pal-rings"><span class="pal-ring"><span class="dui-mark" data-ring="1" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-4.jpg" alt=""></span></span><span class="pal-name">Red · Leap</span></span><span class="pal-ring"><span class="dui-mark" data-ring="2" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span class="pal-name">Blue · Horizon</span></span><span class="pal-ring"><span class="dui-mark" data-ring="3" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-6.jpg" alt=""></span></span><span class="pal-name">Gold · Value</span></span><span class="pal-ring"><span class="dui-mark" data-ring="4" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-7.jpg" alt=""></span></span><span class="pal-name">Green · Roots</span></span><span class="pal-ring"><span class="dui-mark" data-ring="5" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-8.jpg" alt=""></span></span><span class="pal-name">Black · Ubuntu</span></span></div></div>
+      <div class="pal dui-palette-earth"><div class="pal-head"><h3 class="dui-h4">Earth</h3><p class="dui-meta">Warm, handmade, grounded.</p><code>dui-palette-earth</code></div><div class="pal-rings"><span class="pal-ring"><span class="dui-mark" data-ring="1" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-7.jpg" alt=""></span></span><span class="pal-name">Terracotta</span></span><span class="pal-ring"><span class="dui-mark" data-ring="2" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-8.jpg" alt=""></span></span><span class="pal-name">Ochre</span></span><span class="pal-ring"><span class="dui-mark" data-ring="3" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span class="pal-name">Clay</span></span><span class="pal-ring"><span class="dui-mark" data-ring="4" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span class="pal-name">Indigo</span></span><span class="pal-ring"><span class="dui-mark" data-ring="5" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span class="pal-name">Black</span></span></div></div>
+      <div class="pal dui-palette-coast"><div class="pal-head"><h3 class="dui-h4">Coast</h3><p class="dui-meta">Fresh, open, outdoors.</p><code>dui-palette-coast</code></div><div class="pal-rings"><span class="pal-ring"><span class="dui-mark" data-ring="1" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span class="pal-name">Ocean</span></span><span class="pal-ring"><span class="dui-mark" data-ring="2" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span class="pal-name">Coral</span></span><span class="pal-ring"><span class="dui-mark" data-ring="3" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-4.jpg" alt=""></span></span><span class="pal-name">Teal</span></span><span class="pal-ring"><span class="dui-mark" data-ring="4" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span class="pal-name">Sand</span></span><span class="pal-ring"><span class="dui-mark" data-ring="5" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-6.jpg" alt=""></span></span><span class="pal-name">Black</span></span></div></div>
+      <div class="pal dui-palette-jacaranda"><div class="pal-head"><h3 class="dui-h4">Jacaranda</h3><p class="dui-meta">Playful, loud, city.</p><code>dui-palette-jacaranda</code></div><div class="pal-rings"><span class="pal-ring"><span class="dui-mark" data-ring="1" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span class="pal-name">Purple</span></span><span class="pal-ring"><span class="dui-mark" data-ring="2" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-6.jpg" alt=""></span></span><span class="pal-name">Magenta</span></span><span class="pal-ring"><span class="dui-mark" data-ring="3" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-7.jpg" alt=""></span></span><span class="pal-name">Sky</span></span><span class="pal-ring"><span class="dui-mark" data-ring="4" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-8.jpg" alt=""></span></span><span class="pal-name">Sunset</span></span><span class="pal-ring"><span class="dui-mark" data-ring="5" style="--mark-size:3.5rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span class="pal-name">Black</span></span></div></div>
+    </div>
+  </section>
   <section class="dui-section" id="rules" aria-labelledby="rules-h">
     <h2 id="rules-h" class="dui-h2">Twelve <b>rules</b></h2>
     <ol class="dui-rows rules">
       <li class="dui-row"><span class="n">1</span><div><b>Light only.</b> <span class="dui-meta">White background, black text. No dark mode, no dark sections.</span></div></li>
       <li class="dui-row"><span class="n">2</span><div><b>Black, white and four greys.</b> <span class="dui-meta">No blue links, red errors, green ticks or gradients.</span></div></li>
-      <li class="dui-row"><span class="n">3</span><div><b>One signature colour, only on the mark.</b> <span class="dui-meta">If something needs to stand out, use black, weight or space.</span></div></li>
+      <li class="dui-row"><span class="n">3</span><div><b>Colour lives only on rings.</b> <span class="dui-meta">One palette of five. If something else needs to stand out, use black, weight or space.</span></div></li>
       <li class="dui-row"><span class="n">4</span><div><b>One typeface.</b> <span class="dui-meta">Bricolage Grotesque for everything. Monospace only for code.</span></div></li>
       <li class="dui-row"><span class="n">5</span><div><b>Light headings, one bold word.</b> <span class="dui-meta">"Just <b style="color:#000">shipped</b>". Tight tracking.</span></div></li>
       <li class="dui-row"><span class="n">6</span><div><b>Main actions are black pills.</b> <span class="dui-meta">The second action is outlined. The third is a text link.</span></div></li>
@@ -96,13 +112,15 @@
   </section>
 
   <section class="dui-section" id="examples" aria-labelledby="ex-h">
-    <h2 id="ex-h" class="dui-h2">Four <b>examples</b></h2>
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px">
+      <h2 id="ex-h" class="dui-h2">Eleven <b>templates</b></h2>
+      <a class="dui-link dui-meta" href="/templates.html">See all eleven</a>
+    </div>
     <p class="dui-body">Whole pages built only from the skill, with invented people. Claude opens these before building something similar.</p>
-    <div class="dui-grid dui-grid--4">
-      <a class="dui-card" href="/examples/landing.html"><h3 class="dui-h4">Launch page</h3><p class="dui-meta">Hero, faces row, card grid, feature card, steps.</p></a>
-      <a class="dui-card" href="/examples/profile.html"><h3 class="dui-h4">Profile</h3><p class="dui-meta">A person with their mark, a build log and a help ask.</p></a>
-      <a class="dui-card" href="/examples/form.html"><h3 class="dui-h4">Long form</h3><p class="dui-meta">Every field, with the error states showing.</p></a>
-      <a class="dui-card" href="/examples/list.html"><h3 class="dui-h4">Directory</h3><p class="dui-meta">Tabs, search, a menu, media cards, an empty state.</p></a>
+    <div class="dui-grid dui-grid--3">
+      <a class="dui-card dui-card--flush" href="/examples/landing.html"><div class="dui-card__media"><img src="/thumbs/landing.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Launch page</h3><p class="dui-meta">Hero, faces row, card grid, feature card, steps.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/profile.html"><div class="dui-card__media"><img src="/thumbs/profile.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Profile</h3><p class="dui-meta">A person in their ring, build log, help ask.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/dashboard.html"><div class="dui-card__media"><img src="/thumbs/dashboard.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Dashboard</h3><p class="dui-meta">What needs you first, numbers, a quiet chart.</p></div></a>
     </div>
   </section>
 
@@ -111,7 +129,7 @@
       <span class="dui-mark" style="--mark-size:6rem;--mark-colour:#000"><span class="dui-mark__inner">v1</span></span>
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
         <h2 id="get-h" class="dui-h2">Made for <b>Version One</b></h2>
-        <p class="dui-body">distinctUI is the look of <a class="dui-link" href="https://versionone.co.za">versionone.co.za</a>, where South African builders share what they've shipped. Someone asked for it, so here it is. The rings in flag colours stay Version One's. Everything else is yours to use, under the MIT licence.</p>
+        <p class="dui-body">distinctUI is the look of <a class="dui-link" href="https://versionone.co.za">versionone.co.za</a>, where South African builders share what they've shipped. Someone asked for it, so here it is. Its South African flag rings are here as the Mzansi palette. Everything is yours to use under the MIT licence, apart from the Version One name and logo.</p>
         <div class="dui-actions"><a class="dui-btn-sm" href="https://versionone.co.za">Visit Version One</a><a class="dui-btn-sm-ghost" href="https://github.com/VenusOne-Lee/distinctui">Read the code</a></div>
       </div>
     </div>

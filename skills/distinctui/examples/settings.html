@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Settings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<style>
+  /* Example: account settings with a side list, email choices, your data, and deleting the account. */
+  :root { --dui-signature: #000; }
+  .layout { display: grid; gap: 32px; padding-block: 32px 96px; }
+  @media (min-width: 900px) { .layout { grid-template-columns: 14rem minmax(0, 1fr); gap: 56px; } }
+  .side { display: flex; gap: 6px; overflow-x: auto; }
+  @media (min-width: 900px) { .side { flex-direction: column; position: sticky; top: 24px; align-self: start; } }
+  .side a { flex-shrink: 0; padding: 10px 16px; border-radius: 9999px; text-decoration: none; font-size: 15px; }
+  .side a:hover { background: var(--dui-grey-100); }
+  .side a[aria-current="page"] { background: var(--dui-black); color: var(--dui-white); font-weight: 600; }
+  .block { display: flex; flex-direction: column; gap: 18px; padding-bottom: 40px; border-bottom: 1px solid var(--dui-grey-200); }
+  .block + .block { padding-top: 40px; }
+  .group { display: flex; flex-direction: column; gap: 6px; max-width: 30rem; }
+  .row-between { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .switch { position: relative; width: 44px; height: 26px; flex-shrink: 0; }
+  .switch input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .switch span { position: absolute; inset: 0; border-radius: 9999px; background: var(--dui-grey-200); transition: background 0.15s; pointer-events: none; }
+  .switch span::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--dui-white); transition: transform 0.15s; }
+  .switch input:checked + span { background: var(--dui-black); }
+  .switch input:checked + span::after { transform: translateX(18px); }
+  .switch input:focus-visible + span { outline: 2px solid var(--dui-black); outline-offset: 2px; }
+  .photo { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">makers</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm" href="#">Share</a><a class="dui-btn-sm-ghost" href="#">You</a></nav>
+</header>
+
+<main class="dui-container">
+  <h1 class="dui-h1" style="padding-top:24px"><b>Settings</b></h1>
+  <div class="layout">
+    <nav class="side" aria-label="Settings sections">
+      <a href="#profile" aria-current="page">Profile</a><a href="#emails">Emails</a><a href="#data">Your data</a><a href="#delete">Delete account</a>
+    </nav>
+
+    <div>
+      <section class="block" id="profile" aria-labelledby="pr-h">
+        <h2 id="pr-h" class="dui-h3">Profile</h2>
+        <div class="photo">
+          <span class="dui-mark" style="--mark-size:5rem;--mark-colour:#ff4f1f"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span>
+          <div class="dui-actions"><button class="dui-btn-sm-ghost" type="button">Add a photo</button></div>
+          <p class="dui-meta" style="flex-basis:100%">A clear photo of your face. We crop around it, and a person checks it before it shows.</p>
+        </div>
+        <div class="group"><label class="dui-label" for="s-name">Name</label><input class="dui-input" id="s-name" value="Naledi Dube"></div>
+        <div class="group"><label class="dui-label" for="s-city">City</label><select class="dui-select" id="s-city"><option>Pietermaritzburg</option><option>Durban</option></select></div>
+        <div class="group"><label class="dui-label" for="s-bio">One line about you <span class="dui-optional">(optional)</span></label><textarea class="dui-textarea" id="s-bio" maxlength="120" style="min-height:5rem">Builds tools for spaza shops.</textarea><span class="dui-counter">29/120</span></div>
+        <div class="dui-actions"><button class="dui-btn" type="button">Save</button></div>
+      </section>
+
+      <section class="block" id="emails" aria-labelledby="em-h">
+        <h2 id="em-h" class="dui-h3">Emails</h2>
+        <p class="dui-meta">We only email when you have something to do, plus anything you turn on here.</p>
+        <div class="dui-rows">
+          <div class="dui-row row-between"><div><b>Someone tried your project</b><p class="dui-meta">Once a day at most.</p></div><label class="switch"><input type="checkbox" checked aria-label="Someone tried your project"><span></span></label></div>
+          <div class="dui-row row-between"><div><b>People you follow ship</b><p class="dui-meta">When they release a new version.</p></div><label class="switch"><input type="checkbox" aria-label="People you follow ship"><span></span></label></div>
+          <div class="dui-row row-between"><div><b>Friday round-up</b><p class="dui-meta">Everything shipped this week.</p></div><label class="switch"><input type="checkbox" aria-label="Friday round-up"><span></span></label></div>
+        </div>
+      </section>
+
+      <section class="block" id="data" aria-labelledby="da-h">
+        <h2 id="da-h" class="dui-h3">Your data</h2>
+        <p class="dui-body">Download everything we hold about you: your profile, projects, versions and the emails you've chosen.</p>
+        <div class="dui-actions"><button class="dui-btn-sm-ghost" type="button">Download my data</button></div>
+      </section>
+
+      <section class="block" id="delete" aria-labelledby="de-h" style="border-bottom:0">
+        <h2 id="de-h" class="dui-h3">Delete account</h2>
+        <p class="dui-body">This removes your profile, projects and photo for good. It can't be undone.</p>
+        <div class="dui-panel" style="display:flex;flex-direction:column;gap:12px;max-width:30rem">
+          <label class="dui-label" for="s-confirm">Type DELETE to confirm</label>
+          <input class="dui-input" id="s-confirm" autocomplete="off">
+          <div class="dui-actions"><button class="dui-btn" type="button" disabled>Delete my account</button></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+</body>
+</html>
