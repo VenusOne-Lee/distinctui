@@ -100,6 +100,18 @@ Common sizes: 20px in the logo, 36px in a card header, 64px in a list, 108px on 
 
 ## Motion
 
-- Hover and state changes: 150ms, opacity or colour only.
+| Token | Value | For |
+|---|---|---|
+| `--dui-dur-fast` | 120ms | press, hover |
+| `--dui-dur` | 200ms | tabs, menus, fields, filtered items settling |
+| `--dui-dur-slow` | 480ms | reveals, a ring drawing in, bars growing |
+| `--dui-dur-live` | 700ms | a mark going from dashed to solid |
+| `--dui-ease` | `cubic-bezier(0.2, 0, 0, 1)` | everything: settles, no bounce |
+| `--dui-ease-pop` | `cubic-bezier(0.3, 1.5, 0.5, 1)` | going live only: one small overshoot |
+
+- Stagger siblings by 60ms (reveals) or 80ms (rings) with `--dui-i`.
 - Link landing flash: 3s outline fade.
-- Respect `prefers-reduced-motion`: turn both off.
+- `prefers-reduced-motion: reduce` turns all of it off. Things land in their final state.
+- Native apps (SwiftUI, React Native): use the same durations, and a spring with a little bounce (about 0.25) only for going live.
+
+How each one is used is in `references/motion.md`.

@@ -25,6 +25,7 @@
   .two { display: grid; gap: 24px; }
   @media (min-width: 900px) { .two { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; } }
 </style>
+<script src="../assets/distinctui.js" defer></script>
 </head>
 <body class="dui-page">
 <header class="dui-container dui-header">
@@ -47,9 +48,9 @@
   <section aria-labelledby="s-h" style="display:flex;flex-direction:column;gap:20px">
     <h2 id="s-h" class="dui-h3">This week</h2>
     <div class="stats">
-      <div class="dui-panel stat"><span class="dui-meta">Tried it</span><b>128</b><span class="dui-meta">+34 on last week</span></div>
-      <div class="dui-panel stat"><span class="dui-meta">Followers</span><b>46</b><span class="dui-meta">+6</span></div>
-      <div class="dui-panel stat"><span class="dui-meta">Help offers</span><b>4</b><span class="dui-meta">1 open</span></div>
+      <div class="dui-panel stat"><span class="dui-meta">Tried it</span><b data-count="128">128</b><span class="dui-meta">+34 on last week</span></div>
+      <div class="dui-panel stat"><span class="dui-meta">Followers</span><b data-count="46">46</b><span class="dui-meta">+6</span></div>
+      <div class="dui-panel stat"><span class="dui-meta">Help offers</span><b data-count="4">4</b><span class="dui-meta">1 open</span></div>
       <div class="dui-panel stat"><span class="dui-meta">Latest version</span><b>v1.2</b><span class="dui-meta">7 days live</span></div>
     </div>
   </section>
@@ -57,7 +58,7 @@
   <div class="two">
     <section class="dui-card chart" aria-labelledby="c-h">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h2 id="c-h" class="dui-h4">People who tried it</h2><div class="dui-tabs" role="tablist" aria-label="Range"><button class="dui-tab" role="tab" aria-selected="true" type="button">7 days</button><button class="dui-tab" role="tab" aria-selected="false" type="button">30 days</button></div></div>
-      <div class="bars" role="img" aria-label="Tried it each day: Thu 12, Fri 31, Sat 18, Sun 9, Mon 14, Tue 20, Wed 24 today"><span style="height:39%"></span><span style="height:100%"></span><span style="height:58%"></span><span style="height:29%"></span><span style="height:45%"></span><span style="height:65%"></span><span class="today" style="height:77%"></span></div>
+      <div class="bars dui-grow" role="img" aria-label="Tried it each day: Thu 12, Fri 31, Sat 18, Sun 9, Mon 14, Tue 20, Wed 24 today"><spanNone style="--dui-i:0;height:39%"></span><spanNone style="--dui-i:1;height:100%"></span><spanNone style="--dui-i:2;height:58%"></span><spanNone style="--dui-i:3;height:29%"></span><spanNone style="--dui-i:4;height:45%"></span><spanNone style="--dui-i:5;height:65%"></span><span class="today" style="--dui-i:6;height:77%"></span></div>
       <div class="days"><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span></div>
       <p class="dui-meta">Friday's jump came from the round-up email.</p>
     </section>

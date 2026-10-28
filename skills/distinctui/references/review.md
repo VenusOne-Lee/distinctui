@@ -22,6 +22,11 @@ Go through every line. Fix what fails, then tell the user in one line what you c
 - [ ] No shadows except on a floating menu.
 - [ ] Hover changes a border or opacity, never lifts or scales.
 
+## Motion
+- [ ] Anything that moves is saying what changed. Nothing loops or moves for attention.
+- [ ] Durations come from the motion tokens (120 to 480ms; 700ms only for going live).
+- [ ] With reduced motion turned on, the page still works and everything is in its final state.
+
 ## Mark
 - [ ] The mark is dashed for anything not live yet, solid once live.
 - [ ] Version labels read like `v0.3` or `v1.0`.

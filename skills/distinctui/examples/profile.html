@@ -22,6 +22,7 @@
   @media (min-width: 900px) { .two { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: start; } }
   .backers { display: flex; flex-wrap: wrap; gap: 12px; }
 </style>
+<script src="../assets/distinctui.js" defer></script>
 </head>
 <body class="dui-page">
 <header class="dui-container dui-header">
@@ -34,7 +35,7 @@
 
 <main class="dui-container" style="padding-bottom:96px">
   <section class="top" aria-labelledby="name-h">
-    <span class="dui-mark" style="--mark-size:9.5rem;--mark-colour:#ff4f1f;justify-self:start">
+    <span class="dui-mark dui-draw" style="--mark-size:9.5rem;--mark-colour:#ff4f1f;justify-self:start">
       <span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span>
       <span class="dui-mark__version">v0.4</span>
       <span class="dui-mark__dot" style="--mark-colour:#1f3bff"></span>
@@ -43,7 +44,7 @@
       <h1 id="name-h" class="dui-h1">Naledi is building <b>Spaza Stock</b></h1>
       <p class="dui-lede">Stock counts for spaza shops, by voice, in isiZulu and English.</p>
       <div class="facts"><span><b>Pietermaritzburg</b></span><span><b>2</b> projects</span><span><b>14</b> people tried it</span></div>
-      <div class="dui-actions"><a class="dui-btn-sm" href="#">Try Spaza Stock</a><a class="dui-btn-sm-ghost" href="#">Follow</a><a class="dui-btn-sm-ghost" href="#">Get in touch</a></div>
+      <div class="dui-actions"><a class="dui-btn-sm" href="#">Try Spaza Stock</a><button class="dui-btn-sm" type="button" aria-pressed="false" data-pressed-label="Following">Follow</button><a class="dui-btn-sm-ghost" href="#">Get in touch</a></div>
     </div>
   </section>
 

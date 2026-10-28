@@ -12,7 +12,7 @@ It is the system behind [Version One](https://versionone.co.za), where South Afr
 ## Before you build
 
 1. **Ask for the signature.** What is the mark (a ring around a face, a logo dot, a project badge)? What one colour, or which palette if every person gets a ring? If the user has no answer, offer the five palettes in `references/tokens.md` and recommend one for their product, with a reason.
-2. **Find the stack.** Plain CSS: link `assets/distinctui.css` and use the `dui-` classes. Tailwind v4: import `assets/tailwind.css`. Anything else (React Native, SwiftUI, email): copy the tokens from `references/tokens.md` by value.
+2. **Find the stack.** Plain CSS: link `assets/distinctui.css` and use the `dui-` classes, plus `assets/distinctui.js` for motion and interaction. Tailwind v4: import `assets/tailwind.css`. SwiftUI (iPhone and iPad): add the `DistinctUI` Swift package and follow `references/swiftui.md`. Anything else (React Native, Android, email): copy the tokens from `references/tokens.md` by value.
 3. **Load the font** from Google Fonts, `Bricolage Grotesque` with the optical size axis: `https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap`.
 
 ## The rules
@@ -29,7 +29,7 @@ These are not suggestions. If a request breaks one, say which rule and offer the
 8. **Pills for what you press or type one line into; soft corners for what you read.** Cards 22px, feature card 28px, panels 16px, long-form inputs 14px.
 9. **Dashed until live.** The mark is dashed while the thing it stands for isn't out yet, solid once it ships, with a small black version label such as `v0.3`.
 10. **Errors are black and bold**, with a small black "!" disc, and say which field and how to fix it. Never red.
-11. **Hover is a black edge, not a lift.** Cards change border colour to black. No scale, no shadow, no glow.
+11. **Hover is a black edge, not a lift.** Cards change border colour to black. No scale, no shadow, no glow. Motion only says what changed (a ring drawing in, a mark going live, a menu opening), runs once, and switches off for reduced motion. See `references/motion.md`.
 12. **Write plainly.** See `references/voice.md`.
 
 ## Building blocks
@@ -43,6 +43,9 @@ All components, their markup and when to use each are in `references/components.
 - Cards: card, media card, feature card, note, panel, rows
 - Signature mark: empty, initials or photo inside; sizes, dashed/solid, version label, earned dot, plain and group variants, logo
 - Page: header with nav, footer, menu, pill tabs, status notice, empty state, flash
+- Motion (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, bars grow, filter tabs, toggle
+
+For SwiftUI, every one of these is a view or modifier in the `DistinctUI` package (`DUIMark`, `DUITitle`, `.buttonStyle(.duiPrimary)`, `.duiCard()` and so on). The full map, the phone-specific rules and six example screens are in `references/swiftui.md`.
 
 Worked pages are in `examples/`. Open the closest one before building a similar screen:
 

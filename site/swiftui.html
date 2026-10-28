@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SwiftUI · distinctUI</title>
+<meta name="description" content="distinctUI for iPhone and iPad: a Swift package with the same tokens, type, pill buttons and signature mark, plus six example screens.">
+<meta property="og:title" content="distinctUI for SwiftUI">
+<meta property="og:description" content="The same calm look in a native app. A Swift package with Bricolage, pills and the signature mark.">
+<meta property="og:image" content="https://distinctui.com/share-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="/assets/distinctui.css">
+<link rel="stylesheet" href="/site.css">
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="/">distinctUI</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="wide-nav"><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/swiftui.html" aria-current="page">SwiftUI</a></span>
+    <a class="dui-btn-sm" href="https://github.com/VenusOne-Lee/distinctui">GitHub</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav site-subnav" aria-label="Sections"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/swiftui.html" aria-current="page">SwiftUI</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
+    <span class="dui-eyebrow">iPhone and iPad</span>
+    <h1 class="dui-h1">The same look, <b>native</b></h1>
+    <p class="dui-lede">A Swift package for SwiftUI apps on iOS 17 and later. Same tokens, same Bricolage Grotesque, same black pills and signature mark, with system navigation and tab bars kept native.</p>
+    <div class="install" style="align-self:flex-start"><code id="cmd">https://github.com/VenusOne-Lee/distinctui</code><button class="dui-btn-sm" id="copy" type="button">Copy</button></div>
+    <p class="dui-meta">In Xcode: File, Add Package Dependencies, paste the link, add <code>DistinctUI</code>.</p>
+  </div>
+
+  <section class="dui-section" aria-labelledby="shots-h">
+    <h2 id="shots-h" class="dui-h2">Six <b>screens</b></h2>
+    <p class="dui-body">From <code>DistinctUIExamples</code>, in the iPhone simulator. Invented people; the photos are AI-generated and show people who don't exist.</p>
+    <div class="phones">
+      <figure><img src="/swiftui/makers.png" alt="A directory screen: pill tabs and project cards, each with its maker's ring" loading="lazy"><figcaption><b>Directory</b> Tabs, cards, a note</figcaption></figure>
+      <figure><img src="/swiftui/profile.png" alt="A profile: a large photo mark with a dashed blue ring and a v0.4 label, a light heading with one bold word, and a black pill" loading="lazy"><figcaption><b>Profile</b> Big mark, one black pill</figcaption></figure>
+      <figure><img src="/swiftui/share.png" alt="A form after a failed submit: a grey problems banner and black error lines under two fields" loading="lazy"><figcaption><b>Form</b> Problems banner, field errors</figcaption></figure>
+      <figure><img src="/swiftui/signin.png" alt="A sign-in screen with an email pill field, a black pill and an outlined passkey pill" loading="lazy"><figcaption><b>Sign in</b> Email link or passkey</figcaption></figure>
+      <figure><img src="/swiftui/settings.png" alt="Settings: rows with chevrons, black switches, download and delete" loading="lazy"><figcaption><b>Settings</b> Rows, switches, your data</figcaption></figure>
+      <figure><img src="/swiftui/components.png" alt="Every component on one screen: type, buttons, badges, marks" loading="lazy"><figcaption><b>Kit</b> Every building block</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="code-h">
+    <h2 id="code-h" class="dui-h2">How it <b>reads</b></h2>
+<pre class="code"><code>import DistinctUI
+
+@main
+struct MakersApp: App {
+    init() { DUIAppearance.apply() }   // Bricolage and black on the system bars
+
+    var body: some Scene {
+        WindowGroup {
+            RootView()
+                .distinctUI(signature: Color(duiHex: 0x1F3BFF), palette: .signal)
+        }
+    }
+}
+
+DUITitle("Naledi is building", bold: "Spaza Stock")
+DUIMark(photo: Image("naledi"), ring: 1, live: false, version: "v0.4", size: 128)
+Button("Try Spaza Stock") { }.buttonStyle(.dui(fullWidth: true))
+Button("Follow") { }.buttonStyle(.duiSecondary)
+Text("**Needs:** testers in KZN").duiNote()</code></pre>
+    <p class="dui-body">Every web class has a SwiftUI match. The full map is in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/swiftui.md">swiftui.md</a>, which Claude reads when you ask for distinctUI in a SwiftUI project.</p>
+  </section>
+
+  <section class="dui-section" aria-labelledby="phone-h">
+    <h2 id="phone-h" class="dui-h2">What changes on a <b>phone</b></h2>
+    <ol class="dui-rows rules">
+      <li class="dui-row"><span class="n">1</span><div><b>Light, enforced.</b> <span class="dui-meta"><code>.distinctUI()</code> sets light mode; set <code>UIUserInterfaceStyle</code> to Light too.</span></div></li>
+      <li class="dui-row"><span class="n">2</span><div><b>System chrome stays native.</b> <span class="dui-meta">NavigationStack, TabView, sheets and menus, in black and white. Never the signature colour.</span></div></li>
+      <li class="dui-row"><span class="n">3</span><div><b>Titles go in the content.</b> <span class="dui-meta">An inline bar title, then the light heading with one bold word at the top of the scroll view.</span></div></li>
+      <li class="dui-row"><span class="n">4</span><div><b>Body is 17pt and everything scales.</b> <span class="dui-meta">Every text role follows Dynamic Type.</span></div></li>
+      <li class="dui-row"><span class="n">5</span><div><b>44pt to tap.</b> <span class="dui-meta">Pills and rows have a 44pt minimum.</span></div></li>
+      <li class="dui-row"><span class="n">6</span><div><b>Pressed, not hovered.</b> <span class="dui-meta">Pills scale to 0.97 and dim, cards get a black edge. The only spring is a mark going live.</span></div></li>
+      <li class="dui-row"><span class="n">7</span><div><b>No red badges.</b> <span class="dui-meta">The system tab badge is red: use a black count on a button instead.</span></div></li>
+    </ol>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>distinctUI</b> distinctui.com</span>
+  <span>The system behind Version One. MIT licence.</span>
+  <nav aria-label="More"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/swiftui.html">SwiftUI</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://versionone.co.za">Version One</a></nav>
+</footer>
+<script>
+  document.getElementById("copy").addEventListener("click", async (e) => {
+    const text = document.getElementById("cmd").textContent;
+    try { await navigator.clipboard.writeText(text); e.target.textContent = "Copied"; }
+    catch { getSelection().selectAllChildren(document.getElementById("cmd")); }
+    setTimeout(() => (e.target.textContent = "Copy"), 2000);
+  });
+</script>
+</body>
+</html>

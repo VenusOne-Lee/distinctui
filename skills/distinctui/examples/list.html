@@ -20,6 +20,7 @@
   .shot-ui { position: absolute; inset: 14% 12% 0; border-radius: 14px 14px 0 0; background: var(--dui-white); border: 1px solid var(--dui-grey-200); border-bottom: 0; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
   .shot-ui i { display: block; height: 8px; border-radius: 99px; background: var(--dui-grey-200); }
 </style>
+<script src="../assets/distinctui.js" defer></script>
 </head>
 <body class="dui-page">
 <header class="dui-container dui-header">
@@ -42,20 +43,20 @@
 </header>
 <nav class="dui-container dui-subnav" aria-label="Sections"><a href="#" aria-current="page">Shipped</a><a href="#">Makers</a></nav>
 
-<main class="dui-container" style="padding-block:32px 96px;display:flex;flex-direction:column;gap:32px">
+<main class="dui-container" data-filter-scope style="padding-block:32px 96px;display:flex;flex-direction:column;gap:32px">
   <h1 class="dui-h1">Everything <b>shipped</b></h1>
   <div class="bar">
     <div class="dui-tabs" role="tablist" aria-label="Show">
-      <button class="dui-tab" role="tab" aria-selected="true">All</button>
-      <button class="dui-tab" role="tab" aria-selected="false">Live</button>
-      <button class="dui-tab" role="tab" aria-selected="false">Beta</button>
-      <button class="dui-tab" role="tab" aria-selected="false">Needs help</button>
+      <button class="dui-tab" role="tab" aria-selected="true" data-filter="all" type="button">All</button>
+      <button class="dui-tab" role="tab" aria-selected="false" data-filter="live" type="button">Live</button>
+      <button class="dui-tab" role="tab" aria-selected="false" data-filter="beta" type="button">Beta</button>
+      <button class="dui-tab" role="tab" aria-selected="false" data-filter="help" type="button">Needs help</button>
     </div>
     <input class="dui-field search" type="search" placeholder="Search projects" aria-label="Search projects">
   </div>
 
   <div class="dui-grid dui-grid--3">
-    <a class="dui-card dui-card--flush" href="#">
+    <a class="dui-card dui-card--flush" href="#" data-tags="beta help">
       <div class="dui-card__media"><img src="img/product-a.jpg" alt="Spaza Stock's stock list on a phone"><span class="dui-badge-solid tag">Featured</span></div>
       <div class="dui-card__body">
         <div class="who"><span class="dui-mark" style="--mark-size:2.25rem;--mark-colour:#ff4f1f"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span><b>Spaza Stock</b><span class="dui-badge">Beta</span></div>
@@ -64,7 +65,7 @@
         <p class="dui-note"><b>Needs:</b> testers in KZN</p>
       </div>
     </a>
-    <a class="dui-card dui-card--flush" href="#">
+    <a class="dui-card dui-card--flush" href="#" data-tags="live">
       <div class="dui-card__media"><span class="shot"><span class="dui-mark" style="--mark-size:7.5rem;--mark-colour:#1f3bff"><span class="dui-mark__inner"><img src="img/portrait-3.jpg" alt=""></span><span class="dui-mark__version">v1.2</span></span></span></div>
       <div class="dui-card__body">
         <div class="who"><span class="dui-mark" style="--mark-size:2.25rem;--mark-colour:#1f3bff"><span class="dui-mark__inner"><img src="img/portrait-3.jpg" alt=""></span></span><b>Taxi Fare</b><span class="dui-badge">Live</span></div>
@@ -72,7 +73,7 @@
         <p class="dui-meta" style="margin-top:auto">Kagiso Molefe · v1.2</p>
       </div>
     </a>
-    <a class="dui-card dui-card--flush" href="#">
+    <a class="dui-card dui-card--flush" href="#" data-tags="idea help">
       <div class="dui-card__media"><span class="shot"><span class="shot-ui"><i style="width:40%;background:#000"></i><i style="width:90%"></i><i></i><i style="width:50%"></i></span></span></div>
       <div class="dui-card__body">
         <div class="who"><span class="dui-mark" data-live="false" style="--mark-size:2.25rem;--mark-colour:#7a2cff"><span class="dui-mark__inner">LJ</span></span><b>Loadshed Planner, for small bakeries in Gqeberha</b><span class="dui-badge">Idea</span></div>
@@ -81,6 +82,8 @@
       </div>
     </a>
   </div>
+
+  <p class="dui-empty" data-filter-empty hidden>Nothing here yet.</p>
 
   <section class="dui-section" style="padding-top:48px" aria-labelledby="follow-h">
     <h2 id="follow-h" class="dui-h2">From people you <b>follow</b></h2>
