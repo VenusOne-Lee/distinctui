@@ -1,7 +1,7 @@
-// Serves the static site. www and the old distinctui.versionone.co.za subdomain get a
-// permanent redirect to the same path on distinctui.com. Other hosts (previews) are served as is.
+// Serves the static site. www gets a permanent redirect to the same path on
+// distinctui.com. Other hosts (previews) are served as is.
 const HOME = "distinctui.com";
-const MOVED = new Set(["www.distinctui.com", "distinctui.versionone.co.za"]);
+const MOVED = new Set(["www.distinctui.com"]);
 
 export default {
   async fetch(request, env) {
