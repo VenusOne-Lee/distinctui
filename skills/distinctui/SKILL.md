@@ -53,35 +53,35 @@ For SwiftUI, every one of these is a view or modifier in the `DistinctUI` packag
 
 Worked pages are in `examples/`. Open the closest one before building a similar screen:
 
-| Template | Use it for |
-|---|---|
-| `landing.html` | A launch or marketing page |
-| `about.html` | Who you are, why you started, numbers, beliefs |
-| `team.html` | Everyone in their ring, plus an open seat |
-| `careers.html` | Open roles with salaries, how you hire |
-| `contact.html` | A short contact form with the privacy note beside it |
-| `blog.html` | A blog or news index with a lead story and page numbers |
-| `article.html` | A story, blog post or long read |
-| `case-study.html` | A portfolio piece: facts, problem, what shipped, results |
-| `pricing.html` | Plans and questions |
-| `waitlist.html` | Something not live yet: one field, a dashed mark |
-| `onboarding.html` | A first-run flow with steps and a live preview |
-| `signin.html` | Sign in with an email link or passkey |
-| `dashboard.html` | An owner's home: what needs them, numbers, activity |
-| `profile.html` | A person or team page |
-| `list.html` | A directory or feed |
-| `search.html` | Search results with filters and a no-results state |
-| `settings.html` | Account, emails, your data, delete account |
-| `changelog.html` | Versions and what changed |
-| `form.html` | Any long form, with error states |
-| `product.html` | One product in a shop |
-| `checkout.html` | Delivery and an order summary |
-| `help.html` | A help centre: search, topics, questions, a person |
-| `docs.html` | Documentation with a side menu and code |
-| `status.html` | Uptime and incidents, without traffic-light colours |
-| `notfound.html` | A 404 page |
-| `error.html` | A server error, offline and maintenance |
-| `email.html` | A transactional email (tables and inline styles) |
+| Group | Template | Use it for |
+|---|---|---|
+| Marketing | `landing.html` | A launch or marketing page |
+|  | `waitlist.html` | Something not live yet: one field, a dashed mark |
+|  | `about.html` | Who you are, why you started, numbers, beliefs |
+|  | `team.html` | Everyone in their ring, plus an open seat |
+|  | `careers.html` | Open roles with salaries, how you hire |
+|  | `contact.html` | A short contact form with the privacy note beside it |
+| Stories | `blog.html` | A blog or news index with a lead story and page numbers |
+|  | `article.html` | A story, blog post or long read |
+|  | `case-study.html` | A portfolio piece: facts, problem, what shipped, results |
+|  | `changelog.html` | Versions and what changed |
+| Selling | `pricing.html` | Plans and questions |
+|  | `product.html` | One product in a shop |
+|  | `checkout.html` | Delivery and an order summary |
+| Accounts | `signin.html` | Sign in with an email link or passkey |
+|  | `onboarding.html` | A first-run flow with steps and a live preview |
+|  | `profile.html` | A person or team page |
+|  | `settings.html` | Account, emails, your data, delete account |
+| Screens | `dashboard.html` | An owner's home: what needs them, numbers, activity |
+|  | `list.html` | A directory or feed |
+|  | `search.html` | Search results with filters and a no-results state |
+|  | `form.html` | Any long form, with error states |
+| Help and docs | `help.html` | A help centre: search, topics, questions, a person |
+|  | `docs.html` | Documentation with a side menu and code |
+|  | `status.html` | Uptime and incidents, without traffic-light colours |
+| System pages | `notfound.html` | A 404 page |
+|  | `error.html` | A server error, offline and maintenance |
+|  | `email.html` | A transactional email (tables and inline styles) |
 
 The example photos in `examples/img/` are AI-generated people, places and products that don't exist. Replace them with your own.
 
