@@ -27,10 +27,20 @@
   <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
     <h1 class="dui-h1">Every <b>component</b></h1>
     <p class="dui-lede">Live, from <code>distinctui.css</code>. The markup for each is in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/components.md">components.md</a>.</p>
-    <nav class="toc" aria-label="On this page">
+  </div>
+
+  <div class="docs">
+  <aside class="docs-side">
+    <nav class="dui-sidenav docs-nav" aria-label="On this page">
+      <div><h2>Foundations</h2><ul><li><a href="#colour">Colour</a></li><li><a href="#palettes">Palettes</a></li><li><a href="#type">Type</a></li><li><a href="#shape">Shape</a></li></ul></div>
+      <div><h2>Components</h2><ul><li><a href="#buttons">Buttons</a></li><li><a href="#badges">Badges</a></li><li><a href="#forms">Forms</a></li><li><a href="#cards">Cards</a></li><li><a href="#mark">Mark</a></li><li><a href="#nav">Menu and tabs</a></li><li><a href="#notices">Notices</a></li></ul></div>
+      <div><h2>Patterns</h2><ul><li><a href="#motion">Motion</a></li><li><a href="#furniture">Furniture</a></li><li><a href="#content">Tables</a></li><li><a href="#controls">Switches</a></li><li><a href="#icons">Icons</a></li></ul></div>
+    </nav>
+  </aside>
+  <div class="docs-body">
+    <nav class="toc docs-chips" aria-label="On this page">
       <a class="dui-btn-sm-ghost" href="#colour">Colour</a><a class="dui-btn-sm-ghost" href="#palettes">Palettes</a><a class="dui-btn-sm-ghost" href="#type">Type</a><a class="dui-btn-sm-ghost" href="#shape">Shape</a><a class="dui-btn-sm-ghost" href="#buttons">Buttons</a><a class="dui-btn-sm-ghost" href="#badges">Badges</a><a class="dui-btn-sm-ghost" href="#forms">Forms</a><a class="dui-btn-sm-ghost" href="#cards">Cards</a><a class="dui-btn-sm-ghost" href="#mark">Mark</a><a class="dui-btn-sm-ghost" href="#nav">Menu and tabs</a><a class="dui-btn-sm-ghost" href="#notices">Notices</a><a class="dui-btn-sm-ghost" href="#motion">Motion</a><a class="dui-btn-sm-ghost" href="#furniture">Furniture</a><a class="dui-btn-sm-ghost" href="#content">Tables</a><a class="dui-btn-sm-ghost" href="#controls">Switches</a><a class="dui-btn-sm-ghost" href="#icons">Icons</a>
     </nav>
-  </div>
 
   <section class="dui-section spec" id="colour" aria-labelledby="c-h">
     <h2 id="c-h" class="dui-h2"><b>Colour</b></h2>
@@ -327,6 +337,8 @@
       <p class="cap">Lucide outlines in <code>icons.svg</code>, drawn in the text colour, next to a word. Never filled, never coloured.</p>
     </div>
   </section>
+  </div>
+  </div>
 </main>
 
 <footer class="dui-container dui-footer">
@@ -334,5 +346,21 @@
   <span>The system behind Version One. MIT licence.</span>
   <nav aria-label="More"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/swiftui.html">SwiftUI</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://www.npmjs.com/package/@distinctui/css">npm</a><a href="https://versionone.co.za">Version One</a></nav>
 </footer>
+<script>
+// Side navigation: mark the section in view, so you always know where you are.
+(() => {
+  const links = [...document.querySelectorAll(".docs-nav a")];
+  const sections = links.map((a) => document.querySelector(a.hash));
+  const mark = () => {
+    let current = sections[0];
+    for (const s of sections) if (s.getBoundingClientRect().top <= 120) current = s;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = sections.at(-1);
+    links.forEach((a, i) => sections[i] === current ? a.setAttribute("aria-current", "location") : a.removeAttribute("aria-current"));
+  };
+  addEventListener("scroll", mark, { passive: true });
+  addEventListener("resize", mark);
+  mark();
+})();
+</script>
 </body>
 </html>
