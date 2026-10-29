@@ -104,10 +104,8 @@ skills/distinctui/
   references/imagery.md    photos, icons and charts
   references/review.md     the checklist Claude runs before it's done
   references/swiftui.md    the SwiftUI package, what maps to what, phone rules
-  examples/                27 templates: landing, about, team, careers, contact, blog,
-                           article, case study, pricing, waitlist, onboarding, sign-in,
-                           dashboard, profile, directory, search, settings, changelog,
-                           form, product, checkout, help, docs, status, 404, error, email
+  examples/                27 templates in seven groups: marketing, stories, selling,
+                           accounts, app screens, help and docs, system pages
 site/                      distinctui.com
 Package.swift              the Swift package
 swift/Sources/DistinctUI   tokens, type, pills, marks, cards and forms in SwiftUI, with the font
