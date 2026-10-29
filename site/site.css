@@ -42,6 +42,21 @@ code { font-family: var(--dui-mono); font-size: 0.88em; }
 }
 .docs-nav { gap: var(--dui-space-6); }
 .docs-nav a[aria-current="location"] { border-left: 2px solid var(--dui-black); padding-left: calc(0.875rem - 1px); font-weight: 700; }
+/* Templates page on phones and tablets: one row of group chips that stays at the top and marks where you are,
+   and on phones each group is a row of cards you swipe, so 27 templates aren't one long scroll. */
+@media (max-width: 1023px) {
+  .tpl-chips { position: sticky; top: 0; z-index: 5; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding: 12px 16px; background: var(--dui-white); border-bottom: 1px solid var(--dui-grey-100); }
+  .tpl-chips::-webkit-scrollbar { display: none; }
+  .tpl-chips a { flex: none; }
+  .tpl-chips a[aria-current="location"] { background: var(--dui-black); color: var(--dui-white); border-color: var(--dui-black); }
+  .tpl-docs .docs-body > .dui-section { scroll-margin-top: 0; }
+}
+@media (min-width: 640px) and (max-width: 1023px) { .tpl-chips { margin-inline: -24px; padding-inline: 24px; } }
+@media (max-width: 639px) {
+  .tpl { grid-auto-flow: column; grid-auto-columns: 80%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
+  .tpl::-webkit-scrollbar { display: none; }
+  .tpl > * { scroll-snap-align: start; }
+}
 .spec { display: flex; flex-direction: column; gap: 20px; }
 .demo { border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-card); padding: 28px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .demo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 20px; }

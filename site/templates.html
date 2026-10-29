@@ -33,7 +33,7 @@
     <p class="dui-lede">Whole pages built only from the skill. Open one, copy it, change the words. Claude reads these before building something similar. Every person and product in them is invented, and the photos are AI-generated.</p>
   </div>
 
-  <div class="docs">
+  <div class="docs tpl-docs">
   <aside class="docs-side">
     <nav class="dui-sidenav docs-nav" aria-label="On this page">
       <div><h2>Website</h2><ul><li><a href="#marketing">Marketing</a></li><li><a href="#stories">Stories</a></li><li><a href="#selling">Selling</a></li></ul></div>
@@ -42,7 +42,7 @@
     </nav>
   </aside>
   <div class="docs-body">
-    <nav class="toc docs-chips" aria-label="On this page">
+    <nav class="toc docs-chips tpl-chips" aria-label="Groups">
       <a class="dui-btn-sm-ghost" href="#marketing">Marketing</a><a class="dui-btn-sm-ghost" href="#stories">Stories</a><a class="dui-btn-sm-ghost" href="#selling">Selling</a><a class="dui-btn-sm-ghost" href="#accounts">Accounts</a><a class="dui-btn-sm-ghost" href="#screens">Screens</a><a class="dui-btn-sm-ghost" href="#help">Help and docs</a><a class="dui-btn-sm-ghost" href="#system">System pages</a>
     </nav>
 
@@ -120,13 +120,19 @@
 <script>
 // Side navigation: mark the section in view, so you always know where you are.
 (() => {
-  const links = [...document.querySelectorAll(".docs-nav a")];
+  // On phones the chip row does the same job, and keeps the marked chip in view as it slides.
+  const links = [...document.querySelectorAll(".docs-nav a, .tpl-chips a")];
   const sections = links.map((a) => document.querySelector(a.hash));
+  const chips = document.querySelector(".tpl-chips");
+  let last;
   const mark = () => {
     let current = sections[0];
     for (const s of sections) if (s.getBoundingClientRect().top <= 120) current = s;
     if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = sections.at(-1);
     links.forEach((a, i) => sections[i] === current ? a.setAttribute("aria-current", "location") : a.removeAttribute("aria-current"));
+    const chip = chips.querySelector('[aria-current="location"]');
+    if (chip && chip !== last && chips.scrollWidth > chips.clientWidth) chips.scrollTo({ left: chip.offsetLeft - 16, behavior: "smooth" });
+    last = chip;
   };
   addEventListener("scroll", mark, { passive: true });
   addEventListener("resize", mark);
