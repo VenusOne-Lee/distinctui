@@ -97,9 +97,11 @@ skills/distinctui/
   assets/distinctui.js     optional motion and interaction, driven by attributes
   assets/tokens.json       the tokens as JSON, for Figma (Tokens Studio) and Style Dictionary
   assets/icons.svg         25 Lucide outline icons as one sprite
+  assets/stageshow-look.css  the look for Stageshow moments (faux product UI)
   references/tokens.md     colour, type, space, radius, mark, motion
   references/components.md markup for every component
   references/motion.md     how things move, and when they don't
+  references/moments.md    product stories with Stageshow, in the distinctUI look
   references/voice.md      how the words sound
   references/imagery.md    photos, icons and charts
   references/review.md     the checklist Claude runs before it's done
@@ -107,6 +109,7 @@ skills/distinctui/
   examples/                27 templates in seven groups: marketing, stories, selling,
                            accounts, app screens, help and docs, system pages
 site/                      distinctui.com
+moments/                   the Moments page scenes, with a copy of the Stageshow kit (MIT, Benji Taylor)
 Package.swift              the Swift package
 swift/Sources/DistinctUI   tokens, type, pills, marks, cards and forms in SwiftUI, with the font
 swift/Sources/DistinctUIExamples  six example screens

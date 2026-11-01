@@ -4,28 +4,49 @@
   "description": "Calm black, white and grey interfaces with one signature mark in one colour. The design system behind Version One.",
   "license": "MIT",
   "homepage": "https://distinctui.com",
-  "repository": { "type": "git", "url": "git+https://github.com/VenusOne-Lee/distinctui.git" },
-  "keywords": ["design-system", "css", "tailwind", "claude", "skill", "monochrome"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VenusOne-Lee/distinctui.git"
+  },
+  "keywords": [
+    "design-system",
+    "css",
+    "tailwind",
+    "claude",
+    "skill",
+    "monochrome"
+  ],
   "style": "skills/distinctui/assets/distinctui.css",
   "unpkg": "skills/distinctui/assets/distinctui.css",
   "jsdelivr": "skills/distinctui/assets/distinctui.css",
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": "./skills/distinctui/assets/distinctui.css",
     "./distinctui.css": "./skills/distinctui/assets/distinctui.css",
     "./tailwind.css": "./skills/distinctui/assets/tailwind.css",
     "./distinctui.js": "./skills/distinctui/assets/distinctui.js",
     "./tokens.json": "./skills/distinctui/assets/tokens.json",
+    "./stageshow-look.css": "./skills/distinctui/assets/stageshow-look.css",
     "./icons.svg": "./skills/distinctui/assets/icons.svg"
   },
-  "files": ["skills/distinctui"],
-  "publishConfig": { "access": "public" },
+  "files": [
+    "skills/distinctui"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "dev": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
+    "esbuild": "^0.24.2",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "wrangler": "^4.0.0"
   }
 }

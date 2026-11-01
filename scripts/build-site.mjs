@@ -55,4 +55,20 @@ templates.forEach(({ slug, name }, i) => {
   writeFileSync(file, html.replace(/<body[^>]*>/, (m) => `${m}\n${bar}`));
 });
 
-console.log(`Built dist/ (${templates.length} templates with the site bar)`);
+// Moments: faux product UI built with the Stageshow kit (moments/kit, MIT,
+// Benji Taylor) in the distinctUI look, bundled for the Moments page.
+const { build } = await import("esbuild");
+await build({
+  entryPoints: { moments: "moments/src/main.tsx" },
+  bundle: true,
+  minify: true,
+  format: "esm",
+  target: "es2020",
+  jsx: "automatic",
+  outdir: "dist/moments",
+  define: { "process.env.NODE_ENV": '"production"' },
+  legalComments: "eof",
+  logLevel: "warning",
+});
+
+console.log(`Built dist/ (${templates.length} templates with the site bar, moments bundle)`);

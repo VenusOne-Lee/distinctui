@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Moments · distinctUI</title>
+<meta name="description" content="Moments: small product stories in the distinctUI look, built with Stageshow. A ring goes live, a follower lands, an ask gets answered, a field gets fixed.">
+<meta property="og:title" content="distinctUI moments">
+<meta property="og:description" content="Small product stories, one thing happening, in black, white and grey.">
+<meta property="og:image" content="https://distinctui.com/share-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="/assets/distinctui.css">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/assets/stageshow-look.css">
+<link rel="stylesheet" href="/moments/moments.css">
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="/">distinctUI</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="wide-nav"><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/moments.html" aria-current="page">Moments</a><a href="/swiftui.html">SwiftUI</a></span>
+    <a class="dui-btn-sm" href="https://github.com/VenusOne-Lee/distinctui">GitHub</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav site-subnav" aria-label="Sections"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/moments.html" aria-current="page">Moments</a><a href="/swiftui.html">SwiftUI</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
+    <span class="dui-eyebrow">Moments</span>
+    <h1 class="dui-h1">One thing <b>happens</b></h1>
+    <p class="dui-lede">Small product stories for a hero, a feature card or a docs page. A believable screen in black, white and grey, and one change you can watch: a ring going live, a follower landing, an ask answered, a field fixed.</p>
+    <p class="dui-meta">Built with <a class="dui-link" href="https://benji.org/stageshow">Stageshow</a> by Benji Taylor, in the distinctUI look. Each plays once when you scroll to it. With reduced motion you see the finished frame.</p>
+  </div>
+
+  <section class="dui-section" aria-labelledby="live-h">
+    <h2 id="live-h" class="dui-h2">Going <b>live</b></h2>
+    <p class="dui-body">Press, the pill settles on itself, the dashes fill in with one pop, the version rolls, the update arrives and carries the list down, and a follower lands a beat later.</p>
+    <div class="moment moment-hero" data-moment="going-live" data-label="A project page for Lift Club by Thandi Mokoena. Go live is pressed, the dashed blue ring turns solid, the version changes from v0.1 to v1.0, a v1.0 is live update appears and the follower count goes from 127 to 128."></div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="cards-h">
+    <h2 id="cards-h" class="dui-h2">Feature <b>cards</b></h2>
+    <div class="moment-grid">
+      <div class="moment-tile">
+        <div class="moment" data-moment="follow" data-label="Sipho Ndlovu's card. Follow is pressed and becomes Following, the count rolls from 127 to 128, and a line says you'll hear when Sipho ships."></div>
+        <h3 class="dui-h4">Follow</h3>
+        <p class="cap">The pill keeps its footprint, the count rolls only the digit that changed.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="ask" data-label="An ask for three testers in Durban. Three empty dashed rings fill one by one with people, the count goes from 0 to 3, and the badge changes from Open to Answered."></div>
+        <h3 class="dui-h4">An ask answered</h3>
+        <p class="cap">No cursor. Empty rings fill as people say yes.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="fix-field" data-label="A Link field. Send for review shows an error under the field, https:// is typed, the error clears, and the button confirms Sent for review."></div>
+        <h3 class="dui-h4">Fix the field</h3>
+        <p class="cap">The error sits under its field and leaves the moment it's fixed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="moves-h">
+    <h2 id="moves-h" class="dui-h2">The same moves, on <b>any page</b></h2>
+    <p class="dui-body">No React needed. These come with <code>distinctui.js</code> and work from attributes. Try them.</p>
+    <div class="demo">
+      <div class="demo-row">
+        <span class="dui-mark" id="m-live" data-live="false" data-ring="1" style="--mark-size:4rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v0.1</span></span>
+        <button class="dui-btn-sm" type="button" data-go-live="#m-live" data-live-label="Back to draft">Go live</button>
+        <span class="cap">The dashes fill in, one pop.</span>
+      </div>
+      <div class="demo-row">
+        <button class="dui-btn-sm" type="button" aria-pressed="false" data-pressed-label="Following" data-count-target="#followers">Follow</button>
+        <span><b id="followers" class="dui-tabular">127</b> <span class="cap">followers</span></span>
+        <span class="cap">Only the changed digit rolls.</span>
+      </div>
+      <div class="demo-row">
+        <button class="dui-btn-sm-ghost" type="button" data-done="Copied">Copy link</button>
+        <span class="cap">Confirms on itself, then settles back.</span>
+      </div>
+      <div class="demo-row">
+        <button class="dui-btn-sm-ghost" type="button" id="add-row">Add an update</button>
+        <span class="cap">A new row opens its room and carries the rows below.</span>
+      </div>
+      <ul class="dui-rows" id="updates" style="max-width:30rem">
+        <li class="dui-row"><b>v0.1 went to five testers</b> <span class="dui-meta" style="margin-left:auto">3 days ago</span></li>
+        <li class="dui-row"><b>Lift Club joined</b> <span class="dui-meta" style="margin-left:auto">2 weeks ago</span></li>
+      </ul>
+    </div>
+<pre class="dui-code"><code>&lt;button aria-pressed="false" data-pressed-label="Following" data-count-target="#followers"&gt;Follow&lt;/button&gt;
+&lt;b id="followers"&gt;127&lt;/b&gt;
+&lt;button data-done="Copied"&gt;Copy link&lt;/button&gt;
+
+distinctUI.roll(el, 128);           // after your app knows the number changed
+distinctUI.done(button, "Saved");   // after the save worked
+distinctUI.add(list, row);          // a new row arrives
+distinctUI.remove(row);             // a row leaves</code></pre>
+  </section>
+
+  <section class="dui-section" aria-labelledby="make-h">
+    <h2 id="make-h" class="dui-h2">Make your <b>own</b></h2>
+    <p class="dui-body">Install both skills, then ask Claude for a moment. distinctUI brings the look and its rules; Stageshow brings the stage, the cursor, framing and the motion parts.</p>
+    <div class="install" style="align-self:flex-start"><code id="cmd">npx skills add benjitaylor/skills --skill stageshow</code><button class="dui-btn-sm" type="button" data-done="Copied" data-copy="cmd">Copy</button></div>
+    <p class="dui-meta">Then: <code>Build a distinctUI moment for our pricing page: a plan changes and the total rolls.</code></p>
+    <ol class="dui-rows rules">
+      <li class="dui-row"><span class="n">1</span><div><b>Light, mono, the distinctUI look.</b> <span class="dui-meta"><code>&lt;Stage className="dui-look" palette="mono"&gt;</code> with <code>stageshow-look.css</code>. No dark, glass or blueprint themes.</span></div></li>
+      <li class="dui-row"><span class="n">2</span><div><b>Colour only on rings.</b> <span class="dui-meta">Put real <code>.dui-mark</code> elements in the stage. Status is said in words, not green or red.</span></div></li>
+      <li class="dui-row"><span class="n">3</span><div><b>Once, not a loop.</b> <span class="dui-meta"><code>play="once"</code> when seen, with Play again. The poster is the payoff.</span></div></li>
+      <li class="dui-row"><span class="n">4</span><div><b>One thing happens.</b> <span class="dui-meta">Three to five beats, three to seven real words, filler bars for the rest.</span></div></li>
+      <li class="dui-row"><span class="n">5</span><div><b>Every change moves.</b> <span class="dui-meta">Numbers roll, buttons confirm on themselves, rows open their room. Nothing swaps or pops.</span></div></li>
+    </ol>
+    <p class="dui-body">The full rules are in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/moments.md">moments.md</a>. These scenes are in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/tree/main/moments">moments/</a>.</p>
+  </section>
+</main>
+
+
+<footer class="dui-container dui-footer">
+  <span><b>distinctUI</b> distinctui.com</span>
+  <span>The system behind Version One. MIT licence.</span>
+  <nav aria-label="More"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/moments.html">Moments</a><a href="/swiftui.html">SwiftUI</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://www.npmjs.com/package/@distinctui/css">npm</a><a href="https://versionone.co.za">Version One</a></nav>
+</footer>
+<script src="/assets/distinctui.js" defer></script>
+<script type="module" src="/moments/moments.js"></script>
+<script>
+  document.querySelectorAll("[data-copy]").forEach((btn) => btn.addEventListener("click", () => {
+    navigator.clipboard?.writeText(document.getElementById(btn.dataset.copy).textContent).catch(() => {});
+  }));
+  document.getElementById("add-row").addEventListener("click", () => {
+    const n = document.querySelectorAll("#updates li").length;
+    const li = document.createElement("li");
+    li.className = "dui-row";
+    li.innerHTML = `<b>v0.${n} is live</b> <span class="dui-meta" style="margin-left:auto">Just now</span>`;
+    distinctUI.add(document.getElementById("updates"), li);
+  });
+</script>
+</body>
+</html>

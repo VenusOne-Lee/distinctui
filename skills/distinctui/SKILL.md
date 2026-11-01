@@ -45,7 +45,8 @@ All components, their markup and when to use each are in `references/components.
 - Page: header with nav, footer, menu, pill tabs, breadcrumbs, side menu, page numbers, steps, progress bar, status notice, empty state, flash
 - Content: questions that open in place, table, code block, filter chips, a stack of faces, dialog, loading shapes
 - Icons: Lucide outlines from `assets/icons.svg`, black, next to a word
-- Motion (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, bars grow, filter tabs, toggle
+- Motion (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, rolls, confirms on itself, rows arrive and leave, bars grow, filter tabs, toggle
+- Moments: small product stories (a hero demo, a feature card with a cursor) built with Stageshow and `assets/stageshow-look.css`. Rules in `references/moments.md`
 
 Photos, icons and charts have their own rules in `references/imagery.md`. Tokens for Figma (Tokens Studio) or Style Dictionary are in `assets/tokens.json`.
 
