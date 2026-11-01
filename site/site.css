@@ -131,3 +131,16 @@ pre.code { margin: 0; overflow-x: auto; border-radius: var(--dui-radius-panel); 
 .moment-tile h3 { margin: 4px 0 0; }
 .moves-list { display: flex; flex-direction: column; gap: 0; }
 .moves-list .dui-row { padding-block: 14px; }
+/* Moments: the every-element grid */
+.moves-grid { display: grid; gap: 20px; }
+@media (min-width: 700px) { .moves-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .moves-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.moves-grid .demo { gap: 16px; }
+.moves-grid .cap code { font-size: 0.85em; }
+.g-error { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
+.g-error.is-gone, #g-count.is-gone { opacity: 0; }
+.g-qty { display: inline-flex; align-items: center; gap: 6px; }
+.g-qty .dui-icon-btn { width: 1.75rem; height: 1.75rem; }
+.g-qty b { min-width: 1ch; text-align: center; }
+#g-steps li::before { transition: background-color 480ms cubic-bezier(0.2, 0, 0, 1); }
+@media (prefers-reduced-motion: reduce) { .g-error, #g-steps li::before { transition: none; } }

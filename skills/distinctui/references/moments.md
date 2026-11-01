@@ -1,12 +1,12 @@
 # Moments
 
-A moment is a small product story: a believable distinctUI screen and one thing happening on it. A ring going live, a follower landing, an ask answered, a field fixed. Use one for a hero, a feature card, a docs page or a launch post. distinctui.com/moments shows four.
+A moment is a small product story: a believable distinctUI screen and one thing happening on it. Something going live, a price rolling, a seat filled, a field fixed, a file removed. Use one for a hero, a feature card, a docs page or a launch post. distinctui.com/moments shows seven scenes, plus the same moves live on every distinctUI element: buttons, badges, the mark, cards, inputs, switches and notices, tabs, lists, tables, steps and progress, dialogs, faces, counts and chips.
 
 There are two ways to make one.
 
 ## 1. On a real page: the moves in distinctui.js
 
-When the change really happens in your product, use the moves in `references/motion.md`: the mark going live, `data-roll` and `distinctUI.roll()` for numbers, `data-done` and `distinctUI.done()` for a button that confirms on itself, `distinctUI.add()` and `distinctUI.remove()` for rows. No framework needed.
+When the change really happens in your product, use the moves in `references/motion.md`: the mark going live, `data-roll` and `distinctUI.roll()` for numbers, `data-done` and `distinctUI.done()` for a button that confirms on itself, `distinctUI.add()` and `distinctUI.remove()` for rows, notices and chips. No framework needed. distinctUI has no toasts: a "saved" moment is a `.dui-status` notice that opens where the person is looking and stays.
 
 ## 2. As an illustration: Stageshow plus the distinctUI look
 
@@ -36,7 +36,7 @@ Follow Stageshow's workflow (medium, look, story, start from a gold example, scr
 10. **Design at the size it's seen.** About 720 × 340 beside copy, 400 × 260 for a card, and a `compact` redesign at 358 wide for phones, not a squeeze.
 11. **Invented people only.** Names and products are made up, as in `examples/`.
 
-The four scenes on distinctui.com are in the repository's `moments/` folder, a good starting point to copy.
+The seven scenes on distinctui.com are in the repository's `moments/` folder, a good starting point to copy. They use product-neutral examples; keep yours about your own product.
 
 ## Check before you hand it over
 

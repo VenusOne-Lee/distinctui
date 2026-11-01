@@ -76,14 +76,6 @@
 .ss-stage[data-layout="compact"] .mo-live__head { flex-wrap: wrap; row-gap: 18px; }
 .ss-stage[data-layout="compact"] .mo-live__head .mo-pill { width: 100%; }
 
-/* -------------------------------------------------------------- Follow */
-.mo-follow .mo-follow__card { left: 32px; top: 40px; width: 400px; padding: 28px; }
-.mo-follow .mo-follow__who { display: flex; align-items: center; gap: 16px; }
-.mo-follow .mo-follow__bar { display: flex; align-items: center; gap: 18px; margin-top: 26px; }
-.mo-follow .mo-follow__count { display: grid; gap: 0; }
-.mo-follow .mo-follow__count .mo-num { font-size: 22px; line-height: 1.1; }
-.mo .mo-note { margin: 0; padding-top: 20px; font-size: 14px; color: #262626; }
-
 /* ------------------------------------------------------------------ Ask */
 .mo-ask .mo-ask__card { left: 32px; top: 36px; width: 400px; padding: 26px 28px; }
 .mo-ask .mo-ask__top { display: flex; align-items: center; justify-content: space-between; padding-right: 36px; }
@@ -107,6 +99,59 @@
 .mo-fix .mo-fix__group { display: grid; gap: 8px; }
 .mo-fix .mo-fix__lane { min-height: 18px; font-size: 13px; }
 .mo .mo-error { font-size: 13px; font-weight: 600; color: #000; }
+
+/* -------------------------------------------------------- Shared bits */
+.mo .mo-ink, .mo .mo-row .mo-ink { font-size: 14px; color: #000; }
+.mo .mo-row .mo-num span { color: inherit; font-size: inherit; }
+.mo .mo-live__title .mo-live__sub { display: flex; align-items: center; gap: 8px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.mo .mo-badge--sm { padding: 1px 8px; font-size: 11px; }
+.mo .mo-row--total { border-bottom: 0; }
+.mo .mo-ghost { display: inline-grid; place-items: center; height: 30px; padding: 0 14px; border-radius: 9999px; box-shadow: inset 0 0 0 1px #e5e5e5; font-size: 13px; font-weight: 600; color: #000; transition: box-shadow 120ms cubic-bezier(0.2, 0, 0, 1), transform 120ms cubic-bezier(0.2, 0, 0, 1); }
+.mo .mo-ghost[data-hover] { box-shadow: inset 0 0 0 1px #000; }
+.mo .mo-ghost[data-pressed] { transform: scale(0.97); }
+.mo .mo-ghost--quiet { color: #a3a3a3; }
+.mo .dui-tab { transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1), transform 120ms cubic-bezier(0.2, 0, 0, 1); }
+.mo .dui-tab[data-pressed] { transform: scale(0.97); }
+
+/* ------------------------------------------------------------- Pricing */
+.mo-price .mo-price__card { left: 32px; top: 36px; width: 400px; padding: 26px 28px; }
+.mo-price .mo-price__plan { margin: 22px 0 4px; }
+.mo-price .mo-price__num { display: flex; align-items: baseline; gap: 8px; margin: 0; }
+.mo-price .mo-price__num .mo-num { font-size: 44px; letter-spacing: -0.04em; line-height: 1.05; }
+.mo-price .mo-price__lane { margin-top: 12px; min-height: 20px; font-size: 13px; }
+.mo-price .mo-price__save { font-size: 13px; font-weight: 600; color: #000; }
+
+/* ------------------------------------------------------------ Checkout */
+.mo-checkout .mo-checkout__card { left: 32px; top: 24px; width: 336px; padding: 22px 28px; display: grid; gap: 12px; }
+.mo-checkout .dui-steps li::before { transition: background-color 480ms cubic-bezier(0.2, 0, 0, 1); }
+.mo-checkout .dui-steps li { transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.mo-checkout .mo-row { height: 34px; }
+
+/* ------------------------------------------------------------ Settings */
+.mo-settings .mo-settings__card { left: 32px; top: 36px; width: 400px; padding: 24px 28px; }
+.mo-settings .mo-settings__title { margin: 0 0 8px; font-size: 20px; font-weight: 600; letter-spacing: -0.03em; }
+.mo-settings .mo-settings__row { font-size: 14px; border-bottom: 1px solid #f2f2f2; padding-right: 36px; }
+.mo-settings .mo-settings__status { margin: 4px 36px 10px 0; font-size: 13px; }
+
+/* -------------------------------------------------------------- Remove */
+.mo-remove .mo-remove__card { left: 32px; top: 30px; width: 336px; padding: 22px 28px; }
+.mo-remove .mo-remove__title { margin: 0 0 6px; font-size: 18px; font-weight: 600; letter-spacing: -0.03em; }
+.mo-remove .mo-row { height: 46px; }
+.mo-remove .mo-veil {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(255, 255, 255, 0.82); opacity: 0; pointer-events: none;
+  transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.mo-remove .mo-veil[data-show] { opacity: 1; }
+.mo-remove .mo-dialog {
+  width: 268px; padding: 22px; background: #fff; border-radius: 20px; box-shadow: var(--ss-shadow-window);
+  transform: scale(0.97); transition: transform 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.mo-remove .mo-veil[data-show] .mo-dialog { transform: none; }
+.mo-remove .mo-dialog b { font-size: 16px; }
+.mo-remove .mo-dialog p { margin: 6px 0 16px; font-size: 13px; color: #6b6b6b; }
+.mo-remove .mo-dialog__actions { display: flex; gap: 8px; }
+.mo-remove .mo-dialog .mo-pill { height: 36px; padding: 0 16px; font-size: 13px; }
 
 /* ---------------------------------------------------------------- Host */
 .mo-replay { margin: 14px auto 0; display: flex; }

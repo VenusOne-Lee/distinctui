@@ -1,8 +1,8 @@
 import { Count, Stage, States, type Act } from '../kit'
 
-// An ask answered, with no cursor: three empty spots wait under the ask,
-// each one fills as a tester says yes, the count rolls with it, and the
-// status settles on Answered when the last spot is taken.
+// Avatars and a badge, with no cursor: three empty seats wait on a team,
+// each one fills as an invite is accepted, the count rolls with it, and the
+// badge settles on Full when the last seat is taken.
 
 type S = { filled: number; done: boolean }
 
@@ -24,18 +24,18 @@ async function script(a: Act<S>) {
   await a.wait(2400)
 }
 
-export function Ask() {
+export function Invite() {
   return (
     <Stage width={400} height={260} initial={initial} poster={poster} script={script} play="once" palette="mono" className="dui-look mo mo-ask">
       {(s) => (
         <div className="mo-card mo-ask__card">
           <div className="mo-ask__top">
-            <span className="mo-faint">Lift Club asks</span>
+            <span className="mo-faint">Team seats</span>
             <span className="mo-badge" data-solid={s.done || undefined}>
-              <States value={s.done ? 'done' : 'open'} states={{ open: <span>Open</span>, done: <span>Answered</span> }} />
+              <States value={s.done ? 'done' : 'open'} states={{ open: <span>Open</span>, done: <span>Full</span> }} />
             </span>
           </div>
-          <p className="mo-ask__q">Three testers in <b>Durban</b></p>
+          <p className="mo-ask__q">Design team, <b>three seats</b></p>
           <div className="mo-ask__spots">
             {PEOPLE.map((p, i) => (
               <span key={p.initials} className="mo-spot" data-on={s.filled > i || undefined}>
@@ -49,7 +49,7 @@ export function Ask() {
             ))}
           </div>
           <p className="mo-ask__count">
-            <b className="mo-num"><Count value={s.filled} /></b> of 3 said yes
+            <b className="mo-num"><Count value={s.filled} /></b> of 3 joined
           </p>
         </div>
       )}
