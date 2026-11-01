@@ -665,7 +665,16 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 
 /* Going live: dashed turns solid with one small pop and a ring of colour
    that spreads and fades. Set data-live="true" and add .dui-live-now. */
-.dui-mark.dui-live-now { animation: dui-live var(--dui-dur-live) var(--dui-ease-pop); }
+.dui-mark.dui-live-now { animation: dui-live var(--dui-dur-live) var(--dui-ease-pop), dui-ring-in var(--dui-dur-live) var(--dui-ease); }
+/* A border's style can't animate, so the dashes fill in instead of snapping:
+   the solid ring fades in under a dashed copy that fades out. */
+.dui-mark.dui-live-now:not(.dui-draw)::after {
+  content: ""; position: absolute; inset: calc(var(--mark-size) * -0.06);
+  border-radius: 50%; border: calc(var(--mark-size) * 0.06) dashed var(--mark-colour);
+  opacity: 0; animation: dui-dashes-out var(--dui-dur-live) var(--dui-ease); pointer-events: none;
+}
+@keyframes dui-ring-in { 0%, 15% { border-color: transparent; } }
+@keyframes dui-dashes-out { 0%, 15% { opacity: 1; } 100% { opacity: 0; } }
 .dui-mark.dui-live-now::before {
   content: ""; position: absolute; inset: calc(var(--mark-size) * -0.06);
   border-radius: 50%; border: calc(var(--mark-size) * 0.06) solid var(--mark-colour);
@@ -682,6 +691,33 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 
 /* A number counting up to its value (data-count on the element). */
 .dui-count-up { font-variant-numeric: tabular-nums; }
+
+/* A number that changes rolls only the digits that changed, last digit first
+   (data-roll, or distinctUI.roll(el, 128)). Up rolls up, down rolls down. */
+.dui-roll { display: inline-flex; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dui-roll__digit { display: inline-grid; overflow: hidden; }
+.dui-roll__digit > span { grid-area: 1 / 1; animation: var(--dui-dur-slow) var(--dui-ease) both; animation-delay: calc(var(--dui-i, 0) * 60ms); }
+.dui-roll__old { animation-name: dui-roll-out; }
+.dui-roll__new { animation-name: dui-roll-in; }
+.dui-roll__digit[data-dir="down"] .dui-roll__old { animation-name: dui-roll-out-down; }
+.dui-roll__digit[data-dir="down"] .dui-roll__new { animation-name: dui-roll-in-down; }
+@keyframes dui-roll-out { to { transform: translateY(-100%); opacity: 0; } }
+@keyframes dui-roll-in { from { transform: translateY(100%); opacity: 0; } }
+@keyframes dui-roll-out-down { to { transform: translateY(100%); opacity: 0; } }
+@keyframes dui-roll-in-down { from { transform: translateY(-100%); opacity: 0; } }
+
+/* A button that confirms on itself (data-done="Copied", or distinctUI.done(btn)).
+   Both labels sit in one cell, so the pill keeps the larger footprint and
+   nothing beside it moves. */
+.dui-swap { display: inline-grid; }
+.dui-swap > span {
+  grid-area: 1 / 1; display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  transition: opacity var(--dui-dur) var(--dui-ease), transform var(--dui-dur) var(--dui-ease);
+}
+.dui-swap__done { opacity: 0; transform: translateY(4px); }
+.is-done > .dui-swap .dui-swap__idle { opacity: 0; transform: translateY(-4px); }
+.is-done > .dui-swap .dui-swap__done { opacity: 1; transform: none; }
+.dui-swap svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Bars grow up from the baseline when their chart is seen. */
 .dui-js .dui-grow > * { transform: scaleY(0); transform-origin: bottom; }

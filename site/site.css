@@ -119,3 +119,15 @@ pre.code { margin: 0; overflow-x: auto; border-radius: var(--dui-radius-panel); 
   .hero--split .hero-copy > * { grid-column: 1; }
   .hero-faces { grid-column: 2; grid-row: 1; align-self: center; --mark-size: 6.75rem; }
 }
+
+/* Moments page: Stageshow scenes and the plain-CSS moves. */
+.moment { display: block; min-width: 0; }
+.moment-hero { margin-top: 8px; }
+.moment-hero .ss-fit { margin-inline: auto; }
+.moment-grid { display: grid; gap: 20px; }
+@media (min-width: 900px) { .moment-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.moment-tile { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.moment-tile .moment { min-height: 300px; }
+.moment-tile h3 { margin: 4px 0 0; }
+.moves-list { display: flex; flex-direction: column; gap: 0; }
+.moves-list .dui-row { padding-block: 14px; }

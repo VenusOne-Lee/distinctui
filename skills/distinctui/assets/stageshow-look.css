@@ -1,0 +1,90 @@
+/*
+ * distinctUI look for Stageshow (https://benji.org/stageshow).
+ * https://distinctui.com · MIT licence
+ *
+ * Maps distinctUI's tokens onto Stageshow's kit, so faux product UI (hero
+ * demos, feature cards, cursor walkthroughs) reads as a distinctUI product:
+ * Bricolage Grotesque, white surfaces, four greys, black as the only accent,
+ * pills for anything you press. Colour stays on rings: put real .dui-mark
+ * elements inside the stage for that.
+ *
+ * <Stage className="dui-look" theme="light" palette="mono" ...>
+ *
+ * Light only. Don't pair it with theme="dark", "blueprint" or "glass", or
+ * with a coloured ground="orbs".
+ */
+.dui-look.ss-stage,
+.dui-look .ss-stage {
+  /* Surfaces: the page is white, quiet wells are grey-50 and grey-100 */
+  --ss-canvas: #fafafa;
+  --ss-surface: #ffffff;
+  --ss-chrome: #ffffff;
+  --ss-well: #f2f2f2;
+  --ss-raised: #ffffff;
+  --ss-fill: #ebebeb;
+
+  /* Placeholder ink: neutral, no warm or cool cast */
+  --ss-ink-1: rgba(0, 0, 0, 0.035);
+  --ss-ink-2: rgba(0, 0, 0, 0.05);
+  --ss-ink-3: rgba(0, 0, 0, 0.075);
+  --ss-ink-4: rgba(0, 0, 0, 0.1);
+  --ss-ink-5: rgba(0, 0, 0, 0.16);
+
+  /* Lines and text: grey-200 hairlines, black and grey-600 words */
+  --ss-line: #e5e5e5;
+  --ss-line-faint: #f2f2f2;
+  --ss-text-strong: #000000;
+  --ss-text: #262626;
+  --ss-text-faint: #6b6b6b;
+  --ss-icon: #262626;
+  --ss-icon-faint: #a3a3a3;
+
+  /* Black is the accent. No blue links, no purple gradients. */
+  --ss-accent: #000000;
+  --ss-accent-2: #262626;
+  --ss-accent-soft: #f2f2f2;
+  --ss-accent-text: #000000;
+
+  /* Status is said in words and weight, not colour: errors are black */
+  --ss-success: #000000;
+  --ss-success-soft: #f2f2f2;
+  --ss-success-text: #000000;
+  --ss-danger: #000000;
+  --ss-danger-soft: #f2f2f2;
+  --ss-danger-text: #000000;
+  --ss-warning: #262626;
+  --ss-warning-soft: #f2f2f2;
+  --ss-warning-text: #000000;
+
+  /* Terminal accents stay grey too */
+  --ss-term-ok: #ffffff;
+  --ss-term-err: #ffffff;
+  --ss-term-path: #a3a3a3;
+  --ss-term-sigil: #6b6b6b;
+  --ss-term-dim: #6b6b6b;
+
+  /* Type */
+  --ss-font: "Bricolage Grotesque", "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --ss-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Shape: pills for what you press or type a line into, soft corners for
+     what you read */
+  --ss-radius-sm: 12px;
+  --ss-radius-md: 14px;
+  --ss-radius-lg: 16px;
+  --ss-radius-window: 22px;
+  --ss-radius-pill: 9999px;
+
+  /* Density: distinctUI controls are roomy */
+  --ss-control: 40px;
+  --ss-row: 32px;
+
+  /* Depth: one neutral shadow family. A hairline does most of the work. */
+  --ss-shadow-card: 0 0 0 1px #e5e5e5;
+  --ss-shadow-window: 0 0 0 1px #e5e5e5, 0 8px 30px rgba(0, 0, 0, 0.06);
+  --ss-shadow-hero: 0 0 0 1px #e5e5e5, 0 24px 60px -24px rgba(0, 0, 0, 0.18);
+  --ss-shadow-satellite: 0 0 0 1px #e5e5e5, 0 8px 30px rgba(0, 0, 0, 0.08);
+  --ss-shadow-ground: 0 0 0 1px #e5e5e5, 0 24px 48px -24px rgba(0, 0, 0, 0.12);
+  --ss-shadow-float: 0 0 0 1px #e5e5e5, 0 8px 30px rgba(0, 0, 0, 0.08);
+  --ss-shadow-lift: 0 0 0 1px #e5e5e5, 0 14px 30px -8px rgba(0, 0, 0, 0.18);
+}
