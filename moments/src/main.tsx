@@ -1,16 +1,27 @@
 import { StrictMode, useState, type ComponentType } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Ask } from './ask'
+import { Checkout } from './checkout'
 import { FixField } from './fix-field'
-import { Follow } from './follow'
-import { GoingLive } from './going-live'
+import { Invite } from './invite'
+import { Pricing } from './pricing'
+import { Publish } from './publish'
+import { Remove } from './remove'
+import { Settings } from './settings'
 import './moments.css'
 
 // Mounts each moment into <div data-moment="name">. Moments play once when
 // seen (distinctUI motion rule 4); "Play again" replays from the start.
 // With reduced motion the poster shows and there is nothing to replay.
 
-const MOMENTS: Record<string, ComponentType> = { 'going-live': GoingLive, follow: Follow, ask: Ask, 'fix-field': FixField }
+const MOMENTS: Record<string, ComponentType> = {
+  publish: Publish,
+  invite: Invite,
+  'fix-field': FixField,
+  pricing: Pricing,
+  checkout: Checkout,
+  settings: Settings,
+  remove: Remove,
+}
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches
 
 function Moment({ name, label }: { name: string; label?: string }) {

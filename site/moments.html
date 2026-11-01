@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Moments · distinctUI</title>
-<meta name="description" content="Moments: small product stories in the distinctUI look, built with Stageshow. A ring goes live, a follower lands, an ask gets answered, a field gets fixed.">
+<meta name="description" content="Moments: small product stories in the distinctUI look, built with Stageshow. Something goes live, a price rolls, a seat fills, a field gets fixed, a file is removed.">
 <meta property="og:title" content="distinctUI moments">
 <meta property="og:description" content="Small product stories, one thing happening, in black, white and grey.">
 <meta property="og:image" content="https://distinctui.com/share-card.png">
@@ -32,79 +32,184 @@
   <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
     <span class="dui-eyebrow">Moments</span>
     <h1 class="dui-h1">One thing <b>happens</b></h1>
-    <p class="dui-lede">Small product stories for a hero, a feature card or a docs page. A believable screen in black, white and grey, and one change you can watch: a ring going live, a follower landing, an ask answered, a field fixed.</p>
+    <p class="dui-lede">Small product stories for a hero, a feature card or a docs page. A believable screen in black, white and grey, and one change you can watch: something published, a price rolling, a seat filled, a field fixed, a file removed.</p>
     <p class="dui-meta">Built with <a class="dui-link" href="https://benji.org/stageshow">Stageshow</a> by Benji Taylor, in the distinctUI look. Each plays once when you scroll to it. With reduced motion you see the finished frame.</p>
   </div>
 
   <section class="dui-section" aria-labelledby="live-h">
     <h2 id="live-h" class="dui-h2">Going <b>live</b></h2>
-    <p class="dui-body">Press, the pill settles on itself, the dashes fill in with one pop, the version rolls, the update arrives and carries the list down, and a follower lands a beat later.</p>
-    <div class="moment moment-hero" data-moment="going-live" data-label="A project page for Lift Club by Thandi Mokoena. Go live is pressed, the dashed blue ring turns solid, the version changes from v0.1 to v1.0, a v1.0 is live update appears and the follower count goes from 127 to 128."></div>
+    <p class="dui-body">Press, the pill settles on itself, the dashes fill in with one pop, the version rolls, Draft becomes Live, the update arrives and carries the list down, and a subscriber lands a beat later.</p>
+    <div class="moment moment-hero" data-moment="publish" data-label="A project page for Harbour. Publish is pressed, the dashed ring turns solid, the version changes from v0.9 to v1.0, the Draft badge becomes Live, a v1.0 published row appears and subscribers go from 1,284 to 1,285."></div>
   </section>
 
   <section class="dui-section" aria-labelledby="cards-h">
     <h2 id="cards-h" class="dui-h2">Feature <b>cards</b></h2>
+    <p class="dui-body">One moment per element, so you can see the same few moves work on all of them.</p>
     <div class="moment-grid">
       <div class="moment-tile">
-        <div class="moment" data-moment="follow" data-label="Sipho Ndlovu's card. Follow is pressed and becomes Following, the count rolls from 127 to 128, and a line says you'll hear when Sipho ships."></div>
-        <h3 class="dui-h4">Follow</h3>
-        <p class="cap">The pill keeps its footprint, the count rolls only the digit that changed.</p>
+        <div class="moment" data-moment="pricing" data-label="A pricing card. Yearly is pressed, the price rolls from R199 to R159 a month, and a line says you save R480."></div>
+        <h3 class="dui-h4">Tabs and a price</h3>
+        <p class="cap">The open tab moves, only the digits that change roll.</p>
       </div>
       <div class="moment-tile">
-        <div class="moment" data-moment="ask" data-label="An ask for three testers in Durban. Three empty dashed rings fill one by one with people, the count goes from 0 to 3, and the badge changes from Open to Answered."></div>
-        <h3 class="dui-h4">An ask answered</h3>
-        <p class="cap">No cursor. Empty rings fill as people say yes.</p>
-      </div>
-      <div class="moment-tile">
-        <div class="moment" data-moment="fix-field" data-label="A Link field. Send for review shows an error under the field, https:// is typed, the error clears, and the button confirms Sent for review."></div>
+        <div class="moment" data-moment="fix-field" data-label="A Website field. Save changes shows an error under the field, https:// is typed, the error clears, and the button confirms Saved."></div>
         <h3 class="dui-h4">Fix the field</h3>
         <p class="cap">The error sits under its field and leaves the moment it's fixed.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="invite" data-label="Three empty seats on a design team. They fill one by one with people, the count goes from 0 to 3, and the badge changes from Open to Full."></div>
+        <h3 class="dui-h4">Seats fill up</h3>
+        <p class="cap">No cursor. Empty marks fill, the badge settles on Full.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="checkout" data-label="A checkout. Continue is pressed, a courier row joins the summary, the total rolls from R640 to R700, the steps move to Pay and the button says Pay R700."></div>
+        <h3 class="dui-h4">Steps and a total</h3>
+        <p class="cap">A row opens its room, the total rolls, the step moves on.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="settings" data-label="Notification settings. The Weekly summary switch is turned on and a notice opens under it: Saved. The first one goes out on Monday."></div>
+        <h3 class="dui-h4">A switch saves</h3>
+        <p class="cap">The notice opens where you're looking and stays. No toasts.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="remove" data-label="A list of three files. Remove is pressed on logo-old.svg, a dialog asks first on a white veil, Remove it is pressed, the row closes up and the count goes from 3 to 2."></div>
+        <h3 class="dui-h4">Ask, then remove</h3>
+        <p class="cap">A white veil, never dark. The row fades, then its room closes.</p>
       </div>
     </div>
   </section>
 
   <section class="dui-section" aria-labelledby="moves-h">
-    <h2 id="moves-h" class="dui-h2">The same moves, on <b>any page</b></h2>
-    <p class="dui-body">No React needed. These come with <code>distinctui.js</code> and work from attributes. Try them.</p>
-    <div class="demo">
-      <div class="demo-row">
-        <span class="dui-mark" id="m-live" data-live="false" data-ring="1" style="--mark-size:4rem"><span class="dui-mark__inner">TM</span><span class="dui-mark__version">v0.1</span></span>
-        <button class="dui-btn-sm" type="button" data-go-live="#m-live" data-live-label="Back to draft">Go live</button>
-        <span class="cap">The dashes fill in, one pop.</span>
+    <h2 id="moves-h" class="dui-h2">The same moves, on <b>every element</b></h2>
+    <p class="dui-body">No React needed. These come with <code>distinctui.js</code> and work from attributes, or one line from your own code. Try them.</p>
+    <div class="moves-grid">
+      <div class="demo">
+        <span class="dui-eyebrow">Buttons</span>
+        <div class="demo-row"><button class="dui-btn-sm" type="button" data-done="Saved">Save</button><button class="dui-btn-sm-ghost" type="button" data-done="Copied">Copy link</button></div>
+        <p class="cap">Confirms on itself, in the same footprint, then settles back. <code>data-done</code></p>
       </div>
-      <div class="demo-row">
-        <button class="dui-btn-sm" type="button" aria-pressed="false" data-pressed-label="Following" data-count-target="#followers">Follow</button>
-        <span><b id="followers" class="dui-tabular">127</b> <span class="cap">followers</span></span>
-        <span class="cap">Only the changed digit rolls.</span>
+      <div class="demo">
+        <span class="dui-eyebrow">Badges</span>
+        <div class="demo-row"><b>Harbour</b><span class="dui-badge-soft" id="g-ver">v0.3</span><button class="dui-btn-sm-ghost" type="button" id="g-ship">Ship next</button></div>
+        <p class="cap">The version rolls only the part that changed. <code>distinctUI.roll()</code></p>
       </div>
-      <div class="demo-row">
-        <button class="dui-btn-sm-ghost" type="button" data-done="Copied">Copy link</button>
-        <span class="cap">Confirms on itself, then settles back.</span>
+      <div class="demo">
+        <span class="dui-eyebrow">Signature mark</span>
+        <div class="demo-row"><span class="dui-mark" id="g-live" data-live="false" data-ring="2" style="--mark-size:4rem"><span class="dui-mark__inner">H</span><span class="dui-mark__version">v1.0</span></span><button class="dui-btn-sm" type="button" data-go-live="#g-live" data-live-label="Back to draft">Publish</button></div>
+        <p class="cap">The dashes fill in, one pop. <code>data-go-live</code></p>
       </div>
-      <div class="demo-row">
-        <button class="dui-btn-sm-ghost" type="button" id="add-row">Add an update</button>
-        <span class="cap">A new row opens its room and carries the rows below.</span>
+      <div class="demo">
+        <span class="dui-eyebrow">Cards</span>
+        <div class="dui-card" style="padding:20px">
+          <div style="display:flex;align-items:center;gap:10px"><span class="dui-mark dui-mark--plain" style="--mark-size:2.25rem"><span class="dui-mark__inner">AO</span></span><div style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:15px">Field Notes</b><span class="dui-meta" style="font-size:13px"><b id="g-subs" class="dui-tabular">847</b> subscribers</span></div></div>
+          <div class="dui-card__foot"><button class="dui-btn-sm" type="button" aria-pressed="false" data-pressed-label="Subscribed" data-count-target="#g-subs">Subscribe</button></div>
+        </div>
+        <p class="cap">A toggle rolls its count up or down by one. <code>aria-pressed</code></p>
       </div>
-      <ul class="dui-rows" id="updates" style="max-width:30rem">
-        <li class="dui-row"><b>v0.1 went to five testers</b> <span class="dui-meta" style="margin-left:auto">3 days ago</span></li>
-        <li class="dui-row"><b>Lift Club joined</b> <span class="dui-meta" style="margin-left:auto">2 weeks ago</span></li>
-      </ul>
+      <div class="demo">
+        <span class="dui-eyebrow">Inputs</span>
+        <form class="form-demo" id="g-form" novalidate style="gap:10px">
+          <div class="group"><label class="dui-label" for="g-site">Website</label><input class="dui-input" id="g-site" value="northline.studio" aria-invalid="true" aria-describedby="g-site-e"><p class="dui-field-error g-error" id="g-site-e">Add a link that starts with https://</p></div>
+          <div><button class="dui-btn-sm" type="submit">Save changes</button></div>
+        </form>
+        <p class="cap">Type the fix and the error leaves; then Save confirms. <code>distinctUI.done()</code></p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Switches and notices</span>
+        <div id="g-notify"><label class="dui-switch">Weekly summary <input type="checkbox" role="switch" id="g-switch"></label></div>
+        <p class="cap">The notice opens its room under the switch and stays. <code>distinctUI.add()</code></p>
+      </div>
+      <div class="demo" data-filter-scope>
+        <span class="dui-eyebrow">Tabs</span>
+        <div class="dui-tabs" role="tablist" aria-label="Show">
+          <button class="dui-tab" role="tab" aria-selected="true" data-filter="all" type="button">All</button>
+          <button class="dui-tab" role="tab" aria-selected="false" data-filter="open" type="button">Open</button>
+          <button class="dui-tab" role="tab" aria-selected="false" data-filter="done" type="button">Done</button>
+        </div>
+        <ul class="dui-rows">
+          <li class="dui-row" data-tags="open"><b>Write the brief</b><span class="dui-meta" style="margin-left:auto">Open</span></li>
+          <li class="dui-row" data-tags="done"><b>Pick a name</b><span class="dui-meta" style="margin-left:auto">Done</span></li>
+          <li class="dui-row" data-tags="open"><b>Book the room</b><span class="dui-meta" style="margin-left:auto">Open</span></li>
+        </ul>
+        <p class="dui-empty" data-filter-empty hidden>Nothing here.</p>
+        <p class="cap">What stays settles back in. <code>data-filter</code></p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Lists</span>
+        <ul class="dui-rows" id="g-list">
+          <li class="dui-row"><b>Kickoff notes</b><button class="dui-btn-sm-ghost g-rm" type="button" style="margin-left:auto">Remove</button></li>
+          <li class="dui-row"><b>Moodboard</b><button class="dui-btn-sm-ghost g-rm" type="button" style="margin-left:auto">Remove</button></li>
+        </ul>
+        <div><button class="dui-btn-sm-ghost" type="button" id="g-add">Add a row</button></div>
+        <p class="cap">A row opens its room and carries the rows below; leaving, it fades first. <code>add()</code> <code>remove()</code></p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Tables</span>
+        <div class="dui-table-wrap"><table class="dui-table"><thead><tr><th>Item</th><th class="dui-num">Qty</th><th class="dui-num">Price</th></tr></thead><tbody>
+          <tr><td>Speckled mug</td><td class="dui-num"><span class="g-qty"><button class="dui-icon-btn" type="button" data-step="-1" aria-label="One fewer"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#minus"/></svg></button><b id="g-n">2</b><button class="dui-icon-btn" type="button" data-step="1" aria-label="One more"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#plus"/></svg></button></span></td><td class="dui-num" id="g-line">R640</td></tr>
+          </tbody><tfoot><tr><td>Total</td><td></td><td class="dui-num" id="g-total">R700</td></tr></tfoot></table></div>
+        <p class="cap">Quantity, line and total roll together. <code>distinctUI.roll()</code></p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Steps and progress</span>
+        <ol class="dui-steps" id="g-steps" aria-label="Checkout"><li data-done="true"><span>Bag</span></li><li aria-current="step"><span>Delivery</span></li><li><span>Pay</span></li></ol>
+        <div style="display:flex;flex-direction:column;gap:8px"><p id="g-prog-l" style="margin:0;font-weight:600">Set up, <span id="g-pct">33%</span> done</p><progress class="dui-progress" id="g-prog" max="100" value="33" aria-labelledby="g-prog-l">33%</progress></div>
+        <div><button class="dui-btn-sm" type="button" id="g-next">Continue</button></div>
+        <p class="cap">The bar fills, the step moves on, the figure rolls.</p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Dialog</span>
+        <p style="margin:0"><b>Files</b> <span class="dui-meta" id="g-files">3</span></p>
+        <ul class="dui-rows" id="g-filelist">
+          <li class="dui-row"><b>logo-old.svg</b><button class="dui-btn-sm-ghost" type="button" style="margin-left:auto" data-ask="logo-old.svg">Remove</button></li>
+          <li class="dui-row"><b>brief.pdf</b><button class="dui-btn-sm-ghost" type="button" style="margin-left:auto" data-ask="brief.pdf">Remove</button></li>
+        </ul>
+        <dialog class="dui-dialog" id="g-dlg"><h3 class="dui-h4">Remove <span id="g-dlg-name"></span>?</h3><p class="dui-body">It goes for good.</p><form method="dialog" class="dui-actions"><button class="dui-btn" value="remove">Remove it</button><button class="dui-btn-ghost" value="keep">Keep it</button></form></dialog>
+        <p class="cap">Asks first on a white veil, then the row closes up and the count rolls.</p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Faces</span>
+        <div class="dui-stack">
+          <span class="dui-mark" data-ring="1" style="--mark-size:2.75rem"><span class="dui-mark__inner">AK</span></span>
+          <span class="dui-mark" data-ring="3" style="--mark-size:2.75rem"><span class="dui-mark__inner">LM</span></span>
+          <span class="dui-mark" data-ring="4" style="--mark-size:2.75rem"><span class="dui-mark__inner">ZD</span></span>
+          <span class="dui-stack__more">and <span id="g-more">12</span> more</span>
+        </div>
+        <div><button class="dui-btn-sm" type="button" aria-pressed="false" data-pressed-label="You're in" data-count-target="#g-more">Join</button></div>
+        <p class="cap">Five faces at most, and the number after them rolls.</p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Count on a menu</span>
+        <div class="demo-row"><span class="dui-btn-sm-ghost dui-has-count">Inbox<span class="dui-count" id="g-count">2</span></span></div>
+        <ul class="dui-rows" id="g-inbox">
+          <li class="dui-row"><b>Approve the invoice</b><button class="dui-btn-sm-ghost g-done" type="button" style="margin-left:auto">Done</button></li>
+          <li class="dui-row"><b>Reply to Ama</b><button class="dui-btn-sm-ghost g-done" type="button" style="margin-left:auto">Done</button></li>
+        </ul>
+        <p class="cap">Done closes the row, the count only shows what's still waiting.</p>
+      </div>
+      <div class="demo">
+        <span class="dui-eyebrow">Chips</span>
+        <div class="demo-row" id="g-chips"><button class="dui-chip" type="button">Cape Town</button><button class="dui-chip" type="button">This week</button></div>
+        <p style="margin:0"><b id="g-results" class="dui-tabular">8</b> <span class="dui-meta">results</span></p>
+        <p class="cap">Press a filter to remove it; it fades out and the results roll.</p>
+      </div>
     </div>
-<pre class="dui-code"><code>&lt;button aria-pressed="false" data-pressed-label="Following" data-count-target="#followers"&gt;Follow&lt;/button&gt;
-&lt;b id="followers"&gt;127&lt;/b&gt;
-&lt;button data-done="Copied"&gt;Copy link&lt;/button&gt;
+<pre class="dui-code"><code>&lt;button data-done="Saved"&gt;Save&lt;/button&gt;
+&lt;button aria-pressed="false" data-pressed-label="Subscribed" data-count-target="#subs"&gt;Subscribe&lt;/button&gt;
+&lt;b id="subs"&gt;847&lt;/b&gt;
 
-distinctUI.roll(el, 128);           // after your app knows the number changed
+distinctUI.roll(el, 700);           // after your app knows the number changed
+distinctUI.roll(badge, "v0.4");     // text rolls too, only where it changed
 distinctUI.done(button, "Saved");   // after the save worked
-distinctUI.add(list, row);          // a new row arrives
-distinctUI.remove(row);             // a row leaves</code></pre>
+distinctUI.add(list, row);          // a new row or notice arrives
+distinctUI.remove(row);             // a row, chip or notice leaves</code></pre>
   </section>
 
   <section class="dui-section" aria-labelledby="make-h">
     <h2 id="make-h" class="dui-h2">Make your <b>own</b></h2>
     <p class="dui-body">Install both skills, then ask Claude for a moment. distinctUI brings the look and its rules; Stageshow brings the stage, the cursor, framing and the motion parts.</p>
     <div class="install" style="align-self:flex-start"><code id="cmd">npx skills add benjitaylor/skills --skill stageshow</code><button class="dui-btn-sm" type="button" data-done="Copied" data-copy="cmd">Copy</button></div>
-    <p class="dui-meta">Then: <code>Build a distinctUI moment for our pricing page: a plan changes and the total rolls.</code></p>
+    <p class="dui-meta">Then: <code>Build a distinctUI moment for our sign-up page: the plan changes and the total rolls.</code></p>
     <ol class="dui-rows rules">
       <li class="dui-row"><span class="n">1</span><div><b>Light, mono, the distinctUI look.</b> <span class="dui-meta"><code>&lt;Stage className="dui-look" palette="mono"&gt;</code> with <code>stageshow-look.css</code>. No dark, glass or blueprint themes.</span></div></li>
       <li class="dui-row"><span class="n">2</span><div><b>Colour only on rings.</b> <span class="dui-meta">Put real <code>.dui-mark</code> elements in the stage. Status is said in words, not green or red.</span></div></li>
@@ -124,17 +229,6 @@ distinctUI.remove(row);             // a row leaves</code></pre>
 </footer>
 <script src="/assets/distinctui.js" defer></script>
 <script type="module" src="/moments/moments.js"></script>
-<script>
-  document.querySelectorAll("[data-copy]").forEach((btn) => btn.addEventListener("click", () => {
-    navigator.clipboard?.writeText(document.getElementById(btn.dataset.copy).textContent).catch(() => {});
-  }));
-  document.getElementById("add-row").addEventListener("click", () => {
-    const n = document.querySelectorAll("#updates li").length;
-    const li = document.createElement("li");
-    li.className = "dui-row";
-    li.innerHTML = `<b>v0.${n} is live</b> <span class="dui-meta" style="margin-left:auto">Just now</span>`;
-    distinctUI.add(document.getElementById("updates"), li);
-  });
-</script>
+<script src="/moments/moves.js" defer></script>
 </body>
 </html>
