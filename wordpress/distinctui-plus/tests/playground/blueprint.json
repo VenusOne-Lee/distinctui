@@ -5,7 +5,7 @@
 		"author": "distinctui",
 		"description": "Installs the theme and distinctUI+ from this branch, with WooCommerce, Yoast SEO, Contact Form 7 and WP Super Cache, then runs tests/playground/dui-test.php."
 	},
-	"landingPage": "/dui-test.php",
+	"landingPage": "/wp-content/plugins/distinctui-plus/tests/playground/dui-test.php",
 	"preferredVersions": {
 		"php": "8.3",
 		"wp": "latest"
@@ -84,15 +84,8 @@
 		{
 			"step": "defineWpConfigConsts",
 			"consts": {
-				"DUI_PLUS_DEV": true
-			}
-		},
-		{
-			"step": "writeFile",
-			"path": "/wordpress/dui-test.php",
-			"data": {
-				"resource": "url",
-				"url": "https://raw.githubusercontent.com/VenusOne-Lee/distinctui/claude/project-thread-rnltxn/wordpress/distinctui-plus/tests/playground/dui-test.php"
+				"DUI_PLUS_DEV": true,
+				"DUI_PLUS_PLAYGROUND_TEST": true
 			}
 		}
 	]

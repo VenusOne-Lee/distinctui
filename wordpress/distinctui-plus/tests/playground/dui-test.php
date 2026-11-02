@@ -1,7 +1,11 @@
 <?php
 // Runs inside WordPress Playground (see blueprint.json): checks distinctUI+ against the real
 // Abilities API, MCP Adapter, WooCommerce, Yoast SEO and Contact Form 7, and prints PASS or FAIL lines.
-require __DIR__ . '/wp-load.php';
+require dirname( __DIR__, 5 ) . '/wp-load.php';
+// Only inside the Playground test run: it makes pages and products as the first user.
+if ( ! defined( 'DUI_PLUS_PLAYGROUND_TEST' ) || ! DUI_PLUS_PLAYGROUND_TEST ) {
+	exit;
+}
 require_once ABSPATH . 'wp-admin/includes/post.php';
 wp_set_current_user( 1 );
 header( 'Content-Type: text/plain' );

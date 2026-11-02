@@ -19,14 +19,15 @@ const walk = (dir) => readdirSync(dir).sort().flatMap((name) => {
   return statSync(path).isDirectory() ? walk(path) : [path];
 });
 
-// Zips every file under `dir` into `out`, inside a top folder called `prefix`.
+// Zips every file under `dir` into `out`, inside a top folder called `prefix`,
+// leaving out paths (relative, with /) that `skip` returns true for.
 // Dates are fixed so the same files always give the same zip.
-export function zipDir(dir, out, prefix) {
+export function zipDir(dir, out, prefix, skip = () => false) {
   const local = [];
   const central = [];
   let offset = 0;
   const time = 0, date = (2026 - 1980) << 9 | 1 << 5 | 1;
-  for (const file of walk(dir)) {
+  for (const file of walk(dir).filter((f) => !skip(relative(dir, f).split(sep).join("/")))) {
     const name = Buffer.from(`${prefix}/${relative(dir, file).split(sep).join("/")}`);
     const data = readFileSync(file);
     const packed = deflateRawSync(data, { level: 9 });
