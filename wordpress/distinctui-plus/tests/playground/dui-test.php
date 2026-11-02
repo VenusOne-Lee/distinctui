@@ -66,7 +66,9 @@ if ( class_exists( '\WP\MCP\Core\McpAdapter' ) ) {
 				$req->set_header( 'Mcp-Session-Id', $session );
 			}
 			$req->set_body( wp_json_encode( $body ) );
-			return rest_do_request( $req );
+			$res = rest_do_request( $req );
+			$res->set_data( json_decode( wp_json_encode( $res->get_data() ), true ) );
+			return $res;
 		};
 		$res = $send( array( 'jsonrpc' => '2.0', 'id' => 1, 'method' => 'initialize', 'params' => array( 'protocolVersion' => '2025-11-25', 'capabilities' => new stdClass(), 'clientInfo' => array( 'name' => 'test', 'version' => '1' ) ) ) );
 		$sid = $res->get_headers()['Mcp-Session-Id'] ?? '';
