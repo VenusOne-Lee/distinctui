@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Calm black, white and grey interfaces with one signature mark in one colour. The design system behind Version One.",
   "license": "MIT",
+  "type": "module",
   "homepage": "https://distinctui.com",
   "repository": {
     "type": "git",
@@ -29,7 +30,10 @@
     "./distinctui.js": "./skills/distinctui/assets/distinctui.js",
     "./tokens.json": "./skills/distinctui/assets/tokens.json",
     "./stageshow-look.css": "./skills/distinctui/assets/stageshow-look.css",
-    "./icons.svg": "./skills/distinctui/assets/icons.svg"
+    "./icons.svg": "./skills/distinctui/assets/icons.svg",
+    "./rules.json": "./skills/distinctui/assets/rules.json",
+    "./check.js": "./skills/distinctui/assets/check.js",
+    "./compose.js": "./skills/distinctui/assets/compose.js"
   },
   "files": [
     "skills/distinctui"
@@ -40,7 +44,8 @@
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "dev": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "test": "npm run build && node --test"
   },
   "devDependencies": {
     "esbuild": "^0.24.2",

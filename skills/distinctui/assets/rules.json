@@ -1,0 +1,42 @@
+{
+  "$description": "The distinctUI rules in a form tools can read. The words live in SKILL.md; check.js tests a page against these values. Light only. https://distinctui.com · MIT",
+  "version": "0.3.0",
+  "colours": {
+    "black": "#000000",
+    "white": "#ffffff",
+    "greys": { "50": "#fafafa", "100": "#f2f2f2", "200": "#e5e5e5", "400": "#a3a3a3", "600": "#6b6b6b", "800": "#262626" }
+  },
+  "palettes": {
+    "Signal": ["#1f3bff", "#ff4f1f", "#7a2cff", "#e8a800", "#000000"],
+    "Mzansi": ["#e03c31", "#001489", "#ffb81c", "#007749", "#000000"],
+    "Earth": ["#b5452b", "#c8860a", "#6b3e26", "#2e3a87", "#000000"],
+    "Coast": ["#0067a5", "#ff5a4e", "#00706b", "#d9a400", "#000000"],
+    "Jacaranda": ["#6f3fc7", "#c2185b", "#2f80ed", "#f26b1d", "#000000"]
+  },
+  "palette_credits": { "Mzansi": "The South African flag's ring colours, credited to Version One." },
+  "font": { "family": "Bricolage Grotesque", "mono": "ui-monospace, SF Mono, Menlo, Consolas, monospace", "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" },
+  "radius": { "thumbnail": 12, "note": 12, "input": 14, "panel": 16, "card": 22, "menu": 24, "feature": 28, "pill": 999 },
+  "space": { "base": 4, "section_phone": 80, "section_desktop": 112 },
+  "motion": { "fast": 120, "default": 200, "slow": 480, "live": 700 },
+  "rules": [
+    { "n": 1, "id": "light-only", "title": "Light only", "text": "White background, black text. No dark mode, no dark sections, no inverted hero." },
+    { "n": 2, "id": "greys", "title": "Black, white and four greys", "text": "#000, #fff, and greys 50, 100, 200, 400, 600, 800. No blue links, no red errors, no green success, no brand gradients." },
+    { "n": 3, "id": "colour-on-rings", "title": "Colour lives only on rings", "text": "One signature colour for the product's own mark, or one palette of five when each person gets a ring. Never on buttons, links, headings, backgrounds or icons." },
+    { "n": 4, "id": "one-typeface", "title": "One typeface", "text": "Bricolage Grotesque for everything, including buttons and numbers. A monospace only for code." },
+    { "n": 5, "id": "one-bold-word", "title": "Headings are light with one bold word", "text": "Weight 300 for the line, 700 for the word that carries the meaning." },
+    { "n": 6, "id": "one-black-pill", "title": "Main actions are black pills", "text": "One black pill per group. The second action is an outlined pill. Tertiary actions are underlined text links." },
+    { "n": 7, "id": "space-before-borders", "title": "White space before borders, borders before shadows", "text": "Separate with space first, a 1px grey-200 hairline second. The only shadow is on floating menus." },
+    { "n": 8, "id": "pills-and-corners", "title": "Pills for what you press, soft corners for what you read", "text": "Cards 22px, feature card 28px, panels 16px, long-form inputs 14px." },
+    { "n": 9, "id": "dashed-until-live", "title": "Dashed until live", "text": "The mark is dashed while the thing it stands for isn't out yet, solid once it ships, with a small black version label." },
+    { "n": 10, "id": "black-errors", "title": "Errors are black and bold", "text": "With a small black ! disc, saying which field and how to fix it. Never red." },
+    { "n": 11, "id": "hover-black-edge", "title": "Hover is a black edge, not a lift", "text": "No scale, no shadow, no glow on hover. Motion only says what changed, runs once, and switches off for reduced motion." },
+    { "n": 12, "id": "write-plainly", "title": "Write plainly", "text": "Buttons say what happens. Errors name the field and the fix. No jokes in errors, no exclamation marks." }
+  ],
+  "left_out": {
+    "toast": "No toasts. Show a dui-status notice where the person is looking, and leave it there.",
+    "carousel": "No carousels. Use a grid, rows or a gallery so nothing is hidden.",
+    "popup": "No popups on arrival. Use a form section or an announcement line.",
+    "spinner": "No page spinners. Use dui-skeleton loading shapes after 300ms.",
+    "dark-mode": "No dark mode, ever."
+  }
+}

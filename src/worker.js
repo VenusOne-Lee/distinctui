@@ -1,5 +1,8 @@
-// Serves the static site. www gets a permanent redirect to the same path on
-// distinctui.com. Other hosts (previews) are served as is.
+// Serves the static site and the MCP server at /mcp (src/mcp.js). www gets a
+// permanent redirect to the same path on distinctui.com. Other hosts (previews)
+// are served as is.
+import { handleMCP } from "./mcp.js";
+
 const HOME = "distinctui.com";
 const MOVED = new Set(["www.distinctui.com"]);
 
@@ -12,6 +15,7 @@ export default {
       url.port = "";
       return Response.redirect(url.toString(), 301);
     }
+    if (url.pathname === "/mcp" || url.pathname === "/mcp/") return handleMCP(request, env);
     return env.ASSETS.fetch(request);
   },
 };

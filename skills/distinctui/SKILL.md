@@ -96,4 +96,6 @@ The example photos in `examples/img/` are AI-generated people, places and produc
 
 ## Before you call it done
 
-Run `references/review.md` against the page. Fix everything it finds, then say in one line what you checked.
+Run `references/review.md` against the page. If you can run JavaScript, also run `assets/check.js` on it (`checkHTML(html)`), or call `check_page` on the distinctUI MCP server at `https://distinctui.com/mcp`. Fix everything either finds, then say in one line what you checked.
+
+To build a page from content instead of by hand, write a page spec (`references/page-spec.md`) and compose it with `assets/compose.js` or the MCP server's `compose_page`.
