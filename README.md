@@ -69,6 +69,18 @@ Tailwind CSS v4:
 @theme { --color-signature: #1f3bff; }
 ```
 
+## Use it in WordPress
+
+A block theme with the same look, for WordPress 6.6 or later. Download [distinctui-wordpress.zip](https://distinctui.com/distinctui-wordpress.zip), then in WordPress go to **Appearance → Themes → Add New Theme → Upload Theme**.
+
+- Black, white and four greys in the colour picker, and nothing else. Bricolage Grotesque is bundled.
+- Templates for the blog, posts, pages, archives, search and 404, plus a landing page template.
+- Patterns for a hero, three cards, people in their rings, plans, questions, "not live yet" and a last call to action.
+- Block styles named after the rules: Card, Feature card, Panel, Lede, Eyebrow, Badge, Error, Mark and "Mark, not live".
+- The five ring palettes as style variations under **Appearance → Editor → Styles**. The palette's first colour is your signature colour; set your own with `:root { --wp--custom--signature: #1f3bff; }` in Additional CSS.
+
+The theme's source is in [`wordpress/distinctui`](wordpress/distinctui). `npm run build` zips it into `dist/` for the site.
+
 ## Use it in SwiftUI
 
 The same look for iPhone and iPad apps, as a Swift package (iOS 17+). In Xcode, **File → Add Package Dependencies**, paste `https://github.com/VenusOne-Lee/distinctui` and add `DistinctUI`:
@@ -106,8 +118,10 @@ skills/distinctui/
   references/imagery.md    photos, icons and charts
   references/review.md     the checklist Claude runs before it's done
   references/swiftui.md    the SwiftUI package, what maps to what, phone rules
+  references/wordpress.md  the WordPress block theme, what maps to what
   examples/                27 templates in seven groups: marketing, stories, selling,
                            accounts, app screens, help and docs, system pages
+wordpress/distinctui/      the WordPress block theme (theme.json, templates, patterns, the font)
 site/                      distinctui.com
 moments/                   the Moments page scenes, with a copy of the Stageshow kit (MIT, Benji Taylor)
 Package.swift              the Swift package

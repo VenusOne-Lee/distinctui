@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Jacaranda",
+	"settings": {
+		"custom": {
+			"signature": "#6f3fc7",
+			"ring": {
+				"1": "#6f3fc7",
+				"2": "#c2185b",
+				"3": "#2f80ed",
+				"4": "#f26b1d",
+				"5": "#000000"
+			}
+		}
+	}
+}

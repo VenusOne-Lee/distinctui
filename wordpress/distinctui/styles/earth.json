@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Earth",
+	"settings": {
+		"custom": {
+			"signature": "#b5452b",
+			"ring": {
+				"1": "#b5452b",
+				"2": "#c8860a",
+				"3": "#6b3e26",
+				"4": "#2e3a87",
+				"5": "#000000"
+			}
+		}
+	}
+}

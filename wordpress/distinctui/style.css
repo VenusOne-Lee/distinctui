@@ -1,0 +1,17 @@
+/*
+Theme Name: distinctUI
+Theme URI: https://distinctui.com
+Author: distinctUI
+Author URI: https://distinctui.com
+Description: Black, white, grey. Then one mark that's yours. A block theme for the distinctUI design system: lots of white space, one typeface (Bricolage Grotesque, bundled), black pill buttons, light headings with one bold word, and a single signature colour that lives only on the signature mark. Light only, by design. Pick a ring palette under Appearance, Editor, Styles.
+Requires at least: 6.6
+Tested up to: 6.8
+Requires PHP: 7.4
+Version: 0.1.0
+License: MIT
+License URI: https://opensource.org/licenses/MIT
+Text Domain: distinctui
+Tags: block-patterns, full-site-editing, blog, portfolio, one-column, wide-blocks, editor-style, style-variations, accessibility-ready, custom-logo
+
+The theme's look lives in theme.json and assets/css/theme.css.
+*/
