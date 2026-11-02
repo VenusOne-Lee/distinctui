@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Mzansi",
+	"settings": {
+		"custom": {
+			"signature": "#e03c31",
+			"ring": {
+				"1": "#e03c31",
+				"2": "#001489",
+				"3": "#ffb81c",
+				"4": "#007749",
+				"5": "#000000"
+			}
+		}
+	}
+}

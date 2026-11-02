@@ -1,0 +1,450 @@
+/*
+ * distinctUI for WordPress: the parts theme.json can't say.
+ * https://distinctui.com · MIT licence
+ *
+ * Black, white and grey. The only colour is the signature colour, and it
+ * lives on the signature mark (the logo ring and the Mark image style).
+ */
+
+:root {
+	color-scheme: light;
+	--dui-signature: var(--wp--custom--signature);
+	--dui-ring-1: var(--wp--custom--ring--1);
+	--dui-ring-2: var(--wp--custom--ring--2);
+	--dui-ring-3: var(--wp--custom--ring--3);
+	--dui-ring-4: var(--wp--custom--ring--4);
+	--dui-ring-5: var(--wp--custom--ring--5);
+	--dui-ease: var(--wp--custom--ease--settle);
+	--dui-ease-pop: var(--wp--custom--ease--pop);
+	--dui-dur-fast: var(--wp--custom--duration--fast);
+	--dui-dur: var(--wp--custom--duration--base);
+	--dui-dur-slow: var(--wp--custom--duration--slow);
+	--dui-dur-live: var(--wp--custom--duration--live);
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	overflow-wrap: break-word;
+	text-rendering: optimizeLegibility;
+}
+
+:where(body) :focus-visible {
+	outline: 2px solid #000;
+	outline-offset: 2px;
+}
+
+::selection { background: #000; color: #fff; }
+
+/* ------------------------------------------------------------- Type */
+
+/* Headings are light with one bold word: "Just <strong>shipped</strong>". */
+:where(h1, h2, .wp-block-heading, .wp-block-post-title, .wp-block-query-title) :where(strong, b) { font-weight: 700; }
+:where(h1, h2, h3) { text-wrap: balance; }
+
+.is-style-hero {
+	font-size: var(--wp--preset--font-size--hero) !important;
+	font-weight: 300;
+	line-height: 1.02;
+	letter-spacing: -0.04em;
+}
+
+p.is-style-lede {
+	font-size: var(--wp--preset--font-size--large);
+	color: var(--wp--preset--color--grey-600);
+	max-width: 60ch;
+}
+
+p.is-style-eyebrow {
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--grey-600);
+}
+
+p.is-style-meta {
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--grey-600);
+}
+
+/* A small pill: a status (Live, Beta) or a version (v0.3). */
+p.is-style-badge {
+	display: inline-flex;
+	width: fit-content;
+	border: 1px solid var(--wp--preset--color--grey-400);
+	border-radius: 9999px;
+	padding: 0.125rem 0.625rem;
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+.wp-block-post-content :where(p, li) { max-width: 65ch; }
+.wp-block-post-content :where(p, li) a { text-underline-offset: 4px; }
+
+/* ---------------------------------------------------------- Buttons */
+
+/* Main actions are black pills. The second action is an outlined pill. */
+.wp-element-button,
+.wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	white-space: nowrap;
+	transition: background-color var(--dui-dur-fast) var(--dui-ease), border-color var(--dui-dur-fast) var(--dui-ease), transform var(--dui-dur-fast) var(--dui-ease);
+}
+.wp-element-button:active,
+.wp-block-button__link:active { transform: scale(0.97); }
+
+.wp-block-button.is-style-outline > .wp-block-button__link,
+.wp-block-button .wp-block-button__link.is-style-outline {
+	background: #fff;
+	color: #000;
+	border: 1px solid #000;
+	padding: 0.75rem 1.5rem;
+}
+.wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	background: var(--wp--preset--color--grey-100);
+	color: #000;
+}
+
+/* Text links as the third action. */
+.wp-block-button.is-style-text-link > .wp-block-button__link {
+	background: none;
+	border: 0;
+	padding: 0.75rem 0;
+	color: #000;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+.wp-block-button.is-style-text-link > .wp-block-button__link:hover { text-decoration: none; }
+
+/* ------------------------------------------------------------ Cards */
+
+/* Things you read and open. The border goes black on hover: no lift, no shadow. */
+.is-style-card {
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: var(--wp--custom--radius--card);
+	background: #fff;
+	padding: 1.5rem;
+	min-width: 0;
+	transition: border-color var(--dui-dur) var(--dui-ease);
+}
+.is-style-card:has(a:hover) { border-color: #000; }
+.is-style-card > .wp-block-post-featured-image:first-child {
+	margin: -1.5rem -1.5rem 0;
+	border-radius: calc(var(--wp--custom--radius--card) - 1px) calc(var(--wp--custom--radius--card) - 1px) 0 0;
+	overflow: hidden;
+}
+.is-style-card > .wp-block-post-featured-image:first-child img { border-radius: 0; }
+
+/* Inside a card: 16px between parts, unless the block sets its own gap. */
+.wp-block-column.is-style-card > * + * { margin-block-start: 0.75rem; }
+
+/* The one thing on a page that matters most: a black edge. */
+.is-style-feature {
+	border: 1.5px solid #000;
+	border-radius: var(--wp--custom--radius--feature);
+	padding: 1.5rem;
+}
+@media (min-width: 640px) { .is-style-feature { padding: 2.5rem; } }
+
+/* A grey panel for supporting content: tips, a summary, an empty state. */
+.is-style-panel {
+	border-radius: var(--wp--custom--radius--panel);
+	background: var(--wp--preset--color--grey-50);
+	padding: 1.25rem;
+}
+
+/* A grey note inside a card: "Needs: testers". */
+.is-style-note {
+	border-radius: var(--wp--custom--radius--note);
+	background: var(--wp--preset--color--grey-50);
+	padding: 0.625rem 0.75rem;
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/* Post lists: same-height cards, titles to two lines, excerpts to three. */
+.wp-block-post-template.is-layout-grid > li { display: flex; }
+.wp-block-post-template.is-layout-grid > li > .is-style-card { flex: 1; display: flex; flex-direction: column; }
+.is-style-card .wp-block-post-title {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.is-style-card .wp-block-post-excerpt__excerpt {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	margin: 0;
+}
+.is-style-card .wp-block-post-excerpt__more-text { display: none; }
+.wp-block-post-template .is-style-card > :last-child { margin-top: auto; }
+
+/* A whole-card link: the title's link covers the card. */
+.is-style-card { position: relative; }
+.is-style-card .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.is-style-card .wp-block-post-title a:focus-visible { outline: none; }
+.is-style-card:has(.wp-block-post-title a:focus-visible) { outline: 2px solid #000; outline-offset: 2px; }
+
+/* --------------------------------------------------- Signature mark */
+
+/*
+ * The one place colour lives. Use the "Mark" style on an Image or Avatar
+ * block. It takes the signature colour; add ring-1 to ring-5 under
+ * Advanced, Additional CSS classes for a ring from your palette.
+ * "Mark, not live" is dashed: the thing it stands for isn't out yet.
+ */
+.is-style-mark,
+.is-style-mark-dashed,
+.is-style-mark-plain {
+	--mark-colour: var(--dui-signature);
+	--mark-ring: 4px;
+}
+.wp-block-image:is(.is-style-mark, .is-style-mark-dashed, .is-style-mark-plain) img,
+.wp-block-avatar:is(.is-style-mark, .is-style-mark-dashed, .is-style-mark-plain) img,
+img.avatar:where(.is-style-mark) {
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: 50% !important;
+	border: var(--mark-ring) solid var(--mark-colour) !important;
+	padding: var(--mark-ring);
+	background: #fff;
+	box-sizing: border-box;
+}
+.wp-block-image.is-style-mark-dashed img,
+.wp-block-avatar.is-style-mark-dashed img { border-style: dashed !important; }
+.is-style-mark-plain { --mark-colour: #000; --mark-ring: 2px; }
+.wp-block-image:is(.is-style-mark, .is-style-mark-dashed, .is-style-mark-plain) { border-radius: 50%; }
+
+.ring-1 { --mark-colour: var(--dui-ring-1) !important; }
+.ring-2 { --mark-colour: var(--dui-ring-2) !important; }
+.ring-3 { --mark-colour: var(--dui-ring-3) !important; }
+.ring-4 { --mark-colour: var(--dui-ring-4) !important; }
+.ring-5 { --mark-colour: var(--dui-ring-5) !important; }
+
+/* Every avatar is a mark: plain black for people without a signature. */
+.wp-block-comment-template .avatar,
+.wp-block-post-author__avatar img {
+	border-radius: 50%;
+	border: 2px solid #000;
+	padding: 2px;
+	background: #fff;
+}
+
+/* The logo: a small ring in the signature colour, then the name. */
+.wp-block-site-title.is-style-logo a,
+.wp-block-site-title.is-style-logo:not(:has(a)) {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.625rem;
+}
+.wp-block-site-title.is-style-logo a::before,
+.wp-block-site-title.is-style-logo:not(:has(a))::before {
+	content: "";
+	width: 1.25rem;
+	height: 1.25rem;
+	flex-shrink: 0;
+	border-radius: 50%;
+	border: 3px solid var(--dui-signature);
+	box-sizing: border-box;
+}
+
+/* ----------------------------------------------------- Page furniture */
+
+header.wp-block-template-part { position: relative; z-index: 20; }
+
+/* Menus float: the one place a shadow is allowed. */
+.wp-block-navigation .wp-block-navigation__submenu-container {
+	border: 1px solid var(--wp--preset--color--grey-200) !important;
+	border-radius: var(--wp--custom--radius--menu);
+	box-shadow: var(--wp--preset--shadow--float);
+	padding: 0.5rem;
+	background: #fff;
+}
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	border-radius: 9999px;
+	padding: 0.5rem 0.875rem;
+}
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover {
+	background: var(--wp--preset--color--grey-100);
+	text-decoration: none;
+}
+.wp-block-navigation .current-menu-item > a,
+.wp-block-navigation [aria-current="page"] { font-weight: 700; }
+.wp-block-navigation__responsive-container.is-menu-open {
+	background: #fff !important;
+	color: #000 !important;
+	padding: 1.5rem clamp(16px, 4vw, 24px);
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content { gap: 1rem; }
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item { font-size: var(--wp--preset--font-size--xx-large); font-weight: 300; letter-spacing: -0.03em; }
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close {
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: 9999px;
+	padding: 0.5rem;
+}
+.wp-block-navigation__responsive-container-open:hover,
+.wp-block-navigation__responsive-container-close:hover { border-color: #000; }
+
+/* Page numbers: pills, the current one black. */
+.wp-block-query-pagination-numbers { display: inline-flex; gap: 0.375rem; }
+.wp-block-query-pagination .page-numbers,
+.wp-block-query-pagination-previous,
+.wp-block-query-pagination-next {
+	display: inline-grid;
+	place-items: center;
+	min-width: 2.5rem;
+	height: 2.5rem;
+	padding: 0 0.875rem;
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: 9999px;
+	text-decoration: none;
+	box-sizing: border-box;
+	transition: border-color var(--dui-dur-fast) var(--dui-ease);
+}
+.wp-block-query-pagination a:hover { border-color: #000; }
+.wp-block-query-pagination .page-numbers.current { background: #000; color: #fff; border-color: #000; }
+.wp-block-query-pagination .page-numbers.dots { border: 0; }
+
+/* Categories and tags: outlined pills. */
+.wp-block-post-terms a {
+	display: inline-block;
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: 9999px;
+	padding: 0.125rem 0.625rem;
+	text-decoration: none;
+	transition: border-color var(--dui-dur-fast) var(--dui-ease);
+}
+.wp-block-post-terms a:hover { border-color: #000; }
+.wp-block-post-terms .wp-block-post-terms__separator { display: none; }
+.wp-block-post-terms { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+
+/* Questions that open in place. */
+.wp-block-details {
+	border-bottom: 1px solid var(--wp--preset--color--grey-200);
+	padding: 1.125rem 0;
+}
+.wp-block-details + .wp-block-details { margin-top: 0 !important; }
+.wp-block-details summary {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	cursor: pointer;
+	list-style: none;
+	font-weight: 600;
+}
+.wp-block-details summary::-webkit-details-marker { display: none; }
+.wp-block-details summary::after { content: "+"; flex-shrink: 0; font-size: 1.4rem; font-weight: 300; line-height: 1; }
+.wp-block-details[open] summary::after { content: "\2013"; }
+.wp-block-details > :not(summary) { margin-top: 0.625rem; color: var(--wp--preset--color--grey-800); max-width: 62ch; }
+
+/* Tables: a black rule under the head, hairlines between rows. */
+.wp-block-table table { border-collapse: collapse; width: 100%; }
+.wp-block-table :where(th, td) { border: 0; border-bottom: 1px solid var(--wp--preset--color--grey-200); padding: 1rem 1rem 1rem 0; text-align: left; vertical-align: top; }
+.wp-block-table thead { border-bottom: 0; }
+.wp-block-table thead th { border-bottom: 1px solid #000; font-size: var(--wp--preset--font-size--small); font-weight: 500; color: var(--wp--preset--color--grey-600); padding-top: 0; }
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) { background: var(--wp--preset--color--grey-50); }
+.wp-block-table figcaption { color: var(--wp--preset--color--grey-600); }
+
+.wp-block-separator { border: 0; border-top: 1px solid var(--wp--preset--color--grey-200); opacity: 1; }
+.wp-block-separator.is-style-dots::before { color: var(--wp--preset--color--grey-400); }
+
+:not(pre) > code { font-family: var(--wp--preset--font-family--mono); font-size: 0.9em; background: var(--wp--preset--color--grey-100); border-radius: 6px; padding: 0.1em 0.35em; }
+
+/* -------------------------------------------------------------- Forms */
+
+/* One line you type into on its own (search, email): a pill. */
+.wp-block-search__input,
+.post-password-form input[type="password"],
+.comment-form :is(input[type="text"], input[type="email"], input[type="url"]) {
+	width: 100%;
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: 9999px;
+	background: #fff;
+	padding: 0.75rem 1.25rem;
+	font: inherit;
+	color: #000;
+	box-sizing: border-box;
+}
+/* Longer fields: soft corners. */
+.comment-form textarea {
+	width: 100%;
+	min-height: 7rem;
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: var(--wp--custom--radius--input);
+	background: #fff;
+	padding: 0.75rem 1rem;
+	font: inherit;
+	line-height: 1.5;
+	color: #000;
+	resize: vertical;
+	box-sizing: border-box;
+}
+:is(.wp-block-search__input, .comment-form input, .comment-form textarea, .post-password-form input):focus {
+	outline: none;
+	border-color: #000;
+}
+:is(.wp-block-search__input, .comment-form input, .comment-form textarea)::placeholder { color: var(--wp--preset--color--grey-400); }
+.wp-block-search__inside-wrapper { gap: 0.5rem; border: 0 !important; padding: 0 !important; }
+.wp-block-search__button { margin-left: 0; }
+.wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+	border: 1px solid var(--wp--preset--color--grey-200) !important;
+	border-radius: 9999px;
+	padding: 4px !important;
+}
+.wp-block-search.wp-block-search__button-inside .wp-block-search__input { border: 0; }
+.wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper:focus-within { border-color: #000 !important; }
+
+.comment-form label { display: block; font-size: var(--wp--preset--font-size--small); font-weight: 500; margin-bottom: 0.375rem; }
+.comment-form .comment-form-cookies-consent label { display: inline; font-weight: 400; }
+.comment-form input[type="checkbox"] { accent-color: #000; width: 1.125rem; height: 1.125rem; }
+.comment-form .required { color: #000; }
+.comment-notes,
+.logged-in-as { font-size: var(--wp--preset--font-size--small); color: var(--wp--preset--color--grey-600); }
+
+/* Errors are black and bold, with a small black "!" disc. Never red. */
+.is-style-error,
+.wp-block-post-comments-form .comment-form-error {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+	color: #000;
+}
+.is-style-error::before {
+	content: "!";
+	display: inline-grid;
+	place-items: center;
+	width: 1rem;
+	height: 1rem;
+	margin-top: 2px;
+	flex-shrink: 0;
+	border-radius: 50%;
+	background: #000;
+	color: #fff;
+	font-size: 0.65rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+/* -------------------------------------------------------------- Motion */
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+@media print {
+	header.wp-block-template-part,
+	footer.wp-block-template-part { display: none; }
+}

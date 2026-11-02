@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Coast",
+	"settings": {
+		"custom": {
+			"signature": "#0067a5",
+			"ring": {
+				"1": "#0067a5",
+				"2": "#ff5a4e",
+				"3": "#00706b",
+				"4": "#d9a400",
+				"5": "#000000"
+			}
+		}
+	}
+}

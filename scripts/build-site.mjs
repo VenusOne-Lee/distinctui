@@ -4,6 +4,7 @@
 // Templates, home, previous and next), so nobody gets stuck inside a fake app.
 // The skill's own example files stay clean.
 import { cpSync, rmSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { zipDir } from "./zip.mjs";
 
 rmSync("dist", { recursive: true, force: true });
 mkdirSync("dist");
@@ -71,4 +72,7 @@ await build({
   logLevel: "warning",
 });
 
-console.log(`Built dist/ (${templates.length} templates with the site bar, moments bundle)`);
+// The WordPress theme, as the zip WordPress asks for under Themes, Add New, Upload.
+const themeFiles = zipDir("wordpress/distinctui", "dist/distinctui-wordpress.zip", "distinctui");
+
+console.log(`Built dist/ (${templates.length} templates with the site bar, moments bundle, WordPress theme zip with ${themeFiles} files)`);
