@@ -2,6 +2,8 @@
 
 Go through every line. Fix what fails, then tell the user in one line what you checked.
 
+Most of this is automated in `assets/check.js` (`checkHTML(html)`) and in `check_page` on the MCP server at `https://distinctui.com/mcp`. The checker finds the mechanical breaks: dark mode, colour off the mark, other fonts, shadows, radii, hover lifts, two black pills, red errors, vague buttons, missing labels and alt text. It can't judge white space, photos or tone, so still read this list.
+
 ## Colour
 - [ ] Only black, white and the six greys appear, apart from the signature mark.
 - [ ] The signature colour appears only on the mark (and the logo ring, which is a mark).

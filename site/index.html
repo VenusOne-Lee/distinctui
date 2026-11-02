@@ -64,6 +64,16 @@ import "@distinctui/css/distinctui.js"; // optional motion
 &lt;script src="https://cdn.jsdelivr.net/npm/@distinctui/css@0.2/skills/distinctui/assets/distinctui.js" defer&gt;&lt;/script&gt;</code></pre>
   </section>
 
+  <section class="dui-section" id="mcp" aria-labelledby="mcp-h">
+    <h2 id="mcp-h" class="dui-h2">Any agent, <b>over MCP</b></h2>
+    <p class="dui-body">distinctUI runs as a remote MCP server. An agent can read the rules and templates, check a page against the rules, and turn plain content into a finished page. Nothing to install, no sign-in, nothing stored.</p>
+    <div class="install" style="align-self:flex-start">
+      <code id="mcp-cmd">claude mcp add --transport http distinctui https://distinctui.com/mcp</code>
+      <button class="dui-btn-sm" type="button" data-copy="mcp-cmd">Copy</button>
+    </div>
+    <p class="dui-meta">In Claude, Cursor and others, add <code>https://distinctui.com/mcp</code> as a custom connector. The tools: get_rules, get_tokens, pick_palette, list_components, get_component, list_templates, get_template, get_reference, check_page, check_spec and compose_page.</p>
+  </section>
+
   <section class="dui-section" id="wordpress" aria-labelledby="wp-h">
     <h2 id="wp-h" class="dui-h2">A theme for <b>WordPress</b></h2>
     <p class="dui-body">The same look as a block theme. Greys only in the colour picker, Bricolage Grotesque bundled, patterns for a whole landing page, and the five ring palettes as style variations. Light only.</p>

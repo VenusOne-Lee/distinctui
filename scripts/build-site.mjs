@@ -3,7 +3,7 @@
 // On the site only, each example gets a thin distinctUI bar on top (back to
 // Templates, home, previous and next), so nobody gets stuck inside a fake app.
 // The skill's own example files stay clean.
-import { cpSync, rmSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { cpSync, rmSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { zipDir } from "./zip.mjs";
 
 rmSync("dist", { recursive: true, force: true });
@@ -71,6 +71,21 @@ await build({
   legalComments: "eof",
   logLevel: "warning",
 });
+
+// The skill itself, for the MCP server at /mcp (src/mcp.js reads these through ASSETS):
+// SKILL.md, the references, the clean examples (without the site bar) and an index.
+mkdirSync("dist/skill/examples", { recursive: true });
+cpSync("skills/distinctui/SKILL.md", "dist/skill/SKILL.md");
+cpSync("skills/distinctui/references", "dist/skill/references", { recursive: true });
+for (const { slug } of templates) cpSync(`skills/distinctui/examples/${slug}.html`, `dist/skill/examples/${slug}.html`);
+const groups = [];
+for (const part of readFileSync("site/templates.html", "utf8").split(/(?=<h2 id="[\w-]+-h")/).slice(1)) {
+  const title = (part.match(/<h2[^>]*>([\s\S]*?)<\/h2>/)?.[1] || "").replace(/<[^>]+>/g, "").trim();
+  for (const [, slug, name, about] of part.matchAll(/href="\/examples\/([\w-]+)\.html"[\s\S]*?<h[34][^>]*>([^<]+)<\/h[34]>(?:<p class="dui-meta">([^<]*)<\/p>)?/g))
+    groups.push({ slug, name, about: about || "", group: title });
+}
+const references = readdirSync("skills/distinctui/references").filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""));
+writeFileSync("dist/skill/index.json", JSON.stringify({ templates: groups, references }, null, 1));
 
 // The WordPress theme, as the zip WordPress asks for under Themes, Add New, Upload.
 const themeFiles = zipDir("wordpress/distinctui", "dist/distinctui-wordpress.zip", "distinctui");

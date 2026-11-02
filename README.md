@@ -27,6 +27,37 @@ npx skills add VenusOne-Lee/distinctui
 
 Then ask Claude for the look: "Build the sign-up page in distinctUI. Our signature colour is #1f3bff."
 
+## Use it over MCP
+
+distinctUI also runs as a remote MCP server at `https://distinctui.com/mcp`. Any agent that speaks MCP can read the rules and templates, check a page against the rules, and compose a page from content. Nothing to install, no sign-in, nothing stored.
+
+**Claude Code**
+
+```
+claude mcp add --transport http distinctui https://distinctui.com/mcp
+```
+
+**Claude, Cursor and others:** add `https://distinctui.com/mcp` as a custom connector or a remote (Streamable HTTP) server.
+
+| Tool | What it does |
+| --- | --- |
+| `get_rules` | The twelve rules, what's left out on purpose, and the values the checker uses |
+| `get_tokens`, `pick_palette` | The tokens, and the five ring palettes with the CSS for each |
+| `list_components`, `get_component` | Copy-ready markup for each component group |
+| `list_templates`, `get_template` | The 27 page templates |
+| `get_reference` | Any reference, such as `page-spec`, `voice` or `review` |
+| `check_page` | Checks HTML against the rules and says how to fix each finding |
+| `check_spec`, `compose_page` | Checks a [page spec](skills/distinctui/references/page-spec.md) and turns it into a finished page |
+
+The checker and composer are plain JavaScript with no dependencies, so you can run them yourself too:
+
+```js
+import { checkHTML } from "@distinctui/css/check.js";
+import { composePage } from "@distinctui/css/compose.js";
+
+const { ok, findings } = checkHTML(html);
+```
+
 ## Use the CSS without Claude
 
 From npm:
@@ -110,6 +141,9 @@ skills/distinctui/
   assets/tokens.json       the tokens as JSON, for Figma (Tokens Studio) and Style Dictionary
   assets/icons.svg         25 Lucide outline icons as one sprite
   assets/stageshow-look.css  the look for Stageshow moments (faux product UI)
+  assets/rules.json        the rules and values in a form tools can read
+  assets/check.js          checks a page or a page spec against the rules
+  assets/compose.js        turns a page spec into a finished page
   references/tokens.md     colour, type, space, radius, mark, motion
   references/components.md markup for every component
   references/motion.md     how things move, and when they don't
@@ -117,12 +151,15 @@ skills/distinctui/
   references/voice.md      how the words sound
   references/imagery.md    photos, icons and charts
   references/review.md     the checklist Claude runs before it's done
+  references/page-spec.md  pages written as content, for compose.js and the MCP server
   references/swiftui.md    the SwiftUI package, what maps to what, phone rules
   references/wordpress.md  the WordPress block theme, what maps to what
   examples/                27 templates in seven groups: marketing, stories, selling,
                            accounts, app screens, help and docs, system pages
 wordpress/distinctui/      the WordPress block theme (theme.json, templates, patterns, the font)
 site/                      distinctui.com
+src/                       the Worker: the site, and the MCP server at /mcp (src/mcp.js)
+test/                      tests for the checker, the composer and the MCP server
 moments/                   the Moments page scenes, with a copy of the Stageshow kit (MIT, Benji Taylor)
 Package.swift              the Swift package
 swift/Sources/DistinctUI   tokens, type, pills, marks, cards and forms in SwiftUI, with the font
@@ -151,6 +188,7 @@ swift/Demo                 a demo app that runs them
 npm install
 npm run dev      # builds dist/ and serves it with wrangler
 npm run deploy   # Cloudflare Workers, custom domain distinctui.com
+npm test         # builds dist/, then runs the checker, composer and MCP tests
 ```
 
 ## Licence
