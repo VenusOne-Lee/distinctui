@@ -25,7 +25,8 @@
 				"path": "wordpress/distinctui"
 			},
 			"options": {
-				"activate": true
+				"activate": true,
+				"targetFolderName": "distinctui"
 			}
 		},
 		{
@@ -78,7 +79,8 @@
 				"path": "wordpress/distinctui-plus"
 			},
 			"options": {
-				"activate": true
+				"activate": true,
+				"targetFolderName": "distinctui-plus"
 			}
 		},
 		{

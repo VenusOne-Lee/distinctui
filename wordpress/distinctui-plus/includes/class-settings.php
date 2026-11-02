@@ -97,7 +97,8 @@ class DUI_Plus_Settings {
 	 * @return bool
 	 */
 	public static function theme_active() {
-		return 'distinctui' === get_template();
+		// By what it is, not its folder: a copy from GitHub can be called distinctui-main.
+		return 'distinctui' === get_template() || function_exists( 'distinctui_get_settings' ) || 'distinctUI' === wp_get_theme( get_template() )->get( 'Name' );
 	}
 
 	/**
