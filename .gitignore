@@ -5,3 +5,4 @@ dist/
 .swiftpm/
 *.xcodeproj/xcuserdata/
 *.xcodeproj/project.xcworkspace/xcuserdata/
+wordpress/distinctui-plus/assets/vendor/

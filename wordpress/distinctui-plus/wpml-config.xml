@@ -1,0 +1,17 @@
+<wpml-config>
+	<!-- A new translation starts from a copy of the page's spec, then each language is built on its own. -->
+	<custom-fields>
+		<custom-field action="copy-once">_dui_spec</custom-field>
+		<custom-field action="ignore">_dui_draft</custom-field>
+		<custom-field action="ignore">_dui_versions</custom-field>
+		<custom-field action="ignore">_dui_rev</custom-field>
+		<custom-field action="ignore">_dui_hash</custom-field>
+		<custom-field action="ignore">_dui_asks</custom-field>
+		<custom-field action="ignore">_dui_seo_sent</custom-field>
+	</custom-fields>
+	<admin-texts>
+		<key name="dui_plus_settings">
+			<key name="form_email" />
+		</key>
+	</admin-texts>
+</wpml-config>

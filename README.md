@@ -109,6 +109,12 @@ A block theme with the same look, for WordPress 6.6 or later. Download [distinct
 - Patterns for a hero, three cards, people in their rings, plans, questions, "not live yet" and a last call to action.
 - Block styles named after the rules: Card, Feature card, Panel, Lede, Eyebrow, Badge, Error, Mark and "Mark, not live".
 - The five ring palettes as style variations under **Appearance → Editor → Styles**. The palette's first colour is your signature colour; set your own with `:root { --wp--custom--signature: #1f3bff; }` in Additional CSS.
+- Settings under **Appearance → distinctUI**: palette, signature colour, your mark (initials or a picture), and Airy or Compact.
+- The same look on WooCommerce, Contact Form 7, WPForms, Gravity Forms, Yoast and Rank Math breadcrumbs, Jetpack, and the WPML and Polylang switchers.
+
+### distinctUI+ (in progress)
+
+[`wordpress/distinctui-plus`](wordpress/distinctui-plus) is the paid builder plugin on top of the free theme, for WordPress 6.9 or later. Type your content once and pick from three designs that all follow the rules; then edit on a full-screen canvas with your phone beside it, swap section layouts, and publish versions. Your own Claude can build pages too, through the WordPress MCP Adapter. Pages are plain core blocks, so they stay live without the plugin. Licensing isn't set up yet, so it isn't on the site for download.
 
 The theme's source is in [`wordpress/distinctui`](wordpress/distinctui). `npm run build` zips it into `dist/` for the site.
 
@@ -157,6 +163,7 @@ skills/distinctui/
   examples/                27 templates in seven groups: marketing, stories, selling,
                            accounts, app screens, help and docs, system pages
 wordpress/distinctui/      the WordPress block theme (theme.json, templates, patterns, the font)
+wordpress/distinctui-plus/ distinctUI+, the builder plugin (canvas, page specs, abilities for Claude)
 site/                      distinctui.com
 src/                       the Worker: the site, and the MCP server at /mcp (src/mcp.js)
 test/                      tests for the checker, the composer and the MCP server

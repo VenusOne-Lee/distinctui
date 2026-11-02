@@ -15,11 +15,23 @@ distinctUI ships as a WordPress block theme (WordPress 6.6 or later). Download i
 | Badge, version chip | Paragraph style Badge. |
 | `dui-btn`, `dui-btn-ghost`, text link | Button default, Outline style, Text link style. One black button per group. |
 | Card, feature card, panel, note | Group (or Column) styles Card, Feature card, Panel, Note. |
-| Signature mark, dashed until live | Image or Avatar styles Mark, "Mark, not live", "Mark, plain". |
+| Signature mark, dashed until live | Image or Avatar styles Mark, "Mark, not live", "Mark, plain". Group styles "Mark with initials" and its dashed twin for a ring with letters. |
 | Logo | Site title style "Logo with ring". |
 | Questions that open in place | The Details block, styled with hairlines and +. |
 | Field error | Paragraph style Error: black, bold, a black "!" disc. |
 | Menu shadow | Only on navigation submenus. |
+
+## Settings
+
+Appearance, distinctUI: ring palette, signature colour, your mark (initials or a picture) and Airy or Compact. Stored in the `distinctui_settings` option, which distinctUI+ shares. Nothing else is a setting: type, greys, corners and sizes belong to the system.
+
+## Other plugins
+
+`assets/css/plugins.css` carries the look into WooCommerce, Contact Form 7, WPForms, Gravity Forms, Yoast and Rank Math breadcrumbs, Jetpack and the WPML and Polylang switchers. It loads only when one is active (filter `distinctui_load_plugins_css`).
+
+## distinctUI+
+
+The builder plugin in `wordpress/distinctui-plus` writes pages from the page spec (`references/page-spec.md`) as core blocks, checks them with a PHP port of `checkSpec` (kept in step by `test/check-parity.test.js`), and gives Claude abilities over the WordPress MCP Adapter: get-guide, list-pages, get-page, check-spec, design-options, create-page, import-design, update-page, add-section, update-section, move-section, remove-section, set-signature, publish-page, restore-version, done-asks.
 
 ## Patterns
 

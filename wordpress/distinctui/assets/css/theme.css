@@ -220,6 +220,44 @@ img.avatar:where(.is-style-mark) {
 .is-style-mark-plain { --mark-colour: #000; --mark-ring: 2px; }
 .wp-block-image:is(.is-style-mark, .is-style-mark-dashed, .is-style-mark-plain) { border-radius: 50%; }
 
+/*
+ * A mark with initials inside: a Group with the "Mark with initials" style
+ * and one paragraph of one to three letters. Sizes: add mark-s (40px),
+ * mark-m (80px, the default) or mark-l (112px) to Additional CSS classes.
+ */
+.wp-block-group:is(.is-style-mark, .is-style-mark-dashed) {
+	--mark-size: 5rem;
+	width: var(--mark-size);
+	height: var(--mark-size);
+	flex-shrink: 0;
+	display: grid !important;
+	place-items: center;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: var(--mark-ring) solid var(--mark-colour);
+	background: #fff;
+	padding: 0 !important;
+	margin-inline: 0;
+}
+.wp-block-group.is-style-mark-dashed { border-style: dashed; }
+.wp-block-group:is(.is-style-mark, .is-style-mark-dashed) > * {
+	margin: 0 !important;
+	font-size: calc(var(--mark-size) * 0.32);
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: -0.02em;
+	max-width: none;
+}
+.wp-block-group.mark-s { --mark-size: 2.5rem; --mark-ring: 3px; }
+.wp-block-group.mark-m { --mark-size: 5rem; }
+.wp-block-group.mark-l { --mark-size: 7rem; --mark-ring: 5px; }
+.wp-block-group.has-text-align-center:is(.is-style-mark, .is-style-mark-dashed),
+.has-text-align-center > .wp-block-group:is(.is-style-mark, .is-style-mark-dashed) { margin-inline: auto; }
+
+/* A row of faces: marks that overlap a little, then a line about them. */
+.dui-faces { display: flex; }
+.dui-faces > * + * { margin-inline-start: -0.5rem !important; }
+
 .ring-1 { --mark-colour: var(--dui-ring-1) !important; }
 .ring-2 { --mark-colour: var(--dui-ring-2) !important; }
 .ring-3 { --mark-colour: var(--dui-ring-3) !important; }
@@ -432,6 +470,65 @@ header.wp-block-template-part { position: relative; z-index: 20; }
 	font-weight: 700;
 	line-height: 1;
 }
+
+/*
+ * Forms built with distinctUI+ (and any form with the dui-form class).
+ * The markup lives in the page, so the look lives here in the free theme:
+ * the form keeps its look even without the plugin.
+ */
+.dui-form { display: grid; gap: 1rem; max-width: 36rem; }
+.dui-field { display: grid; gap: 0.375rem; }
+.dui-field > label { font-size: var(--wp--preset--font-size--small); font-weight: 500; }
+.dui-optional { color: var(--wp--preset--color--grey-600); font-weight: 400; }
+.dui-hint { font-size: var(--wp--preset--font-size--small); color: var(--wp--preset--color--grey-600); }
+.dui-form :is(input:not([type="checkbox"]):not([type="radio"]), select) {
+	width: 100%;
+	min-height: 2.875rem;
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: 9999px;
+	background: #fff;
+	padding: 0.625rem 1.25rem;
+	font: inherit;
+	color: #000;
+	box-sizing: border-box;
+}
+.dui-form textarea {
+	width: 100%;
+	min-height: 7rem;
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: var(--wp--custom--radius--input);
+	background: #fff;
+	padding: 0.75rem 1rem;
+	font: inherit;
+	line-height: 1.5;
+	color: #000;
+	resize: vertical;
+	box-sizing: border-box;
+}
+.dui-form :is(input, select, textarea):focus { outline: 2px solid #000; outline-offset: 2px; border-color: #000; }
+.dui-form :is(input, select, textarea)[aria-invalid="true"] { border-color: #000; border-width: 1.5px; }
+.dui-form ::placeholder { color: var(--wp--preset--color--grey-400); }
+.dui-form input[type="checkbox"] { accent-color: #000; width: 1.125rem; height: 1.125rem; }
+.dui-field-check label { display: flex; gap: 0.5rem; align-items: flex-start; font-weight: 400; }
+.dui-form .dui-field-error { margin: 0.125rem 0 0; }
+.dui-form-msg { margin: 0; }
+.dui-form-msg.is-sent { border-radius: var(--wp--custom--radius--note); background: var(--wp--preset--color--grey-50); border-left: 3px solid #000; padding: 0.875rem 1rem; font-weight: 500; }
+.dui-form-actions { padding-top: 0.25rem; }
+.dui-form button[type="submit"] { cursor: pointer; }
+.dui-form button[type="submit"]:disabled { opacity: 0.5; cursor: progress; }
+.dui-hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Numbers: big and light. */
+.dui-stat { font-weight: 300; letter-spacing: -0.04em; line-height: 1; margin: 0; }
+
+/* Products sit on grey-100. */
+.dui-product-image img,
+.dui-product .wp-block-post-featured-image img { background: var(--wp--preset--color--grey-100); border-radius: var(--wp--custom--radius--panel); }
+
+/* What's in a plan: a short list with black ticks. */
+.dui-plan-features { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.375rem; color: var(--wp--preset--color--grey-800); }
+.dui-plan-features li { display: flex; gap: 0.5rem; }
+.dui-plan-features li::before { content: "✓"; font-weight: 700; color: #000; }
 
 /* -------------------------------------------------------------- Motion */
 
