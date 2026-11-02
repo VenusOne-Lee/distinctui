@@ -47,6 +47,44 @@ if ( class_exists( '\WP\MCP\Core\McpAdapter' ) ) {
 	global $wp_filter;
 	$ok( 'mcp hooks', true, implode( ',', array_filter( array_keys( $wp_filter ), fn( $k ) => false !== stripos( $k, 'mcp' ) ) ) );
 	$ok( 'mcp did_action', true, did_action( 'mcp_adapter_init' ) );
+	foreach ( array( '\\WP\\MCP\\Transport\\HttpTransport', '\\WP\\MCP\\Infrastructure\\ErrorHandling\\ErrorLogMcpErrorHandler', '\\WP\\MCP\\Infrastructure\\Observability\\NullMcpObservabilityHandler' ) as $cls ) {
+		$ok( 'class ' . $cls, class_exists( $cls ) );
+	}
+	// Talk to our server the way a client would.
+	$mcp_routes = array_values( array_filter( array_keys( $routes ), fn( $k ) => false !== strpos( $k, 'mcp' ) ) );
+	$ok( 'mcp routes', ! empty( $mcp_routes ), implode( ',', $mcp_routes ) );
+	foreach ( $mcp_routes as $route ) {
+		if ( false === strpos( $route, 'distinctui' ) ) {
+			continue;
+		}
+		$send = function ( $body, $session = '' ) use ( $route ) {
+			$req = new WP_REST_Request( 'POST', $route );
+			$req->set_header( 'Content-Type', 'application/json' );
+			$req->set_header( 'Accept', 'application/json, text/event-stream' );
+			$req->set_header( 'MCP-Protocol-Version', '2025-11-25' );
+			if ( $session ) {
+				$req->set_header( 'Mcp-Session-Id', $session );
+			}
+			$req->set_body( wp_json_encode( $body ) );
+			return rest_do_request( $req );
+		};
+		$res = $send( array( 'jsonrpc' => '2.0', 'id' => 1, 'method' => 'initialize', 'params' => array( 'protocolVersion' => '2025-11-25', 'capabilities' => new stdClass(), 'clientInfo' => array( 'name' => 'test', 'version' => '1' ) ) ) );
+		$sid = $res->get_headers()['Mcp-Session-Id'] ?? '';
+		$ok( 'mcp initialize', 200 === $res->get_status(), $res->get_status() . ' ' . substr( wp_json_encode( $res->get_data() ), 0, 200 ) );
+		$res = $send( array( 'jsonrpc' => '2.0', 'id' => 2, 'method' => 'tools/list' ), $sid );
+		$data = $res->get_data();
+		$tools = array_map( fn( $t ) => $t['name'] ?? '', (array) ( $data['result']['tools'] ?? array() ) );
+		$ok( 'mcp tools/list', count( $tools ) >= 16, $res->get_status() . ' ' . count( $tools ) . ' ' . substr( implode( ',', $tools ), 0, 200 ) . ' ' . ( $tools ? '' : substr( wp_json_encode( $data ), 0, 300 ) ) );
+		$guide = '';
+		foreach ( $tools as $t ) {
+			if ( false !== strpos( $t, 'get-guide' ) ) {
+				$guide = $t;
+			}
+		}
+		$res = $send( array( 'jsonrpc' => '2.0', 'id' => 3, 'method' => 'tools/call', 'params' => array( 'name' => $guide, 'arguments' => new stdClass() ) ), $sid );
+		$data = $res->get_data();
+		$ok( 'mcp tools/call get-guide', empty( $data['error'] ) && empty( $data['result']['isError'] ), $res->get_status() . ' ' . substr( wp_json_encode( $data ), 0, 240 ) );
+	}
 	$ok( 'mcp classes', true, implode( ',', array_filter( get_declared_classes(), fn( $c ) => 0 === strpos( $c, 'WP\\MCP' ) && false !== strpos( $c, 'Transport' ) ) ) );
 	$ok( 'active plugins', true, implode( ',', get_option( 'active_plugins' ) ) );
 }

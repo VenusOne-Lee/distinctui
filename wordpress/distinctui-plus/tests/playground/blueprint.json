@@ -3,7 +3,7 @@
 	"meta": {
 		"title": "distinctUI+ with the big plugins",
 		"author": "distinctui",
-		"description": "Installs the theme and distinctUI+ from this branch, with WooCommerce, Yoast SEO, Contact Form 7 and WP Super Cache, then runs tests/playground/dui-test.php."
+		"description": "Installs the theme and distinctUI+ from this branch, with WooCommerce, Yoast SEO, Contact Form 7, WP Super Cache and the MCP Adapter and the MCP Adapter, then runs tests/playground/dui-test.php."
 	},
 	"landingPage": "/wp-content/plugins/distinctui-plus/tests/playground/dui-test.php",
 	"preferredVersions": {
@@ -64,6 +64,16 @@
 			"pluginData": {
 				"resource": "wordpress.org/plugins",
 				"slug": "wp-super-cache"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "mcp-adapter"
 			},
 			"options": {
 				"activate": true
