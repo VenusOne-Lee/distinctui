@@ -293,13 +293,22 @@ class DUI_Plus_Rest {
 			),
 			$spec
 		);
-		$store  = WP_Style_Engine_CSS_Rules_Store::get_store( 'block-supports' );
-		$before = array_keys( $store->get_all_rules() );
-		$html   = do_blocks( $markup );
-		$rules  = array_diff_key( $store->get_all_rules(), array_flip( $before ) );
-		$css    = '';
-		foreach ( $rules as $rule ) {
-			$css .= $rule->get_css();
+		$store = WP_Style_Engine_CSS_Rules_Store::get_store( 'block-supports' );
+		// Shortcodes too, so a Contact Form 7, WPForms or Gravity form shows as itself.
+		$html = do_shortcode( do_blocks( $markup ) );
+		// Every layout rule this section's markup uses. Newer WordPress names
+		// containers by a hash of their styles, so two sections can share a
+		// rule that was stored before this one ran: take rules by use, not by age.
+		$css = '';
+		foreach ( $store->get_all_rules() as $selector => $rule ) {
+			if ( preg_match_all( '/\.((?:wp-container|wp-elements)-[A-Za-z0-9_-]+)/', (string) $selector, $m ) ) {
+				foreach ( $m[1] as $class ) {
+					if ( false !== strpos( $html, $class ) ) {
+						$css .= $rule->get_css();
+						break;
+					}
+				}
+			}
 		}
 		$tag  = 'd' . wp_rand( 1000, 9999 ) . $n;
 		$swap = function ( $text ) use ( $tag ) {

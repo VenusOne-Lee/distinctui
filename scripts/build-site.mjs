@@ -96,7 +96,7 @@ const themeFiles = zipDir("wordpress/distinctui", "dist/distinctui-wordpress.zip
 mkdirSync("wordpress/distinctui-plus/assets/vendor", { recursive: true });
 for (const f of ["rules.json", "check.js"]) cpSync(`skills/distinctui/assets/${f}`, `wordpress/distinctui-plus/assets/vendor/${f}`);
 mkdirSync(".build", { recursive: true });
-zipDir("wordpress/distinctui-plus", ".build/distinctui-plus.zip", "distinctui-plus");
+zipDir("wordpress/distinctui-plus", ".build/distinctui-plus.zip", "distinctui-plus", (f) => f.startsWith("tests/"));
 
 // The demo at try.distinctui.com (site/try) runs both in WordPress Playground, so it needs the zips beside it.
 cpSync("dist/distinctui-wordpress.zip", "dist/try/distinctui-wordpress.zip");
