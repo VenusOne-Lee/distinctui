@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<title>Try distinctUI+ · distinctUI</title>
+<meta name="description" content="A WordPress in your browser with the distinctUI theme and the distinctUI+ builder. Nothing is saved; close the tab and it's gone.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#fff;color:#000;font:400 14px/1.4 "Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif}
+body{display:grid;grid-template-rows:auto minmax(0,1fr)}
+.bar{display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid #e5e5e5;min-height:52px;flex-wrap:wrap}
+.logo{font-weight:700;letter-spacing:-0.02em;font-size:16px;color:#000;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.logo i{width:14px;height:14px;border-radius:50%;border:3px dashed #1f3bff}
+.note{color:#6b6b6b}
+.grow{flex:1}
+.pill{display:inline-flex;align-items:center;min-height:36px;padding:0 16px;border-radius:999px;border:1px solid #e5e5e5;color:#000;text-decoration:none;font-weight:500;transition:border-color 120ms cubic-bezier(.2,0,0,1)}
+.pill:hover{border-color:#000}
+.pill:focus-visible,.logo:focus-visible{outline:2px solid #000;outline-offset:2px}
+iframe{width:100%;height:100%;border:0;display:block;background:#f2f2f2}
+@media (max-width:639px){.note{display:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="logo" href="https://distinctui.com"><i aria-hidden="true"></i>distinctUI<b>+</b></a>
+  <span class="note">A WordPress in your browser. Nothing is saved: close the tab and it's gone.</span>
+  <span class="grow"></span>
+  <a class="pill" href="https://distinctui.com/#wordpress">Get the free theme</a>
+</header>
+<iframe id="wp" title="WordPress with distinctUI+" allow="clipboard-read; clipboard-write"></iframe>
+<script>
+// WordPress Playground runs WordPress in the browser. The blueprint installs the free
+// theme and distinctUI+ from this site, then opens the canvas. DUI_PLUS_DEV skips the
+// licence for the demo only.
+const here = location.origin;
+const blueprint = {
+  landingPage: "/wp-admin/admin.php?page=dui-canvas",
+  preferredVersions: { php: "8.3", wp: "latest" },
+  login: true,
+  steps: [
+    { step: "installTheme", themeData: { resource: "url", url: here + "/try/distinctui-wordpress.zip" }, options: { activate: true } },
+    { step: "installPlugin", pluginData: { resource: "url", url: here + "/try/distinctui-plus.zip" }, options: { activate: true } },
+    { step: "defineWpConfigConsts", consts: { DUI_PLUS_DEV: true } },
+    { step: "setSiteOptions", options: { blogname: "Loaf", blogdescription: "Fresh bread before you're up" } },
+  ],
+};
+document.getElementById("wp").src = "https://playground.wordpress.net/#" + encodeURIComponent(JSON.stringify(blueprint));
+</script>
+</body>
+</html>
