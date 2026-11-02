@@ -177,6 +177,8 @@ body{margin:0;padding-bottom:6rem}
 .dui-sec{position:relative;transition:outline-color 120ms}
 #dui-page>.dui-sec{max-width:var(--wp--style--global--wide-size)!important;margin-left:auto!important;margin-right:auto!important}
 .dui-sec>.alignwide{max-width:none}
+.wpcf7 .hidden-fields-container{display:none}
+.wpcf7 .screen-reader-response,.wpcf7-response-output:empty{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .dui-canvas .dui-sec{outline:1px solid transparent;outline-offset:-1px}
 .dui-canvas .dui-sec:hover{outline-color:#a3a3a3}
 .dui-canvas .dui-sec.is-sel{outline:2px solid #000;outline-offset:-2px}
