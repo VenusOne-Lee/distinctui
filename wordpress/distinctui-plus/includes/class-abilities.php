@@ -88,13 +88,16 @@ class DUI_Plus_Abilities {
 					'mcp'          => array( 'public' => true ),
 				),
 			);
+			// Every ability takes an object, so an MCP client can send {} or nothing at all.
+			$args['input_schema'] = array( 'type' => 'object' );
 			if ( ! empty( $d['input'] ) ) {
-				$args['input_schema'] = array(
-					'type'                 => 'object',
-					'properties'           => $d['input'],
-					'required'             => $d['required'] ?? array(),
-					'additionalProperties' => false,
-				);
+				$args['input_schema']['properties']           = $d['input'];
+				$args['input_schema']['additionalProperties'] = false;
+			}
+			if ( ! empty( $d['required'] ) ) {
+				$args['input_schema']['required'] = $d['required'];
+			} else {
+				$args['input_schema']['default'] = array();
 			}
 			$args['output_schema'] = $d['output'] ?? array( 'type' => 'object' );
 			wp_register_ability( 'distinctui-plus/' . $name, $args );

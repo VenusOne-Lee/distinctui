@@ -19,6 +19,8 @@ if ( $has ) {
 	$ok( 'our abilities', 16 === count( $names ), count( $names ) . ' ' . implode( ',', $names ) );
 	$g = wp_get_ability( 'distinctui-plus/get-guide' );
 	$out = $g ? $g->execute( array() ) : null;
+	$out2 = $g ? $g->execute() : null;
+	$ok( 'get-guide runs with no input', $out2 && ! is_wp_error( $out2 ), is_wp_error( $out2 ) ? $out2->get_error_message() : '' );
 	$ok( 'get-guide runs', $out && ! is_wp_error( $out ), is_wp_error( $out ) ? $out->get_error_message() : substr( wp_json_encode( $out ), 0, 160 ) );
 	$o = wp_get_ability( 'distinctui-plus/design-options' );
 	$out = $o ? $o->execute( array( 'content' => array( 'name' => 'Loaf', 'heading' => 'Fresh bread before you are up', 'products' => true, 'form' => 'contact' ) ) ) : null;
@@ -26,12 +28,24 @@ if ( $has ) {
 	$c = wp_get_ability( 'distinctui-plus/create-page' );
 	$spec = array( 'name' => 'Ability page', 'sections' => array( array( 'type' => 'hero', 'heading' => 'Made by Claude', 'bold' => 'Claude', 'primary' => array( 'label' => 'Start', 'href' => '#' ) ) ) );
 	$out = $c ? $c->execute( array( 'title' => 'Ability page', 'spec' => $spec ) ) : null;
-	$ok( 'create-page runs', is_array( $out ) && ! empty( $out['id'] ?? ( $out['page']['id'] ?? null ) ), is_wp_error( $out ) ? $out->get_error_message() : substr( wp_json_encode( $out ), 0, 200 ) );
+	$ok( 'create-page runs', is_array( $out ) && ! empty( $out['page_id'] ?? ( $out['id'] ?? null ) ), is_wp_error( $out ) ? $out->get_error_message() : substr( wp_json_encode( $out ), 0, 200 ) );
 	$m = wp_get_ability( 'distinctui-plus/get-guide' );
 	$ok( 'mcp.public meta', $m && ! empty( $m->get_meta()['mcp']['public'] ), wp_json_encode( $m ? $m->get_meta() : null ) );
 }
 $routes = rest_get_server()->get_routes();
 $ok( 'mcp adapter active', class_exists( '\WP\MCP\Core\McpAdapter' ) );
+if ( class_exists( '\WP\MCP\Core\McpAdapter' ) ) {
+	$rc = new ReflectionClass( '\WP\MCP\Core\McpAdapter' );
+	$ok( 'mcp adapter file', true, str_replace( ABSPATH, '', $rc->getFileName() ) );
+	if ( $rc->hasMethod( 'create_server' ) ) {
+		$ok( 'create_server params', true, implode( ', ', array_map( fn( $p ) => ( $p->getType() ? $p->getType() . ' ' : '' ) . '$' . $p->getName(), $rc->getMethod( 'create_server' )->getParameters() ) ) );
+	}
+	global $wp_filter;
+	$ok( 'mcp hooks', true, implode( ',', array_filter( array_keys( $wp_filter ), fn( $k ) => false !== stripos( $k, 'mcp' ) ) ) );
+	$ok( 'mcp did_action', true, did_action( 'mcp_adapter_init' ) );
+	$ok( 'mcp classes', true, implode( ',', array_filter( get_declared_classes(), fn( $c ) => 0 === strpos( $c, 'WP\\MCP' ) && false !== strpos( $c, 'Transport' ) ) ) );
+	$ok( 'active plugins', true, implode( ',', get_option( 'active_plugins' ) ) );
+}
 $ok( 'our mcp route', (bool) array_filter( array_keys( $routes ), fn( $k ) => 0 === strpos( $k, '/distinctui-plus/mcp' ) ), implode( ',', array_filter( array_keys( $routes ), fn( $k ) => false !== strpos( $k, 'mcp' ) ) ) );
 
 // WooCommerce.
