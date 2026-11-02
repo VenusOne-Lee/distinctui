@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Order placed · Clayhouse</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: order confirmation. The order's mark goes live (dashed to solid) once payment lands,
+     the order number copies with a button that confirms on itself, what happens next as numbered
+     steps, and the order in a table. Invented studio, person and prices; photos are AI-generated. */
+  :root { --dui-signature: #b5452b; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+  .done { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding-top: 40px; max-width: 44rem; }
+  .two { display: grid; gap: 32px; }
+  @media (min-width: 960px) { .two { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 64px; align-items: start; } }
+  .item { display: flex; align-items: center; gap: 12px; }
+  .item img { width: 3.5rem; height: 3.5rem; border-radius: 12px; object-fit: cover; background: var(--dui-grey-100); flex-shrink: 0; }
+  .side { display: flex; flex-direction: column; gap: 16px; }
+</style>
+</head>
+<body class="dui-page">
+<header class="dui-container top">
+  <a class="dui-logo" href="shop.html">clayhouse</a>
+  <a class="dui-link dui-meta" href="#">Help with an order</a>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="done" aria-labelledby="ok-h">
+    <span class="dui-mark" id="order-mark" data-live="false" style="--mark-size:5.5rem"><span class="dui-mark__inner"><img src="img/ware-mug.jpg" alt=""></span></span>
+    <h1 id="ok-h" class="dui-h1">Thanks, Thabo. It's <b>ordered</b>.</h1>
+    <p class="dui-lede">Ayesha packs orders on Fridays. Yours leaves Woodstock on 6 November and should reach you by the 11th.</p>
+    <p class="dui-status" role="status"><span>We emailed the receipt to <b>thabo@example.com</b>.</span></p>
+    <div class="dui-copy-line" style="width:100%"><span class="dui-meta" style="flex:0 0 auto">Order</span><code id="order-no">CH-20418</code><button class="dui-btn-sm-ghost" type="button" data-copy="#order-no">Copy</button></div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="next-h">
+    <h2 id="next-h" class="dui-h2">What happens <b>next</b></h2>
+    <ol class="dui-how">
+      <li data-done="true"><h3>Paid</h3><p>R1,155 by card on 2 November. The receipt is in your email.</p></li>
+      <li><h3>Packed on Friday</h3><p>Wrapped in paper and wool, never plastic. We SMS you the tracking link.</p></li>
+      <li><h3>At your door</h3><p>The courier calls 30 minutes before. Not home? They leave it at the gate only if you say so.</p></li>
+    </ol>
+  </section>
+
+  <section class="dui-section two" aria-labelledby="o-h">
+    <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+      <h2 id="o-h" class="dui-h2">Your <b>order</b></h2>
+      <div class="dui-table-wrap">
+        <table class="dui-table">
+          <caption class="dui-sr-only">Items and totals</caption>
+          <thead><tr><th>Item</th><th class="dui-num">Qty</th><th class="dui-num">Price</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item"><img src="img/ware-mug.jpg" alt=""><span><b>Speckled mug</b><br><span class="dui-meta">Oat</span></span></span></td><td class="dui-num">2</td><td class="dui-num">R640</td></tr>
+            <tr><td><span class="item"><img src="img/ware-plates.jpg" alt=""><span><b>Side plates, pair</b><br><span class="dui-meta">Terracotta</span></span></span></td><td class="dui-num">1</td><td class="dui-num">R420</td></tr>
+            <tr><td>Courier</td><td></td><td class="dui-num">R95</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total, with VAT</td><td></td><td class="dui-num">R1,155</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+    <aside class="side">
+      <div class="dui-panel" style="display:flex;flex-direction:column;gap:6px"><b>Going to</b><p class="dui-meta" style="color:var(--dui-grey-800)">Thabo Molefe<br>14 Station Road, Observatory, 7925<br>082 000 0000</p></div>
+      <div class="dui-panel" style="display:flex;flex-direction:column;gap:6px"><b>Need to change something?</b><p class="dui-meta">Reply to the receipt email before Friday morning and we'll sort it.</p></div>
+      <div class="dui-actions"><a class="dui-btn" href="#">Track your order</a><a class="dui-btn-ghost" href="shop.html">Keep shopping</a></div>
+    </aside>
+  </section>
+</main>
+<script>
+  // The order goes live once: dashed while it's being paid for, solid now that it's paid.
+  addEventListener("load", () => setTimeout(() => {
+    const mark = document.getElementById("order-mark");
+    mark.dataset.live = "true";
+    mark.classList.add("dui-live-now");
+  }, 400));
+</script>
+</body>
+</html>

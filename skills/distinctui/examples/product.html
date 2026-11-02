@@ -30,9 +30,6 @@
   .opts input:checked + span { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); }
   .opts input:focus-visible + span { outline: 2px solid var(--dui-black); outline-offset: 2px; }
   .opts input:disabled + span { opacity: 0.4; text-decoration: line-through; cursor: not-allowed; }
-  .qty { display: inline-flex; align-items: center; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-pill); }
-  .qty button { width: 2.75rem; height: 2.75rem; border: 0; background: none; cursor: pointer; display: grid; place-items: center; border-radius: 50%; }
-  .qty output { min-width: 2rem; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
   .add { display: flex; gap: 10px; }
   .add .dui-btn { flex: 1; }
   .maker { display: flex; align-items: center; gap: 12px; }
@@ -82,10 +79,10 @@
       </fieldset>
 
       <div class="add">
-        <div class="qty" role="group" aria-label="How many">
-          <button type="button" aria-label="One fewer"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#minus"/></svg></button>
-          <output aria-live="polite">1</output>
-          <button type="button" aria-label="One more"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg></button>
+        <div class="dui-stepper" role="group" aria-label="How many">
+          <button type="button" data-step="-1" aria-label="One fewer"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#minus"/></svg></button>
+          <input type="number" inputmode="numeric" value="1" min="1" max="6" aria-label="Quantity">
+          <button type="button" data-step="1" aria-label="One more"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg></button>
         </div>
         <button class="dui-btn" type="button">Add to bag</button>
       </div>

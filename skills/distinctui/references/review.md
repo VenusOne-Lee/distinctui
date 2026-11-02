@@ -21,7 +21,7 @@ Most of this is automated in `assets/check.js` (`checkHTML(html)`) and in `check
 - [ ] Buttons, tabs, badges and one-line fields are pills.
 - [ ] Cards are 22px, the feature card 28px, long-form inputs 14px.
 - [ ] One black pill per group of actions; the rest are outlined or text links.
-- [ ] No shadows except on a floating menu.
+- [ ] No shadows except on a floating menu or the date picker that opens under a field.
 - [ ] Hover changes a border or opacity, never lifts or scales.
 
 ## Motion
@@ -51,9 +51,12 @@ Most of this is automated in `assets/check.js` (`checkHTML(html)`) and in `check
 - [ ] Errors name the field and the fix, in black with the "!" disc, and a banner at the top lists them with links.
 - [ ] Optional fields say "(optional)".
 - [ ] Empty states say what will appear and give one next step.
+- [ ] Testimonials name a real-sounding person and place, in the plain black ring. No gold stars, no colour logos.
 
 ## Access
 - [ ] Visible black focus ring on everything you can tab to.
 - [ ] Images have alt text, or `alt=""` if they repeat nearby text.
 - [ ] Consent and marketing ticks start unticked, one per purpose.
 - [ ] Motion is off under `prefers-reduced-motion`.
+- [ ] Nothing covers the page on arrival: no pop-up, no cookie wall. The cookie notice's main choice shares least, and nothing optional loads before a yes.
+- [ ] Date fields keep the native input underneath; closed days say why.

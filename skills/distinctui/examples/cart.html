@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Your bag · Clayhouse</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: the bag, before checkout. Steps on top, one row per item with a quantity stepper,
+     a plain "Remove" link, and a summary with one black pill. Taking the last one out leaves an
+     empty state with one next step. Invented studio and prices; the photos are AI-generated. */
+  :root { --dui-signature: #b5452b; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+  .bag { display: grid; gap: 40px; padding-top: 32px; }
+  @media (min-width: 960px) { .bag { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 64px; align-items: start; } }
+  .item { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: 16px; align-items: start; }
+  @media (min-width: 640px) { .item { grid-template-columns: 6rem minmax(0, 1fr) auto; align-items: center; } }
+  .item img { width: 100%; aspect-ratio: 1; border-radius: 12px; object-fit: cover; background: var(--dui-grey-100); display: block; }
+  .item .what { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .item .how { display: flex; align-items: center; gap: 16px; grid-column: 2; }
+  @media (min-width: 640px) { .item .how { grid-column: auto; } }
+  .item .line { min-width: 4.5rem; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .remove { border: 0; background: none; padding: 0; font: inherit; font-size: var(--dui-text-sm); color: var(--dui-grey-600); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; align-self: flex-start; }
+  .remove:hover { color: var(--dui-black); }
+  .sum { display: flex; flex-direction: column; gap: 20px; }
+  @media (min-width: 960px) { .sum { position: sticky; top: 24px; } }
+  .sum dl { margin: 0; display: flex; flex-direction: column; }
+  .sum dl div { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--dui-grey-200); }
+  .sum dl div:last-child { border-bottom: 0; font-weight: 700; font-size: var(--dui-text-lg); }
+  .sum dd { margin: 0; font-variant-numeric: tabular-nums; }
+  .sum .dui-btn { width: 100%; }
+</style>
+</head>
+<body class="dui-page">
+<div class="dui-container">
+  <div class="top">
+    <a class="dui-logo" href="shop.html">clayhouse</a>
+    <a class="dui-link dui-meta" href="shop.html">Keep shopping</a>
+  </div>
+  <ol class="dui-steps" aria-label="Checkout">
+    <li aria-current="step"><span>Bag</span></li>
+    <li><span>Delivery</span></li>
+    <li><span>Pay</span></li>
+  </ol>
+</div>
+
+<main id="main" class="dui-container bag" style="padding-bottom:96px">
+  <section aria-labelledby="b-h" style="display:flex;flex-direction:column;gap:24px;min-width:0">
+    <h1 id="b-h" class="dui-h1">Your <b>bag</b></h1>
+    <ul class="dui-rows" id="items">
+      <li class="dui-row" data-price="320">
+        <div class="item" style="width:100%">
+          <img src="img/ware-mug.jpg" alt="">
+          <div class="what"><b>Speckled mug</b><span class="dui-meta">Oat · R320 each</span><button class="remove" type="button">Remove</button></div>
+          <div class="how">
+            <div class="dui-stepper dui-stepper--sm" role="group" aria-label="How many speckled mugs"><button type="button" data-step="-1" aria-label="One fewer"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#minus"/></svg></button><input type="number" inputmode="numeric" value="2" min="0" max="8" aria-label="Quantity"><button type="button" data-step="1" aria-label="One more"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg></button></div>
+            <span class="line">R640</span>
+          </div>
+        </div>
+      </li>
+      <li class="dui-row" data-price="420">
+        <div class="item" style="width:100%">
+          <img src="img/ware-plates.jpg" alt="">
+          <div class="what"><b>Side plates, pair</b><span class="dui-meta">Terracotta · R420 a pair</span><button class="remove" type="button">Remove</button></div>
+          <div class="how">
+            <div class="dui-stepper dui-stepper--sm" role="group" aria-label="How many pairs of side plates"><button type="button" data-step="-1" aria-label="One fewer"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#minus"/></svg></button><input type="number" inputmode="numeric" value="1" min="0" max="4" aria-label="Quantity"><button type="button" data-step="1" aria-label="One more"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg></button></div>
+            <span class="line">R420</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="dui-empty" id="empty" hidden>
+      <span class="dui-mark dui-mark--empty" style="--mark-size:4rem"><span class="dui-mark__inner"></span></span>
+      <p>Your bag is empty. Pieces you add show up here, and we keep them for a week.</p>
+      <a class="dui-btn-sm" href="shop.html">Back to the shop</a>
+    </div>
+    <p class="dui-meta">Each piece is thrown by hand, so yours may look a little different from the photo.</p>
+  </section>
+
+  <aside class="dui-panel sum" aria-labelledby="s-h" style="padding:24px">
+    <h2 id="s-h" class="dui-h4">Summary</h2>
+    <dl>
+      <div><dt>Items</dt><dd id="sub">R1,060</dd></div>
+      <div><dt>Courier</dt><dd id="ship">R95</dd></div>
+      <div><dt>Total, with VAT</dt><dd id="total">R1,155</dd></div>
+    </dl>
+    <p class="dui-note" style="background:var(--dui-white)" id="free"><b>R140 more</b> and courier is free.</p>
+    <form class="dui-inline" onsubmit="return false" style="max-width:none">
+      <label class="dui-sr-only" for="code">Gift card or code</label>
+      <input class="dui-field" id="code" placeholder="Gift card or code (optional)" style="padding-block:0.5rem">
+      <button class="dui-btn-sm-ghost" type="submit">Use it</button>
+    </form>
+    <a class="dui-btn" href="checkout.html">Check out</a>
+    <p class="dui-meta" style="display:flex;gap:8px;align-items:center"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#truck"/></svg> Courier in 2 to 4 working days, or collect in Woodstock for free.</p>
+  </aside>
+</main>
+<script>
+  // Totals follow the steppers. Zero, or Remove, takes the row out.
+  const rand = (n) => "R" + n.toLocaleString("en-ZA").replace(/\s/g, ",");
+  const list = document.getElementById("items");
+  function totals() {
+    let sub = 0;
+    list.querySelectorAll("[data-price]").forEach((row) => {
+      const n = +row.querySelector("input").value;
+      row.querySelector(".line").textContent = rand(n * +row.dataset.price);
+      sub += n * +row.dataset.price;
+    });
+    const ship = sub >= 1200 || sub === 0 ? 0 : 95;
+    document.getElementById("sub").textContent = rand(sub);
+    document.getElementById("ship").textContent = ship ? rand(ship) : "Free";
+    document.getElementById("total").textContent = rand(sub + ship);
+    const free = document.getElementById("free");
+    free.hidden = sub === 0;
+    free.innerHTML = sub >= 1200 ? "<b>Courier is free</b> on this order." : `<b>${rand(1200 - sub)} more</b> and courier is free.`;
+    document.getElementById("empty").hidden = sub > 0;
+  }
+  function drop(row) {
+    row.removeAttribute("data-price");
+    (window.distinctUI ? distinctUI.remove : (r) => r.remove())(row);
+    setTimeout(totals, 0);
+  }
+  list.addEventListener("change", (e) => { const row = e.target.closest("[data-price]"); if (row && +e.target.value === 0) drop(row); else totals(); });
+  list.addEventListener("click", (e) => { if (e.target.closest(".remove")) drop(e.target.closest(".dui-row")); });
+</script>
+</body>
+</html>

@@ -330,3 +330,145 @@ Markup uses the classes in `assets/distinctui.css`. Put `class="dui-page"` on `<
 ```
 
 - Lucide outlines from `assets/icons.svg`, in the text colour, next to a word. Rules in `references/imagery.md`.
+
+## Quotes and testimonials
+
+```html
+<!-- A pull quote: light, one bold word, who said it under it -->
+<figure class="dui-quote">
+  <blockquote><p>"Saturdays used to be forty WhatsApps before nine. Now the chair is <b>booked</b> by Thursday."</p></blockquote>
+  <figcaption class="dui-quote__by">
+    <span class="dui-mark dui-mark--plain" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="face.jpg" alt=""></span></span>
+    <span><b>Sizwe Ndlovu</b><br>Barber, Melville</span>
+  </figcaption>
+</figure>
+
+<!-- A quote inside running text -->
+<blockquote class="dui-blockquote"><p>We delete your bookings 30 days after you close your account.</p><cite>From the privacy page</cite></blockquote>
+
+<!-- Testimonials: two or three of these in a dui-grid dui-grid--3 -->
+<figure class="dui-testimonial">
+  <blockquote><p>"Reminders cut our no-shows from six a week to <b>one</b>."</p></blockquote>
+  <figcaption class="dui-quote__by">…</figcaption>
+</figure>
+```
+
+- One pull quote per section at most. No giant quotation marks, no coloured bars.
+- Customers wear the plain black ring (`dui-mark--plain`): the colour belongs to your mark. Initials when there's no photo.
+- No star ratings in gold and no customer logos in colour. If you show stars, they're black outlines filled black.
+
+## Dates and amounts
+
+```html
+<!-- A date field. With distinctui.js the button opens a month grid under it; without, the native picker works. -->
+<div class="dui-date" data-datepicker data-closed="1">
+  <label class="dui-label" for="day">Day <span class="dui-hint">Closed on Mondays.</span></label>
+  <span class="dui-date__field">
+    <input class="dui-input" id="day" type="date" min="2026-11-02">
+    <button class="dui-date__open" type="button" aria-label="Choose from a calendar" aria-expanded="false"><svg class="dui-icon" aria-hidden="true"><use href="icons.svg#calendar"/></svg></button>
+  </span>
+</div>
+
+<input class="dui-input" type="time" step="900" aria-label="Time">
+
+<!-- A month grid on its own, for bookings. Fires "dui:pick" with the date. -->
+<div class="dui-calendar" data-calendar data-min="today" data-closed="1 0" data-for="#day" aria-label="Pick a day"></div>
+
+<!-- How many -->
+<div class="dui-stepper" role="group" aria-label="How many mugs">
+  <button type="button" data-step="-1" aria-label="One fewer"><svg class="dui-icon" aria-hidden="true"><use href="icons.svg#minus"/></svg></button>
+  <input type="number" inputmode="numeric" value="1" min="1" max="6" aria-label="Quantity">
+  <button type="button" data-step="1" aria-label="One more"><svg class="dui-icon" aria-hidden="true"><use href="icons.svg#plus"/></svg></button>
+</div>
+```
+
+- Keep the native date input underneath, so phones get their own wheel and typing still works.
+- Weeks start on Monday. Today has a grey edge; the picked day is black. Days you can't pick are grey and crossed out, and the hint says why (`data-closed` takes days of the week, 0 for Sunday).
+- The stepper's buttons fade at the limits. In a cart, going to zero takes the item out; add `dui-stepper--sm` inside rows.
+
+## Copying
+
+```html
+<div class="dui-copy-wrap">
+  <pre class="dui-code"><code id="install">npm install @distinctui/css</code></pre>
+  <button class="dui-btn-sm-ghost dui-copy" type="button" data-copy="#install">Copy</button>
+</div>
+
+<div class="dui-copy-line"><code id="order-no">CH-20418</code><button class="dui-btn-sm-ghost" type="button" data-copy="#order-no">Copy</button></div>
+```
+
+- The button confirms on itself ("Copied", with a tick) and settles back. Never a toast. If the clipboard is blocked, the text is selected instead.
+- `data-copy-text="…"` copies text that isn't on the page, such as a share link.
+
+## Announcements and cookies
+
+```html
+<!-- First thing in <body>. Closes for good once data-dismiss-key is set. -->
+<div class="dui-announce" data-dismiss-key="kiln-nov">
+  <div class="dui-container"><p><b>New from the kiln:</b> the terracotta set is back. <a href="/shop">See it</a></p>
+  <button type="button" data-dismiss aria-label="Close this notice"><svg class="dui-icon" aria-hidden="true"><use href="icons.svg#x"/></svg></button></div>
+</div>
+
+<!-- Last thing in <body>. A small panel in the corner. -->
+<aside class="dui-cookies" aria-label="Cookies" data-dismiss-key="cookies">
+  <p><b>Cookies.</b> One keeps you signed in. With your OK, another counts visits. <a href="/privacy#cookies">What we use</a></p>
+  <div class="dui-actions">
+    <button class="dui-btn-sm" type="button" data-dismiss="needed">Only what's needed</button>
+    <button class="dui-btn-sm-ghost" type="button" data-dismiss="all">Allow counting</button>
+  </div>
+</aside>
+```
+
+- One announcement line at a time, one sentence, one link. Not for anything urgent: that's a status notice where the person is looking.
+- The cookie notice never covers the page, has no veil, and doesn't block scrolling. The black pill is the choice that shares least. Load anything optional only after `distinctUI.dismissed("cookies") === "all"`, or on the `dui:dismiss` event. Add `dui-cookies--inline` to put it in the flow instead.
+- No pop-up on arrival, no newsletter wall, no floating chat bubble.
+
+## Sections
+
+```html
+<!-- Words beside a photo. Stack them in dui-splits and flip every second one. -->
+<div class="dui-split" style="--split-ratio:1/1">
+  <div class="dui-split__media"><img src="mug.jpg" alt="A hand-thrown mug in a speckled oat glaze"></div>
+  <div class="dui-split__body"><span class="dui-eyebrow">Made by hand</span><h2 class="dui-h2">Thrown in <b>Woodstock</b></h2><p class="dui-body">…</p></div>
+</div>
+<div class="dui-split dui-split--flip">…</div>
+
+<!-- How it works: three or four steps -->
+<ol class="dui-how">
+  <li><h3>Pick a time</h3><p>See the open chairs for the week.</p></li>
+  <li><h3>Get a reminder</h3><p>An SMS the evening before.</p></li>
+  <li><h3>Walk in</h3><p>Pay at the chair.</p></li>
+</ol>
+
+<!-- Plan comparison, under the plan cards -->
+<div class="dui-table-wrap"><table class="dui-table dui-compare">
+  <thead><tr><th scope="col"><span class="dui-sr-only">What you get</span></th><th scope="col">Solo<span>R99 a month</span></th><th scope="col" data-pick><span class="dui-badge-solid">Most pick</span>Shop<span>R249 a month</span></th></tr></thead>
+  <tbody>
+    <tr class="dui-compare__group"><th scope="colgroup" colspan="3">Bookings</th></tr>
+    <tr><th scope="row">Deposits</th><td><span class="dui-no"><span class="dui-sr-only">Not included</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td></tr>
+  </tbody>
+</table></div>
+
+<!-- Newsletter: say how often and what you'll get -->
+<div class="dui-signup">
+  <div><h2 class="dui-h2">Hear when the kiln <b>opens</b></h2><p class="dui-body">One email a month. Nothing else.</p></div>
+  <form>
+    <div class="dui-inline"><label class="dui-sr-only" for="nl">Email</label><input class="dui-field" id="nl" type="email" placeholder="you@example.com"><button class="dui-btn" type="submit">Sign me up</button></div>
+    <p class="dui-meta">Leave any time with the link in each email.</p>
+  </form>
+</div>
+
+<!-- Opening hours and location -->
+<p class="dui-hours__now" id="now"></p>
+<table class="dui-hours" data-hours="#now"><tbody>
+  <tr data-day="1"><th scope="row">Monday</th><td>Closed</td></tr>
+  <tr data-day="2" data-open="09:00" data-close="18:00"><th scope="row">Tuesday</th><td>09:00 to 18:00</td></tr>
+  …
+</tbody></table>
+<address class="dui-place"><svg class="dui-icon" aria-hidden="true"><use href="icons.svg#map-pin"/></svg><span><b>Tilde barbers</b><br>12 Jacaranda Lane, Melville</span></address>
+<a class="dui-btn-sm-ghost" href="https://maps.example/…">Get directions</a>
+```
+
+- Photos sit beside the words, never under them. Fixed shapes: `--split-ratio` 3/2 for scenes, 1/1 for products.
+- Comparison: ticks in black, "no" as a grey dash, words where a number helps ("500 a month"). The plan most people pick gets `data-pick` (a black line on top) and the page's one solid badge.
+- Hours: write every day, closed ones too, as 24-hour times. `distinctui.js` bolds today and fills the "Open now" line from the visitor's clock, so leave the line out if your visitors are mostly in another time zone. Link out for directions instead of a coloured map.

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Terms and privacy · Tilde</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<script src="../assets/distinctui.js" defer></script>
+<style>
+  /* Example: terms and privacy people can actually read. A side menu, the short version of each
+     part first as a quote with a black edge, then the detail. Tables for what we keep and the
+     cookies, and the date it last changed. Invented product and people; not legal advice. */
+  :root { --dui-signature: #00706b; }
+  .legal { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; padding-top: 24px; }
+  .legal .dui-sidenav { order: 2; border-top: 1px solid var(--dui-grey-200); padding-top: 32px; }
+  @media (min-width: 1024px) {
+    .legal { grid-template-columns: 14rem minmax(0, 1fr); gap: 72px; }
+    .legal .dui-sidenav { order: 0; position: sticky; top: 24px; align-self: start; border: 0; padding: 0; }
+  }
+  .doc { display: flex; flex-direction: column; gap: 20px; max-width: 42rem; min-width: 0; }
+  .doc h2 { margin: 40px 0 0; font-size: 1.75rem; font-weight: 300; letter-spacing: -0.035em; scroll-margin-top: 24px; }
+  .doc h2 b { font-weight: 700; }
+  .doc p, .doc li { line-height: 1.7; }
+  .doc ul { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 6px; }
+  .part { display: flex; flex-direction: column; gap: 4px; padding-top: 40px; border-top: 1px solid var(--dui-grey-200); margin-top: 24px; }
+</style>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">tilde</a>
+  <nav class="dui-nav" aria-label="Main"><a class="dui-btn-sm-ghost" href="signin.html">Sign in</a><a class="dui-btn-sm" href="signup.html">Open your book</a></nav>
+</header>
+
+<div class="dui-container legal">
+  <nav class="dui-sidenav" aria-label="On this page">
+    <div><h2>Terms</h2><ul><li><a href="#using" aria-current="page">Using Tilde</a></li><li><a href="#paying">Paying</a></li><li><a href="#leaving">Leaving</a></li></ul></div>
+    <div><h2>Privacy</h2><ul><li><a href="#keep">What we keep</a></li><li><a href="#who">Who sees it</a></li><li><a href="#cookies">Cookies</a></li><li><a href="#rights">Your rights</a></li></ul></div>
+  </nav>
+
+  <main id="main" class="doc" style="padding-bottom:96px">
+    <h1 class="dui-h1">Terms and <b>privacy</b></h1>
+    <p class="dui-lede">The short version of each part comes first. The detail under it is what counts if we ever disagree.</p>
+    <p class="dui-meta">Last changed 2 November 2026. <a class="dui-link" href="#changes">What changed</a></p>
+
+    <h2 id="using">Using <b>Tilde</b></h2>
+    <blockquote class="dui-blockquote"><p>Your book, your clients and your prices are yours. We run the booking page and send the reminders.</p></blockquote>
+    <p>Tilde is run by Tilde (Pty) Ltd in Johannesburg. You can use it if you're 18 or older and run a shop, a chair or a mobile service. One account is for one business; staff get their own logins on the Shop plan.</p>
+    <p>Don't use Tilde to take bookings for anything illegal, or to message people who didn't book with you. If you do, we'll tell you why and close the account.</p>
+
+    <h2 id="paying"><b>Paying</b></h2>
+    <blockquote class="dui-blockquote"><p>One chair is free. Paid plans are monthly, and you can stop any time before the next month starts.</p></blockquote>
+    <p>Prices are in rand and include VAT. We charge on the same day each month and email the invoice. If a payment fails, we try again for 7 days before moving you back to the free plan. Nothing gets deleted.</p>
+    <p>Deposits your clients pay go straight to your bank account through our payment partner, less their fee of 2.9%. We never hold your money.</p>
+
+    <h2 id="leaving"><b>Leaving</b></h2>
+    <blockquote class="dui-blockquote"><p>Download everything with one button, then close your account. We delete it all within 30 days.</p></blockquote>
+    <p>Settings, Your data gives you your clients, bookings and invoices as a spreadsheet. Closing your account cancels your plan the same day. Clients with bookings get one SMS saying the booking page is closed.</p>
+
+    <div class="part"><span class="dui-eyebrow">Privacy</span></div>
+    <h2 id="keep" style="margin-top:0">What we <b>keep</b></h2>
+    <blockquote class="dui-blockquote"><p>Only what bookings need. We never sell it, and we don't show ads.</p></blockquote>
+    <div class="dui-table-wrap">
+      <table class="dui-table">
+        <caption class="dui-sr-only">What we keep, why, and for how long</caption>
+        <thead><tr><th>What</th><th>Why</th><th>How long</th></tr></thead>
+        <tbody>
+          <tr><td>Your name, email and shop</td><td>To run your account</td><td>Until you close it</td></tr>
+          <tr><td>Clients' names and cell numbers</td><td>To send their reminders</td><td>Until you delete them</td></tr>
+          <tr><td>Bookings and invoices</td><td>Tax law asks us to</td><td>5 years</td></tr>
+          <tr><td>Sign-in records</td><td>To spot someone else using your account</td><td>90 days</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="who">Who <b>sees</b> it</h2>
+    <p>You, your staff, and three companies that help us run Tilde: our host (servers in Cape Town), our SMS sender and our payment partner. Each one may use your data only to do that job for us. A court order is the only other way anyone gets it, and we'll tell you unless the order says we can't.</p>
+
+    <h2 id="cookies"><b>Cookies</b></h2>
+    <p>We ask before setting anything that isn't needed. Change your answer any time at the bottom of any page.</p>
+    <div class="dui-table-wrap">
+      <table class="dui-table">
+        <caption class="dui-sr-only">Cookies we use</caption>
+        <thead><tr><th>Cookie</th><th>What it does</th><th>Asks first</th></tr></thead>
+        <tbody>
+          <tr><td><code>tilde_session</code></td><td>Keeps you signed in</td><td>No, it's needed</td></tr>
+          <tr><td><code>tilde_count</code></td><td>Counts visits to each page, without knowing who you are</td><td>Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="rights">Your <b>rights</b></h2>
+    <p>Under the Protection of Personal Information Act you can ask what we hold about you, ask us to correct it, or ask us to delete it. Most of this you can do yourself in Settings. For anything else, write to our information officer, Zanele Khoza, at <a class="dui-link" href="#">privacy@tilde.example</a>. She answers within 5 working days.</p>
+    <p>Not happy with the answer? You can complain to the Information Regulator.</p>
+
+    <h2 id="changes">What <b>changed</b></h2>
+    <ul class="dui-rows" style="padding-left:0">
+      <li class="dui-row"><span class="dui-meta" style="flex:0 0 6.5rem">2 Nov 2026</span><span>Added deposits, and the payment partner that handles them.</span></li>
+      <li class="dui-row"><span class="dui-meta" style="flex:0 0 6.5rem">14 Jun 2026</span><span>Moved our servers from Ireland to Cape Town.</span></li>
+    </ul>
+    <p class="dui-meta">We email you two weeks before any change that affects what you pay or what we keep.</p>
+  </main>
+</div>
+
+<footer class="dui-container dui-footer">
+  <span><b>tilde</b> Bookings for barbers and salons</span>
+  <span>Made in Johannesburg.</span>
+  <nav aria-label="More"><a href="#">Help</a><a href="terms.html" aria-current="page">Terms and privacy</a><a href="#">Cookie settings</a></nav>
+</footer>
+</body>
+</html>

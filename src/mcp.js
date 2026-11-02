@@ -61,7 +61,7 @@ export const TOOLS = [
   {
     name: "list_templates",
     title: "List page templates",
-    description: "The 27 page templates in 7 groups, with what each one shows.",
+    description: "The 33 page templates in 7 groups, with what each one shows.",
     inputSchema: { type: "object", properties: {} },
     annotations: ro,
   },

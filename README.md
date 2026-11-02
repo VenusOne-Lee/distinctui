@@ -44,7 +44,7 @@ claude mcp add --transport http distinctui https://distinctui.com/mcp
 | `get_rules` | The twelve rules, what's left out on purpose, and the values the checker uses |
 | `get_tokens`, `pick_palette` | The tokens, and the five ring palettes with the CSS for each |
 | `list_components`, `get_component` | Copy-ready markup for each component group |
-| `list_templates`, `get_template` | The 27 page templates |
+| `list_templates`, `get_template` | The 33 page templates |
 | `get_reference` | Any reference, such as `page-spec`, `voice` or `review` |
 | `check_page` | Checks HTML against the rules and says how to fix each finding |
 | `check_spec`, `compose_page` | Checks a [page spec](skills/distinctui/references/page-spec.md) and turns it into a finished page |
@@ -154,7 +154,7 @@ skills/distinctui/
   references/page-spec.md  pages written as content, for compose.js and the MCP server
   references/swiftui.md    the SwiftUI package, what maps to what, phone rules
   references/wordpress.md  the WordPress block theme, what maps to what
-  examples/                27 templates in seven groups: marketing, stories, selling,
+  examples/                33 templates in seven groups: marketing, stories, selling,
                            accounts, app screens, help and docs, system pages
 wordpress/distinctui/      the WordPress block theme (theme.json, templates, patterns, the font)
 site/                      distinctui.com

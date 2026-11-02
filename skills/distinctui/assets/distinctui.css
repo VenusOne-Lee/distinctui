@@ -838,6 +838,212 @@ svg.dui-icon,
 .dui-icon-btn { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 1px solid var(--dui-grey-200); background: var(--dui-white); color: var(--dui-black); cursor: pointer; }
 .dui-icon-btn:hover { border-color: var(--dui-black); }
 
+/* ---------------------------------------------------------- Quotes */
+
+/* A pull quote: big and light, with one bold word, and who said it under it.
+   <figure class="dui-quote"><blockquote><p>…<b>word</b>…</p></blockquote>
+   <figcaption class="dui-quote__by">…</figcaption></figure> */
+.dui-quote { margin: 0; display: flex; flex-direction: column; gap: var(--dui-space-5); max-width: 40rem; }
+.dui-quote blockquote { margin: 0; }
+.dui-quote p { margin: 0; font-size: 1.625rem; line-height: 1.15; font-weight: 300; letter-spacing: var(--dui-tracking-tight); text-wrap: balance; }
+@media (min-width: 640px) { .dui-quote p { font-size: var(--dui-text-3xl); } }
+.dui-quote p b, .dui-quote p strong { font-weight: 700; }
+/* Who said it: their mark, their name in black, what they do in grey. */
+.dui-quote__by { display: flex; align-items: center; gap: var(--dui-space-3); margin: 0; font-size: var(--dui-text-sm); font-style: normal; line-height: 1.35; color: var(--dui-grey-600); }
+.dui-quote__by b { color: var(--dui-black); font-weight: 600; }
+/* A quote inside running text: a black edge, the words in grey-800. */
+.dui-blockquote { margin: 0; padding: 0.125rem 0 0.125rem var(--dui-space-5); border-left: 2px solid var(--dui-black); max-width: 62ch; font-size: var(--dui-text-lg); color: var(--dui-grey-800); }
+.dui-blockquote p { margin: 0; }
+.dui-blockquote p + p { margin-top: var(--dui-space-3); }
+.dui-blockquote cite { display: block; margin-top: var(--dui-space-2); font-size: var(--dui-text-sm); font-style: normal; color: var(--dui-grey-600); }
+
+/* A testimonial: the quote, then the person in their ring. Customers without a
+   signature of their own get the plain black ring. */
+.dui-testimonial {
+  display: flex; flex-direction: column; justify-content: space-between; gap: var(--dui-space-6);
+  margin: 0; min-width: 0;
+  border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-card);
+  padding: var(--dui-space-6);
+}
+.dui-testimonial blockquote { margin: 0; }
+.dui-testimonial p { margin: 0; font-size: var(--dui-text-lg); line-height: 1.45; color: var(--dui-black); }
+.dui-testimonial p b, .dui-testimonial p strong { font-weight: 700; }
+
+/* ------------------------------------------------------ Dates and amounts */
+
+/* A date field: the native one, so phones get their own wheel. Wrap it in
+   .dui-date with data-datepicker and distinctui.js adds a month grid under it. */
+.dui-input[type="date"], .dui-input[type="time"], .dui-input[type="datetime-local"] { min-height: 3.125rem; font-variant-numeric: tabular-nums; }
+.dui-input::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 1; }
+.dui-input::-webkit-datetime-edit-fields-wrapper { padding: 0; }
+.dui-date { position: relative; }
+.dui-date__field { position: relative; display: block; }
+.dui-date__field > .dui-input { padding-right: 3.25rem; }
+.dui-js .dui-date__field > .dui-input::-webkit-calendar-picker-indicator { display: none; }
+.dui-date__open {
+  position: absolute; top: 50%; right: 0.375rem; transform: translateY(-50%);
+  display: none; place-items: center; width: 2.5rem; height: 2.5rem;
+  border: 0; border-radius: 50%; background: none; color: var(--dui-black); cursor: pointer;
+}
+.dui-date__open:hover, .dui-date__open[aria-expanded="true"] { background: var(--dui-grey-100); }
+/* Without distinctui.js the native picker does the job, so the button only shows with it. */
+.dui-js .dui-date__open { display: grid; }
+.dui-date__panel {
+  position: absolute; top: 100%; left: 0; z-index: 20; margin-top: var(--dui-space-2);
+  border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-menu);
+  background: var(--dui-white); box-shadow: var(--dui-shadow-float);
+  padding: var(--dui-space-3);
+  animation: dui-drop var(--dui-dur) var(--dui-ease); transform-origin: top left;
+}
+
+/* A month grid, open under a date field or on its own for bookings.
+   distinctui.js draws it from <div class="dui-calendar" data-calendar>. */
+.dui-calendar { display: inline-flex; flex-direction: column; gap: var(--dui-space-2); font-size: var(--dui-text-md); }
+.dui-calendar__head { display: flex; align-items: center; justify-content: space-between; gap: var(--dui-space-2); }
+.dui-calendar__head b { font-weight: 700; }
+.dui-calendar__head .dui-icon-btn { width: 2.5rem; height: 2.5rem; }
+.dui-calendar__head .dui-icon-btn:disabled { opacity: 0.4; cursor: not-allowed; border-color: var(--dui-grey-200); }
+.dui-calendar table { border-collapse: collapse; }
+.dui-calendar th { width: 2.75rem; height: 2rem; font-size: var(--dui-text-xs); font-weight: 500; color: var(--dui-grey-600); text-align: center; }
+.dui-calendar td { padding: 1px; text-align: center; }
+.dui-calendar td button {
+  display: grid; place-items: center; width: 2.625rem; height: 2.625rem; margin: auto;
+  border: 1px solid transparent; border-radius: 50%; background: none;
+  font: inherit; font-variant-numeric: tabular-nums; color: var(--dui-black); cursor: pointer;
+  transition: background-color var(--dui-dur-fast) var(--dui-ease), border-color var(--dui-dur-fast) var(--dui-ease);
+}
+.dui-calendar td button:hover { border-color: var(--dui-black); }
+.dui-calendar td button[aria-current="date"] { font-weight: 700; border-color: var(--dui-grey-400); }
+.dui-calendar td button[aria-selected="true"], .dui-calendar td button[aria-pressed="true"] { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); font-weight: 600; }
+/* Days you can't pick: grey, and say why nearby ("Closed on Mondays"). */
+.dui-calendar td button:disabled { color: var(--dui-grey-400); cursor: not-allowed; border-color: transparent; text-decoration: line-through; text-decoration-color: var(--dui-grey-400); }
+
+/* How many: minus and plus around a number you can also type. */
+.dui-stepper {
+  display: inline-flex; align-items: center; flex-shrink: 0;
+  border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-pill);
+  background: var(--dui-white);
+  transition: border-color var(--dui-dur) var(--dui-ease);
+}
+.dui-stepper:focus-within { border-color: var(--dui-black); }
+.dui-stepper button {
+  display: grid; place-items: center; flex-shrink: 0; width: 2.75rem; height: 2.75rem;
+  border: 0; border-radius: 50%; background: none; color: var(--dui-black); cursor: pointer;
+}
+.dui-stepper button:hover { background: var(--dui-grey-100); }
+.dui-stepper button:disabled, .dui-stepper button[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; background: none; }
+.dui-stepper input {
+  width: 2.5rem; border: 0; padding: 0; background: none; text-align: center;
+  font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--dui-black);
+  -moz-appearance: textfield; appearance: textfield;
+}
+.dui-stepper input::-webkit-inner-spin-button, .dui-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.dui-stepper input:focus { outline: none; }
+.dui-stepper--sm button { width: 2.25rem; height: 2.25rem; }
+.dui-stepper--sm input { width: 2rem; font-size: var(--dui-text-sm); }
+
+/* -------------------------------------------------------------- Copying */
+
+/* Code with a Copy button in its corner. The button confirms on itself. */
+.dui-copy-wrap { position: relative; }
+.dui-copy-wrap > .dui-code { padding-right: 6.5rem; }
+.dui-copy-wrap > .dui-copy { position: absolute; top: 0.5rem; right: 0.5rem; }
+/* One line people copy, such as an order number or a link. */
+.dui-copy-line { display: flex; align-items: center; gap: var(--dui-space-2); min-width: 0; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-pill); padding: 0.25rem 0.25rem 0.25rem 1.25rem; max-width: 32rem; }
+.dui-copy-line > code, .dui-copy-line > span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: none !important; padding: 0 !important; font-size: var(--dui-text-md) !important; }
+
+/* ---------------------------------------------------------- Page edges */
+
+/* One line at the very top: news worth a click. It closes for good. */
+.dui-announce { border-bottom: 1px solid var(--dui-grey-200); background: var(--dui-grey-50); font-size: var(--dui-text-sm); }
+.dui-announce > .dui-container, .dui-announce__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--dui-space-3); min-height: 2.75rem; }
+.dui-announce p { margin: 0; padding-block: 0.5rem; }
+.dui-announce a { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.dui-announce [data-dismiss] { display: grid; place-items: center; flex-shrink: 0; width: 2.75rem; height: 2.75rem; margin-right: -0.75rem; border: 0; border-radius: 50%; background: none; color: var(--dui-black); cursor: pointer; }
+.dui-announce [data-dismiss]:hover { background: var(--dui-grey-100); }
+
+/* Cookies: a small panel in the corner, never a wall over the page. No veil,
+   the page keeps working, and the main choice is the one that shares least. */
+.dui-cookies {
+  position: fixed; z-index: 40;
+  left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: var(--dui-space-4);
+  max-width: 26rem; padding: var(--dui-space-5);
+  border: 1px solid var(--dui-black); border-radius: var(--dui-radius-menu);
+  background: var(--dui-white); font-size: var(--dui-text-md);
+  animation: dui-cookie-in var(--dui-dur-slow) var(--dui-ease);
+}
+.dui-cookies p { margin: 0; }
+.dui-cookies a { text-decoration: underline; text-underline-offset: 4px; }
+/* Or in the flow of the page, as the last thing before the footer. */
+.dui-cookies--inline { position: static; max-width: none; animation: none; border-color: var(--dui-grey-200); }
+@keyframes dui-cookie-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* ------------------------------------------------------------- Sections */
+
+/* Words beside a photo. Stack several and flip every second one. */
+.dui-split { display: grid; gap: var(--dui-space-8); align-items: center; }
+@media (min-width: 900px) { .dui-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--dui-space-14); } .dui-split--flip > .dui-split__media { order: 2; } }
+.dui-split__media { position: relative; aspect-ratio: var(--split-ratio, 3 / 2); border-radius: var(--dui-radius-card); overflow: hidden; background: var(--dui-grey-100); }
+.dui-split__media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dui-split__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--dui-space-4); min-width: 0; }
+.dui-splits { display: flex; flex-direction: column; gap: var(--dui-space-20); }
+
+/* How it works: three or four numbered steps, each under a black line. */
+.dui-how { display: grid; gap: var(--dui-space-8); margin: 0; padding: 0; list-style: none; counter-reset: dui-how; }
+@media (min-width: 640px) { .dui-how { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .dui-how { grid-template-columns: repeat(3, minmax(0, 1fr)); } .dui-how--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.dui-how > li { counter-increment: dui-how; display: flex; flex-direction: column; gap: var(--dui-space-2); min-width: 0; border-top: 1px solid var(--dui-black); padding-top: var(--dui-space-5); }
+.dui-how > li::before {
+  content: counter(dui-how); display: grid; place-items: center;
+  width: 2rem; height: 2rem; margin-bottom: var(--dui-space-2);
+  border: 1.5px solid var(--dui-black); border-radius: 50%;
+  font-size: var(--dui-text-sm); font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.dui-how > li[data-done="true"]::before { content: "\2713"; background: var(--dui-black); color: var(--dui-white); }
+.dui-how h3 { margin: 0; font-size: var(--dui-text-xl); font-weight: 700; letter-spacing: -0.02em; }
+.dui-how p { margin: 0; color: var(--dui-grey-800); max-width: 40ch; }
+
+/* What each plan includes. A table, ticks in black, "no" as a grey dash.
+   The first column stays put while a wide table scrolls on phones. */
+.dui-compare { min-width: 36rem; }
+.dui-compare thead th { vertical-align: bottom; color: var(--dui-black); font-size: var(--dui-text-md); font-weight: 700; white-space: normal; }
+.dui-compare thead th span { display: block; font-weight: 400; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+.dui-compare thead th .dui-badge-solid { display: table; margin: 0 auto var(--dui-space-2); color: var(--dui-white); font-size: var(--dui-text-xs); font-weight: 500; }
+.dui-compare th:not(:first-child), .dui-compare td { text-align: center; }
+.dui-compare tbody th { text-align: left; font-weight: 500; font-size: var(--dui-text-md); color: var(--dui-black); padding: var(--dui-space-4) var(--dui-space-4) var(--dui-space-4) 0; border-bottom: 1px solid var(--dui-grey-200); white-space: normal; }
+.dui-compare tbody th span { display: block; font-weight: 400; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+.dui-compare thead th:first-child, .dui-compare tbody th { position: sticky; left: 0; z-index: 1; background: var(--dui-white); }
+.dui-compare .dui-compare__group th { padding-top: var(--dui-space-8); font-size: 0.8125rem; font-weight: 500; letter-spacing: var(--dui-tracking-label); text-transform: uppercase; color: var(--dui-grey-600); }
+.dui-compare [data-pick] { box-shadow: inset 0 3px 0 var(--dui-black); }
+.dui-yes, .dui-no { display: inline-grid; place-items: center; width: 1.375rem; height: 1.375rem; vertical-align: middle; }
+.dui-yes::before { content: "\2713"; display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; background: var(--dui-black); color: var(--dui-white); font-size: 0.75rem; font-weight: 700; }
+.dui-no::before { content: ""; width: 0.75rem; height: 1.5px; background: var(--dui-grey-400); }
+
+/* A field and its button on one line: the newsletter, a waitlist, search.
+   Wraps under itself on narrow screens. */
+.dui-inline { display: flex; flex-wrap: wrap; gap: var(--dui-space-2); max-width: 32rem; }
+.dui-inline > .dui-field { flex: 1 1 11rem; min-width: 0; }
+.dui-inline > .dui-btn, .dui-inline > .dui-btn-ghost { flex: 0 0 auto; }
+@media (max-width: 479px) { .dui-inline > .dui-btn, .dui-inline > .dui-btn-ghost { flex: 1 1 100%; } }
+/* The newsletter band: what you'll get and how often, then the field. */
+.dui-signup { display: grid; gap: var(--dui-space-6); border-radius: var(--dui-radius-card); background: var(--dui-grey-50); padding: var(--dui-space-8) var(--dui-space-6); }
+@media (min-width: 900px) { .dui-signup { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: var(--dui-space-14); padding: var(--dui-space-14); } }
+.dui-signup form { display: flex; flex-direction: column; gap: var(--dui-space-3); min-width: 0; }
+
+/* Opening hours: today in bold, a plain "Open now" or "Closed now" above.
+   distinctui.js marks today and fills the line when the rows say their hours
+   (data-hours on the table, data-day="1" for Monday, data-open/data-close). */
+.dui-hours { width: 100%; max-width: 26rem; border-collapse: collapse; font-size: var(--dui-text-md); }
+.dui-hours th, .dui-hours td { padding: 0.625rem 0; border-bottom: 1px solid var(--dui-grey-200); text-align: left; font-weight: 400; }
+.dui-hours td { text-align: right; font-variant-numeric: tabular-nums; }
+.dui-hours tr[aria-current="date"] th, .dui-hours tr[aria-current="date"] td { font-weight: 700; }
+.dui-hours__now { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dui-space-2); margin: 0; font-size: var(--dui-text-md); }
+/* An address with its pin, and a link out to directions instead of a map. */
+.dui-place { display: flex; align-items: flex-start; gap: var(--dui-space-3); margin: 0; font-style: normal; line-height: 1.5; }
+.dui-place > svg.dui-icon { margin-top: 0.2em; }
+
 /* ------------------------------------------------------------- Utilities */
 
 .dui-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -858,4 +1064,5 @@ svg.dui-icon,
   .dui-flash, .dui-skeleton { animation: none; }
   .dui-switch input, .dui-switch input::after { transition: none; }
   .dui-btn, .dui-btn-ghost, .dui-btn-sm, .dui-btn-sm-ghost, .dui-card { transition: none; }
+  .dui-cookies, .dui-date__panel { animation: none; }
 }

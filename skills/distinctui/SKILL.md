@@ -39,13 +39,14 @@ All components, their markup and when to use each are in `references/components.
 - Type: hero, h1, h2 (light with a bold word), h3 card headline, lede, body, meta, eyebrow label
 - Buttons: `dui-btn`, `dui-btn-ghost`, `dui-btn-sm`, `dui-btn-sm-ghost`, count badge
 - Badges: outline status, solid highlight, soft version chip
-- Forms: label and hint, pill field, input, select, textarea, counter, checkbox, switch, choice cards, field error, form problems banner
-- Cards: card, media card, feature card, note, panel, rows
+- Forms: label and hint, pill field, input, select, textarea, counter, checkbox, switch, choice cards, date and time fields, date picker and month grid, quantity stepper, field error, form problems banner
+- Cards: card, media card, feature card, note, panel, rows, testimonial card
 - Signature mark: empty, initials or photo inside; sizes, dashed/solid, version label, earned dot, plain and group variants, logo
-- Page: header with nav, footer, menu, pill tabs, breadcrumbs, side menu, page numbers, steps, progress bar, status notice, empty state, flash
-- Content: questions that open in place, table, code block, filter chips, a stack of faces, dialog, loading shapes
+- Page: header with nav, footer, menu, pill tabs, breadcrumbs, side menu, page numbers, steps, progress bar, status notice, empty state, flash, announcement line, cookie notice
+- Content: pull quote and blockquote, questions that open in place, table, code block with a copy button, a line to copy, filter chips, a stack of faces, dialog, loading shapes
+- Sections: feature with a photo, how it works, testimonials, plan comparison, newsletter signup, opening hours and location
 - Icons: Lucide outlines from `assets/icons.svg`, black, next to a word
-- Motion (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, rolls, confirms on itself, rows arrive and leave, bars grow, filter tabs, toggle
+- Motion and interaction (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, rolls, confirms on itself, copy, rows arrive and leave, bars grow, filter tabs, toggle, steppers, the month grid, closing a notice for good, open-now hours
 - Moments: small product stories (a hero demo, a feature card with a cursor) built with Stageshow and `assets/stageshow-look.css`. Rules in `references/moments.md`
 
 Photos, icons and charts have their own rules in `references/imagery.md`. Tokens for Figma (Tokens Studio) or Style Dictionary are in `assets/tokens.json`.
@@ -68,8 +69,13 @@ Worked pages are in `examples/`. Open the closest one before building a similar 
 |  | `changelog.html` | Versions and what changed |
 | Selling | `pricing.html` | Plans and questions |
 |  | `product.html` | One product in a shop |
+|  | `shop.html` | A small shop: filter tabs, product cards, the studio, hours, newsletter |
+|  | `cart.html` | The bag: steppers, a summary, an empty bag |
 |  | `checkout.html` | Delivery and an order summary |
+|  | `order.html` | Order placed: the order goes live, what happens next |
 | Accounts | `signin.html` | Sign in with an email link or passkey |
+|  | `signup.html` | Sign up with a password, errors showing |
+|  | `reset-password.html` | Ask for a reset link, choose a new password |
 |  | `onboarding.html` | A first-run flow with steps and a live preview |
 |  | `profile.html` | A person or team page |
 |  | `settings.html` | Account, emails, your data, delete account |
@@ -80,6 +86,7 @@ Worked pages are in `examples/`. Open the closest one before building a similar 
 | Help and docs | `help.html` | A help centre: search, topics, questions, a person |
 |  | `docs.html` | Documentation with a side menu and code |
 |  | `status.html` | Uptime and incidents, without traffic-light colours |
+|  | `terms.html` | Terms and privacy people can read: short version first |
 | System pages | `notfound.html` | A 404 page |
 |  | `error.html` | A server error, offline and maintenance |
 |  | `email.html` | A transactional email (tables and inline styles) |

@@ -144,3 +144,6 @@ pre.code { margin: 0; overflow-x: auto; border-radius: var(--dui-radius-panel); 
 .g-qty b { min-width: 1ch; text-align: center; }
 #g-steps li::before { transition: background-color 480ms cubic-bezier(0.2, 0, 0, 1); }
 @media (prefers-reduced-motion: reduce) { .g-error, #g-steps li::before { transition: none; } }
+/* Components page: the hours demo, hours beside the address. */
+.hours-demo { display: grid; gap: 32px; }
+@media (min-width: 900px) { .hours-demo { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); gap: 56px; } }
