@@ -12,32 +12,40 @@
 <style>
 :root{color-scheme:light}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:#fff;color:#000;font:400 14px/1.4 "Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif}
-body{display:grid;grid-template-rows:auto minmax(0,1fr)}
-.bar{display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid #e5e5e5;min-height:52px;flex-wrap:wrap}
-.logo{font-weight:700;letter-spacing:-0.02em;font-size:16px;color:#000;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.logo i{width:14px;height:14px;border-radius:50%;border:3px dashed #1f3bff}
-.note{color:#6b6b6b}
-.grow{flex:1}
-.pill{display:inline-flex;align-items:center;min-height:36px;padding:0 16px;border-radius:999px;border:1px solid #e5e5e5;color:#000;text-decoration:none;font-weight:500;transition:border-color 120ms cubic-bezier(.2,0,0,1)}
-.pill:hover{border-color:#000}
-.pill:focus-visible,.logo:focus-visible{outline:2px solid #000;outline-offset:2px}
-iframe{width:100%;height:100%;border:0;display:block;background:#f2f2f2}
-@media (max-width:639px){.note{display:none}}
+html,body{margin:0;min-height:100%;background:#fff;color:#000;font:400 16px/1.5 "Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif}
+main{min-height:100vh;display:grid;place-items:center;padding:48px 16px}
+.card{max-width:34rem;display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.mark{width:72px;height:72px;border-radius:50%;border:5px dashed #1f3bff}
+h1{font-weight:300;font-size:clamp(2.25rem,6vw,3.5rem);line-height:1.05;letter-spacing:-0.04em;margin:0}
+h1 b{font-weight:700}
+p{margin:0;color:#525252}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.pill,.ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;text-decoration:none;font-weight:600;border:1px solid #000;transition:border-color 120ms cubic-bezier(.2,0,0,1)}
+.pill{background:#000;color:#fff}
+.ghost{background:#fff;color:#000;border-color:#e5e5e5}
+.ghost:hover{border-color:#000}
+.pill:focus-visible,.ghost:focus-visible{outline:2px solid #000;outline-offset:3px}
+.meta{font-size:14px;color:#6b6b6b}
 </style>
 </head>
 <body>
-<header class="bar">
-  <a class="logo" href="https://distinctui.com"><i aria-hidden="true"></i>distinctUI<b>+</b></a>
-  <span class="note">A WordPress in your browser. Nothing is saved: close the tab and it's gone.</span>
-  <span class="grow"></span>
-  <a class="pill" href="https://distinctui.com/#wordpress">Get the free theme</a>
-</header>
-<iframe id="wp" title="WordPress with distinctUI+" allow="clipboard-read; clipboard-write"></iframe>
+<main>
+  <div class="card">
+    <span class="mark" aria-hidden="true"></span>
+    <h1>Try distinctUI<b>+</b></h1>
+    <p>A real WordPress opens in your browser with the free theme and the distinctUI+ builder. Type your content, pick one of three designs, and edit right on the page.</p>
+    <div class="acts">
+      <a class="pill" id="go" href="https://playground.wordpress.net/">Open the demo</a>
+      <a class="ghost" href="https://distinctui.com/#wordpress">Get the free theme</a>
+    </div>
+    <p class="meta">It takes about 20 seconds to start. Nothing is saved: close the tab and it's gone.</p>
+  </div>
+</main>
 <script>
 // WordPress Playground runs WordPress in the browser. The blueprint installs the free
 // theme and distinctUI+ from this site, then opens the canvas. DUI_PLUS_DEV skips the
-// licence for the demo only.
+// licence for the demo only. It opens as its own page: inside a frame, Playground's
+// browser check can't run.
 const here = location.origin;
 const blueprint = {
   landingPage: "/wp-admin/admin.php?page=dui-canvas",
@@ -50,7 +58,7 @@ const blueprint = {
     { step: "setSiteOptions", options: { blogname: "Loaf", blogdescription: "Fresh bread before you're up" } },
   ],
 };
-document.getElementById("wp").src = "https://playground.wordpress.net/#" + encodeURIComponent(JSON.stringify(blueprint));
+document.getElementById("go").href = "https://playground.wordpress.net/#" + encodeURIComponent(JSON.stringify(blueprint));
 </script>
 </body>
 </html>
