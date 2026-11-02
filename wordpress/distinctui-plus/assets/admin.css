@@ -1,0 +1,35 @@
+/* distinctUI+ admin screens: the same look as the site. */
+.dui-admin { max-width: 52rem; }
+.dui-title { font-size: 2.25rem !important; font-weight: 300 !important; letter-spacing: -0.03em; margin: 1.5rem 0 0.5rem !important; }
+.dui-title b { font-weight: 700; }
+.dui-admin h2 { font-size: 1.125rem; font-weight: 600; margin: 0 0 0.25rem; }
+.dui-lede, .dui-hint { color: #6b6b6b; max-width: 62ch; }
+.dui-block { background: #fff; border: 1px solid #e5e5e5; border-radius: 22px; padding: 1.5rem; margin: 1rem 0; }
+.dui-panel { background: #fafafa; border-radius: 16px; padding: 1.25rem; }
+.dui-status { border-left: 3px solid #000; background: #fafafa; border-radius: 12px; padding: 0.75rem 1rem; font-weight: 500; }
+.dui-pill, .dui-pill-ghost { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.625rem 1.25rem; font-weight: 500; text-decoration: none; border: 1px solid #000; cursor: pointer; font-size: 0.875rem; line-height: 1.2; }
+.dui-pill { background: #000; color: #fff !important; }
+.dui-pill:hover { background: #262626; }
+.dui-pill-ghost { background: #fff; color: #000 !important; }
+.dui-pill-ghost:hover { background: #f2f2f2; }
+.dui-text-link { color: #000; text-decoration: underline; text-underline-offset: 4px; }
+.dui-text-link:hover { text-decoration: none; }
+.dui-pill:focus-visible, .dui-pill-ghost:focus-visible, .dui-admin a:focus-visible { outline: 2px solid #000; outline-offset: 2px; box-shadow: none; }
+.dui-rows { list-style: none; margin: 1.5rem 0 0; padding: 0; border-top: 1px solid #e5e5e5; }
+.dui-rows li { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #e5e5e5; margin: 0; }
+.dui-row-main { flex: 1; display: grid; gap: 0.125rem; }
+.dui-row-main a { color: #000; text-decoration: none; font-size: 1rem; }
+.dui-row-main a:hover { text-decoration: underline; }
+.dui-meta { color: #6b6b6b; font-size: 0.8125rem; }
+.dui-dot { width: 0.875rem; height: 0.875rem; border-radius: 50%; border: 2px dashed #000; box-sizing: border-box; flex-shrink: 0; }
+.dui-dot.is-live { border-style: solid; }
+.dui-inline { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+.dui-admin input:not([type=radio]):not([type=checkbox]) { border: 1px solid #e5e5e5; border-radius: 9999px; padding: 0.5rem 1rem; min-height: 2.5rem; min-width: 18rem; }
+.dui-admin input:focus { border-color: #000; box-shadow: none; outline: 2px solid #000; outline-offset: 2px; }
+.dui-admin input[type=radio], .dui-admin input[type=checkbox] { accent-color: #000; }
+.dui-choices { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+.dui-choices label { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; border: 1px solid #e5e5e5; border-radius: 9999px; padding: 0.5rem 1rem; cursor: pointer; }
+.dui-choices label:has(input:checked), .dui-choices label:hover { border-color: #000; }
+.dui-choices span { color: #6b6b6b; }
+.dui-steps { margin-left: 1.25rem; display: grid; gap: 0.75rem; }
+.dui-code { background: #fafafa; border-radius: 12px; padding: 1rem; overflow: auto; font-size: 12px; line-height: 1.5; }

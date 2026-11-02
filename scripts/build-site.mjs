@@ -90,4 +90,16 @@ writeFileSync("dist/skill/index.json", JSON.stringify({ templates: groups, refer
 // The WordPress theme, as the zip WordPress asks for under Themes, Add New, Upload.
 const themeFiles = zipDir("wordpress/distinctui", "dist/distinctui-wordpress.zip", "distinctui");
 
+// distinctUI+ (the paid builder plugin) gets its own copy of the shared rules and checker,
+// so the canvas and the PHP checker work offline. Its zip goes to .build/ and to the demo
+// only; it isn't linked for download until licensing is set up.
+mkdirSync("wordpress/distinctui-plus/assets/vendor", { recursive: true });
+for (const f of ["rules.json", "check.js"]) cpSync(`skills/distinctui/assets/${f}`, `wordpress/distinctui-plus/assets/vendor/${f}`);
+mkdirSync(".build", { recursive: true });
+zipDir("wordpress/distinctui-plus", ".build/distinctui-plus.zip", "distinctui-plus");
+
+// The demo at try.distinctui.com (site/try) runs both in WordPress Playground, so it needs the zips beside it.
+cpSync("dist/distinctui-wordpress.zip", "dist/try/distinctui-wordpress.zip");
+cpSync(".build/distinctui-plus.zip", "dist/try/distinctui-plus.zip");
+
 console.log(`Built dist/ (${templates.length} templates with the site bar, moments bundle, WordPress theme zip with ${themeFiles} files)`);

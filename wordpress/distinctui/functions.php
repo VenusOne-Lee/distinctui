@@ -39,6 +39,47 @@ function distinctui_enqueue() {
 add_action( 'wp_enqueue_scripts', 'distinctui_enqueue' );
 
 /**
+ * The big plugins, in the look: WooCommerce, the form plugins, SEO
+ * breadcrumbs, Jetpack and the language switchers. Loaded only when one of
+ * them is active, so a plain site doesn't carry it.
+ */
+function distinctui_enqueue_plugins_css() {
+	$active = class_exists( 'WooCommerce' )
+		|| defined( 'WPCF7_VERSION' )
+		|| defined( 'WPFORMS_VERSION' )
+		|| class_exists( 'GFForms' )
+		|| defined( 'WPSEO_VERSION' )
+		|| defined( 'RANK_MATH_VERSION' )
+		|| defined( 'JETPACK__VERSION' )
+		|| defined( 'POLYLANG_VERSION' )
+		|| defined( 'ICL_SITEPRESS_VERSION' );
+	if ( apply_filters( 'distinctui_load_plugins_css', $active ) ) {
+		wp_enqueue_style( 'distinctui-plugins', get_theme_file_uri( 'assets/css/plugins.css' ), array( 'distinctui' ), DISTINCTUI_VERSION );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'distinctui_enqueue_plugins_css', 15 );
+
+/**
+ * Let WooCommerce know the theme styles its pages, and use the theme's
+ * own product image sizes rather than Woo's defaults.
+ */
+function distinctui_woocommerce_support() {
+	add_theme_support(
+		'woocommerce',
+		array(
+			'thumbnail_image_width' => 600,
+			'single_image_width'    => 1200,
+		)
+	);
+}
+add_action( 'after_setup_theme', 'distinctui_woocommerce_support' );
+
+/**
+ * Theme settings: Appearance, distinctUI.
+ */
+require get_theme_file_path( 'inc/settings.php' );
+
+/**
  * Block styles. Each one is a rule from the system with a name you can pick.
  */
 function distinctui_block_styles() {
@@ -57,10 +98,12 @@ function distinctui_block_styles() {
 			'text-link' => __( 'Text link', 'distinctui' ),
 		),
 		'core/group'      => array(
-			'card'    => __( 'Card', 'distinctui' ),
-			'feature' => __( 'Feature card', 'distinctui' ),
-			'panel'   => __( 'Panel', 'distinctui' ),
-			'note'    => __( 'Note', 'distinctui' ),
+			'card'        => __( 'Card', 'distinctui' ),
+			'feature'     => __( 'Feature card', 'distinctui' ),
+			'panel'       => __( 'Panel', 'distinctui' ),
+			'note'        => __( 'Note', 'distinctui' ),
+			'mark'        => __( 'Mark with initials', 'distinctui' ),
+			'mark-dashed' => __( 'Mark with initials, not live', 'distinctui' ),
 		),
 		'core/column'     => array(
 			'card'  => __( 'Card', 'distinctui' ),

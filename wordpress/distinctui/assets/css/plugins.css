@@ -1,0 +1,377 @@
+/*
+ * distinctUI for WordPress: the big plugins, in the look.
+ * https://distinctui.com · MIT licence
+ *
+ * WooCommerce, Contact Form 7, WPForms, Gravity Forms, Yoast and Rank Math
+ * breadcrumbs, Jetpack, and the WPML and Polylang language switchers.
+ * Loaded only when one of them is active.
+ *
+ * The same rules as everywhere else: black, white and four greys; main
+ * actions are black pills; one-line fields are pills, longer fields have
+ * soft corners; errors are black and bold with a "!" disc, never red;
+ * success is said in words, never green; hover is a black edge.
+ */
+
+/* ------------------------------------------------------ Shared fields */
+
+:where(.woocommerce, .wpcf7, .wpforms-container, .gform_wrapper, .wc-block-components-form, .jetpack-contact-form, .contact-form)
+:is(input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="number"], input[type="password"], input[type="search"], input[type="date"], select) {
+	width: 100%;
+	max-width: 100%;
+	min-height: 2.875rem;
+	border: 1px solid var(--wp--preset--color--grey-200) !important;
+	border-radius: 9999px !important;
+	background: #fff !important;
+	padding: 0.625rem 1.25rem !important;
+	font: inherit !important;
+	color: #000 !important;
+	box-shadow: none !important;
+	box-sizing: border-box;
+}
+:where(.woocommerce, .wpcf7, .wpforms-container, .gform_wrapper, .wc-block-components-form, .jetpack-contact-form, .contact-form) textarea {
+	width: 100%;
+	min-height: 7rem;
+	border: 1px solid var(--wp--preset--color--grey-200) !important;
+	border-radius: var(--wp--custom--radius--input) !important;
+	background: #fff !important;
+	padding: 0.75rem 1rem !important;
+	font: inherit !important;
+	line-height: 1.5;
+	color: #000 !important;
+	box-shadow: none !important;
+	box-sizing: border-box;
+}
+:where(.woocommerce, .wpcf7, .wpforms-container, .gform_wrapper, .wc-block-components-form, .jetpack-contact-form, .contact-form) :is(input, select, textarea):focus {
+	outline: 2px solid #000 !important;
+	outline-offset: 2px;
+	border-color: #000 !important;
+}
+:where(.woocommerce, .wpcf7, .wpforms-container, .gform_wrapper, .jetpack-contact-form, .contact-form) label,
+.gform_wrapper .gfield_label,
+.wpforms-container .wpforms-field-label {
+	display: block;
+	font-size: var(--wp--preset--font-size--small) !important;
+	font-weight: 500 !important;
+	color: #000 !important;
+	margin-bottom: 0.375rem;
+}
+:where(.woocommerce, .wpcf7, .wpforms-container, .gform_wrapper, .wc-block-components-form) :is(input[type="checkbox"], input[type="radio"]) { accent-color: #000; }
+:where(.wpforms-container, .gform_wrapper) :is(.wpforms-required-label, .gfield_required) { color: #000 !important; }
+:where(.wpforms-container, .gform_wrapper, .wpcf7) :is(.wpforms-field-description, .gfield_description, .description) { color: var(--wp--preset--color--grey-600) !important; font-size: var(--wp--preset--font-size--small); }
+
+/* ------------------------------------------------- Shared main actions */
+
+.woocommerce :is(a.button, button.button, input.button, #respond input#submit),
+.woocommerce-page :is(a.button, button.button, input.button),
+.wc-block-components-button:not(.is-link),
+.wp-block-woocommerce-product-button .wp-block-button__link,
+.wpcf7 .wpcf7-submit,
+.wpforms-container :is(.wpforms-submit, button[type="submit"]),
+.gform_wrapper :is(.gform_button, input[type="submit"], .gform_next_button),
+:is(.jetpack-contact-form, .contact-form) :is(button[type="submit"], input[type="submit"]) {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	min-height: 2.875rem;
+	border: 1px solid #000 !important;
+	border-radius: 9999px !important;
+	background: #000 !important;
+	color: #fff !important;
+	padding: 0.75rem 1.5rem !important;
+	font: inherit !important;
+	font-weight: 500 !important;
+	line-height: 1.2 !important;
+	text-decoration: none !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+	cursor: pointer;
+	transition: background-color var(--dui-dur-fast) var(--dui-ease), transform var(--dui-dur-fast) var(--dui-ease);
+}
+.woocommerce :is(a.button, button.button, input.button):hover,
+.wc-block-components-button:not(.is-link):hover,
+.wpcf7 .wpcf7-submit:hover,
+.wpforms-container .wpforms-submit:hover,
+.gform_wrapper .gform_button:hover { background: var(--wp--preset--color--grey-800) !important; }
+.woocommerce :is(a.button, button.button):active,
+.wc-block-components-button:not(.is-link):active { transform: scale(0.97); }
+
+/* Second actions are outlined. "Add to cart" in a list is the second
+ * action next to the product itself, so it's outlined too. */
+.woocommerce ul.products li.product .button,
+.wp-block-woocommerce-product-button .wp-block-button__link,
+.woocommerce .cart .button[name="update_cart"],
+.woocommerce .woocommerce-cart-form .coupon .button,
+.wc-block-components-button.outlined,
+.wc-block-cart__submit-container ~ * .wc-block-components-button,
+.gform_wrapper .gform_previous_button {
+	background: #fff !important;
+	color: #000 !important;
+}
+.woocommerce ul.products li.product .button:hover,
+.wp-block-woocommerce-product-button .wp-block-button__link:hover { background: var(--wp--preset--color--grey-100) !important; }
+
+.woocommerce :is(a.button, button.button).disabled,
+.woocommerce :is(a.button, button.button):disabled { opacity: 0.4 !important; }
+
+/* ------------------------------------------------------------ Notices */
+
+/* Info and success: a grey panel with a black edge on the left, said in words.
+ * Errors: black and bold, with the "!" disc. Never red, never green. */
+.woocommerce :is(.woocommerce-message, .woocommerce-info, .woocommerce-error),
+.wc-block-components-notice-banner,
+.wpcf7 form .wpcf7-response-output,
+.wpforms-container :is(.wpforms-confirmation-container-full, .wpforms-error-container),
+.gform_wrapper :is(.gform_confirmation_message, .gform_validation_errors) {
+	border: 0 !important;
+	border-left: 3px solid #000 !important;
+	border-radius: var(--wp--custom--radius--note) !important;
+	background: var(--wp--preset--color--grey-50) !important;
+	color: #000 !important;
+	padding: 0.875rem 1rem !important;
+	margin: 0 0 1.5rem !important;
+	box-shadow: none !important;
+	font-size: var(--wp--preset--font-size--small);
+	list-style: none;
+}
+.woocommerce :is(.woocommerce-message, .woocommerce-info, .woocommerce-error)::before,
+.wc-block-components-notice-banner > svg { display: none !important; }
+.woocommerce :is(.woocommerce-message, .woocommerce-info) .button { float: none; margin-left: 1rem; }
+
+.woocommerce .woocommerce-error,
+.wc-block-components-notice-banner.is-error,
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output,
+.wpforms-container .wpforms-error-container,
+.gform_wrapper .gform_validation_errors { font-weight: 600; }
+
+/* The field-level error under a field: black, bold, a small "!" disc. */
+.wpcf7-not-valid-tip,
+.wpforms-container label.wpforms-error,
+.gform_wrapper :is(.validation_message, .gfield_validation_message),
+.wc-block-components-validation-error,
+.woocommerce form .form-row.woocommerce-invalid label {
+	display: flex !important;
+	align-items: flex-start;
+	gap: 0.5rem;
+	color: #000 !important;
+	font-size: var(--wp--preset--font-size--small) !important;
+	font-weight: 600 !important;
+	background: none !important;
+	border: 0 !important;
+	padding: 0 !important;
+	margin-top: 0.375rem !important;
+}
+.wpcf7-not-valid-tip::before,
+.wpforms-container label.wpforms-error::before,
+.gform_wrapper :is(.validation_message, .gfield_validation_message)::before,
+.wc-block-components-validation-error > p::before {
+	content: "!";
+	display: inline-grid;
+	place-items: center;
+	width: 1rem;
+	height: 1rem;
+	margin-top: 2px;
+	flex-shrink: 0;
+	border-radius: 50%;
+	background: #000;
+	color: #fff;
+	font-size: 0.65rem;
+	font-weight: 700;
+	line-height: 1;
+}
+.wc-block-components-validation-error svg { display: none; }
+:is(.wpcf7-not-valid, .wpforms-error, .gfield_error input, .gfield_error textarea, .woocommerce-invalid input) { border-color: #000 !important; border-width: 1.5px !important; }
+.gform_wrapper .gfield_error { background: none !important; border: 0 !important; padding: 0 !important; }
+.woocommerce form .form-row :is(.required, abbr) { color: #000; text-decoration: none; }
+.woocommerce form .form-row.woocommerce-validated :is(input, select) { border-color: var(--wp--preset--color--grey-200) !important; }
+
+/* -------------------------------------------------------- WooCommerce */
+
+/* Products sit on grey-100, in a card with a grey hairline that goes
+ * black on hover. No lift, no shadow. */
+.woocommerce ul.products { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; margin: 0 !important; }
+.woocommerce ul.products::before,
+.woocommerce ul.products::after { display: none !important; }
+.woocommerce ul.products li.product {
+	float: none !important;
+	width: auto !important;
+	margin: 0 !important;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	border: 1px solid var(--wp--preset--color--grey-200);
+	border-radius: var(--wp--custom--radius--card);
+	padding: 1rem;
+	background: #fff;
+	transition: border-color var(--dui-dur) var(--dui-ease);
+}
+.woocommerce ul.products li.product:has(a:hover) { border-color: #000; }
+.woocommerce ul.products li.product a img,
+.wc-block-components-product-image img,
+.wp-block-woocommerce-product-image img,
+.woocommerce div.product div.images img {
+	background: var(--wp--preset--color--grey-100);
+	border-radius: var(--wp--custom--radius--panel);
+	margin: 0 0 0.5rem !important;
+}
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.wc-block-components-product-name { font-size: var(--wp--preset--font-size--medium) !important; font-weight: 600 !important; padding: 0 !important; color: #000; }
+.woocommerce ul.products li.product .button { margin-top: auto !important; align-self: flex-start; }
+
+/* Prices: black. A sale shows the old price struck through in grey. */
+.woocommerce :is(.price, .amount),
+.wc-block-components-product-price,
+.wc-block-formatted-money-amount { color: #000 !important; font-weight: 500; }
+.woocommerce .price del,
+.wc-block-components-product-price del { color: var(--wp--preset--color--grey-600) !important; opacity: 1 !important; font-weight: 400; }
+.woocommerce .price ins,
+.wc-block-components-product-price ins { text-decoration: none; font-weight: 600; background: none; }
+.woocommerce div.product p.price { font-size: var(--wp--preset--font-size--x-large) !important; }
+
+/* "Sale" is a status, so it's a small outlined badge pill, not a coloured burst. */
+.woocommerce span.onsale,
+.wc-block-components-product-sale-badge,
+.wp-block-woocommerce-product-sale-badge .wc-block-components-product-sale-badge {
+	position: absolute;
+	top: 0.75rem !important;
+	left: 0.75rem !important;
+	right: auto !important;
+	min-height: 0 !important;
+	min-width: 0 !important;
+	line-height: 1.5 !important;
+	margin: 0 !important;
+	border: 1px solid #000 !important;
+	border-radius: 9999px !important;
+	background: #fff !important;
+	color: #000 !important;
+	padding: 0.125rem 0.625rem !important;
+	font-size: var(--wp--preset--font-size--x-small) !important;
+	font-weight: 500 !important;
+	text-transform: none !important;
+}
+
+/* Stars are black. */
+.woocommerce .star-rating,
+.woocommerce .star-rating::before,
+.woocommerce p.stars a,
+.wc-block-components-product-rating__stars,
+.wc-block-components-product-rating__stars::before,
+.wc-block-components-product-rating__stars span::before { color: #000 !important; }
+
+/* Tabs on a product: pills, the open one black. */
+.woocommerce div.product .woocommerce-tabs ul.tabs { padding: 0 !important; margin: 0 0 1.5rem !important; display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.woocommerce div.product .woocommerce-tabs ul.tabs::before,
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before,
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after { display: none !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li { border: 1px solid var(--wp--preset--color--grey-200) !important; border-radius: 9999px !important; background: #fff !important; margin: 0 !important; padding: 0 !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li a { padding: 0.375rem 1rem !important; font-weight: 500 !important; color: #000 !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active { background: #000 !important; border-color: #000 !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a { color: #fff !important; }
+
+/* Quantity: a pill. */
+.woocommerce .quantity .qty,
+.wc-block-components-quantity-selector { width: 5rem !important; border-radius: 9999px !important; border: 1px solid var(--wp--preset--color--grey-200) !important; text-align: center; }
+.wc-block-components-quantity-selector::after { display: none !important; }
+
+/* Tables (cart, order details): a black rule under the head, hairlines between rows. */
+.woocommerce table.shop_table { border: 0 !important; border-radius: 0 !important; border-collapse: collapse !important; }
+.woocommerce table.shop_table :is(th, td) { border: 0 !important; border-bottom: 1px solid var(--wp--preset--color--grey-200) !important; padding: 1rem 1rem 1rem 0 !important; }
+.woocommerce table.shop_table thead th { border-bottom: 1px solid #000 !important; font-size: var(--wp--preset--font-size--small); font-weight: 500; color: var(--wp--preset--color--grey-600); }
+
+/* Cart and checkout blocks: cards with hairlines, no shadows. */
+.wc-block-components-sidebar-layout .wc-block-components-panel,
+.wc-block-components-totals-wrapper,
+.wc-block-checkout__actions,
+.wc-block-components-checkout-step { border-color: var(--wp--preset--color--grey-200) !important; box-shadow: none !important; }
+.wc-block-components-radio-control__option,
+.wc-block-components-radio-control-accordion-option { border-color: var(--wp--preset--color--grey-200) !important; border-radius: var(--wp--custom--radius--input) !important; box-shadow: none !important; }
+.wc-block-components-radio-control__option--checked-option-highlighted,
+.wc-block-components-radio-control--highlight-checked .wc-block-components-radio-control-accordion-option--checked-option-highlighted { box-shadow: inset 0 0 0 1.5px #000 !important; }
+.wc-block-components-radio-control__input:checked { border-color: #000 !important; }
+.wc-block-components-radio-control__input:checked::before { background: #000 !important; }
+.wc-block-components-text-input input,
+.wc-block-components-combobox .wc-block-components-combobox-control input,
+.wc-blocks-components-select .wc-blocks-components-select__select { border-radius: 9999px !important; border-color: var(--wp--preset--color--grey-200) !important; }
+.wc-block-components-text-input.is-active input:focus,
+.wc-block-components-text-input input:focus { border-color: #000 !important; box-shadow: none !important; }
+.wc-block-components-text-input.has-error input { border-color: #000 !important; border-width: 1.5px !important; }
+.wc-block-components-text-input.has-error label,
+.wc-block-components-validation-error { color: #000 !important; }
+.wc-block-mini-cart__badge { background: #000 !important; color: #fff !important; }
+.wc-block-components-chip { border-radius: 9999px !important; background: #fff !important; border: 1px solid var(--wp--preset--color--grey-200) !important; color: #000 !important; }
+.wc-block-components-totals-coupon-link,
+.wc-block-components-button.is-link { color: #000 !important; text-decoration: underline !important; text-underline-offset: 4px; }
+.woocommerce-store-notice,
+p.demo_store { background: #000 !important; color: #fff !important; }
+.woocommerce-store-notice a { color: #fff !important; }
+
+/* Account pages: the menu is a list of pills, the current one black. */
+.woocommerce-MyAccount-navigation ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.25rem; }
+.woocommerce-MyAccount-navigation a { display: block; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; }
+.woocommerce-MyAccount-navigation a:hover { background: var(--wp--preset--color--grey-100); }
+.woocommerce-MyAccount-navigation .is-active a { background: #000; color: #fff; }
+
+/* ------------------------------------------------------- Form plugins */
+
+.wpcf7 form p { margin: 0 0 1rem; }
+.wpcf7 .wpcf7-spinner { background: #000; }
+.wpforms-container .wpforms-field { padding: 0 0 1rem !important; }
+.gform_wrapper.gravity-theme .gfield { margin-bottom: 1rem; }
+.gform_wrapper .gform_footer { padding-top: 0.5rem !important; }
+/* Progress bars: black on grey. */
+.gform_wrapper .gf_progressbar { background: var(--wp--preset--color--grey-100) !important; border-radius: 9999px !important; }
+.gform_wrapper .gf_progressbar_percentage { background: #000 !important; border-radius: 9999px !important; }
+.wpforms-container .wpforms-page-indicator-page-progress { background: #000 !important; }
+
+/* ---------------------------------------------------------- Breadcrumbs */
+
+/* Yoast and Rank Math breadcrumbs: small grey meta, the current page black. */
+:is(#breadcrumbs, .yoast-breadcrumbs, .rank-math-breadcrumb) {
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--grey-600);
+	margin: 0 0 1.5rem;
+}
+:is(#breadcrumbs, .yoast-breadcrumbs, .rank-math-breadcrumb) a { color: var(--wp--preset--color--grey-600); text-decoration: none; }
+:is(#breadcrumbs, .yoast-breadcrumbs, .rank-math-breadcrumb) a:hover { color: #000; text-decoration: underline; }
+:is(#breadcrumbs, .yoast-breadcrumbs) .breadcrumb_last,
+.rank-math-breadcrumb .last { color: #000; font-weight: 500; }
+
+/* ------------------------------------------------------------- Jetpack */
+
+/* Share buttons: outlined pills, monochrome. Brand colours stay off. */
+.sharedaddy .sd-content ul li a.sd-button,
+.wp-block-jetpack-sharing-button .jetpack-sharing-button__button {
+	border: 1px solid var(--wp--preset--color--grey-200) !important;
+	border-radius: 9999px !important;
+	background: #fff !important;
+	color: #000 !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+}
+.sharedaddy .sd-content ul li a.sd-button:hover,
+.wp-block-jetpack-sharing-button .jetpack-sharing-button__button:hover { border-color: #000 !important; }
+.sharedaddy .sd-content ul li a.sd-button::before,
+.wp-block-jetpack-sharing-button .jetpack-sharing-button__button svg { color: #000 !important; fill: currentColor !important; }
+.sd-title, .jp-relatedposts-headline { font-size: var(--wp--preset--font-size--small) !important; font-weight: 600 !important; }
+.sd-title::before { display: none !important; }
+.jp-relatedposts-items .jp-relatedposts-post-title a { color: #000 !important; font-weight: 600; }
+.jp-relatedposts-post-date, .jp-relatedposts-post-context { color: var(--wp--preset--color--grey-600) !important; }
+.wp-block-jetpack-subscriptions .wp-block-jetpack-subscriptions__button { border-radius: 9999px !important; background: #000 !important; color: #fff !important; }
+
+/* --------------------------------------------------- Language switchers */
+
+/* Polylang and WPML: languages as small pills, the current one black. */
+:is(.wp-block-polylang-language-switcher, .wpml-ls) ul { display: flex; flex-wrap: wrap; gap: 0.375rem; list-style: none; padding: 0; margin: 0; }
+.wpml-ls-legacy-list-horizontal { border: 0 !important; padding: 0 !important; }
+:is(.lang-item, .wpml-ls-item) a {
+	display: inline-block;
+	border: 1px solid var(--wp--preset--color--grey-200) !important;
+	border-radius: 9999px;
+	padding: 0.25rem 0.75rem !important;
+	font-size: var(--wp--preset--font-size--small);
+	text-decoration: none;
+	color: #000 !important;
+	background: #fff !important;
+}
+:is(.lang-item, .wpml-ls-item) a:hover { border-color: #000 !important; }
+:is(.current-lang, .wpml-ls-current-language) > a { background: #000 !important; color: #fff !important; border-color: #000 !important; }
