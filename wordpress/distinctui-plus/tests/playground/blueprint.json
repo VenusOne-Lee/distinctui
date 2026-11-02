@@ -1,0 +1,18 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": { "title": "distinctUI+ with the big plugins", "author": "distinctui", "description": "Installs the theme, distinctUI+, WooCommerce, Yoast SEO, Contact Form 7 and WP Super Cache, then runs tests/playground/dui-test.php." },
+	"landingPage": "/dui-test.php",
+	"preferredVersions": { "php": "8.3", "wp": "latest" },
+	"features": { "networking": true },
+	"login": true,
+	"steps": [
+		{ "step": "installTheme", "themeData": { "resource": "url", "url": "https://distinctui.com/try/distinctui-wordpress.zip" }, "options": { "activate": true } },
+		{ "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "woocommerce" }, "options": { "activate": true } },
+		{ "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "wordpress-seo" }, "options": { "activate": true } },
+		{ "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "contact-form-7" }, "options": { "activate": true } },
+		{ "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "wp-super-cache" }, "options": { "activate": true } },
+		{ "step": "installPlugin", "pluginData": { "resource": "url", "url": "https://distinctui.com/try/distinctui-plus.zip" }, "options": { "activate": true } },
+		{ "step": "defineWpConfigConsts", "consts": { "DUI_PLUS_DEV": true } },
+		{ "step": "writeFile", "path": "/wordpress/dui-test.php", "data": { "resource": "url", "url": "https://raw.githubusercontent.com/VenusOne-Lee/distinctui/claude/project-thread-rnltxn/wordpress/distinctui-plus/tests/playground/dui-test.php" } }
+	]
+}
