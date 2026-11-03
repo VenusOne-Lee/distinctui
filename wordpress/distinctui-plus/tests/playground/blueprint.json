@@ -99,6 +99,11 @@
 				"DUI_PLUS_DEV": true,
 				"DUI_PLUS_PLAYGROUND_TEST": true
 			}
+		},
+		{
+			"step": "writeFile",
+			"path": "/wordpress/wp-content/mu-plugins/dui-test-log.php",
+			"data": "<?php\n// Playground test only: keep the last 30 distinctUI+ REST calls (method, route, body size, section count, status) for dui-test.php?log.\nif ( ! defined( 'DUI_PLUS_PLAYGROUND_TEST' ) ) { return; }\nadd_filter( 'rest_request_after_callbacks', function ( $res, $handler, $req ) {\n\tif ( 0 !== strpos( $req->get_route(), '/distinctui-plus/v1' ) ) { return $res; }\n\t$spec = $req->get_param( 'spec' );\n\t$log  = (array) get_option( 'dui_test_log', array() );\n\t$data = is_wp_error( $res ) ? $res->get_error_message() : ( $res instanceof WP_REST_Response ? $res->get_data() : $res );\n\t$log[] = $req->get_method() . ' ' . $req->get_route() . ' ct=' . $req->get_content_type()['value'] . ' body=' . strlen( (string) $req->get_body() ) . ' json=' . ( is_array( $req->get_json_params() ) ? 'yes' : 'no' ) . ' spec.sections=' . ( is_array( $spec ) ? count( (array) ( $spec['sections'] ?? array() ) ) : gettype( $spec ) ) . ' out.sections=' . ( is_array( $data ) && isset( $data['spec']['sections'] ) ? count( $data['spec']['sections'] ) : '-' ) . ' head=' . substr( (string) $req->get_body(), 0, 80 );\n\tupdate_option( 'dui_test_log', array_slice( $log, -30 ), false );\n\treturn $res;\n}, 10, 3 );\n"
 		}
 	]
 }

@@ -9,6 +9,10 @@ if ( ! defined( 'DUI_PLUS_PLAYGROUND_TEST' ) || ! DUI_PLUS_PLAYGROUND_TEST ) {
 require_once ABSPATH . 'wp-admin/includes/post.php';
 wp_set_current_user( 1 );
 header( 'Content-Type: text/plain' );
+if ( isset( $_GET['log'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	echo implode( "\n", (array) get_option( 'dui_test_log', array() ) );
+	exit;
+}
 $r = array();
 $ok = function ( $name, $cond, $info = '' ) use ( &$r ) { $r[] = ( $cond ? 'PASS ' : 'FAIL ' ) . $name . ( $info !== '' ? ' :: ' . ( is_string( $info ) ? $info : wp_json_encode( $info ) ) : '' ); };
 try {
