@@ -443,7 +443,8 @@ function scrollTo(i) {
 	['dui-frame', 'dui-phone'].forEach((id) => {
 		const d = frameDoc(id);
 		const el = d && d.querySelector(`.dui-sec[data-i="${i}"]`);
-		if (el) el.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+		// Scroll only the preview, never the admin page around it (scrollIntoView moves both).
+		if (el) d.defaultView.scrollTo({ top: el.getBoundingClientRect().top + d.defaultView.scrollY, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 	});
 }
 

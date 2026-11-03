@@ -178,6 +178,23 @@ if ( class_exists( 'WP_Application_Passwords' ) ) {
 		echo '<!-- dui-http ' . esc_html( wp_get_current_user()->user_login . ':' . $made[0] ) . ' -->';
 	}
 }
+
+// The canvas path: compose three designs from typed content, save one over REST like the canvas does, read it back.
+$content = array( 'name' => 'Loaf', 'button' => 'Get started', 'heading' => "Fresh bread before you're up", 'lede' => 'We bake every night and deliver in Melville before 7am.', 'features' => "Baked at night: Every loaf is out of the oven by 5am.\nTo your door: Delivered before 7am, Monday to Saturday.\nNo contract: Pause or stop any week.", 'prices' => "Weekly, R95, One loaf a week\nFamily, R240, Three loaves and rolls", 'questions' => 'Can I pause? Yes, any week, from your account.', 'faces' => 'Naledi Dube, Kabelo Sithole', 'proof' => 'Loved by 300 homes in Melville', 'form' => 'contact' );
+foreach ( DUI_Plus_Compose::options( $content ) as $opt ) {
+	$want = count( $opt['spec']['sections'] );
+	$req  = new WP_REST_Request( 'POST', '/distinctui-plus/v1/pages' );
+	$req->set_header( 'Content-Type', 'application/json' );
+	$req->set_body( wp_json_encode( array( 'title' => 'Loaf ' . $opt['key'], 'spec' => json_decode( wp_json_encode( $opt['spec'] ), true ) ) ) );
+	$res  = rest_do_request( $req );
+	$page = json_decode( wp_json_encode( $res->get_data() ), true );
+	$back = isset( $page['id'] ) ? DUI_Plus_Store::get( (int) $page['id'] ) : null;
+	$raw  = isset( $page['id'] ) ? (string) get_post_meta( (int) $page['id'], '_dui_spec', true ) : '';
+	$ok( 'canvas save ' . $opt['key'], $back && $want === count( $back['spec']['sections'] ?? array() ), $res->get_status() . ' want ' . $want . ' got ' . count( $back['spec']['sections'] ?? array() ) . ' raw ' . strlen( $raw ) . ' ' . ( json_decode( $raw ) ? 'json ok' : json_last_error_msg() . ' ' . substr( $raw, 0, 120 ) ) );
+	$periods = array_map( fn( $p ) => $p['period'] ?? '', array_values( array_filter( $opt['spec']['sections'], fn( $x ) => 'pricing' === $x['type'] ) )[0]['items'] ?? array() );
+	$ok( 'plan period ' . $opt['key'], 'a week' === ( $periods[0] ?? '' ), implode( '|', $periods ) );
+	$ok( 'proof kept ' . $opt['key'], (bool) array_filter( $opt['spec']['sections'], fn( $x ) => 'proof' === $x['type'] ) );
+}
 $ok( 'page link', true, get_permalink( $pid ) );
 update_option( 'dui_test_page', $pid );
 } catch ( \Throwable $e ) {
