@@ -477,6 +477,7 @@ header.wp-block-template-part { position: relative; z-index: 20; }
  * the form keeps its look even without the plugin.
  */
 .dui-form { display: grid; gap: 1rem; max-width: 36rem; }
+.dui-form [hidden] { display: none !important; }
 .dui-field { display: grid; gap: 0.375rem; }
 .dui-field > label { font-size: var(--wp--preset--font-size--small); font-weight: 500; }
 .dui-optional { color: var(--wp--preset--color--grey-600); font-weight: 400; }
@@ -505,8 +506,9 @@ header.wp-block-template-part { position: relative; z-index: 20; }
 	resize: vertical;
 	box-sizing: border-box;
 }
-.dui-form :is(input, select, textarea):focus { outline: 2px solid #000; outline-offset: 2px; border-color: #000; }
-.dui-form :is(input, select, textarea)[aria-invalid="true"] { border-color: #000; border-width: 1.5px; }
+/* Same weight as the input rule above, so the black edge wins for inputs too. */
+.dui-form :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea):focus { outline: 2px solid #000; outline-offset: 2px; border-color: #000; }
+.dui-form :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea)[aria-invalid="true"] { border-color: #000; border-width: 1.5px; }
 .dui-form ::placeholder { color: var(--wp--preset--color--grey-400); }
 .dui-form input[type="checkbox"] { accent-color: #000; width: 1.125rem; height: 1.125rem; }
 .dui-field-check label { display: flex; gap: 0.5rem; align-items: flex-start; font-weight: 400; }

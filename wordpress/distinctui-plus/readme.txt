@@ -3,7 +3,7 @@ Contributors: distinctui
 Requires at least: 6.9
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,13 @@ The canvas does, but pages are drawn with the distinctUI theme's styles, so they
 No. Colour lives only on your mark; that's the system. Pick a ring palette and your signature colour under Appearance, distinctUI.
 
 == Changelog ==
+
+= 0.1.1 =
+* Pages built in the canvas now save on hosts that block or empty PUT requests (they reopened blank).
+* Prices read "a week", "a year" or once from the words you type, not always "a month".
+* The faces you name show in all three designs.
+* Adding a section scrolls the preview only, not the whole screen.
+* A sent form hides its fields, whatever the theme.
 
 = 0.1.0 =
 * First version: canvas, three designs, eleven section types, versions, forms, abilities for Claude, plugin compatibility.

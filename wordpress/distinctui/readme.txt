@@ -3,7 +3,7 @@ Contributors: distinctui
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.2.0
+Stable tag: 0.2.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -54,6 +54,9 @@ distinctUI+ is the paid builder for this theme: a full-screen canvas that lays o
 The twelve rules are at https://distinctui.com/#rules. The short version: light only; black, white and four greys; colour only on rings; one typeface; light headings with one bold word; black pill main actions; white space before borders, borders before shadows; pills to press, soft corners to read; dashed until live; errors black and bold; hover is a black edge; write plainly.
 
 == Changelog ==
+
+= 0.2.1 =
+* Form inputs get the black edge when an answer needs a look, like text areas did.
 
 = 0.2.0 =
 * Settings under Appearance, distinctUI: palette, signature colour, your mark, Airy or Compact.
