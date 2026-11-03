@@ -3,7 +3,7 @@
  * Plugin Name:       distinctUI+
  * Plugin URI:        https://distinctui.com
  * Description:       The page builder for the distinctUI theme. Type your content, pick one of three designs that all follow the rules, then edit right on the page. Your own Claude can build with you through the WordPress MCP Adapter. Pages are plain blocks, so they stay live if you stop paying.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.9
  * Requires PHP:      7.4
  * Author:            distinctUI
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DUI_PLUS_VERSION', '0.1.0' );
+define( 'DUI_PLUS_VERSION', '0.1.1' );
 define( 'DUI_PLUS_FILE', __FILE__ );
 define( 'DUI_PLUS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'DUI_PLUS_URL', plugin_dir_url( __FILE__ ) );

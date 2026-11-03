@@ -35,7 +35,8 @@
 			msg.classList.toggle('is-sent', ok);
 		}
 		if (ok) {
-			form.querySelectorAll('.dui-field, .dui-form-actions').forEach(function (e) { e.hidden = true; });
+			// style.display too: a theme's display rule would otherwise beat [hidden].
+			form.querySelectorAll('.dui-field, .dui-form-actions').forEach(function (e) { e.hidden = true; e.style.display = 'none'; });
 			if (msg) { msg.setAttribute('tabindex', '-1'); msg.focus(); }
 		} else if (first) {
 			first.focus();

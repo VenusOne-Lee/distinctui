@@ -28,6 +28,30 @@ class DUI_Plus_Compose {
 	 * @param array $c Raw content.
 	 * @return array
 	 */
+	/**
+	 * How often a plan is paid, read from the words people typed: weekly,
+	 * yearly, once. A month when nothing says otherwise.
+	 *
+	 * @param string $line One price line.
+	 * @return string
+	 */
+	public static function period( $line ) {
+		$line = strtolower( (string) $line );
+		if ( preg_match( '/\b(once|one-off|one off|lifetime|for life|forever)\b/', $line ) ) {
+			return '';
+		}
+		if ( preg_match( '/\b(week|weekly|wk)\b/', $line ) ) {
+			return __( 'a week', 'distinctui-plus' );
+		}
+		if ( preg_match( '/\b(year|yearly|annual|annually|yr)\b/', $line ) ) {
+			return __( 'a year', 'distinctui-plus' );
+		}
+		if ( preg_match( '/\b(day|daily)\b/', $line ) ) {
+			return __( 'a day', 'distinctui-plus' );
+		}
+		return __( 'a month', 'distinctui-plus' );
+	}
+
 	public static function content( array $c ) {
 		$t   = array( 'DUI_Plus_Spec', 'text' );
 		$out = array(
@@ -76,10 +100,14 @@ class DUI_Plus_Compose {
 				continue;
 			}
 			$parts          = array_map( 'trim', explode( ',', $p ) );
+			$price          = $parts[1] ?? '';
+			$period         = self::period( $p );
+			// "R95 a week" or "R95/week" in the price itself.
+			$price          = trim( preg_replace( '#\s*(/|\ba\b|\bper\b)\s*(week|month|year)\b.*$#i', '', $price ) );
 			$out['plans'][] = array(
 				'name'   => call_user_func( $t, $parts[0] ?? '' ),
-				'price'  => call_user_func( $t, $parts[1] ?? '' ),
-				'period' => __( 'a month', 'distinctui-plus' ),
+				'price'  => call_user_func( $t, $price ),
+				'period' => $period,
 				'text'   => DUI_Plus_Spec::para( implode( ', ', array_slice( $parts, 2 ) ) ),
 			);
 		}
@@ -220,13 +248,13 @@ class DUI_Plus_Compose {
 				'key'      => 'bold',
 				'name'     => __( 'Bold', 'distinctui-plus' ),
 				'about'    => __( 'A big centred promise, rows instead of cards, a split close.', 'distinctui-plus' ),
-				'sections' => array( $with( $hero, 'centred' ), $with( $features, 'rows' ), $products, $with( $pricing, ( $pricing && 1 === count( $pricing['items'] ?? array() ) ) ? 'one' : 'cards' ), $form, $with( $posts, 'featured' ), $questions, $cta( 'split' ) ),
+				'sections' => array( $with( $hero, 'centred' ), $proof, $with( $features, 'rows' ), $products, $with( $pricing, ( $pricing && 1 === count( $pricing['items'] ?? array() ) ) ? 'one' : 'cards' ), $form, $with( $posts, 'featured' ), $questions, $cta( 'split' ) ),
 			),
 			array(
 				'key'      => 'steps',
 				'name'     => __( 'Step by step', 'distinctui-plus' ),
 				'about'    => __( 'Leads with how it works in numbered steps, then prices and questions.', 'distinctui-plus' ),
-				'sections' => array( $with( $hero, 'mark-left' ), $with( $steps, 'rows' ), $form, $with( $pricing, 'cards' ), $products, $questions, $posts, $cta( 'split' ) ),
+				'sections' => array( $with( $hero, 'mark-left' ), $with( $steps, 'rows' ), $proof, $form, $with( $pricing, 'cards' ), $products, $questions, $posts, $cta( 'split' ) ),
 			),
 		);
 
