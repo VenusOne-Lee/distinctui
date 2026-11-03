@@ -151,7 +151,7 @@ if ( function_exists( 'wp_cache_post_change' ) && function_exists( 'get_supercac
 	global $cache_enabled, $super_cache_enabled, $cache_path;
 	$cache_enabled = true; $super_cache_enabled = true;
 	if ( ! $cache_path ) { $cache_path = WP_CONTENT_DIR . '/cache/'; }
-	$dir = trailingslashit( get_supercache_dir() ) . trim( (string) wp_parse_url( get_permalink( $pid ), PHP_URL_PATH ), '/' );
+	$dir = function_exists( 'get_current_url_supercache_dir' ) ? untrailingslashit( get_current_url_supercache_dir( $pid ) ) : trailingslashit( get_supercache_dir() ) . trim( (string) wp_parse_url( get_permalink( $pid ), PHP_URL_PATH ), '/' );
 	wp_mkdir_p( $dir );
 	file_put_contents( $dir . '/index.html', 'old page' );
 	$was = file_exists( $dir . '/index.html' );
@@ -164,6 +164,7 @@ if ( function_exists( 'wp_cache_post_change' ) && function_exists( 'get_supercac
 // CF7: send the form the way its front end does.
 if ( $cf7 && class_exists( 'WPCF7_ContactForm' ) ) {
 	$req = new WP_REST_Request( 'POST', '/contact-form-7/v1/contact-forms/' . $cf7 . '/feedback' );
+	$req->set_header( 'Content-Type', 'multipart/form-data; boundary=x' );
 	$req->set_body_params( array( '_wpcf7' => $cf7, '_wpcf7_unit_tag' => 'wpcf7-f' . $cf7 . '-p' . $pid . '-o1', '_wpcf7_container_post' => $pid, 'your-name' => 'Mina Okafor', 'your-email' => 'mina@example.com', 'your-subject' => 'Bread', 'your-message' => 'Two rye loaves on Friday, please.' ) );
 	$res = rest_do_request( $req );
 	$d = $res->get_data();
@@ -175,7 +176,27 @@ if ( class_exists( 'WP_Application_Passwords' ) ) {
 	$ok( 'app passwords available', wp_is_application_passwords_available() );
 	$made = WP_Application_Passwords::create_new_application_password( 1, array( 'name' => 'dui-test ' . time() ) );
 	if ( ! is_wp_error( $made ) ) {
-		echo '<!-- dui-http ' . esc_html( wp_get_current_user()->user_login . ':' . $made[0] ) . ' -->';
+		// Over real HTTP, signed in only by the app password, the way Claude's MCP connector talks to a site.
+		$auth = 'Basic ' . base64_encode( wp_get_current_user()->user_login . ':' . $made[0] );
+		$post = function ( $body, $sid = '' ) use ( $auth ) {
+			$h = array( 'Authorization' => $auth, 'Content-Type' => 'application/json', 'Accept' => 'application/json, text/event-stream', 'MCP-Protocol-Version' => '2025-11-25' );
+			if ( $sid ) { $h['Mcp-Session-Id'] = $sid; }
+			return wp_remote_post( rest_url( 'distinctui-plus/mcp' ), array( 'headers' => $h, 'body' => wp_json_encode( $body ), 'timeout' => 30 ) );
+		};
+		wp_set_current_user( 0 );
+		$res = $post( array( 'jsonrpc' => '2.0', 'id' => 1, 'method' => 'initialize', 'params' => array( 'protocolVersion' => '2025-11-25', 'capabilities' => new stdClass(), 'clientInfo' => array( 'name' => 'http-test', 'version' => '1' ) ) ) );
+		$sid = is_wp_error( $res ) ? '' : (string) wp_remote_retrieve_header( $res, 'mcp-session-id' );
+		$ok( 'http mcp initialize', ! is_wp_error( $res ) && 200 === wp_remote_retrieve_response_code( $res ), is_wp_error( $res ) ? $res->get_error_message() : wp_remote_retrieve_response_code( $res ) . ' ' . substr( wp_remote_retrieve_body( $res ), 0, 160 ) );
+		$res = $post( array( 'jsonrpc' => '2.0', 'id' => 2, 'method' => 'tools/list' ), $sid );
+		$d   = is_wp_error( $res ) ? array() : json_decode( wp_remote_retrieve_body( $res ), true );
+		$ok( 'http mcp tools/list', count( $d['result']['tools'] ?? array() ) >= 16, is_wp_error( $res ) ? $res->get_error_message() : wp_remote_retrieve_response_code( $res ) . ' ' . count( $d['result']['tools'] ?? array() ) . ' ' . substr( wp_remote_retrieve_body( $res ), 0, 120 ) );
+		$res = $post( array( 'jsonrpc' => '2.0', 'id' => 3, 'method' => 'tools/call', 'params' => array( 'name' => 'distinctui-plus-list-pages', 'arguments' => new stdClass() ) ), $sid );
+		$d   = is_wp_error( $res ) ? array() : json_decode( wp_remote_retrieve_body( $res ), true );
+		$ok( 'http mcp tools/call list-pages', ! is_wp_error( $res ) && empty( $d['error'] ) && empty( $d['result']['isError'] ), is_wp_error( $res ) ? $res->get_error_message() : substr( wp_remote_retrieve_body( $res ), 0, 200 ) );
+		$bad = wp_remote_post( rest_url( 'distinctui-plus/mcp' ), array( 'headers' => array( 'Content-Type' => 'application/json', 'Accept' => 'application/json, text/event-stream' ), 'body' => wp_json_encode( array( 'jsonrpc' => '2.0', 'id' => 1, 'method' => 'tools/list' ) ) ) );
+		$ok( 'http mcp refuses no password', ! is_wp_error( $bad ) && wp_remote_retrieve_response_code( $bad ) >= 400, is_wp_error( $bad ) ? $bad->get_error_message() : wp_remote_retrieve_response_code( $bad ) );
+		wp_set_current_user( 1 );
+		WP_Application_Passwords::delete_all_application_passwords( 1 );
 	}
 }
 
@@ -191,6 +212,21 @@ foreach ( DUI_Plus_Compose::options( $content ) as $opt ) {
 	$back = isset( $page['id'] ) ? DUI_Plus_Store::get( (int) $page['id'] ) : null;
 	$raw  = isset( $page['id'] ) ? (string) get_post_meta( (int) $page['id'], '_dui_spec', true ) : '';
 	$ok( 'canvas save ' . $opt['key'], $back && $want === count( $back['spec']['sections'] ?? array() ), $res->get_status() . ' want ' . $want . ' got ' . count( $back['spec']['sections'] ?? array() ) . ' raw ' . strlen( $raw ) . ' ' . ( json_decode( $raw ) ? 'json ok' : json_last_error_msg() . ' ' . substr( $raw, 0, 120 ) ) );
+	// Add every kind of section the way the canvas does (starter, then PUT), and read it back.
+	if ( 'bold' === $opt['key'] && isset( $page['id'] ) ) {
+		$spec = $back['spec'];
+		foreach ( array( 'hero', 'proof', 'features', 'steps', 'stats', 'pricing', 'questions', 'cta', 'form', 'products', 'posts' ) as $type ) {
+			$st = rest_do_request( new WP_REST_Request( 'GET', '/distinctui-plus/v1/starter/' . $type ) );
+			$spec['sections'][] = json_decode( wp_json_encode( $st->get_data() ), true );
+			$req = new WP_REST_Request( 'PUT', '/distinctui-plus/v1/pages/' . $page['id'] );
+			$req->set_header( 'Content-Type', 'application/json' );
+			$req->set_body( wp_json_encode( array( 'spec' => $spec, 'title' => 'Loaf', 'rev' => 999 ) ) );
+			$res  = rest_do_request( $req );
+			$got  = count( DUI_Plus_Store::get( (int) $page['id'] )['spec']['sections'] );
+			$ok( 'add section ' . $type, $st->get_status() < 300 && $res->get_status() < 300 && count( $spec['sections'] ) === $got, $st->get_status() . '/' . $res->get_status() . ' want ' . count( $spec['sections'] ) . ' got ' . $got . ( $res->get_status() >= 300 ? ' ' . substr( wp_json_encode( $res->get_data() ), 0, 160 ) : '' ) );
+			$spec = DUI_Plus_Store::get( (int) $page['id'] )['spec'];
+		}
+	}
 	$periods = array_map( fn( $p ) => $p['period'] ?? '', array_values( array_filter( $opt['spec']['sections'], fn( $x ) => 'pricing' === $x['type'] ) )[0]['items'] ?? array() );
 	$ok( 'plan period ' . $opt['key'], 'a week' === ( $periods[0] ?? '' ), implode( '|', $periods ) );
 	$ok( 'proof kept ' . $opt['key'], (bool) array_filter( $opt['spec']['sections'], fn( $x ) => 'proof' === $x['type'] ) );
