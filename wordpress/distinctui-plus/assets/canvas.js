@@ -46,9 +46,12 @@ const key = (s) => JSON.stringify(s);
 const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
 
 async function api(path, { method = 'GET', body } = {}) {
+	// Send PUT and DELETE as POST with an override, like the block editor does: some hosts
+	// (and WordPress Playground) block those methods or drop their bodies.
+	const override = method !== 'GET' && method !== 'POST' ? method : '';
 	const res = await fetch(D.rest + path, {
-		method,
-		headers: { 'X-WP-Nonce': D.nonce, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+		method: override ? 'POST' : method,
+		headers: { 'X-WP-Nonce': D.nonce, ...(override ? { 'X-HTTP-Method-Override': override } : {}), ...(body ? { 'Content-Type': 'application/json' } : {}) },
 		body: body ? JSON.stringify(body) : undefined,
 		credentials: 'same-origin',
 	});

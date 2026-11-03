@@ -152,19 +152,22 @@ $ok( 'no freeform blocks', ! in_array( null, array_filter( $names, fn( $n ) => n
 
 // WP Super Cache: put a cached copy where Super Cache keeps a page, publish it once, check the copy is gone.
 // (Super Cache handles each post once per request, so this uses a page of its own.)
-if ( function_exists( 'wp_cache_post_change' ) && function_exists( 'get_supercache_dir' ) ) {
+if ( function_exists( 'wp_cache_post_change' ) && function_exists( 'get_current_url_supercache_dir' ) ) {
 	global $cache_enabled, $super_cache_enabled, $cache_path;
 	$cache_enabled = true; $super_cache_enabled = true;
 	if ( ! $cache_path ) { $cache_path = WP_CONTENT_DIR . '/cache/'; }
 	$cid = DUI_Plus_Store::create( 'Cache test', array( 'name' => 'Cache test', 'sections' => array( array( 'type' => 'hero', 'heading' => 'Cache test', 'bold' => 'test' ) ) ) );
-	wp_update_post( array( 'ID' => $cid, 'post_name' => 'cache-test' ) );
-	$dir = trailingslashit( get_supercache_dir() ) . 'cache-test';
+	DUI_Plus_Store::publish( $cid );
+	$dir = untrailingslashit( get_current_url_supercache_dir( $cid ) );
 	wp_mkdir_p( $dir );
 	file_put_contents( $dir . '/index.html', 'old page' );
 	$was = file_exists( $dir . '/index.html' );
+	// Super Cache skips a post it handled a moment ago in the same request, so touch another page first.
+	DUI_Plus_Store::publish( $pid );
+	DUI_Plus_Store::save( $cid, array( 'name' => 'Cache test', 'sections' => array( array( 'type' => 'hero', 'heading' => 'Cache test two', 'bold' => 'two' ) ) ) );
 	DUI_Plus_Store::publish( $cid );
 	clearstatcache();
-	$ok( 'cache cleared on publish', $was && ! file_exists( $dir . '/index.html' ), str_replace( ABSPATH, '', $dir ) . ' now ' . ( function_exists( 'get_current_url_supercache_dir' ) ? str_replace( ABSPATH, '', get_current_url_supercache_dir( $cid ) ) : '' ) );
+	$ok( 'cache cleared on publish', $was && ! file_exists( $dir . '/index.html' ), str_replace( ABSPATH, '', $dir ) );
 } else {
 	$ok( 'cache cleared on publish', false, 'wp super cache functions missing' );
 }
