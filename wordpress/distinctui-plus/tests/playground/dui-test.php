@@ -145,6 +145,39 @@ $names = array();
 $walk = function ( $bs ) use ( &$walk, &$names ) { foreach ( $bs as $b ) { $names[] = $b['blockName']; $walk( $b['innerBlocks'] ); } };
 $walk( $blocks );
 $ok( 'no freeform blocks', ! in_array( null, array_filter( $names, fn( $n ) => null === $n ), true ) || true, implode( ',', array_unique( array_filter( $names ) ) ) );
+
+// WP Super Cache: put a cached copy of the page where Super Cache keeps it, publish, and check it is gone.
+if ( function_exists( 'wp_cache_post_change' ) && function_exists( 'get_supercache_dir' ) ) {
+	global $cache_enabled, $super_cache_enabled, $cache_path;
+	$cache_enabled = true; $super_cache_enabled = true;
+	if ( ! $cache_path ) { $cache_path = WP_CONTENT_DIR . '/cache/'; }
+	$dir = trailingslashit( get_supercache_dir() ) . trim( (string) wp_parse_url( get_permalink( $pid ), PHP_URL_PATH ), '/' );
+	wp_mkdir_p( $dir );
+	file_put_contents( $dir . '/index.html', 'old page' );
+	$was = file_exists( $dir . '/index.html' );
+	DUI_Plus_Store::publish( $pid );
+	clearstatcache();
+	$ok( 'cache cleared on publish', $was && ! file_exists( $dir . '/index.html' ), str_replace( ABSPATH, '', $dir ) );
+} else {
+	$ok( 'cache cleared on publish', false, 'wp super cache functions missing' );
+}
+// CF7: send the form the way its front end does.
+if ( $cf7 && class_exists( 'WPCF7_ContactForm' ) ) {
+	$req = new WP_REST_Request( 'POST', '/contact-form-7/v1/contact-forms/' . $cf7 . '/feedback' );
+	$req->set_body_params( array( '_wpcf7' => $cf7, '_wpcf7_unit_tag' => 'wpcf7-f' . $cf7 . '-p' . $pid . '-o1', '_wpcf7_container_post' => $pid, 'your-name' => 'Mina Okafor', 'your-email' => 'mina@example.com', 'your-subject' => 'Bread', 'your-message' => 'Two rye loaves on Friday, please.' ) );
+	$res = rest_do_request( $req );
+	$d = $res->get_data();
+	// mail_failed only means Playground has no mail server; validation and spam checks passed.
+	$ok( 'cf7 send', in_array( $d['status'] ?? '', array( 'mail_sent', 'mail_failed' ), true ), ( $d['status'] ?? $res->get_status() ) . ' ' . ( $d['message'] ?? '' ) );
+}
+// An app password, so the browser can talk to the MCP server over real HTTP the way Claude does.
+if ( class_exists( 'WP_Application_Passwords' ) ) {
+	$ok( 'app passwords available', wp_is_application_passwords_available() );
+	$made = WP_Application_Passwords::create_new_application_password( 1, array( 'name' => 'dui-test ' . time() ) );
+	if ( ! is_wp_error( $made ) ) {
+		echo '<!-- dui-http ' . esc_html( wp_get_current_user()->user_login . ':' . $made[0] ) . ' -->';
+	}
+}
 $ok( 'page link', true, get_permalink( $pid ) );
 update_option( 'dui_test_page', $pid );
 } catch ( \Throwable $e ) {
