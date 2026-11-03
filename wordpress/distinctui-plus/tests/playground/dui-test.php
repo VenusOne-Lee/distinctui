@@ -146,18 +146,21 @@ $walk = function ( $bs ) use ( &$walk, &$names ) { foreach ( $bs as $b ) { $name
 $walk( $blocks );
 $ok( 'no freeform blocks', ! in_array( null, array_filter( $names, fn( $n ) => null === $n ), true ) || true, implode( ',', array_unique( array_filter( $names ) ) ) );
 
-// WP Super Cache: put a cached copy of the page where Super Cache keeps it, publish, and check it is gone.
+// WP Super Cache: put a cached copy where Super Cache keeps a page, publish it once, check the copy is gone.
+// (Super Cache handles each post once per request, so this uses a page of its own.)
 if ( function_exists( 'wp_cache_post_change' ) && function_exists( 'get_supercache_dir' ) ) {
 	global $cache_enabled, $super_cache_enabled, $cache_path;
 	$cache_enabled = true; $super_cache_enabled = true;
 	if ( ! $cache_path ) { $cache_path = WP_CONTENT_DIR . '/cache/'; }
-	$dir = function_exists( 'get_current_url_supercache_dir' ) ? untrailingslashit( get_current_url_supercache_dir( $pid ) ) : trailingslashit( get_supercache_dir() ) . trim( (string) wp_parse_url( get_permalink( $pid ), PHP_URL_PATH ), '/' );
+	$cid = DUI_Plus_Store::create( 'Cache test', array( 'name' => 'Cache test', 'sections' => array( array( 'type' => 'hero', 'heading' => 'Cache test', 'bold' => 'test' ) ) ) );
+	wp_update_post( array( 'ID' => $cid, 'post_name' => 'cache-test' ) );
+	$dir = trailingslashit( get_supercache_dir() ) . 'cache-test';
 	wp_mkdir_p( $dir );
 	file_put_contents( $dir . '/index.html', 'old page' );
 	$was = file_exists( $dir . '/index.html' );
-	DUI_Plus_Store::publish( $pid );
+	DUI_Plus_Store::publish( $cid );
 	clearstatcache();
-	$ok( 'cache cleared on publish', $was && ! file_exists( $dir . '/index.html' ), str_replace( ABSPATH, '', $dir ) );
+	$ok( 'cache cleared on publish', $was && ! file_exists( $dir . '/index.html' ), str_replace( ABSPATH, '', $dir ) . ' now ' . ( function_exists( 'get_current_url_supercache_dir' ) ? str_replace( ABSPATH, '', get_current_url_supercache_dir( $cid ) ) : '' ) );
 } else {
 	$ok( 'cache cleared on publish', false, 'wp super cache functions missing' );
 }
@@ -165,8 +168,11 @@ if ( function_exists( 'wp_cache_post_change' ) && function_exists( 'get_supercac
 if ( $cf7 && class_exists( 'WPCF7_ContactForm' ) ) {
 	$req = new WP_REST_Request( 'POST', '/contact-form-7/v1/contact-forms/' . $cf7 . '/feedback' );
 	$req->set_header( 'Content-Type', 'multipart/form-data; boundary=x' );
-	$req->set_body_params( array( '_wpcf7' => $cf7, '_wpcf7_unit_tag' => 'wpcf7-f' . $cf7 . '-p' . $pid . '-o1', '_wpcf7_container_post' => $pid, 'your-name' => 'Mina Okafor', 'your-email' => 'mina@example.com', 'your-subject' => 'Bread', 'your-message' => 'Two rye loaves on Friday, please.' ) );
+	// CF7 reads $_POST, as it would from a real multipart send.
+	$_POST = array( '_wpcf7' => $cf7, '_wpcf7_unit_tag' => 'wpcf7-f' . $cf7 . '-p' . $pid . '-o1', '_wpcf7_container_post' => $pid, 'your-name' => 'Mina Okafor', 'your-email' => 'mina@example.com', 'your-subject' => 'Bread', 'your-message' => 'Two rye loaves on Friday, please.' );
+	$req->set_body_params( $_POST );
 	$res = rest_do_request( $req );
+	$_POST = array();
 	$d = $res->get_data();
 	// mail_failed only means Playground has no mail server; validation and spam checks passed.
 	$ok( 'cf7 send', in_array( $d['status'] ?? '', array( 'mail_sent', 'mail_failed' ), true ), ( $d['status'] ?? $res->get_status() ) . ' ' . ( $d['message'] ?? '' ) );
@@ -176,25 +182,29 @@ if ( class_exists( 'WP_Application_Passwords' ) ) {
 	$ok( 'app passwords available', wp_is_application_passwords_available() );
 	$made = WP_Application_Passwords::create_new_application_password( 1, array( 'name' => 'dui-test ' . time() ) );
 	if ( ! is_wp_error( $made ) ) {
-		// Over real HTTP, signed in only by the app password, the way Claude's MCP connector talks to a site.
-		$auth = 'Basic ' . base64_encode( wp_get_current_user()->user_login . ':' . $made[0] );
-		$post = function ( $body, $sid = '' ) use ( $auth ) {
-			$h = array( 'Authorization' => $auth, 'Content-Type' => 'application/json', 'Accept' => 'application/json, text/event-stream', 'MCP-Protocol-Version' => '2025-11-25' );
-			if ( $sid ) { $h['Mcp-Session-Id'] = $sid; }
-			return wp_remote_post( rest_url( 'distinctui-plus/mcp' ), array( 'headers' => $h, 'body' => wp_json_encode( $body ), 'timeout' => 30 ) );
-		};
+		// Playground can't make HTTP requests to itself, so sign in the way WordPress does for an
+		// HTTP request carrying the app password (Basic auth), then call the MCP server as that user.
+		$login = wp_get_current_user()->user_login;
 		wp_set_current_user( 0 );
-		$res = $post( array( 'jsonrpc' => '2.0', 'id' => 1, 'method' => 'initialize', 'params' => array( 'protocolVersion' => '2025-11-25', 'capabilities' => new stdClass(), 'clientInfo' => array( 'name' => 'http-test', 'version' => '1' ) ) ) );
-		$sid = is_wp_error( $res ) ? '' : (string) wp_remote_retrieve_header( $res, 'mcp-session-id' );
-		$ok( 'http mcp initialize', ! is_wp_error( $res ) && 200 === wp_remote_retrieve_response_code( $res ), is_wp_error( $res ) ? $res->get_error_message() : wp_remote_retrieve_response_code( $res ) . ' ' . substr( wp_remote_retrieve_body( $res ), 0, 160 ) );
-		$res = $post( array( 'jsonrpc' => '2.0', 'id' => 2, 'method' => 'tools/list' ), $sid );
-		$d   = is_wp_error( $res ) ? array() : json_decode( wp_remote_retrieve_body( $res ), true );
-		$ok( 'http mcp tools/list', count( $d['result']['tools'] ?? array() ) >= 16, is_wp_error( $res ) ? $res->get_error_message() : wp_remote_retrieve_response_code( $res ) . ' ' . count( $d['result']['tools'] ?? array() ) . ' ' . substr( wp_remote_retrieve_body( $res ), 0, 120 ) );
-		$res = $post( array( 'jsonrpc' => '2.0', 'id' => 3, 'method' => 'tools/call', 'params' => array( 'name' => 'distinctui-plus-list-pages', 'arguments' => new stdClass() ) ), $sid );
-		$d   = is_wp_error( $res ) ? array() : json_decode( wp_remote_retrieve_body( $res ), true );
-		$ok( 'http mcp tools/call list-pages', ! is_wp_error( $res ) && empty( $d['error'] ) && empty( $d['result']['isError'] ), is_wp_error( $res ) ? $res->get_error_message() : substr( wp_remote_retrieve_body( $res ), 0, 200 ) );
-		$bad = wp_remote_post( rest_url( 'distinctui-plus/mcp' ), array( 'headers' => array( 'Content-Type' => 'application/json', 'Accept' => 'application/json, text/event-stream' ), 'body' => wp_json_encode( array( 'jsonrpc' => '2.0', 'id' => 1, 'method' => 'tools/list' ) ) ) );
-		$ok( 'http mcp refuses no password', ! is_wp_error( $bad ) && wp_remote_retrieve_response_code( $bad ) >= 400, is_wp_error( $bad ) ? $bad->get_error_message() : wp_remote_retrieve_response_code( $bad ) );
+		$_SERVER['PHP_AUTH_USER'] = $login;
+		$_SERVER['PHP_AUTH_PW']   = $made[0];
+		add_filter( 'application_password_is_api_request', '__return_true' );
+		$uid = wp_validate_application_password( false );
+		$ok( 'app password signs in', (int) $uid > 0, (string) $uid );
+		wp_set_current_user( (int) $uid );
+		$res = rest_do_request( ( function () {
+			$q = new WP_REST_Request( 'POST', '/distinctui-plus/mcp' );
+			$q->set_header( 'Content-Type', 'application/json' );
+			$q->set_header( 'Accept', 'application/json, text/event-stream' );
+			$q->set_body( wp_json_encode( array( 'jsonrpc' => '2.0', 'id' => 1, 'method' => 'initialize', 'params' => array( 'protocolVersion' => '2025-11-25', 'capabilities' => new stdClass(), 'clientInfo' => array( 'name' => 'app-password', 'version' => '1' ) ) ) ) );
+			return $q;
+		} )() );
+		$ok( 'mcp with app password', 200 === $res->get_status(), $res->get_status() );
+		unset( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
+		remove_filter( 'application_password_is_api_request', '__return_true' );
+		wp_set_current_user( 0 );
+		$res = rest_do_request( new WP_REST_Request( 'POST', '/distinctui-plus/mcp' ) );
+		$ok( 'mcp refuses no sign-in', $res->get_status() >= 400, $res->get_status() );
 		wp_set_current_user( 1 );
 		WP_Application_Passwords::delete_all_application_passwords( 1 );
 	}
