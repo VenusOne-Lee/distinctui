@@ -1,6 +1,6 @@
 {
   "$description": "The distinctUI rules in a form tools can read. The words live in SKILL.md; check.js tests a page against these values. Light only. https://distinctui.com · MIT",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "colours": {
     "black": "#000000",
     "white": "#ffffff",
@@ -32,6 +32,23 @@
     { "n": 11, "id": "hover-black-edge", "title": "Hover is a black edge, not a lift", "text": "No scale, no shadow, no glow on hover. Motion only says what changed, runs once, and switches off for reduced motion." },
     { "n": 12, "id": "write-plainly", "title": "Write plainly", "text": "Buttons say what happens. Errors name the field and the fix. No jokes in errors, no exclamation marks." }
   ],
+  "work": {
+    "$description": "distinctUI@work: extra rules for apps people use all day. Load distinctui-work.css and distinctui-work.js after the core files.",
+    "density": { "compact": 34, "default": 44, "airy": 56 },
+    "text_floor": 12,
+    "small_mark": 28,
+    "rules": [
+      { "n": 1, "id": "density", "title": "Dense, then roomy if you like", "text": "Three row heights, Compact, Default and Airy, chosen by each person and remembered." },
+      { "n": 2, "id": "drawn-states", "title": "States are drawn", "text": "Hover is grey-50; selected and focused rows get a black edge. Status is a shape plus words, never a colour." },
+      { "n": 3, "id": "one-ring-per-person", "title": "One ring colour per person", "text": "A person keeps the same ring colour everywhere in the product. Marks under 28px show a photo, never initials." },
+      { "n": 4, "id": "brand-on-workspace-mark", "title": "Your colour stays on your mark", "text": "A customer's brand colour goes on their workspace mark only." },
+      { "n": 5, "id": "requester-apart", "title": "Who asked is not who signs", "text": "In an approval the requester sits apart from the chain of signers. Dashed means still to sign." },
+      { "n": 6, "id": "need-to-know", "title": "Personal details are need-to-know", "text": "IP addresses and places show to Admin and Auditor only (POPIA). Dates are full, with the time zone." },
+      { "n": 7, "id": "shortcuts-off-switch", "title": "Shortcuts you can see, and switch off", "text": "Single-key shortcuts show as key caps and turn off with one switch (WCAG 2.1.4). The command menu on Cmd or Ctrl K always works." },
+      { "n": 8, "id": "undo-not-confirm", "title": "Undo instead of are you sure", "text": "Bulk actions happen, then a notice with Undo stays in the page. Only what can't be undone asks for the typed name." },
+      { "n": 9, "id": "compare-in-black", "title": "Compare in black", "text": "Small multiples on one shared scale, never a colour per series. Every chart can become its table." }
+    ]
+  },
   "left_out": {
     "toast": "No toasts. Show a dui-status notice where the person is looking, and leave it there.",
     "carousel": "No carousels. Use a grid, rows or a gallery so nothing is hidden.",

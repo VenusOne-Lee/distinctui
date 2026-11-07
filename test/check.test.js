@@ -52,3 +52,22 @@ test("checkSpec catches styling, dark mode and left-out sections", () => {
   assert.equal(checkSpec({ sections: [{ type: "carousel" }] }).ok, false);
   assert.equal(checkSpec({ signature: { palette: "Neon" }, sections: [] }).ok, false);
 });
+
+test("distinctUI@work: initials in small marks, two rings for one person, single keys with no off switch", () => {
+  assert.ok(ids(`<span class="dui-mark dui-mark--sm"><span class="dui-mark__inner">AK</span></span>`).has("small-initials"));
+  assert.ok(!ids(`<span class="dui-mark dui-mark--sm"><span class="dui-mark__inner"><img src="a.jpg" alt=""></span></span>`).has("small-initials"));
+  assert.ok(!ids(`<span class="dui-mark" style="--mark-size:2rem"><span class="dui-mark__inner">AK</span></span>`).has("small-initials"));
+  assert.ok(ids(`<span class="dui-mark" data-ring="1"><span class="dui-mark__inner"><img src="p.jpg" alt=""></span></span><span class="dui-mark" data-ring="3"><span class="dui-mark__inner"><img src="p.jpg" alt=""></span></span>`).has("two-rings"));
+  assert.ok(ids(`<button data-key="a">Approve</button>`).has("keys-no-switch"));
+  assert.ok(!ids(`<button data-key="a">Approve</button><input type="checkbox" role="switch" data-keys-toggle aria-label="Single-key shortcuts">`).has("keys-no-switch"));
+  assert.ok(!ids(`<a href="x" data-key="g c">Contracts</a>`).has("keys-no-switch"));
+});
+
+test("every @work template is in the examples and has no warnings", () => {
+  const work = examples.filter((f) => f.startsWith("work-"));
+  assert.equal(work.length, 9);
+  for (const f of work) {
+    const r = checkHTML(readFileSync(new URL(f, dir), "utf8"));
+    assert.equal(r.warnings, 0, `${f}: ${r.findings.map((x) => x.message).join(" / ")}`);
+  }
+});

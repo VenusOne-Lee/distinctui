@@ -117,7 +117,9 @@
   }
   function filterCmd(q) {
     q = q.trim().toLowerCase();
-    $$(".dui-cmd__opt", cmd).forEach((o) => { o.hidden = !!q && !(o.textContent + " " + (o.dataset.words || "")).toLowerCase().includes(q); });
+    // Every word typed has to appear somewhere, in any order: "assign nal" finds "Assign to Naledi".
+    const terms = q.split(/\s+/).filter(Boolean);
+    $$(".dui-cmd__opt", cmd).forEach((o) => { const hay = (o.textContent + " " + (o.dataset.words || "")).toLowerCase(); o.hidden = !terms.every((t) => hay.includes(t)); });
     $$(".dui-cmd__group", cmd).forEach((g) => {
       let n = g.nextElementSibling, any = false;
       while (n && !n.classList.contains("dui-cmd__group")) { if (n.classList.contains("dui-cmd__opt") && !n.hidden) any = true; n = n.nextElementSibling; }

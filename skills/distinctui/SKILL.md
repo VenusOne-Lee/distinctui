@@ -47,6 +47,7 @@ All components, their markup and when to use each are in `references/components.
 - Sections: feature with a photo, how it works, testimonials, plan comparison, newsletter signup, opening hours and location
 - Icons: Lucide outlines from `assets/icons.svg`, black, next to a word
 - Motion and interaction (`assets/distinctui.js`, optional): press, reveal, ring draws in, goes live, counts up, rolls, confirms on itself, copy, rows arrive and leave, bars grow, filter tabs, toggle, steppers, the month grid, closing a notice for good, open-now hours
+- At work (`assets/distinctui-work.css` and `assets/distinctui-work.js`, for apps people use all day): app shell with a rail and top bar, dense data table with saved views, sort, selection and a bulk bar, three row densities, command menu on ⌘K, shortcuts with an off switch, list beside the open item, approval chain, roles and permissions, audit trail, number tiles, small multiples, heat map, settings, notices with Undo. Rules in `references/work.md`
 - Moments: small product stories (a hero demo, a feature card with a cursor) built with Stageshow and `assets/stageshow-look.css`. Rules in `references/moments.md`
 
 Photos, icons and charts have their own rules in `references/imagery.md`. Tokens for Figma (Tokens Studio) or Style Dictionary are in `assets/tokens.json`.
@@ -87,11 +88,34 @@ Worked pages are in `examples/`. Open the closest one before building a similar 
 |  | `docs.html` | Documentation with a side menu and code |
 |  | `status.html` | Uptime and incidents, without traffic-light colours |
 |  | `terms.html` | Terms and privacy people can read: short version first |
+| At work | `work-home.html` | A work app's home: what needs you, three tiles, what changed |
+|  | `work-table.html` | A dense table: saved views, filter, sort, select, bulk bar, Undo, densities |
+|  | `work-console.html` | An inbox: a list beside the open item, J and K, ⌘K, shortcuts switch |
+|  | `work-approvals.html` | One approval: requester apart from signers, sign, decline, delegate, audit trail |
+|  | `work-reports.html` | Reports: tiles, black small multiples on one scale, chart or table, heat map |
+|  | `work-audit.html` | The audit log: full dates, filters, export, personal details for Admin only |
+|  | `work-admin.html` | Workspace settings: roles, SSO, SCIM, API keys, billing, typed-name delete |
+|  | `work-states.html` | Loading, empty, no results, error, no access, read only, long text |
+|  | `work-trust.html` | The trust page a buyer's security team reads: reports, plans, questions |
 | System pages | `notfound.html` | A 404 page |
 |  | `error.html` | A server error, offline and maintenance |
 |  | `email.html` | A transactional email (tables and inline styles) |
 
 The example photos in `examples/img/` are AI-generated people, places and products that don't exist. Replace them with your own.
+
+## At work
+
+For apps people use all day (admin tools, dashboards, back offices), add `assets/distinctui-work.css` and `assets/distinctui-work.js` after the core files. The twelve rules still hold. Read `references/work.md` first; the short version:
+
+- Three row heights (Compact 34px, Default 44px, Airy 56px), chosen by each person and remembered.
+- Rows have drawn states: hover grey-50, selected and focused get a black edge. Status is a shape plus words, never a colour.
+- One ring colour per person, everywhere in the product. Photos only in marks under 28px, never initials.
+- A customer's brand colour goes on their workspace mark only.
+- In an approval, the person who asked sits apart from the people who sign. Dashed means still to sign.
+- IP addresses and places show to Admin and Auditor only (POPIA). Dates are full, with the time zone.
+- Single-key shortcuts show as key caps and have an off switch (WCAG 2.1.4). ⌘K always works.
+- Bulk actions happen, then a notice with Undo stays in the page. Only what can't be undone asks for the typed name.
+- Compare series with black small multiples on one scale, never a colour per series. Every chart can become its table.
 
 ## Layout
 
