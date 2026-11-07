@@ -28,6 +28,8 @@
     "./distinctui.css": "./skills/distinctui/assets/distinctui.css",
     "./tailwind.css": "./skills/distinctui/assets/tailwind.css",
     "./distinctui.js": "./skills/distinctui/assets/distinctui.js",
+    "./distinctui-work.css": "./skills/distinctui/assets/distinctui-work.css",
+    "./distinctui-work.js": "./skills/distinctui/assets/distinctui-work.js",
     "./tokens.json": "./skills/distinctui/assets/tokens.json",
     "./stageshow-look.css": "./skills/distinctui/assets/stageshow-look.css",
     "./icons.svg": "./skills/distinctui/assets/icons.svg",

@@ -1,0 +1,492 @@
+/*
+ * distinctUI@work: the same look, for software people use all day.
+ * https://distinctui.com · MIT licence
+ *
+ * Load it after distinctui.css:
+ *   <link rel="stylesheet" href="distinctui.css">
+ *   <link rel="stylesheet" href="distinctui-work.css">
+ *   <script src="distinctui.js" defer></script>
+ *   <script src="distinctui-work.js" defer></script>
+ *
+ * Adds an app shell, three densities, a data table with real row states, a
+ * bulk bar, a command menu, key caps that can be switched off, an approval
+ * chain, roles, a private column for admins, tiles, small multiples and a heat
+ * map. Every rule in SKILL.md still holds. The extra rules are in
+ * references/work.md.
+ */
+
+/* ---------------------------------------------------------------- Tokens */
+
+:root {
+  --dui-rail-w: 15rem;
+  --dui-topbar-h: 3.5rem;
+  /* The smallest text anywhere in an app. Key caps, labels and badges too. */
+  --dui-text-floor: 0.75rem; /* 12 */
+}
+
+/* Density: one switch, every table and list follows it. Default is the middle. */
+.dui-app,
+[data-density] {
+  --dui-row-h: 2.75rem;      /* 44 */
+  --dui-row-text: 0.875rem;  /* 14 */
+  --dui-cell-x: 0.75rem;     /* 12 */
+  --dui-item-y: 0.75rem;
+}
+[data-density="compact"] { --dui-row-h: 2.125rem; --dui-row-text: 0.8125rem; --dui-cell-x: 0.625rem; --dui-item-y: 0.5rem; }
+[data-density="airy"] { --dui-row-h: 3.5rem; --dui-row-text: 0.9375rem; --dui-cell-x: 1rem; --dui-item-y: 1rem; }
+
+/* Light ring colours (marigold, gold, ochre, sand, sunset) fade at 2px. Keep them at 3px or more. */
+:root:not([class*="dui-palette"]) [data-ring="4"],
+.dui-palette-signal [data-ring="4"],
+.dui-palette-mzansi [data-ring="3"],
+.dui-palette-earth [data-ring="2"],
+.dui-palette-coast [data-ring="4"],
+.dui-palette-jacaranda [data-ring="4"] { border-width: max(3px, calc(var(--mark-size) * 0.06)); }
+
+/* Small marks: under 28px, initials can't be read. Show the photo, or an
+   empty disc with the name beside it. distinctui-work.js and check.js flag
+   initials in a small mark. */
+.dui-mark--sm { --mark-size: 1.5rem; border-width: 2px; padding: 2px; }
+.dui-mark--sm .dui-mark__inner { font-size: 0; }
+.dui-mark--xs { --mark-size: 1.25rem; border-width: 2px; padding: 1.5px; }
+.dui-mark--xs .dui-mark__inner { font-size: 0; }
+
+/* ------------------------------------------------------------- App shell */
+
+/* <div class="dui-app"> <nav class="dui-rail">…</nav> <div class="dui-main"> <header class="dui-topbar">…</header> <main class="dui-content">…</main> </div> </div> */
+.dui-app {
+  display: grid;
+  grid-template-columns: var(--dui-rail-w) minmax(0, 1fr);
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--dui-white);
+}
+.dui-rail {
+  position: sticky; top: 0;
+  height: 100vh; height: 100dvh;
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 2px;
+  padding: var(--dui-space-3);
+  border-right: 1px solid var(--dui-grey-200);
+  background: var(--dui-grey-50);
+  font-size: var(--dui-text-sm);
+}
+.dui-rail__label {
+  padding: var(--dui-space-4) var(--dui-space-3) var(--dui-space-1);
+  font-size: var(--dui-text-floor); font-weight: 500; letter-spacing: var(--dui-tracking-label); text-transform: uppercase;
+  color: var(--dui-grey-600);
+}
+.dui-rail a,
+.dui-rail__item {
+  display: flex; align-items: center; gap: var(--dui-space-3);
+  min-height: 2.25rem; padding: 0 var(--dui-space-3);
+  border-radius: var(--dui-radius-pill);
+  color: var(--dui-grey-800); text-decoration: none;
+  transition: background-color var(--dui-dur-fast) var(--dui-ease), box-shadow var(--dui-dur-fast) var(--dui-ease);
+}
+.dui-rail a:hover { background: var(--dui-grey-100); }
+/* Selected is a black edge, everywhere: the rail, a list item, a table row, a command. */
+.dui-rail a[aria-current="page"] { background: var(--dui-white); color: var(--dui-black); font-weight: 600; box-shadow: inset 0 0 0 1px var(--dui-black); }
+.dui-rail a > .dui-count-plain,
+.dui-rail a > .dui-kbd { margin-left: auto; }
+.dui-count-plain { font-size: var(--dui-text-floor); color: var(--dui-grey-600); font-variant-numeric: tabular-nums; }
+.dui-rail__me { margin-top: auto; padding-top: var(--dui-space-3); }
+
+/* The workspace switcher: the customer's mark in their own colour, then their name. */
+.dui-ws { display: flex; align-items: center; gap: var(--dui-space-3); width: 100%; min-height: 2.75rem; padding: 0 var(--dui-space-2); border: 0; border-radius: var(--dui-radius-pill); background: none; font: inherit; font-weight: 700; color: var(--dui-black); cursor: pointer; text-align: left; }
+.dui-ws:hover { background: var(--dui-grey-100); }
+.dui-ws > .dui-icon { margin-left: auto; color: var(--dui-grey-600); }
+.dui-ws small { display: block; font-size: var(--dui-text-floor); font-weight: 400; color: var(--dui-grey-600); }
+.dui-ws .dui-mark__inner svg { width: 60%; height: 60%; }
+
+.dui-main { display: flex; flex-direction: column; min-width: 0; }
+.dui-topbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: var(--dui-space-3);
+  min-height: var(--dui-topbar-h);
+  padding: var(--dui-space-2) var(--dui-space-6);
+  border-bottom: 1px solid var(--dui-grey-200);
+  background: var(--dui-white);
+}
+.dui-topbar__end { margin-left: auto; display: flex; align-items: center; gap: var(--dui-space-2); }
+.dui-topbar__menu { display: none; }
+.dui-content { display: flex; flex-direction: column; gap: var(--dui-space-6); padding: var(--dui-space-6); min-width: 0; }
+.dui-content--wide { padding-inline: 0; }
+.dui-content--read { max-width: 64rem; }
+
+/* A page's title and its actions on one line. In an app the h1 is 32px: big enough to find, quiet enough to see every day. */
+.dui-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--dui-space-4); }
+.dui-head > div:first-child { display: flex; flex-direction: column; gap: var(--dui-space-1); min-width: 0; }
+.dui-app .dui-h1 { font-size: 2rem; }
+.dui-app .dui-h2 { font-size: 1.625rem; }
+
+/* Phones and small tablets: the rail becomes a sheet behind a menu button. */
+@media (max-width: 899px) {
+  .dui-app { grid-template-columns: minmax(0, 1fr); }
+  .dui-rail {
+    position: fixed; z-index: 60; inset: 0 auto 0 0;
+    width: min(18rem, 86vw);
+    transform: translateX(-102%);
+    transition: transform var(--dui-dur) var(--dui-ease);
+    padding-top: max(var(--dui-space-3), env(safe-area-inset-top, 0px));
+  }
+  .dui-app[data-rail="open"] .dui-rail { transform: none; }
+  .dui-app[data-rail="open"]::after { content: ""; position: fixed; inset: 0; z-index: 55; background: rgba(255, 255, 255, 0.82); }
+  .dui-topbar { padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+  .dui-topbar__menu { display: inline-grid; }
+  .dui-topbar .dui-topbar__wide { display: none; }
+  .dui-content { padding: var(--dui-space-4) max(16px, env(safe-area-inset-right, 0px)) var(--dui-space-10) max(16px, env(safe-area-inset-left, 0px)); }
+}
+
+@media (max-width: 639px) {
+  .dui-topbar .dui-crumbs li:not(:last-child) { display: none; }
+  .dui-topbar .dui-crumbs li + li::before { content: none; }
+}
+
+/* --------------------------------------------------------------- Key caps */
+
+/* Shortcuts are shown, never the only way in, and single keys can be switched
+   off (WCAG 2.1.4). distinctui-work.js sets data-keys="off" on <html>. */
+.dui-kbd {
+  display: inline-flex; align-items: center; justify-content: center; gap: 2px;
+  min-width: 1.5rem; height: 1.375rem; padding: 0 0.375rem;
+  border: 1px solid var(--dui-grey-200); border-bottom-width: 2px; border-radius: 6px;
+  background: var(--dui-white); color: var(--dui-grey-800);
+  font: 500 var(--dui-text-floor)/1 var(--dui-font); white-space: nowrap;
+}
+.dui-btn .dui-kbd, .dui-btn-sm .dui-kbd { background: transparent; border-color: rgba(255, 255, 255, 0.4); color: var(--dui-white); }
+[data-keys="off"] .dui-kbd[data-single] { display: none; }
+
+/* ----------------------------------------------------------------- Search */
+
+.dui-search { position: relative; display: flex; align-items: center; flex: 1 1 16rem; max-width: 26rem; }
+.dui-search > .dui-icon { position: absolute; left: 0.875rem; color: var(--dui-grey-600); pointer-events: none; }
+.dui-search > .dui-field { padding-left: 2.5rem; padding-right: 3rem; min-height: 2.5rem; font-size: var(--dui-text-sm); }
+.dui-search > .dui-kbd { position: absolute; right: 0.625rem; }
+button.dui-search { border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-pill); background: var(--dui-white); min-height: 2.5rem; padding: 0 3rem 0 2.5rem; font: inherit; font-size: var(--dui-text-sm); color: var(--dui-grey-600); cursor: pointer; text-align: left; }
+button.dui-search:hover { border-color: var(--dui-black); }
+
+/* --------------------------------------------------------------- Toolbar */
+
+.dui-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dui-space-2); min-height: 2.75rem; }
+.dui-toolbar__end { margin-left: auto; display: flex; flex-wrap: wrap; gap: var(--dui-space-2); }
+/* Saved views and the bulk bar share one place: selecting rows swaps them. */
+.dui-swapbar { display: grid; }
+.dui-swapbar > * { grid-area: 1 / 1; transition: opacity var(--dui-dur) var(--dui-ease), transform var(--dui-dur) var(--dui-ease); }
+.dui-swapbar > .dui-bulk { opacity: 0; transform: translateY(4px); pointer-events: none; visibility: hidden; }
+.dui-swapbar[data-selecting] > .dui-bulk { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+.dui-swapbar[data-selecting] > :not(.dui-bulk) { opacity: 0; transform: translateY(-4px); pointer-events: none; visibility: hidden; }
+
+/* The bulk bar: black, a pill, what's selected and what you can do with it. */
+.dui-bulk { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dui-space-2); min-height: 2.75rem; padding: 0.3125rem 0.3125rem 0.3125rem 1.125rem; border-radius: var(--dui-radius-pill); background: var(--dui-black); color: var(--dui-white); font-size: var(--dui-text-sm); justify-self: start; }
+.dui-bulk__count { font-weight: 600; margin-right: var(--dui-space-2); font-variant-numeric: tabular-nums; }
+.dui-bulk button { display: inline-flex; align-items: center; gap: var(--dui-space-2); min-height: 2.125rem; padding: 0 0.875rem; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: var(--dui-radius-pill); background: transparent; color: var(--dui-white); font: inherit; font-weight: 600; cursor: pointer; }
+.dui-bulk button:hover { border-color: var(--dui-white); }
+.dui-bulk button[data-main] { background: var(--dui-white); color: var(--dui-black); border-color: var(--dui-white); }
+.dui-bulk button[data-main]:hover { opacity: 0.85; }
+.dui-bulk .dui-bulk__clear { border-color: transparent; padding: 0 0.625rem; }
+@media (max-width: 639px) {
+  .dui-bulk { border-radius: var(--dui-radius-menu); padding: var(--dui-space-3); }
+  .dui-bulk__count { flex-basis: 100%; padding-left: var(--dui-space-1); }
+}
+
+/* A segmented choice (density, chart or table). Radios underneath. */
+.dui-seg { display: inline-flex; padding: 2px; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-pill); background: var(--dui-white); }
+.dui-seg label { position: relative; display: inline-flex; align-items: center; min-height: 2rem; padding: 0 0.875rem; border-radius: var(--dui-radius-pill); font-size: var(--dui-text-sm); color: var(--dui-grey-600); cursor: pointer; transition: background-color var(--dui-dur) var(--dui-ease), color var(--dui-dur) var(--dui-ease); }
+.dui-seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.dui-seg label:has(input:checked) { background: var(--dui-black); color: var(--dui-white); font-weight: 600; }
+.dui-seg label:has(input:focus-visible) { outline: 2px solid var(--dui-black); outline-offset: 2px; }
+
+/* The view menu: columns and density, apart from the filters. */
+.dui-menu__panel--wide { width: 18rem; gap: var(--dui-space-3); padding: var(--dui-space-4); }
+.dui-menu__panel .dui-check { font-size: var(--dui-text-sm); }
+
+/* ------------------------------------------------------------ Data table */
+
+/* <div class="dui-data-wrap"><table class="dui-data">… Rows are hovered (grey-50),
+   selected (aria-selected="true": a black edge) and focused (a 2px black ring).
+   Selected and focused together shows both. */
+.dui-data-wrap { overflow: auto; border-top: 1px solid var(--dui-grey-200); max-width: 100%; position: relative; }
+.dui-data { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--dui-row-text); font-variant-numeric: tabular-nums; }
+.dui-data th {
+  position: sticky; top: 0; z-index: 2;
+  height: 2.375rem; padding: 0 var(--dui-cell-x);
+  background: var(--dui-white);
+  border-bottom: 1px solid var(--dui-black);
+  text-align: left; font-size: var(--dui-text-floor); font-weight: 600; color: var(--dui-grey-800); white-space: nowrap;
+}
+.dui-data td {
+  height: var(--dui-row-h); padding: 0 var(--dui-cell-x);
+  border-bottom: 1px solid var(--dui-grey-200);
+  white-space: nowrap; background: var(--dui-white);
+  transition: background-color var(--dui-dur-fast) var(--dui-ease), height var(--dui-dur) var(--dui-ease);
+}
+.dui-data .dui-num { text-align: right; }
+.dui-data td.dui-wrap { white-space: normal; min-width: 14rem; padding-block: var(--dui-space-2); }
+.dui-data .dui-faint { color: var(--dui-grey-600); }
+.dui-data tbody tr:hover td { background: var(--dui-grey-50); }
+.dui-data tbody tr[aria-selected="true"] td { background: var(--dui-grey-50); box-shadow: inset 0 1px 0 var(--dui-black), inset 0 -1px 0 var(--dui-black); }
+.dui-data tbody tr[aria-selected="true"] td:first-child { box-shadow: inset 1px 1px 0 var(--dui-black), inset 0 -1px 0 var(--dui-black); }
+.dui-data tbody tr[aria-selected="true"] td:last-child { box-shadow: inset -1px 1px 0 var(--dui-black), inset 0 -1px 0 var(--dui-black); }
+.dui-data tbody tr:focus-visible { outline: 2px solid var(--dui-black); outline-offset: -2px; }
+.dui-data tfoot td { font-weight: 700; border-bottom: 0; border-top: 1px solid var(--dui-black); }
+/* The first column stays put when a wide table scrolls sideways. */
+.dui-data .dui-pin { position: sticky; left: 0; z-index: 1; }
+.dui-data th.dui-pin { z-index: 3; }
+.dui-data .dui-check-cell { width: 2.5rem; padding-right: 0; }
+.dui-data input[type="checkbox"] { width: 1rem; height: 1rem; margin: 0; accent-color: var(--dui-black); vertical-align: middle; cursor: pointer; }
+/* The name is the link. */
+.dui-data .dui-row-link { font-weight: 600; text-decoration: none; color: var(--dui-black); }
+.dui-data .dui-row-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Sorting: the header is a button, aria-sort on the th says which way. */
+.dui-sort { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
+.dui-sort .dui-icon { width: 0.875rem; height: 0.875rem; color: var(--dui-grey-400); transition: transform var(--dui-dur) var(--dui-ease), color var(--dui-dur) var(--dui-ease); }
+.dui-sort:hover .dui-icon, th[aria-sort] .dui-sort .dui-icon { color: var(--dui-black); }
+th[aria-sort="ascending"] .dui-sort .dui-icon { transform: rotate(180deg); }
+.dui-num .dui-sort { flex-direction: row-reverse; }
+/* Row actions: a ⋯ menu at the end of the row, shown on hover and on focus. */
+.dui-row-more { width: 2.75rem; text-align: right; }
+.dui-row-more .dui-menu > summary { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; color: var(--dui-grey-600); }
+.dui-row-more .dui-menu > summary:hover, .dui-row-more .dui-menu[open] > summary { background: var(--dui-grey-100); color: var(--dui-black); }
+@media (hover: hover) {
+  .dui-data tbody tr .dui-row-more .dui-menu:not([open]) > summary { opacity: 0; }
+  .dui-data tbody tr:hover .dui-row-more .dui-menu > summary,
+  .dui-data tbody tr:focus-within .dui-row-more .dui-menu > summary { opacity: 1; }
+}
+.dui-row-more .dui-menu__panel { text-align: left; white-space: normal; }
+.dui-table-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--dui-space-3); padding: var(--dui-space-3) 0; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+.dui-table-foot b { color: var(--dui-black); font-variant-numeric: tabular-nums; }
+.dui-pager--sm a, .dui-pager--sm span { min-width: 2rem; height: 2rem; font-size: var(--dui-text-floor); }
+
+/* Who: a small mark (a photo, or an empty disc) and the name beside it. */
+.dui-who { display: inline-flex; align-items: center; gap: var(--dui-space-2); min-width: 0; }
+
+/* -------------------------------------------------------------- Status */
+
+/* Said by shape and a word, never colour: filled, half, outline, dashed, and the black ! disc.
+   <span class="dui-st" data-st="review">In review, 2 of 3</span> */
+.dui-st { display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+.dui-st::before { content: ""; flex: none; box-sizing: border-box; width: 0.625rem; height: 0.625rem; border-radius: 50%; border: 1.5px solid var(--dui-black); }
+.dui-st[data-st="done"]::before, .dui-st[data-st="signed"]::before, .dui-st[data-st="live"]::before { background: var(--dui-black); }
+.dui-st[data-st="review"]::before { background: linear-gradient(90deg, var(--dui-black) 50%, var(--dui-white) 50%); }
+.dui-st[data-st="draft"]::before { border-style: dashed; border-color: var(--dui-grey-600); }
+.dui-st[data-st="off"]::before { border-color: var(--dui-grey-400); }
+.dui-st[data-st="blocked"] { font-weight: 700; }
+.dui-st[data-st="blocked"]::before { content: "!"; width: 1rem; height: 1rem; border: 0; background: var(--dui-black); color: var(--dui-white); display: grid; place-items: center; font-size: 0.65rem; font-weight: 800; line-height: 1; }
+
+/* A label, not a button: who someone is here. Grey, no border, so it never looks pressable. */
+.dui-role { display: inline-flex; align-items: center; min-height: 1.5rem; padding: 0 0.625rem; border-radius: var(--dui-radius-pill); background: var(--dui-grey-100); font-size: var(--dui-text-floor); font-weight: 500; white-space: nowrap; }
+/* A role you can change is a real select, with its chevron. */
+.dui-role-select { appearance: none; min-height: 2rem; padding: 0 2rem 0 0.75rem; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-pill); background: var(--dui-white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0.625rem center / 0.875rem; font: inherit; font-size: var(--dui-text-floor); font-weight: 600; color: var(--dui-black); cursor: pointer; }
+.dui-role-select:hover, .dui-role-select:focus { border-color: var(--dui-black); outline: none; }
+
+/* --------------------------------------------------------- Lists and split */
+
+/* A list beside the open item. Phones show one at a time. */
+.dui-split-view { display: grid; grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr); min-height: calc(100dvh - var(--dui-topbar-h)); }
+.dui-split-view__list { border-right: 1px solid var(--dui-grey-200); overflow-y: auto; max-height: calc(100dvh - var(--dui-topbar-h)); position: sticky; top: var(--dui-topbar-h); }
+.dui-split-view__detail { min-width: 0; }
+.dui-split-view__back { display: none; }
+@media (max-width: 899px) {
+  .dui-split-view { grid-template-columns: minmax(0, 1fr); }
+  .dui-split-view__list { position: static; max-height: none; border-right: 0; }
+  .dui-split-view[data-open] .dui-split-view__list { display: none; }
+  .dui-split-view:not([data-open]) .dui-split-view__detail { display: none; }
+  .dui-split-view__back { display: inline-flex; }
+}
+.dui-list { list-style: none; margin: 0; padding: 0; }
+.dui-list__head { display: flex; align-items: center; gap: var(--dui-space-2); padding: var(--dui-space-3) var(--dui-space-4); border-bottom: 1px solid var(--dui-grey-200); position: sticky; top: 0; background: var(--dui-white); z-index: 1; font-weight: 700; }
+.dui-list__head .dui-count-plain { font-weight: 400; }
+.dui-list__head .dui-kbd { margin-left: auto; }
+.dui-item {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 2px var(--dui-space-3); align-items: center;
+  width: 100%; padding: var(--dui-item-y) var(--dui-space-4);
+  border: 0; border-bottom: 1px solid var(--dui-grey-200); background: var(--dui-white);
+  font: inherit; text-align: left; color: inherit; cursor: pointer; text-decoration: none;
+  transition: background-color var(--dui-dur-fast) var(--dui-ease), box-shadow var(--dui-dur-fast) var(--dui-ease);
+}
+.dui-item:hover { background: var(--dui-grey-50); }
+.dui-item[aria-selected="true"], .dui-item[aria-current="true"] { background: var(--dui-grey-50); box-shadow: inset 0 0 0 1px var(--dui-black); }
+.dui-item:focus-visible { outline: 2px solid var(--dui-black); outline-offset: -2px; }
+.dui-item__title { font-weight: 600; font-size: var(--dui-text-sm); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dui-item__id { font-size: var(--dui-text-floor); color: var(--dui-grey-600); font-variant-numeric: tabular-nums; align-self: start; padding-top: 2px; }
+.dui-item__meta { grid-column: 2 / 4; display: flex; flex-wrap: wrap; gap: 2px var(--dui-space-3); font-size: var(--dui-text-floor); color: var(--dui-grey-600); }
+.dui-item__meta .dui-st { color: var(--dui-black); }
+
+/* Properties: label and value pairs. */
+.dui-props { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--dui-space-3) var(--dui-space-6); margin: 0; font-size: var(--dui-text-sm); }
+@media (min-width: 1100px) { .dui-props--2 { grid-template-columns: max-content minmax(0, 1fr) max-content minmax(0, 1fr); } }
+.dui-props dt { color: var(--dui-grey-600); }
+.dui-props dd { margin: 0; display: flex; align-items: center; gap: var(--dui-space-2); font-variant-numeric: tabular-nums; min-width: 0; }
+
+/* A feed of what happened, newest first. */
+.dui-feed { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.dui-feed li { display: flex; align-items: center; gap: var(--dui-space-3); padding: var(--dui-space-3) 0; border-bottom: 1px solid var(--dui-grey-200); font-size: var(--dui-text-sm); }
+.dui-feed li > span:not(.dui-mark) { flex: 1; min-width: 0; }
+.dui-feed time { color: var(--dui-grey-600); font-size: var(--dui-text-floor); white-space: nowrap; }
+
+/* ----------------------------------------------------------- Command menu */
+
+/* <dialog class="dui-dialog dui-cmd"> on a white veil. ⌘K or Ctrl+K opens it. */
+.dui-cmd { width: min(36rem, calc(100% - 32px)); padding: 0; border-radius: var(--dui-radius-menu); margin-top: 12vh; overflow: hidden; }
+.dui-cmd > * + * { margin-top: 0; }
+.dui-cmd__q { display: flex; align-items: center; gap: var(--dui-space-3); padding: 0 var(--dui-space-5); border-bottom: 1px solid var(--dui-grey-200); }
+.dui-cmd__q input { flex: 1; min-width: 0; min-height: 3.5rem; border: 0; outline: none; background: none; font: inherit; font-size: var(--dui-text-base); color: var(--dui-black); }
+.dui-cmd__q input::placeholder { color: var(--dui-grey-400); }
+.dui-cmd__list { max-height: min(22rem, 55vh); overflow-y: auto; padding: var(--dui-space-2); list-style: none; margin: 0; }
+.dui-cmd__group { padding: var(--dui-space-3) var(--dui-space-3) var(--dui-space-1); font-size: var(--dui-text-floor); font-weight: 500; letter-spacing: var(--dui-tracking-label); text-transform: uppercase; color: var(--dui-grey-600); }
+.dui-cmd__opt { display: flex; align-items: center; gap: var(--dui-space-3); min-height: 2.75rem; padding: 0 var(--dui-space-3); border-radius: var(--dui-radius-pill); font-size: var(--dui-text-sm); cursor: pointer; }
+.dui-cmd__opt > .dui-meta, .dui-cmd__opt > .dui-kbd { margin-left: auto; font-size: var(--dui-text-floor); }
+.dui-cmd__opt[aria-selected="true"] { box-shadow: inset 0 0 0 1px var(--dui-black); background: var(--dui-grey-50); }
+.dui-cmd__empty { padding: var(--dui-space-6) var(--dui-space-3); text-align: center; color: var(--dui-grey-600); font-size: var(--dui-text-sm); }
+.dui-cmd__foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dui-space-2) var(--dui-space-4); padding: var(--dui-space-3) var(--dui-space-5); border-top: 1px solid var(--dui-grey-200); font-size: var(--dui-text-floor); color: var(--dui-grey-600); }
+.dui-cmd[open] { animation: dui-drop var(--dui-dur) var(--dui-ease); }
+@media (max-width: 639px) { .dui-cmd { width: 100%; max-width: none; margin: auto 0 0; border-radius: var(--dui-radius-menu) var(--dui-radius-menu) 0 0; } .dui-cmd__list { max-height: 60vh; } }
+
+/* ------------------------------------------------------------- Updates */
+
+/* No toasts. What happened goes in the Updates menu behind the bell, and
+   stays until it's read. */
+.dui-updates .dui-menu__panel { width: min(22rem, calc(100vw - 32px)); padding: 0; overflow: hidden; }
+.dui-updates__head { display: flex; align-items: center; justify-content: space-between; gap: var(--dui-space-3); padding: var(--dui-space-3) var(--dui-space-4); border-bottom: 1px solid var(--dui-grey-200); font-size: var(--dui-text-sm); }
+.dui-updates__list { list-style: none; margin: 0; padding: 0; max-height: 22rem; overflow-y: auto; }
+.dui-updates__list li { display: flex; gap: var(--dui-space-3); padding: var(--dui-space-3) var(--dui-space-4); border-bottom: 1px solid var(--dui-grey-200); font-size: var(--dui-text-sm); line-height: 1.4; }
+.dui-updates__list li:last-child { border-bottom: 0; }
+.dui-updates__list li[data-unread] { background: var(--dui-grey-50); }
+.dui-updates__list li[data-unread] b::after { content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; margin-left: 0.375rem; border-radius: 50%; background: var(--dui-black); vertical-align: 0.1em; }
+.dui-updates__list time { display: block; font-size: var(--dui-text-floor); color: var(--dui-grey-600); }
+.dui-bell { position: relative; }
+.dui-bell .dui-count { position: absolute; top: -2px; right: -4px; }
+
+/* A notice in the page that stays until it's read or undone. Builds on dui-status. */
+/* Something to look at, not something that happened: a ! instead of the tick. */
+.dui-status[data-tone="alert"]::before { content: "!"; font-weight: 800; }
+.dui-status .dui-status__end { margin-left: auto; display: flex; gap: var(--dui-space-3); }
+.dui-status button.dui-link { border: 0; background: none; padding: 0; font: inherit; font-weight: 600; cursor: pointer; color: var(--dui-black); }
+
+/* ---------------------------------------------------------- Approvals */
+
+/* The approval chain: each signer's ring is dashed until they sign, solid
+   once they have. Who asked stands apart, as a plain mark, and isn't counted. */
+.dui-chain { display: flex; align-items: flex-start; gap: var(--dui-space-6); }
+.dui-chain__from { display: grid; justify-items: center; gap: 6px; text-align: center; padding-right: var(--dui-space-6); border-right: 1px solid var(--dui-grey-200); font-size: var(--dui-text-floor); color: var(--dui-grey-600); min-width: 6rem; }
+.dui-chain__from b { color: var(--dui-black); font-size: var(--dui-text-sm); }
+.dui-chain__steps { display: flex; align-items: flex-start; flex: 1; min-width: 0; list-style: none; margin: 0; padding: 0; }
+.dui-chain__step { display: grid; justify-items: center; gap: 6px; text-align: center; flex: 0 0 8.5rem; font-size: var(--dui-text-floor); color: var(--dui-grey-600); }
+.dui-chain__step > span:last-child { display: flex; flex-direction: column; align-items: center; }
+.dui-chain__step b { color: var(--dui-black); font-size: var(--dui-text-sm); }
+.dui-chain__link { flex: 1 1 1.5rem; min-width: 1.5rem; height: 0; margin-top: 1.5rem; border-top: 1.5px solid var(--dui-black); transition: border-color var(--dui-dur-slow) var(--dui-ease); }
+.dui-chain__link[data-done="false"] { border-top-style: dashed; border-top-color: var(--dui-grey-400); }
+@media (max-width: 639px) {
+  .dui-chain { flex-direction: column; gap: var(--dui-space-4); }
+  .dui-chain__from { flex-direction: row; display: flex; align-items: center; gap: var(--dui-space-3); padding: 0 0 var(--dui-space-4); border-right: 0; border-bottom: 1px solid var(--dui-grey-200); width: 100%; text-align: left; }
+  .dui-chain__steps { flex-direction: column; gap: 0; width: 100%; }
+  .dui-chain__step { display: flex; align-items: center; gap: var(--dui-space-3); flex: none; text-align: left; }
+  .dui-chain__step > span:last-child { align-items: flex-start; }
+  .dui-chain__link { flex: none; width: 0; height: 1.25rem; min-width: 0; margin: 0 0 0 1.5rem; border-top: 0; border-left: 1.5px solid var(--dui-black); }
+  .dui-chain__link[data-done="false"] { border-left-style: dashed; border-left-color: var(--dui-grey-400); }
+}
+
+/* Off, with a reason: a control someone can't use says why, and who can unlock it. */
+.dui-lock { display: flex; flex-direction: column; gap: var(--dui-space-2); padding: var(--dui-space-4); border: 1px dashed var(--dui-grey-400); border-radius: var(--dui-radius-panel); font-size: var(--dui-text-sm); color: var(--dui-grey-800); }
+.dui-lock > .dui-btn-sm-ghost { align-self: flex-start; }
+
+/* Who can do what: dui-yes and dui-no in a small table. */
+.dui-perm { width: 100%; border-collapse: collapse; font-size: var(--dui-text-sm); }
+.dui-perm thead th { font-size: var(--dui-text-floor); font-weight: 600; text-align: center; padding: 0 var(--dui-space-2) var(--dui-space-2); border-bottom: 1px solid var(--dui-black); }
+.dui-perm th:first-child, .dui-perm td:first-child { text-align: left; padding-left: 0; }
+.dui-perm tbody th { font-weight: 400; text-align: left; padding: var(--dui-space-2) var(--dui-space-2) var(--dui-space-2) 0; border-bottom: 1px solid var(--dui-grey-200); }
+.dui-perm td { text-align: center; padding: var(--dui-space-2); border-bottom: 1px solid var(--dui-grey-200); }
+
+/* Only Admin and Auditor see personal details like IP addresses and places
+   (POPIA). Mark those cells .dui-private and set data-viewer on a parent. */
+.dui-private { display: none; }
+[data-viewer~="admin"] .dui-private,
+[data-viewer~="auditor"] .dui-private { display: revert; }
+[data-viewer~="admin"] .dui-private-note,
+[data-viewer~="auditor"] .dui-private-note { display: none; }
+
+/* --------------------------------------------------------- Numbers */
+
+/* A tile: label, the number (light, with the part that matters bold), and a line that says what it means. */
+.dui-tiles { display: grid; gap: var(--dui-space-4); grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.dui-tile { display: flex; flex-direction: column; gap: var(--dui-space-1); padding: var(--dui-space-4) var(--dui-space-5); border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-panel); color: inherit; text-decoration: none; min-width: 0; transition: border-color var(--dui-dur) var(--dui-ease); }
+a.dui-tile:hover { border-color: var(--dui-black); }
+.dui-tile__label { font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+.dui-tile__num { font-size: 2rem; font-weight: 300; letter-spacing: var(--dui-tracking-tight); line-height: 1.15; font-variant-numeric: tabular-nums; }
+.dui-tile__num b { font-weight: 700; }
+.dui-tile__means { display: flex; align-items: center; justify-content: space-between; gap: var(--dui-space-3); font-size: var(--dui-text-floor); color: var(--dui-grey-800); }
+.dui-spark { width: 4.5rem; height: 1.5rem; flex: none; overflow: visible; }
+.dui-spark polyline { fill: none; stroke: var(--dui-black); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.dui-spark circle { fill: var(--dui-black); }
+
+/* Small multiples: one small black chart per series, same scale, side by
+   side. This is how distinctUI compares series. Never colour. */
+.dui-multiples { display: grid; gap: var(--dui-space-4); grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+.dui-multiple { display: flex; flex-direction: column; gap: var(--dui-space-1); min-width: 0; }
+.dui-multiple__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--dui-space-3); font-size: var(--dui-text-sm); }
+.dui-multiple__head b { font-variant-numeric: tabular-nums; }
+.dui-multiple svg { display: block; width: 100%; height: auto; overflow: visible; }
+@media (max-width: 639px) { .dui-multiples { grid-template-columns: 1fr 1fr; } .dui-multiple .dui-chart-label { display: none; } }
+.dui-chart-grid { stroke: var(--dui-grey-200); stroke-width: 1; }
+.dui-chart-base { stroke: var(--dui-black); stroke-width: 1; }
+.dui-chart-area { fill: var(--dui-grey-100); stroke: none; }
+.dui-chart-line { fill: none; stroke: var(--dui-black); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.dui-chart-dot { fill: var(--dui-black); }
+.dui-chart-label { fill: var(--dui-grey-600); font: 400 12px var(--dui-font); }
+/* Lines draw in once, the first time they're seen. */
+.dui-js .dui-draw-lines .dui-chart-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 900ms var(--dui-ease); transition-delay: calc(var(--dui-i, 0) * 90ms); }
+.dui-js .dui-draw-lines .dui-chart-area, .dui-js .dui-draw-lines .dui-chart-dot { opacity: 0; transition: opacity var(--dui-dur-slow) var(--dui-ease) 600ms; }
+.dui-js .dui-draw-lines.is-in .dui-chart-line { stroke-dashoffset: 0; }
+.dui-js .dui-draw-lines.is-in .dui-chart-area, .dui-js .dui-draw-lines.is-in .dui-chart-dot { opacity: 1; }
+
+/* Heat map: three steps you can tell apart, and the count printed in the cell. */
+.dui-heat { display: grid; grid-template-columns: max-content repeat(var(--cols, 12), minmax(1.5rem, 1fr)); gap: 3px; align-items: center; font-size: var(--dui-text-floor); }
+.dui-heat > span { color: var(--dui-grey-600); padding-right: var(--dui-space-2); white-space: nowrap; }
+.dui-heat > i { display: grid; place-items: center; height: 1.5rem; border-radius: 6px; font-style: normal; font-weight: 600; font-variant-numeric: tabular-nums; border: 1px solid var(--dui-grey-200); color: transparent; }
+.dui-heat > i[data-n="1"], .dui-heat > i[data-n="2"] { background: var(--dui-grey-400); border-color: var(--dui-grey-400); color: var(--dui-black); }
+.dui-heat > i[data-n="3"], .dui-heat > i[data-n="4"], .dui-heat > i[data-n="5"], .dui-heat > i[data-n="6"] { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); }
+.dui-heat-key { display: flex; flex-wrap: wrap; gap: var(--dui-space-4); font-size: var(--dui-text-floor); color: var(--dui-grey-600); }
+.dui-heat-key i { display: inline-block; width: 0.875rem; height: 0.875rem; border-radius: 4px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--dui-grey-200); }
+.dui-heat-key i[data-n="1"] { background: var(--dui-grey-400); border-color: var(--dui-grey-400); }
+.dui-heat-key i[data-n="3"] { background: var(--dui-black); border-color: var(--dui-black); }
+
+/* Every chart can become its table: [data-view-as] on a wrapper, two children. */
+[data-view-as="chart"] > [data-as="table"], [data-view-as="table"] > [data-as="chart"] { display: none; }
+
+/* -------------------------------------------------------- Settings */
+
+.dui-settings { display: grid; gap: var(--dui-space-8); grid-template-columns: minmax(0, 1fr); }
+.dui-setting { display: grid; gap: var(--dui-space-4); padding-bottom: var(--dui-space-6); border-bottom: 1px solid var(--dui-grey-200); }
+@media (min-width: 1024px) { .dui-setting { grid-template-columns: 18rem minmax(0, 1fr); gap: var(--dui-space-10); } }
+.dui-setting > div:first-child { display: flex; flex-direction: column; gap: var(--dui-space-1); }
+.dui-setting__body { display: flex; flex-direction: column; gap: var(--dui-space-4); min-width: 0; }
+/* A secret shown once, in the code pill, with copy beside it. */
+.dui-secret { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dui-space-2); }
+.dui-secret code { font-family: var(--dui-mono); font-size: var(--dui-text-sm); background: var(--dui-grey-100); border-radius: var(--dui-radius-pill); padding: 0.375rem 0.75rem; overflow-wrap: anywhere; }
+/* The danger zone isn't red. It's a black edge and words that say what goes. */
+.dui-danger { border: 1.5px solid var(--dui-black); border-radius: var(--dui-radius-card); padding: var(--dui-space-6); display: flex; flex-direction: column; gap: var(--dui-space-3); }
+.dui-confirm-name { font-family: var(--dui-mono); font-size: var(--dui-text-sm); background: var(--dui-grey-100); border-radius: 6px; padding: 0.0625rem 0.375rem; }
+
+/* -------------------------------------------------------- Motion */
+
+/* A row that just changed: a black edge that fades, once. */
+.dui-js .dui-changed td, .dui-js .dui-item.dui-changed { animation: dui-changed 1.6s var(--dui-ease); }
+@keyframes dui-changed { 0%, 50% { background: var(--dui-grey-100); } }
+/* Rows that move when sorted slide to their new place (distinctui-work.js). */
+.dui-data tbody tr { transition: transform var(--dui-dur-slow) var(--dui-ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dui-app *, .dui-app *::before, .dui-app *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+  .dui-js .dui-draw-lines .dui-chart-line { stroke-dashoffset: 0; }
+  .dui-js .dui-draw-lines .dui-chart-area, .dui-js .dui-draw-lines .dui-chart-dot { opacity: 1; }
+}
+
+@media print {
+  .dui-app { display: block; }
+  .dui-rail, .dui-topbar, .dui-bulk, .dui-row-more { display: none; }
+}
+
+/* Notices that stay until read or undone, at the top of the content. */
+.dui-notices { display: flex; flex-direction: column; gap: var(--dui-space-2); }
+.dui-notices:empty { display: none; }

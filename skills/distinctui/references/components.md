@@ -472,3 +472,7 @@ Markup uses the classes in `assets/distinctui.css`. Put `class="dui-page"` on `<
 - Photos sit beside the words, never under them. Fixed shapes: `--split-ratio` 3/2 for scenes, 1/1 for products.
 - Comparison: ticks in black, "no" as a grey dash, words where a number helps ("500 a month"). The plan most people pick gets `data-pick` (a black line on top) and the page's one solid badge.
 - Hours: write every day, closed ones too, as 24-hour times. `distinctui.js` bolds today and fills the "Open now" line from the visitor's clock, so leave the line out if your visitors are mostly in another time zone. Link out for directions instead of a coloured map.
+
+## At work
+
+App pieces (shell, data table, bulk bar, command menu, approval chain, roles, charts, settings) live in `assets/distinctui-work.css` and `assets/distinctui-work.js`. Their markup, the classes and the nine extra rules are in `references/work.md`.

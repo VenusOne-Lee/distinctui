@@ -784,7 +784,7 @@ a.dui-card:hover, .dui-card[data-link]:hover { border-color: var(--dui-black); }
 .dui-switch input:checked::after { transform: translateX(1.125rem); }
 
 /* Numbers in rows and columns. Hairlines, no stripes, numbers right-aligned. */
-.dui-table-wrap { overflow-x: auto; }
+.dui-table-wrap { overflow-x: auto; position: relative; } /* relative, so hidden screen-reader text stays inside the scroller */
 .dui-table { width: 100%; border-collapse: collapse; font-size: var(--dui-text-md); }
 .dui-table th { text-align: left; font-size: var(--dui-text-sm); font-weight: 500; color: var(--dui-grey-600); padding: 0 var(--dui-space-4) var(--dui-space-3) 0; border-bottom: 1px solid var(--dui-black); white-space: nowrap; }
 .dui-table td { padding: var(--dui-space-4) var(--dui-space-4) var(--dui-space-4) 0; border-bottom: 1px solid var(--dui-grey-200); vertical-align: top; }

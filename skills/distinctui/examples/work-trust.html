@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Quarry for business · Security and plans</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: the trust page a buyer's security team reads. Quarry, its customers and its people are invented. */
+  :root { --dui-signature: #1f4fd1; }
+  @media (max-width: 639px) { .hide-sm { display: none; } }
+  .top { display: grid; gap: 40px; align-items: center; padding-top: 48px; }
+  @media (min-width: 1024px) { .top { grid-template-columns: 1.1fr 1fr; gap: 64px; padding-top: 72px; } }
+  .top__copy { display: flex; flex-direction: column; gap: 22px; }
+  .proof { display: flex; flex-direction: column; gap: 20px; }
+  .proof .dui-card { padding: 28px 24px; }
+  .dui-compare { margin-top: 16px; }
+  .live { display: flex; align-items: center; gap: 10px; font-size: var(--dui-text-sm); }
+  .live::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--dui-black); box-shadow: 0 0 0 4px var(--dui-grey-100); }
+  .certs { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+  .cert { display: flex; flex-direction: column; gap: 6px; padding: 20px; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-panel); }
+  .cert b { font-size: var(--dui-text-lg); }
+  .cert .dui-meta { font-size: var(--dui-text-sm); }
+  .cert a { margin-top: auto; font-size: var(--dui-text-sm); }
+  .dui-table-wrap { max-width: 100%; min-width: 0; }
+  .who { display: flex; flex-wrap: wrap; gap: 12px 32px; font-size: var(--dui-text-lg); font-weight: 700; letter-spacing: -0.01em; color: var(--dui-grey-600); }
+  .two { display: grid; gap: 32px; }
+  @media (min-width: 1024px) { .two { grid-template-columns: 1fr 1.2fr; gap: 64px; } }
+  .sales { display: flex; flex-direction: column; gap: 14px; }
+  .sales .row { display: grid; gap: 14px; }
+  @media (min-width: 640px) { .sales .row { grid-template-columns: 1fr 1fr; } }
+  .sales .dui-field { width: 100%; }
+  .dui-accordion details { border-bottom: 1px solid var(--dui-grey-200); padding: 18px 0; }
+  .dui-accordion summary { cursor: pointer; font-weight: 600; }
+  .dui-accordion p { margin: 10px 0 0; color: var(--dui-grey-800); max-width: 60ch; }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="#">Quarry</a>
+  <nav class="dui-nav" aria-label="Main"><a class="hide-sm" href="#plans">Plans</a><a class="hide-sm" href="#security">Security</a><a href="work-home.html">Sign in</a><a class="dui-btn-sm" href="#talk">Talk to sales</a></nav>
+</header>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <section class="top" aria-labelledby="top-h">
+    <div class="top__copy">
+      <p class="live">Everything working · <a class="dui-link" href="status.html">status page</a></p>
+      <h1 id="top-h" class="dui-hero" style="max-width:14ch;font-size:clamp(2.5rem,5vw,4rem)">Contracts signed in order, with <b>proof</b></h1>
+      <p class="dui-lede">Quarry sends each contract to the right people, in the right order, and keeps a record your auditors will accept. Built in Johannesburg for South African companies.</p>
+      <div class="dui-actions"><a class="dui-btn" href="#talk">Talk to sales</a><a class="dui-btn-ghost" href="signup.html">Start free for 30 days</a></div>
+    </div>
+    <div class="proof">
+      <div class="dui-card"><div class="dui-chain" aria-label="Example: three people sign in order. Two have signed, one is next.">
+        <div class="dui-chain__from"><span class="dui-mark dui-mark--plain" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="img/portrait-2.jpg" alt=""></span></span><span><b>Ayanda</b><br>Asked</span></div>
+        <ol class="dui-chain__steps">
+          <li class="dui-chain__step"><span class="dui-mark" data-ring="2" data-live="true" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="img/portrait-3.jpg" alt=""></span></span><span><b>Kofi</b><span>Legal</span></span></li>
+          <li class="dui-chain__link" aria-hidden="true"></li>
+          <li class="dui-chain__step"><span class="dui-mark" data-ring="4" data-live="true" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="img/portrait-12.jpg" alt=""></span></span><span><b>Pieter</b><span>Finance</span></span></li>
+          <li class="dui-chain__link" data-done="false" aria-hidden="true"></li>
+          <li class="dui-chain__step"><span class="dui-mark" data-ring="3" data-live="false" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span><span><b>Lerato</b><span>Procurement</span></span></li>
+        </ol>
+      </div></div>
+      <p class="dui-meta" style="font-size:var(--dui-text-sm)">Who asked sits apart from who signs. Dashed means still to sign.</p>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="who-h" style="gap:20px">
+    <h2 id="who-h" class="dui-eyebrow">Trusted by <b>340</b> companies, from fleets to farms</h2>
+    <p class="who"><span>Brightwater Logistics</span><span>Karoo Mills</span><span>Ubuntu Health</span><span>Mosaic Mines</span><span>Tidewater Ports</span></p>
+  </section>
+
+  <section class="dui-section" id="security" aria-labelledby="sec-h">
+    <div style="display:flex;flex-direction:column;gap:12px"><h2 id="sec-h" class="dui-h2">Checked by people who <b>check</b></h2><p class="dui-lede">Read the reports before you sign. No forms, no waiting.</p></div>
+    <div class="certs">
+      <div class="cert"><b>SOC 2 Type II</b><span class="dui-meta">Audited by an independent firm, Sep 2026.</span><a class="dui-link" href="#">Get the report</a></div>
+      <div class="cert"><b>ISO 27001</b><span class="dui-meta">Certified since 2024. Renewed Jun 2026.</span><a class="dui-link" href="#">See the certificate</a></div>
+      <div class="cert"><b>POPIA</b><span class="dui-meta">We're your operator. Our information officer is named.</span><a class="dui-link" href="#">Read how</a></div>
+      <div class="cert"><b>GDPR</b><span class="dui-meta">For your teams and customers in Europe.</span><a class="dui-link" href="#">Data processing terms</a></div>
+    </div>
+  </section>
+
+  <section class="dui-section" id="plans" aria-labelledby="plans-h">
+    <div style="display:flex;flex-direction:column;gap:12px"><h2 id="plans-h" class="dui-h2">Three plans, <b>one</b> price list</h2><p class="dui-lede">Per company, in rand, VAT included. Business is what most companies pick.</p></div>
+    <div class="dui-table-wrap"><table class="dui-table dui-compare">
+      <thead><tr><th><span class="dui-sr-only">Feature</span></th><th>Team<span>R 4 900 a month</span></th><th data-pick><span class="dui-badge-solid">Most pick this</span>Business<span>R 38 640 a month</span></th><th>Enterprise<span>Let's talk</span></th></tr></thead>
+      <tbody>
+      <tr class="dui-compare__group"><th scope="colgroup" colspan="4">Signing</th></tr>
+      <tr><th scope="row">Approval chains<span>In order, or all at once</span></th><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td></tr>
+      <tr><th scope="row">Signers per contract</th><td>3</td><td>10</td><td>No limit</td></tr>
+      <tr class="dui-compare__group"><th scope="colgroup" colspan="4">Security</th></tr>
+      <tr><th scope="row">Single sign-on<span>Microsoft, Google, Okta</span></th><td><span class="dui-no"><span class="dui-sr-only">Not included</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td></tr>
+      <tr><th scope="row">People from your directory (SCIM)<span>Starters and leavers, the same hour</span></th><td><span class="dui-no"><span class="dui-sr-only">Not included</span></span></td><td><span class="dui-no"><span class="dui-sr-only">Not included</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td></tr>
+      <tr><th scope="row">Audit log<span>Kept for</span></th><td>1 year</td><td>3 years</td><td>7 years</td></tr>
+      <tr><th scope="row">Where your data is kept</th><td>Johannesburg</td><td>Johannesburg</td><td>Johannesburg or Frankfurt</td></tr>
+      <tr class="dui-compare__group"><th scope="colgroup" colspan="4">Help</th></tr>
+      <tr><th scope="row">A named person to call</th><td><span class="dui-no"><span class="dui-sr-only">Not included</span></span></td><td><span class="dui-no"><span class="dui-sr-only">Not included</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Included</span></span></td></tr>
+      <tr><th scope="row">Uptime promise</th><td><span class="dui-no"><span class="dui-sr-only">Not included</span></span></td><td>99.9%</td><td>99.95%</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="dui-section two" aria-labelledby="faq-h">
+    <div style="display:flex;flex-direction:column;gap:12px"><h2 id="faq-h" class="dui-h2">What your security team <b>asks</b></h2><p class="dui-lede">Something else? Our security lead answers in two working days.</p></div>
+    <div class="dui-accordion">
+      <details open><summary>Where is our data kept?</summary><p>In Johannesburg, on AWS af-south-1, unless you choose Frankfurt on Enterprise. Backups stay in the same country as the data.</p></details>
+      <details><summary>Who at Quarry can see our contracts?</summary><p>Nobody, by default. If you ask for help, you can let one support person in for 24 hours. Every look is in your audit log.</p></details>
+      <details><summary>How do you meet POPIA?</summary><p>We're your operator under POPIA. IP addresses and places are only shown to your Admins and Auditors, and we delete them after the time you set.</p></details>
+      <details><summary>Can we run our own security test?</summary><p>Yes, once a year, with two weeks' notice. Ask your account manager for the rules of the test.</p></details>
+      <details><summary>What happens to our data if we leave?</summary><p>Export everything as PDF and CSV at any time. We delete it 30 days after your plan ends, and email you when it's done.</p></details>
+    </div>
+  </section>
+
+  <section class="dui-section two" id="talk" aria-labelledby="talk-h">
+    <div style="display:flex;flex-direction:column;gap:12px"><h2 id="talk-h" class="dui-h2">Talk to a <b>person</b></h2><p class="dui-lede">Thandi from our Johannesburg team replies within a working day, with a demo on your own contracts if you like.</p></div>
+    <form class="dui-card sales" action="#" onsubmit="return false">
+      <div class="row">
+        <label class="dui-label">Your name<input class="dui-field" autocomplete="name"></label>
+        <label class="dui-label">Work email<input class="dui-field" type="email" autocomplete="email"></label>
+      </div>
+      <div class="row">
+        <label class="dui-label">Company<input class="dui-field" autocomplete="organization"></label>
+        <label class="dui-label">People<select class="dui-field"><option>Under 50</option><option selected>50 to 250</option><option>250 to 1 000</option><option>More than 1 000</option></select></label>
+      </div>
+      <label class="dui-label">What do you need to sign?<textarea class="dui-field" rows="3" placeholder="Supplier contracts, mostly. About 40 a month."></textarea></label>
+      <div class="dui-actions"><button class="dui-btn" type="submit" data-done="Sent. Thandi replies within a day.">Send</button><span class="dui-meta" style="font-size:var(--dui-text-sm)">We use this to reply, nothing else.</span></div>
+    </form>
+  </section>
+</main>
+
+<footer class="dui-container dui-footer">
+  <span><b>Quarry</b> Johannesburg, South Africa</span>
+  <span>Example page from distinctUI@work. Quarry and its customers are invented.</span>
+  <nav aria-label="More"><a href="#security">Security</a><a href="#">Privacy</a><a href="#">PAIA manual</a><a href="status.html">Status</a></nav>
+</footer>
+</body>
+</html>

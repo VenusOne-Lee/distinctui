@@ -38,6 +38,10 @@ Follow Stageshow's workflow (medium, look, story, start from a gold example, scr
 
 The seven scenes on distinctui.com are in the repository's `moments/` folder, a good starting point to copy. They use product-neutral examples; keep yours about your own product.
 
+## At work
+
+The four distinctUI@work scenes (`moments/src/work-sign.tsx`, `work-bulk.tsx`, `work-command.tsx`, `work-report.tsx`) follow the same rules at 400 by 260: one thing happens, real marks with photos or initials at 28px and up, a notice with Undo where something changed, keys shown as keycaps with `a.key()`.
+
 ## Check before you hand it over
 
 - Film it: the finished frame at full width and at 390, and step through every press and change.

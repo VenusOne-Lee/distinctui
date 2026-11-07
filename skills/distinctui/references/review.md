@@ -60,3 +60,11 @@ Most of this is automated in `assets/check.js` (`checkHTML(html)`) and in `check
 - [ ] Motion is off under `prefers-reduced-motion`.
 - [ ] Nothing covers the page on arrival: no pop-up, no cookie wall. The cookie notice's main choice shares least, and nothing optional loads before a yes.
 - [ ] Date fields keep the native input underneath; closed days say why.
+
+## At work (apps with distinctui-work.css)
+- [ ] Every list and table has loading, empty, no-results, error, no-access and read-only states.
+- [ ] Each person has one ring colour everywhere; marks under 28px show photos, not initials.
+- [ ] Single-key shortcuts have an off switch (`data-keys-toggle`), and every one is also a button or a command.
+- [ ] IP addresses and places are `.dui-private`; dates are full, with the time zone.
+- [ ] Bulk actions end in a notice with Undo, not a confirm dialog.
+- [ ] Charts compare in black on one scale, and each can turn into its table.

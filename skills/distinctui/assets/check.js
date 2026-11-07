@@ -6,7 +6,7 @@
 //   checkSpec(spec)  -> structural checks on a page spec (see references/page-spec.md)
 //
 // Both return { ok, errors, warnings, findings: [{ id, rule, title, severity, message, fix, where }] }.
-// rule is 1 to 12, "access" or "left-out". ok is true when there are no errors.
+// rule is 1 to 12, "access", "work" or "left-out". ok is true when there are no errors.
 // MIT · https://distinctui.com
 
 const GREYS = ["#000000", "#ffffff", "#fafafa", "#f2f2f2", "#e5e5e5", "#a3a3a3", "#6b6b6b", "#262626"];
@@ -22,7 +22,7 @@ const TITLES = {
   5: "Headings are light with one bold word", 6: "Main actions are black pills",
   7: "White space before borders, borders before shadows", 8: "Pills for what you press, soft corners for what you read",
   9: "Dashed until live", 10: "Errors are black and bold", 11: "Hover is a black edge, not a lift", 12: "Write plainly",
-  access: "Everyone can use it", "left-out": "Left out on purpose",
+  access: "Everyone can use it", "left-out": "Left out on purpose", work: "distinctUI@work",
 };
 const NAMED = {
   red: "#ff0000", green: "#008000", blue: "#0000ff", yellow: "#ffff00", orange: "#ffa500", purple: "#800080",
@@ -328,9 +328,41 @@ export function checkHTML(html, options = {}) {
     const m = text.match(re);
     if (m) add("vague-error", 12, "warning", `The words include ${msg}.`, "Name what failed and how to fix it, in one plain sentence.", snippet(m[0]));
   }
+  checkWork(root, add);
   if (h1Count > 1) add("many-h1", "access", "warning", `There are ${h1Count} h1 headings.`, "Use one h1 per page, then h2 for sections.", "");
   if (featureCount > 1) add("many-features", 7, "warning", `There are ${featureCount} feature cards.`, "Use one feature card per page, for the one thing that matters most.", "");
   return done();
+}
+
+// ---------- distinctUI@work ----------
+// Initials in a small mark, a person with two ring colours, single keys with no off switch.
+function markPx(n) {
+  const cls = classes(n);
+  if (cls.includes("dui-mark--xs")) return 20;
+  if (cls.includes("dui-mark--sm")) return 24;
+  const m = /--mark-size:\s*([\d.]+)(rem|px)/.exec(n.attrs.style || "");
+  return m ? (m[2] === "rem" ? parseFloat(m[1]) * 16 : parseFloat(m[1])) : null;
+}
+function checkWork(root, add) {
+  const rings = new Map();
+  let singleKeys = 0, toggle = false;
+  walk(root, (n) => {
+    if (!n.attrs) return;
+    if ("data-keys-toggle" in n.attrs) toggle = true;
+    const k = n.attrs["data-key"];
+    if (k && /^\S$/.test(k.trim())) singleKeys++;
+    if (!classes(n).includes("dui-mark")) return;
+    let img = null, inner = null;
+    walk(n, (c) => { if (c.tag === "img" && !img) img = c; if (classes(c).includes("dui-mark__inner") && !inner) inner = c; });
+    const px = markPx(n);
+    const initials = inner && !img && !(inner.children || []).some((c) => c.tag === "svg") ? textOf(inner).trim() : "";
+    if (px && px < 28 && initials && initials !== "+") add("small-initials", "work", "warning", `Initials "${snippet(initials, 6)}" in a ${px}px mark.`, "Below 28px initials can't be read. Use a photo, or a bigger mark.", describe(n));
+    const who = img?.attrs.src || (initials.length <= 3 && /^[A-Z]{1,3}$/.test(initials) ? initials : "");
+    const ring = n.attrs["data-ring"];
+    if (who && ring) { if (!rings.has(who)) rings.set(who, new Set()); rings.get(who).add(ring); }
+  });
+  for (const [who, set] of rings) if (set.size > 1) add("two-rings", "work", "warning", `The same person (${snippet(who, 40)}) has ${set.size} ring colours: ${[...set].join(", ")}.`, "Give each person one ring colour and keep it everywhere.", "");
+  if (singleKeys && !toggle) add("keys-no-switch", "access", "warning", `${singleKeys} single-key shortcut${singleKeys === 1 ? "" : "s"} with no way to turn them off.`, "Add a switch with data-keys-toggle (WCAG 2.1.4), or use keys with Ctrl or Cmd.", "");
 }
 
 // ---------- page specs ----------

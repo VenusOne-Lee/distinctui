@@ -27,6 +27,17 @@ npx skills add VenusOne-Lee/distinctui
 
 Then ask Claude for the look: "Build the sign-up page in distinctUI. Our signature colour is #1f3bff."
 
+## distinctUI@work
+
+For apps people use all day, load the work layer after the core files. It adds an app shell, dense tables with selection and a bulk bar, a command menu, approvals, audit trails, reports and settings, all still black, white and grey. See [distinctui.com/work.html](https://distinctui.com/work.html) and [references/work.md](skills/distinctui/references/work.md).
+
+```html
+<link rel="stylesheet" href="distinctui.css">
+<link rel="stylesheet" href="distinctui-work.css">
+<script src="distinctui.js" defer></script>
+<script src="distinctui-work.js" defer></script>
+```
+
 ## Use it over MCP
 
 distinctUI also runs as a remote MCP server at `https://distinctui.com/mcp`. Any agent that speaks MCP can read the rules and templates, check a page against the rules, and compose a page from content. Nothing to install, no sign-in, nothing stored.
@@ -44,7 +55,7 @@ claude mcp add --transport http distinctui https://distinctui.com/mcp
 | `get_rules` | The twelve rules, what's left out on purpose, and the values the checker uses |
 | `get_tokens`, `pick_palette` | The tokens, and the five ring palettes with the CSS for each |
 | `list_components`, `get_component` | Copy-ready markup for each component group |
-| `list_templates`, `get_template` | The 33 page templates |
+| `list_templates`, `get_template` | The 42 page templates |
 | `get_reference` | Any reference, such as `page-spec`, `voice` or `review` |
 | `check_page` | Checks HTML against the rules and says how to fix each finding |
 | `check_spec`, `compose_page` | Checks a [page spec](skills/distinctui/references/page-spec.md) and turns it into a finished page |
@@ -145,7 +156,9 @@ skills/distinctui/
   assets/tailwind.css      the same tokens as a Tailwind v4 theme
   assets/distinctui.js     optional motion and interaction, driven by attributes
   assets/tokens.json       the tokens as JSON, the one source for every value; Figma (Tokens Studio) and Style Dictionary read it too
-  assets/icons.svg         25 Lucide outline icons as one sprite
+  assets/icons.svg         45 Lucide outline icons as one sprite
+  assets/distinctui-work.css  distinctUI@work: app shell, dense tables, command menu, approvals, charts
+  assets/distinctui-work.js   distinctUI@work interaction: shortcuts, selection, bulk actions, Undo, signing
   assets/stageshow-look.css  the look for Stageshow moments (faux product UI)
   assets/rules.json        the rules and values in a form tools can read
   assets/check.js          checks a page or a page spec against the rules
@@ -154,14 +167,15 @@ skills/distinctui/
   references/components.md markup for every component
   references/motion.md     how things move, and when they don't
   references/moments.md    product stories with Stageshow, in the distinctUI look
+  references/work.md       distinctUI@work: the extra rules for apps people use all day
   references/voice.md      how the words sound
   references/imagery.md    photos, icons and charts
   references/review.md     the checklist Claude runs before it's done
   references/page-spec.md  pages written as content, for compose.js and the MCP server
   references/swiftui.md    the SwiftUI package, what maps to what, phone rules
   references/wordpress.md  the WordPress block theme, what maps to what
-  examples/                33 templates in seven groups: marketing, stories, selling,
-                           accounts, app screens, help and docs, system pages
+  examples/                42 templates in eight groups: marketing, stories, selling,
+                           accounts, app screens, at work, help and docs, system pages
 wordpress/distinctui/      the WordPress block theme (theme.json, templates, patterns, the font)
 wordpress/distinctui-plus/ distinctUI+, the builder plugin (canvas, page specs, abilities for Claude)
 site/                      distinctui.com

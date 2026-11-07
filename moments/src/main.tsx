@@ -7,6 +7,10 @@ import { Pricing } from './pricing'
 import { Publish } from './publish'
 import { Remove } from './remove'
 import { Settings } from './settings'
+import { WorkBulk } from './work-bulk'
+import { WorkCommand } from './work-command'
+import { WorkReport } from './work-report'
+import { WorkSign } from './work-sign'
 import './moments.css'
 
 // Mounts each moment into <div data-moment="name">. Moments play once when
@@ -21,6 +25,10 @@ const MOMENTS: Record<string, ComponentType> = {
   checkout: Checkout,
   settings: Settings,
   remove: Remove,
+  'work-sign': WorkSign,
+  'work-bulk': WorkBulk,
+  'work-command': WorkCommand,
+  'work-report': WorkReport,
 }
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches
 

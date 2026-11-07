@@ -61,7 +61,7 @@ export const TOOLS = [
   {
     name: "list_templates",
     title: "List page templates",
-    description: "The 33 page templates in 7 groups, with what each one shows.",
+    description: "The 42 page templates in 8 groups, with what each one shows.",
     inputSchema: { type: "object", properties: {} },
     annotations: ro,
   },
@@ -75,7 +75,7 @@ export const TOOLS = [
   {
     name: "get_reference",
     title: "Get a reference",
-    description: "One reference from the skill: page-spec, components, tokens, voice, imagery, motion, moments, review, swiftui or wordpress.",
+    description: "One reference from the skill: page-spec, components, tokens, voice, imagery, motion, moments, work, review, swiftui or wordpress.",
     inputSchema: { type: "object", properties: { name: str("The reference name, such as \"page-spec\" or \"voice\".") }, required: ["name"] },
     annotations: ro,
   },
@@ -154,12 +154,15 @@ export async function callTool(name, args = {}, env, origin) {
         version: rules.version,
         rules: rules.rules,
         left_out: rules.left_out,
+        work: rules.work,
         colours: rules.colours,
         radius: rules.radius,
         motion: rules.motion,
         font: rules.font,
         css: "https://distinctui.com/assets/distinctui.css",
         js: "https://distinctui.com/assets/distinctui.js",
+        work_css: "https://distinctui.com/assets/distinctui-work.css",
+        work_js: "https://distinctui.com/assets/distinctui-work.js",
       };
       const head = rules.rules.map((r) => `${r.n}. ${r.title}. ${r.text}`).join("\n");
       if (args.full) {
