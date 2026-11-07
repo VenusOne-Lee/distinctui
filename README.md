@@ -155,7 +155,7 @@ skills/distinctui/
   assets/distinctui.css    every token and component, as plain CSS
   assets/tailwind.css      the same tokens as a Tailwind v4 theme
   assets/distinctui.js     optional motion and interaction, driven by attributes
-  assets/tokens.json       the tokens as JSON, for Figma (Tokens Studio) and Style Dictionary
+  assets/tokens.json       the tokens as JSON, the one source for every value; Figma (Tokens Studio) and Style Dictionary read it too
   assets/icons.svg         45 Lucide outline icons as one sprite
   assets/distinctui-work.css  distinctUI@work: app shell, dense tables, command menu, approvals, charts
   assets/distinctui-work.js   distinctUI@work interaction: shortcuts, selection, bulk actions, Undo, signing
@@ -180,10 +180,11 @@ wordpress/distinctui/      the WordPress block theme (theme.json, templates, pat
 wordpress/distinctui-plus/ distinctUI+, the builder plugin (canvas, page specs, abilities for Claude)
 site/                      distinctui.com
 src/                       the Worker: the site, and the MCP server at /mcp (src/mcp.js)
-test/                      tests for the checker, the composer and the MCP server
+test/                      tests for the checker, the composer, the MCP server and token sync
 moments/                   the Moments page scenes, with a copy of the Stageshow kit (MIT, Benji Taylor)
 Package.swift              the Swift package
 swift/Sources/DistinctUI   tokens, type, pills, marks, cards and forms in SwiftUI, with the font
+                           (Tokens.generated.swift is written from tokens.json: don't edit it)
 swift/Sources/DistinctUIExamples  six example screens
 swift/Demo                 a demo app that runs them
 ```
@@ -209,8 +210,11 @@ swift/Demo                 a demo app that runs them
 npm install
 npm run dev      # builds dist/ and serves it with wrangler
 npm run deploy   # Cloudflare Workers, custom domain distinctui.com
-npm test         # builds dist/, then runs the checker, composer and MCP tests
+npm test         # builds dist/, then runs the checker, composer, MCP and token sync tests
+npm run tokens   # after changing tokens.json: rewrites the Swift tokens
 ```
+
+`tokens.json` is the one source for token values. The Swift tokens are generated from it, and the build fails if they drift. The CSS and Tailwind theme are written by hand, and a test fails if their values disagree with it.
 
 ## Licence
 
