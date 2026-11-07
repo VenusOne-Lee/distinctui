@@ -42,7 +42,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "node scripts/build-site.mjs",
+    "build": "node scripts/swift-tokens.mjs --check && node scripts/build-site.mjs",
+    "tokens": "node scripts/swift-tokens.mjs",
     "dev": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
     "test": "npm run build && node --test"
