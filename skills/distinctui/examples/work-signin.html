@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Sign in · Quarry</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: Sign in with a company's own sign-in, then pick a workspace. Each customer's colour stays on its own mark; the sandbox is dashed because nothing in it is live. Quarry, Brightwater Logistics and everyone here are invented. */
+  /* Each workspace's colour lives on its own mark only. */
+  :root { --dui-signature: #0b6e4f; }
+  .si { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; }
+  .si__top, .si__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px max(16px, env(safe-area-inset-left, 0px)); max-width: 72rem; width: 100%; margin: 0 auto; }
+  .si__foot { flex-wrap: wrap; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+  .si__foot nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: var(--dui-text-lg); letter-spacing: -0.01em; }
+  .brand svg { width: 22px; height: 22px; }
+  .si__main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-content: center; padding: 24px max(16px, env(safe-area-inset-left, 0px)) 56px; max-width: 72rem; width: 100%; margin: 0 auto; }
+  @media (min-width: 960px) { .si__main { grid-template-columns: minmax(0, 26rem) minmax(0, 28rem); justify-content: space-between; gap: 64px; } }
+  .si__form { display: flex; flex-direction: column; gap: 20px; }
+  .group { display: flex; flex-direction: column; gap: 8px; }
+  .or { display: flex; align-items: center; gap: 12px; color: var(--dui-grey-600); font-size: var(--dui-text-sm); }
+  .or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--dui-grey-200); }
+  .sso { display: flex; flex-direction: column; gap: 14px; }
+  .sso .dui-btn, .si__form .dui-btn { width: 100%; justify-content: center; }
+  .next { display: flex; flex-direction: column; gap: 16px; }
+  .ws-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .ws-pick { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-card); background: var(--dui-white); color: var(--dui-black); text-decoration: none; transition: border-color var(--dui-dur) var(--dui-ease); }
+  .ws-pick:hover, .ws-pick:focus-visible { border-color: var(--dui-black); }
+  .ws-pick b { display: block; font-weight: 600; }
+  .ws-pick .dui-meta { display: block; }
+  .ws-pick > svg { margin-left: auto; flex-shrink: 0; }
+  .ws-pick--sandbox { border-style: dashed; }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<div class="si">
+<header class="si__top">
+  <span class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16l-3 12H7z"/><path d="M9 7V4h6v3"/></svg>Quarry</span>
+  <a class="dui-link" href="#" style="font-size:var(--dui-text-sm)">New to Quarry? Talk to us</a>
+</header>
+
+<main id="main" class="si__main">
+  <section class="si__form" aria-labelledby="si-h">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h1 id="si-h" class="dui-h1">Sign in to <b>Quarry</b></h1>
+      <p class="dui-lede" style="font-size:var(--dui-text-base)">Use your work email. If your company signs in its own way, we'll send you there and straight back.</p>
+    </div>
+
+    <div class="dui-status" data-tone="alert" role="status">You were signed out after 8 hours. Sign in again: your draft request was kept.</div>
+
+    <div class="group">
+      <label class="dui-label" for="email">Work email</label>
+      <input class="dui-field" id="email" type="email" autocomplete="username" value="lerato@brightwater.example">
+    </div>
+
+    <div class="dui-panel sso" aria-live="polite">
+      <p class="dui-meta" style="color:var(--dui-grey-800)"><b style="color:var(--dui-black)">Brightwater Logistics</b> signs in with its own company account. You won't need a Quarry password.</p>
+      <a class="dui-btn" href="work-home.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#key"/></svg>Continue with Brightwater sign-in</a>
+    </div>
+
+    <div class="or">or</div>
+    <a class="dui-btn-ghost" href="#" style="justify-content:center"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#mail"/></svg>Email me a sign-in link</a>
+
+    <label class="dui-check"><input type="checkbox"> This is a shared computer. Sign me out when I close the browser.</label>
+  </section>
+
+  <section class="next" aria-labelledby="ws-h">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span class="dui-eyebrow">Then</span>
+      <h2 id="ws-h" class="dui-h3">Pick a workspace</h2>
+      <p class="dui-meta">You're in two companies' workspaces. Each keeps its own colour on its mark, and nothing else changes.</p>
+    </div>
+    <ul class="ws-list">
+      <li><a class="ws-pick" href="work-home.html"><span class="dui-mark" style="--mark-size:2.75rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span><b>Brightwater Logistics</b><span class="dui-meta">Approver · 214 people · last here today</span></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg></a></li>
+      <li><a class="ws-pick" href="work-home.html" style="--dui-signature:#5b3fa0"><span class="dui-mark" style="--mark-size:2.75rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19 10 7l4 6 2-3 5 9z"/></svg></span></span><span><b>Kestrel Mining</b><span class="dui-meta">Viewer · 58 people · invited by Kofi Asante</span></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg></a></li>
+      <li><a class="ws-pick ws-pick--sandbox" href="work-home.html"><span class="dui-mark" data-live="false" style="--mark-size:2.75rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span><b>Brightwater sandbox</b><span class="dui-meta">Test data only. Nothing here is sent or signed.</span></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg></a></li>
+    </ul>
+    <p class="dui-meta" style="font-size:var(--dui-text-floor)">Can't see your company? Ask whoever runs Quarry there to invite this email.</p>
+  </section>
+</main>
+
+<footer class="si__foot">
+  <span>Quarry is invented for this example.</span>
+  <nav aria-label="Footer"><a class="dui-link" href="work-trust.html">Security and trust</a><a class="dui-link" href="#">Status</a><a class="dui-link" href="#">Privacy</a><a class="dui-link" href="#">Help</a></nav>
+</footer>
+</div>
+</body>
+</html>

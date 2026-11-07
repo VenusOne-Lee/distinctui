@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Depot supervisor · Intake</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: A hiring board: one column per stage, a button on every card instead of drag only, initials instead of photos so screening stays fair, and an offer dashed until it's accepted. Intake, Brightwater Logistics and everyone here are invented. */
+  /* Brightwater's colour lives on its workspace mark only. People keep one ring colour each, everywhere. */
+  :root { --dui-signature: #0b6e4f; }
+  .job { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-size: var(--dui-text-sm); color: var(--dui-grey-600); }
+  .board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(16.5rem, 1fr); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; margin-inline: -4px; padding-inline: 4px; }
+  .col { scroll-snap-align: start; display: flex; flex-direction: column; gap: 12px; padding: 14px; border-radius: var(--dui-radius-panel); background: var(--dui-grey-50); min-width: 0; }
+  .col__head { display: flex; flex-direction: column; gap: 2px; }
+  .col__head h2 { font-size: var(--dui-text-base); display: flex; align-items: baseline; gap: 8px; }
+  .col__head .dui-meta { font-size: var(--dui-text-floor); }
+  .col__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .card { display: flex; flex-direction: column; gap: 10px; padding: 14px; background: var(--dui-white); border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-card); transition: border-color var(--dui-dur) var(--dui-ease); }
+  .card:hover, .card:focus-within { border-color: var(--dui-black); }
+  .card__top { display: flex; gap: 10px; align-items: center; }
+  .card__top b { display: block; font-weight: 600; font-size: var(--dui-text-sm); }
+  .card__top .dui-meta { display: block; font-size: var(--dui-text-floor); }
+  .card > .dui-meta { font-size: var(--dui-text-sm); }
+  .card .dui-btn-sm-ghost { align-self: flex-start; }
+  .col__more { font-size: var(--dui-text-sm); align-self: flex-start; }
+  .fair { display: flex; gap: 12px; align-items: flex-start; font-size: var(--dui-text-sm); color: var(--dui-grey-800); max-width: 70ch; }
+  .fair svg { flex-shrink: 0; margin-top: 2px; }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<div class="dui-app" data-density="default">
+<nav class="dui-rail" id="rail" aria-label="Main">
+  <details class="dui-menu">
+    <summary class="dui-ws" aria-label="Workspace: Brightwater Logistics. Switch workspace"><span class="dui-mark" style="--mark-size:2rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span>Brightwater<small>Intake · Logistics</small></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-down"/></svg></summary>
+    <div class="dui-menu__panel" style="left:0;right:auto">
+      <a class="dui-menu__item" href="work-board.html" aria-current="page">Brightwater Logistics</a>
+      <a class="dui-menu__item" href="work-signin.html">Switch workspace</a>
+      <div class="dui-menu__sep"></div>
+      <a class="dui-menu__item" href="work-home.html">Open Quarry</a>
+    </div>
+  </details>
+  <button class="dui-rail__item" type="button" data-cmd-open style="border:0;background:none;font:inherit;cursor:pointer;width:100%"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search<span class="dui-kbd" style="margin-left:auto">⌘K</span></button>
+  <a href="work-board.html" aria-current="page"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>Jobs<span class="dui-count-plain">4</span></a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#users"/></svg>Candidates</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#calendar"/></svg>Interviews<span class="dui-count-plain">3</span></a>
+  <p class="dui-rail__label">Team</p>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chart"/></svg>Reports</a>
+  <a class="dui-rail__me" href="#"><span class="dui-mark" data-ring="1" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-2.jpg" alt=""></span></span><span><b style="display:block;font-weight:600">Ayanda Khumalo</b><span class="dui-count-plain">Hiring manager</span></span></a>
+</nav>
+<div class="dui-main">
+<header class="dui-topbar">
+  <button class="dui-icon-btn dui-topbar__menu" type="button" data-rail-toggle aria-controls="rail" aria-expanded="false" aria-label="Menu"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#menu"/></svg></button>
+  <nav aria-label="Breadcrumbs" style="min-width:0"><ol class="dui-crumbs"><li><a href="work-board.html">Jobs</a></li><li aria-current="page">Depot supervisor, Durban</li></ol></nav>
+  <div class="dui-topbar__end">
+    <button class="dui-search dui-topbar__wide" type="button" data-cmd-open><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search candidates, jobs<span class="dui-kbd">⌘K</span></button>
+    
+  </div>
+</header>
+<main id="main" class="dui-content">
+<div class="dui-head">
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <h1 class="dui-h1">Depot supervisor, <b>Durban</b></h1>
+    <p class="job"><span>Full time · night shift</span><span>Opened 20 Oct 2026</span><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="img/portrait-2.jpg" alt=""></span></span><span>Hiring manager: Ayanda Khumalo</span></span></p>
+  </div>
+  <div class="dui-actions">
+    <button class="dui-btn-sm-ghost" type="button" data-done="Link copied"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#copy"/></svg>Copy job link</button>
+    <button class="dui-btn-sm" type="button"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg>Add a candidate</button>
+  </div>
+</div>
+
+<div data-notices></div>
+
+<div class="board">
+  <section class="col" aria-labelledby="c-Applied">
+    <div class="col__head"><h2 class="dui-h4" id="c-Applied">Applied <span class="dui-count-plain">14</span></h2><span class="dui-meta">New this week: 5</span></div>
+    <ul class="col__list">
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="1" style="--mark-size:2.25rem"><span class="dui-mark__inner">SM</span></span><span><b>Sizwe Mabaso</b><span class="dui-meta">Applied 6 Nov</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">9 years in warehousing, 4 leading a shift</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Moved to Screen">Move to Screen<svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </li>
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="4" style="--mark-size:2.25rem"><span class="dui-mark__inner">PN</span></span><span><b>Priya Naidu</b><span class="dui-meta">Applied 5 Nov</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">Cold-chain supervisor at a dairy, Pinetown</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Moved to Screen">Move to Screen<svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </li>
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="2" style="--mark-size:2.25rem"><span class="dui-mark__inner">TK</span></span><span><b>Tumi Khoza</b><span class="dui-meta">Applied 3 Nov</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">Forklift trainer, wants to lead a team</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Moved to Screen">Move to Screen<svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </li>
+    </ul>
+    <a class="dui-link col__more" href="#">11 more</a>
+  </section>
+  <section class="col" aria-labelledby="c-Screened">
+    <div class="col__head"><h2 class="dui-h4" id="c-Screened">Screened <span class="dui-count-plain">6</span></h2><span class="dui-meta">Phone screens done</span></div>
+    <ul class="col__list">
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="5" style="--mark-size:2.25rem"><span class="dui-mark__inner">LB</span></span><span><b>Liezl Botha</b><span class="dui-meta">Screened by Johan</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">Ran night shift at a 40-person depot</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Moved to Interview">Move to Interview<svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </li>
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="3" style="--mark-size:2.25rem"><span class="dui-mark__inner">MO</span></span><span><b>Mpho Oliphant</b><span class="dui-meta">Screened by Johan</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">Fleet coordinator, strong on safety audits</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Moved to Interview">Move to Interview<svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </li>
+    </ul>
+    <a class="dui-link col__more" href="#">4 more</a>
+  </section>
+  <section class="col" aria-labelledby="c-Interview">
+    <div class="col__head"><h2 class="dui-h4" id="c-Interview">Interview <span class="dui-count-plain">3</span></h2><span class="dui-meta">With Ayanda and Rahul</span></div>
+    <ul class="col__list">
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="1" style="--mark-size:2.25rem"><span class="dui-mark__inner">KD</span></span><span><b>Kagiso Dlamini</b><span class="dui-meta">2 of 2 interviewers booked</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">Tue 10 Nov, 10:00 SAST, Durban depot</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Moved to Offer">Move to Offer<svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </li>
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="4" style="--mark-size:2.25rem"><span class="dui-mark__inner">RS</span></span><span><b>Ruth Sibiya</b><span class="dui-meta">Ayanda to confirm</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">Thu 12 Nov, 14:00 SAST, video</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Moved to Offer">Move to Offer<svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button>
+      </li>
+    </ul>
+    <a class="dui-link col__more" href="#">1 more</a>
+  </section>
+  <section class="col" aria-labelledby="c-Offer">
+    <div class="col__head"><h2 class="dui-h4" id="c-Offer">Offer <span class="dui-count-plain">1</span></h2><span class="dui-meta">Dashed until they say yes</span></div>
+    <ul class="col__list">
+      <li class="card">
+        <div class="card__top"><span class="dui-mark" data-ring="2" data-live="false" style="--mark-size:2.25rem"><span class="dui-mark__inner">NM</span></span><span><b>Nandi Mahlangu</b><span class="dui-meta">Offer sent 4 Nov · answer by 11 Nov</span></span></div>
+        <p class="dui-meta" style="color:var(--dui-grey-800)">R 34 500 a month, starts 1 Dec. Signed by Ayanda and Pieter.</p>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Reminder sent"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#mail"/></svg>Remind Nandi</button>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<p class="fair"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg><span>Intake hides photos, ages and ID numbers until the interview, so screening stays about the work. Candidates who don't get the job are deleted after 12 months, as they agreed when they applied.</span></p>
+</main>
+</div>
+</div>
+<dialog class="dui-dialog dui-cmd" aria-label="Search and commands">
+  <div class="dui-cmd__q"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg><input type="text" placeholder="Type a command or a name" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="cmd-list" autocomplete="off"></div>
+  <ul class="dui-cmd__list" id="cmd-list" role="listbox" aria-label="Commands">
+    <li class="dui-cmd__group" role="presentation">Candidates</li>
+    <li class="dui-cmd__opt" data-words="kagiso interview" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#user"/></svg>Kagiso Dlamini<span class="dui-meta">Interview</span></li>
+    <li class="dui-cmd__opt" data-words="nandi offer" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#user"/></svg>Nandi Mahlangu<span class="dui-meta">Offer</span></li>
+    <li class="dui-cmd__group" role="presentation">Go to</li>
+    <li class="dui-cmd__opt" data-href="work-board.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Jobs</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Candidates</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Interviews</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Reports</li>
+  </ul>
+  <p class="dui-cmd__empty" hidden>Nothing matches. Try a name or a number.</p>
+  <div class="dui-cmd__foot"><span><span class="dui-kbd">↑</span> <span class="dui-kbd">↓</span> to move</span><span><span class="dui-kbd">Enter</span> to open</span><span><span class="dui-kbd">Esc</span> to close</span></div>
+</dialog>
+</body>
+</html>

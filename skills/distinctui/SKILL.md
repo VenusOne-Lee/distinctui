@@ -97,6 +97,14 @@ Worked pages are in `examples/`. Open the closest one before building a similar 
 |  | `work-admin.html` | Workspace settings: roles, SSO, SCIM, API keys, billing, typed-name delete |
 |  | `work-states.html` | Loading, empty, no results, error, no access, read only, long text |
 |  | `work-trust.html` | The trust page a buyer's security team reads: reports, plans, questions |
+|  | `work-signin.html` | Sign in with the company's own sign-in, then pick a workspace, each with its own colour |
+|  | `work-request.html` | A purchase request: the rules beside the form, who'll sign worked out, the one thing to fix |
+|  | `work-invoice.html` | An invoice checked against contract, order and delivery; a bank-detail change called out |
+|  | `work-people.html` | People and roles: synced from the directory, roles in place, seats, invites |
+|  | `work-board.html` | A hiring board: a column per stage, a button on every card, no photos while screening |
+|  | `work-desk.html` | A support desk: the queue beside the case, a dashed team note, a reply that says what it needs |
+|  | `work-rota.html` | A shift rota: people by days, cover counted with a black !, leave and what it changes |
+|  | `work-field.html` | A driver's phone: one stop at a time, big buttons, offline said plainly |
 | System pages | `notfound.html` | A 404 page |
 |  | `error.html` | A server error, offline and maintenance |
 |  | `email.html` | A transactional email (tables and inline styles) |

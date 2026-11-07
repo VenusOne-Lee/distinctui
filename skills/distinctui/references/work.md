@@ -11,7 +11,9 @@ Load the work layer after the core files:
 <script src="distinctui-work.js" defer></script>
 ```
 
-The worked example is Quarry, an invented contracts app, in nine templates: `work-home`, `work-table`, `work-console`, `work-approvals`, `work-reports`, `work-audit`, `work-admin`, `work-states` and `work-trust`. Open the closest one before building.
+The worked example is Brightwater Logistics, an invented company, and four invented apps it uses, in seventeen templates. Quarry, for contracts and money: `work-home`, `work-table`, `work-console`, `work-approvals`, `work-reports`, `work-audit`, `work-admin`, `work-states`, `work-trust`, `work-signin`, `work-request`, `work-invoice` and `work-people`. Intake, for hiring: `work-board`. Kettle, for support: `work-desk`. Roster, for shifts: `work-rota` and `work-field` (a phone app). Open the closest one before building.
+
+The same people appear in every app with the same ring. Only Brightwater's workspace mark carries its colour; a second customer's workspace (`work-signin`) carries its own.
 
 ## The nine extra rules
 

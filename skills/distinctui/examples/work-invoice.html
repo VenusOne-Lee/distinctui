@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Invoice INV-88412 · Quarry</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: An invoice checked against its contract, order and delivery: the line that's off is bold with a black !, a bank-detail change is called out, and two different people pay. Quarry, Brightwater Logistics, its vendors and its people are invented. */
+  /* Brightwater's colour lives on its workspace mark only. People keep one ring colour each, everywhere. */
+  :root { --dui-signature: #0b6e4f; }
+  .iv { display: grid; gap: 32px; }
+  @media (min-width: 1200px) { .iv { grid-template-columns: minmax(0, 1fr) 21rem; gap: 40px; } }
+  .iv__main, .iv__side { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+  .iv__side { gap: 20px; }
+  .sec { display: flex; flex-direction: column; gap: 14px; }
+  .sec__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .match td.off { font-weight: 700; }
+  .match td.off::before { content: "!"; display: inline-grid; place-items: center; width: 1.125rem; height: 1.125rem; margin-right: 6px; border-radius: 50%; background: var(--dui-black); color: var(--dui-white); font-size: 0.6875rem; font-weight: 800; vertical-align: 1px; }
+  .match tfoot td { font-weight: 600; border-top: 1.5px solid var(--dui-black); }
+  .bank { display: flex; flex-direction: column; gap: 12px; padding: 18px; border: 1.5px solid var(--dui-black); border-radius: var(--dui-radius-card); }
+  .bank b { font-weight: 700; }
+  .bank .dui-props { font-size: var(--dui-text-sm); }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: var(--dui-text-floor); color: var(--dui-grey-600); }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<div class="dui-app" data-density="default">
+<nav class="dui-rail" id="rail" aria-label="Main">
+  <details class="dui-menu">
+    <summary class="dui-ws" aria-label="Workspace: Brightwater Logistics. Switch workspace"><span class="dui-mark" style="--mark-size:2rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span>Brightwater<small>Logistics · 214 people</small></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-down"/></svg></summary>
+    <div class="dui-menu__panel" style="left:0;right:auto">
+      <a class="dui-menu__item" href="work-home.html" aria-current="page">Brightwater Logistics</a>
+      <a class="dui-menu__item" href="work-home.html">Brightwater sandbox</a>
+      <div class="dui-menu__sep"></div>
+      <a class="dui-menu__item" href="work-admin.html">Workspace settings</a>
+    </div>
+  </details>
+  <button class="dui-rail__item" type="button" data-cmd-open style="border:0;background:none;font:inherit;cursor:pointer;width:100%"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search<span class="dui-kbd" style="margin-left:auto">⌘K</span></button>
+  <a href="work-home.html" data-key="g h"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#home"/></svg>Home<span class="dui-kbd" data-single>G H</span></a>
+  <a href="work-console.html" data-key="g i"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#inbox"/></svg>Inbox<span class="dui-count-plain">7</span></a>
+  <p class="dui-rail__label">Work</p>
+  <a href="work-table.html" data-key="g c"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>Contracts<span class="dui-kbd" data-single>G C</span></a>
+  <a href="work-request.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg>Requests</a>
+  <a href="work-approvals.html" data-key="g a"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Approvals<span class="dui-count-plain">3</span></a>
+  <a href="work-invoice.html" aria-current="page"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#bag"/></svg>Invoices<span class="dui-count-plain">1</span></a>
+  <a href="work-reports.html" data-key="g r"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chart"/></svg>Reports<span class="dui-kbd" data-single>G R</span></a>
+  <p class="dui-rail__label">Admin</p>
+  <a href="work-people.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#users"/></svg>People</a>
+  <a href="work-audit.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg>Audit log</a>
+  <a href="work-admin.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#settings"/></svg>Settings</a>
+  <a href="work-states.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#columns"/></svg>States</a>
+  <a class="dui-rail__me" href="work-admin.html#preferences"><span class="dui-mark" data-ring="3" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span><span><b style="display:block;font-weight:600">Lerato Dube</b><span class="dui-count-plain">Approver</span></span></a>
+</nav>
+<div class="dui-main">
+<header class="dui-topbar">
+  <button class="dui-icon-btn dui-topbar__menu" type="button" data-rail-toggle aria-controls="rail" aria-expanded="false" aria-label="Menu"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#menu"/></svg></button>
+  <nav aria-label="Breadcrumbs" style="min-width:0"><ol class="dui-crumbs"><li><a href="work-home.html">Brightwater</a></li><li><a href="work-invoice.html">Invoices</a></li><li aria-current="page">INV-88412</li></ol></nav>
+  <div class="dui-topbar__end">
+    <button class="dui-search dui-topbar__wide" type="button" data-cmd-open><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search contracts, people<span class="dui-kbd">⌘K</span></button>
+    
+    <details class="dui-menu dui-updates">
+  <summary class="dui-icon-btn dui-bell" aria-label="Updates, 2 unread"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#bell"/></svg><span class="dui-count">2</span></summary>
+  <div class="dui-menu__panel">
+    <div class="dui-updates__head"><b>Updates</b><button class="dui-link" type="button" data-mark-read style="border:0;background:none;font:inherit;cursor:pointer">Mark all read</button></div>
+    <ul class="dui-updates__list">
+      <li data-unread><span class="dui-mark" data-ring="4" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-12.jpg" alt=""></span></span><span><b>Pieter Venter signed Fleet telematics renewal</b> as Finance. It waits on you now.<time datetime="2026-11-05T09:14+02:00">5 Nov 2026, 09:14 SAST</time></span></li>
+      <li data-unread><span class="dui-mark" data-ring="5" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span><span><b>Kaya Cloud is still blocked</b>. The tax certificate is 32 days late.<time datetime="2026-11-07T08:00+02:00">7 Nov 2026, 08:00 SAST</time></span></li>
+      <li><span class="dui-mark" data-ring="1" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-5.jpg" alt=""></span></span><span>Naledi Sithole sent 2 contracts for approval.<time datetime="2026-11-04T15:02+02:00">4 Nov 2026, 15:02 SAST</time></span></li>
+    </ul>
+  </div>
+</details>
+  </div>
+</header>
+<main id="main" class="dui-content">
+<div class="dui-head">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <p class="dui-meta">INV-88412 · Tracklane · <span class="dui-st" data-st="blocked">On hold, doesn't match</span></p>
+    <h1 class="dui-h1">Invoice for <b>October</b></h1>
+  </div>
+  <div class="dui-actions">
+    <button class="dui-btn-sm-ghost" type="button" data-dialog-open="#credit"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#mail"/></svg>Ask for a credit note</button>
+    <button class="dui-btn-sm" type="button" aria-disabled="true" aria-describedby="pay-why" style="opacity:.4;cursor:not-allowed">Pay R 111 733</button>
+  </div>
+</div>
+
+<div data-notices></div>
+
+<div class="iv">
+  <div class="iv__main">
+    <p class="dui-body" id="pay-why" style="max-width:62ch">The monthly service matches the contract and what arrived. <b>Installation is R 3 600 more than the quote.</b> Pay the rest now, or wait for Tracklane's credit note.</p>
+
+    <section class="sec" aria-labelledby="match-h">
+      <div class="sec__head"><h2 class="dui-h4" id="match-h">Contract, order, delivery and invoice</h2><span class="legend"><span>All amounts in rand, excluding VAT</span></span></div>
+      <div class="dui-data-wrap">
+        <table class="dui-data match">
+          <thead><tr><th class="dui-pin">Line</th><th class="dui-num">Contract</th><th class="dui-num">Order</th><th class="dui-num">Received</th><th class="dui-num">Invoice</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td class="dui-pin">Monthly service, 212 trucks</td><td class="dui-num">103 333</td><td class="dui-num">103 333</td><td class="dui-num">212 live</td><td class="dui-num">103 333</td><td class="dui-faint">Matches</td></tr>
+            <tr><td class="dui-pin">Installation, 6 new trucks</td><td class="dui-num">800 each</td><td class="dui-num">4 800</td><td class="dui-num">6 fitted</td><td class="dui-num off">8 400</td><td>R 1 400 each, not R 800</td></tr>
+          </tbody>
+          <tfoot><tr><td class="dui-pin">Total</td><td class="dui-num"></td><td class="dui-num">108 133</td><td class="dui-num"></td><td class="dui-num">111 733</td><td>R 3 600 over</td></tr></tfoot>
+        </table>
+      </div>
+      <div class="dui-actions">
+        <button class="dui-btn-sm-ghost" type="button" data-done="Paid R 103 333. The rest waits.">Pay the lines that match, R 103 333</button>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="act-h">
+      <h2 class="dui-h4" id="act-h">What happened</h2>
+      <ul class="dui-feed">
+        <li><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="img/portrait-7.jpg" alt=""></span></span><span><b>Thabo Mokoena</b> put it on hold: installation is over the quote</span><time datetime="2026-11-06T14:20+02:00">6 Nov 2026, 14:20 SAST</time></li>
+        <li><span class="dui-mark dui-mark--sm" data-ring="5"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span><span><b>Rahul Naidoo</b> confirmed 6 trucks were fitted</span><time datetime="2026-11-04T08:55+02:00">4 Nov 2026, 08:55 SAST</time></li>
+        <li><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#mail"/></svg><span>Arrived by email from accounts@tracklane.example and was read by Quarry</span><time datetime="2026-11-03T06:12+02:00">3 Nov 2026, 06:12 SAST</time></li>
+      </ul>
+    </section>
+  </div>
+
+  <aside class="iv__side" aria-label="Payment">
+    <section class="bank" aria-labelledby="bank-h">
+      <h2 class="dui-h4" id="bank-h" style="font-size:var(--dui-text-base)"><b>Tracklane's bank details changed 2 days ago</b></h2>
+      <p class="dui-meta" style="color:var(--dui-grey-800)">Call Tracklane on the number in the contract, not the one on the invoice, before anyone pays. This is how most invoice fraud starts.</p>
+      <dl class="dui-props">
+        <dt>Bank</dt><dd>Same bank</dd>
+        <dt>Account</dt><dd>Ends in 4471 (was 0932)</dd>
+        <dt>Changed by</dt><dd>Tracklane, through the supplier portal</dd>
+      </dl>
+      <button class="dui-btn-sm" type="button" data-dialog-open="#verify"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#phone"/></svg>I called and checked</button>
+    </section>
+    <section class="dui-panel sec" aria-labelledby="sum-h">
+      <h2 class="dui-h4" id="sum-h" style="font-size:var(--dui-text-base)">This invoice</h2>
+      <dl class="dui-props">
+        <dt>Contract</dt><dd><a class="dui-link" href="work-approvals.html">Fleet telematics</a></dd>
+        <dt>Order</dt><dd>PO-55120</dd>
+        <dt>Dated</dt><dd>31 Oct 2026</dd>
+        <dt>Due</dt><dd>30 Nov 2026</dd>
+        <dt>Pay run</dt><dd>Friday 13 Nov</dd>
+        <dt>Owner</dt><dd><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="img/portrait-7.jpg" alt=""></span></span><span>Thabo Mokoena</span></span></dd>
+      </dl>
+    </section>
+    <div class="dui-lock">
+      <b>Two people pay an invoice</b>
+      <span>Thabo releases the payment and Pieter approves the pay run. Nobody can do both.</span>
+    </div>
+  </aside>
+</div>
+
+<dialog class="dui-dialog" id="credit" aria-labelledby="credit-h">
+  <h2 class="dui-h4" id="credit-h">Ask Tracklane for a credit note</h2>
+  <p class="dui-meta" style="color:var(--dui-grey-800)">It goes to accounts@tracklane.example from Quarry, with the quote attached.</p>
+  <label class="dui-label" for="credit-msg">Message</label>
+  <textarea class="dui-textarea" id="credit-msg">Please send a credit note for R 3 600. The quote for installing 6 units was R 800 each, and the invoice says R 1 400.</textarea>
+  <div class="dui-actions"><button class="dui-btn-sm" type="button" data-dialog-close>Send</button><button class="dui-btn-sm-ghost" type="button" data-dialog-close>Cancel</button></div>
+</dialog>
+
+<dialog class="dui-dialog" id="verify" aria-labelledby="verify-h">
+  <h2 class="dui-h4" id="verify-h">Who did you speak to?</h2>
+  <p class="dui-meta" style="color:var(--dui-grey-800)">This goes in the audit log with your name and the time.</p>
+  <label class="dui-label" for="verify-name">Name at Tracklane</label>
+  <input class="dui-input" id="verify-name" placeholder="Their name">
+  <label class="dui-label" for="verify-num">Number you called</label>
+  <input class="dui-input" id="verify-num" inputmode="tel" placeholder="From the contract">
+  <div class="dui-actions"><button class="dui-btn-sm" type="button" data-dialog-close>Save</button><button class="dui-btn-sm-ghost" type="button" data-dialog-close>Cancel</button></div>
+</dialog>
+</main>
+</div>
+</div>
+<dialog class="dui-dialog dui-cmd" aria-label="Search and commands">
+  <div class="dui-cmd__q"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg><input type="text" placeholder="Type a command, a contract or a person" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="cmd-list" autocomplete="off"></div>
+  <ul class="dui-cmd__list" id="cmd-list" role="listbox" aria-label="Commands">
+
+    <li class="dui-cmd__group" role="presentation">Contracts</li>
+    <li class="dui-cmd__opt" data-href="work-approvals.html" data-words="tracklane QC-2041"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>Fleet telematics renewal<span class="dui-meta">QC-2041</span></li>
+    <li class="dui-cmd__opt" data-href="work-table.html" data-words="sunfield QC-2029"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>Solar power purchase<span class="dui-meta">QC-2029</span></li>
+    <li class="dui-cmd__group" role="presentation">Go to</li>
+    <li class="dui-cmd__opt" data-href="work-home.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Home<span class="dui-kbd" data-single>G H</span></li>
+    <li class="dui-cmd__opt" data-href="work-table.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Contracts<span class="dui-kbd" data-single>G C</span></li>
+    <li class="dui-cmd__opt" data-href="work-console.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Inbox<span class="dui-kbd" data-single>G I</span></li>
+    <li class="dui-cmd__opt" data-href="work-approvals.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Approvals<span class="dui-kbd" data-single>G A</span></li>
+    <li class="dui-cmd__opt" data-href="work-reports.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Reports<span class="dui-kbd" data-single>G R</span></li>
+    <li class="dui-cmd__opt" data-href="work-audit.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Audit log</li>
+    <li class="dui-cmd__opt" data-href="work-admin.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Settings</li>
+    <li class="dui-cmd__group" role="presentation">Settings</li>
+    <li class="dui-cmd__opt" data-href="work-admin.html#preferences" data-words="keyboard shortcuts speech"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#settings"/></svg>Single-key shortcuts and density</li>
+  </ul>
+  <p class="dui-cmd__empty" hidden>Nothing matches. Try a contract number, a vendor or a person.</p>
+  <div class="dui-cmd__foot"><span><span class="dui-kbd">↑</span> <span class="dui-kbd">↓</span> to move</span><span><span class="dui-kbd">Enter</span> to open</span><span><span class="dui-kbd">Esc</span> to close</span></div>
+</dialog>
+</body>
+</html>

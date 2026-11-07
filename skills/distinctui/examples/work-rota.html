@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Rota · Roster</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: A shift rota: people down the side, days across, cover counted at the foot with a black ! where it's short, and leave decided beside it with what it changes. Roster, Brightwater Logistics and everyone here are invented. */
+  /* Brightwater's colour lives on its workspace mark only. People keep one ring colour each, everywhere. */
+  :root { --dui-signature: #0b6e4f; }
+  .wk { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+  .wk__nav { display: flex; gap: 8px; align-items: center; }
+  .rota { display: grid; gap: 28px; }
+  @media (min-width: 1560px) { .rota { grid-template-columns: minmax(0, 1fr) 21rem; } }
+  @media (min-width: 1000px) and (max-width: 1559px) { .rota aside { display: grid !important; grid-template-columns: 1fr 1fr; align-items: start; } }
+  .rota-table th { white-space: nowrap; }
+  .rota-table th small { display: block; font-weight: 400; color: var(--dui-grey-600); font-size: var(--dui-text-floor); }
+  .rota-table .dui-who br + span { font-size: var(--dui-text-floor); }
+  .sh { min-width: 6rem; }
+  .sh--off { color: var(--dui-grey-400); }
+  .shift { display: flex; flex-direction: column; gap: 1px; padding: 6px 10px; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-input); font-size: var(--dui-text-floor); line-height: 1.3; }
+  .shift b { font-weight: 600; font-size: var(--dui-text-sm); }
+  .shift span { color: var(--dui-grey-600); }
+  .shift--leave { border-style: dashed; color: var(--dui-grey-600); font-size: var(--dui-text-sm); }
+  .shift--ask { border: 1.5px dashed var(--dui-black); }
+  .cover { font-variant-numeric: tabular-nums; color: var(--dui-grey-600); }
+  .cover--short { color: var(--dui-black); }
+  .cover--short b { font-weight: 700; }
+  .cover--short b::before { content: "!"; display: inline-grid; place-items: center; width: 1rem; height: 1rem; margin-right: 4px; border-radius: 50%; background: var(--dui-black); color: var(--dui-white); font-size: .625rem; font-weight: 800; vertical-align: 1px; }
+  tfoot td, tfoot th { border-top: 1.5px solid var(--dui-black); }
+  .req { display: flex; flex-direction: column; gap: 14px; }
+  .req__top { display: flex; gap: 12px; align-items: center; }
+  .req__top b { display: block; font-weight: 600; }
+  .effect { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: var(--dui-text-sm); }
+  .effect li { display: flex; gap: 10px; align-items: flex-start; }
+  .effect li svg { flex-shrink: 0; margin-top: 2px; }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<div class="dui-app" data-density="default">
+<nav class="dui-rail" id="rail" aria-label="Main">
+  <details class="dui-menu">
+    <summary class="dui-ws" aria-label="Workspace: Brightwater Logistics. Switch workspace"><span class="dui-mark" style="--mark-size:2rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span>Brightwater<small>Roster · Logistics</small></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-down"/></svg></summary>
+    <div class="dui-menu__panel" style="left:0;right:auto">
+      <a class="dui-menu__item" href="work-rota.html" aria-current="page">Brightwater Logistics</a>
+      <a class="dui-menu__item" href="work-signin.html">Switch workspace</a>
+      <div class="dui-menu__sep"></div>
+      <a class="dui-menu__item" href="work-home.html">Open Quarry</a>
+    </div>
+  </details>
+  <button class="dui-rail__item" type="button" data-cmd-open style="border:0;background:none;font:inherit;cursor:pointer;width:100%"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search<span class="dui-kbd" style="margin-left:auto">⌘K</span></button>
+  <a href="work-rota.html" aria-current="page"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#calendar"/></svg>Rota</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#clock"/></svg>Leave<span class="dui-count-plain">2</span></a>
+  <p class="dui-rail__label">Roster</p>
+  <a href="work-field.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#truck"/></svg>Today's runs</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#users"/></svg>Drivers</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chart"/></svg>Hours</a>
+  <a class="dui-rail__me" href="#"><span class="dui-mark" data-ring="5" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span><span><b style="display:block;font-weight:600">Rahul Naidoo</b><span class="dui-count-plain">Depot manager</span></span></a>
+</nav>
+<div class="dui-main">
+<header class="dui-topbar">
+  <button class="dui-icon-btn dui-topbar__menu" type="button" data-rail-toggle aria-controls="rail" aria-expanded="false" aria-label="Menu"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#menu"/></svg></button>
+  <nav aria-label="Breadcrumbs" style="min-width:0"><ol class="dui-crumbs"><li><a href="work-rota.html">Rota</a></li><li aria-current="page">9 to 15 Nov</li></ol></nav>
+  <div class="dui-topbar__end">
+    <button class="dui-search dui-topbar__wide" type="button" data-cmd-open><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search drivers, shifts<span class="dui-kbd">⌘K</span></button>
+    
+  </div>
+</header>
+<main id="main" class="dui-content">
+<div class="dui-head">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <p class="dui-meta">Durban depot · drivers</p>
+    <h1 class="dui-h1">Rota for <b>9 to 15 November</b></h1>
+  </div>
+  <div class="dui-actions">
+    <button class="dui-btn-sm-ghost" type="button"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg><span class="dui-sr-only">Last week</span></button>
+    <button class="dui-btn-sm-ghost" type="button"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg><span class="dui-sr-only">Next week</span></button>
+    <button class="dui-btn-sm" type="button" data-done="Published to 5 drivers"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#send"/></svg>Publish the week</button>
+  </div>
+</div>
+
+<div data-notices></div>
+
+<div class="rota">
+  <section style="display:flex;flex-direction:column;gap:12px;min-width:0" aria-labelledby="grid-h">
+    <h2 class="dui-sr-only" id="grid-h">Shifts</h2>
+    <div class="dui-data-wrap">
+      <table class="dui-data rota-table">
+        <thead><tr><th class="dui-pin">Driver</th><th>Mon<small>9 Nov</small></th><th>Tue<small>10 Nov</small></th><th>Wed<small>11 Nov</small></th><th>Thu<small>12 Nov</small></th><th>Fri<small>13 Nov</small></th><th>Sat<small>14 Nov</small></th><th>Sun<small>15 Nov</small></th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="img/portrait-6.jpg" alt=""></span></span><span><b style="font-weight:600">Johan Adams</b><br><span class="dui-faint">40 h this week</span></span></span></td>
+          <td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh sh--off">Off</td><td class="sh sh--off">Off</td>
+        </tr>
+        <tr>
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="3"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span></span><span><b style="font-weight:600">Zanele Mthembu</b><br><span class="dui-faint">40 h this week</span></span></span></td>
+          <td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh"><span class="shift shift--ask"><b>Late</b><span>Asked for leave</span></span></td><td class="sh"><span class="shift shift--ask"><b>Late</b><span>Asked for leave</span></span></td><td class="sh sh--off">Off</td><td class="sh sh--off">Off</td>
+        </tr>
+        <tr>
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark" data-ring="4" style="--mark-size:2rem"><span class="dui-mark__inner">BS</span></span><span><b style="font-weight:600">Bongani Shezi</b><br><span class="dui-faint">32 h this week</span></span></span></td>
+          <td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh sh--off">Off</td><td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh sh--off">Off</td><td class="sh sh--off">Off</td>
+        </tr>
+        <tr>
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark" data-ring="5" style="--mark-size:2rem"><span class="dui-mark__inner">LP</span></span><span><b style="font-weight:600">Lindiwe Pillay</b><br><span class="dui-faint">40 h this week</span></span></span></td>
+          <td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Late</b><span>13:00–21:00</span></span></td><td class="sh sh--off">Off</td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh sh--off">Off</td>
+        </tr>
+        <tr>
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark" data-ring="2" style="--mark-size:2rem"><span class="dui-mark__inner">WV</span></span><span><b style="font-weight:600">Willem van Wyk</b><br><span class="dui-faint">16 h this week</span></span></span></td>
+          <td class="sh"><span class="shift shift--leave">Leave</span></td><td class="sh"><span class="shift shift--leave">Leave</span></td><td class="sh"><span class="shift shift--leave">Leave</span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh"><span class="shift"><b>Early</b><span>05:00–13:00</span></span></td><td class="sh sh--off">Off</td><td class="sh sh--off">Off</td>
+        </tr>
+        </tbody>
+        <tfoot><tr><th class="dui-pin" scope="row">Cover, early · late<br><span class="dui-faint" style="font-weight:400;font-size:var(--dui-text-floor)">Weekdays need 2 · 2, weekends 1 early</span></th><td class="sh cover">2 · 2</td><td class="sh cover">2 · 2</td><td class="sh cover">2 · 2</td><td class="sh cover">2 · 2</td><td class="sh cover">2 · 2</td><td class="sh cover">1 · —</td><td class="sh cover cover--short"><b>0 of 1</b> · —</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="dui-meta" style="font-size:var(--dui-text-floor)">Drivers see their own week on their phones once it's published. Nobody can be put on more than 45 hours a week, or start within 12 hours of their last shift.</p>
+  </section>
+
+  <aside style="display:flex;flex-direction:column;gap:20px" aria-label="Leave to decide">
+    <section class="dui-card req" aria-labelledby="req-h">
+      <div class="req__top"><span class="dui-mark" data-ring="3" data-live="false" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="img/portrait-4.jpg" alt=""></span></span><span><b id="req-h">Zanele asks for Thu and Fri off</b><span class="dui-meta">Family leave · asked 6 Nov</span></span></div>
+      <ul class="effect">
+        <li><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#x"/></svg><span><b>The late shift drops to 1 of 2 on Thursday and Friday.</b></span></li>
+        <li><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg><span>Bongani is off on Thursday and can cover it. He'd be on 40 of 45 hours.</span></li>
+        <li><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#x"/></svg><span>Nobody is free on Friday afternoon with 12 hours' rest. Ask the Pinetown depot.</span></li>
+        <li><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg><span>Zanele has 3 days of family leave left this year.</span></li>
+      </ul>
+      <div class="dui-actions">
+        <button class="dui-btn-sm" type="button" data-done="Approved. Bongani is asked">Approve, ask Bongani</button>
+        <button class="dui-btn-sm-ghost" type="button" data-dialog-open="#decline">Decline</button>
+      </div>
+    </section>
+    <section class="dui-panel req" aria-labelledby="req2-h">
+      <div class="req__top"><span class="dui-mark" data-ring="5" style="--mark-size:2.75rem"><span class="dui-mark__inner">LP</span></span><span><b id="req2-h">Lindiwe asks Bongani to take her Saturday</b><span class="dui-meta">Asked 7 Nov · Bongani said yes</span></span></div>
+      <p class="dui-meta" style="color:var(--dui-grey-800)">Cover stays the same. <b style="color:var(--dui-black)">If Bongani also covers Thursday, he'd be on 48 hours, over the 45-hour limit.</b> Decide Zanele's leave first.</p>
+      <div class="dui-actions"><button class="dui-btn-sm-ghost" type="button" data-done="Swapped">Swap them</button></div>
+    </section>
+  </aside>
+</div>
+
+<dialog class="dui-dialog" id="decline" aria-labelledby="decline-h">
+  <h2 class="dui-h4" id="decline-h">Decline Zanele's leave?</h2>
+  <p class="dui-meta" style="color:var(--dui-grey-800)">She gets your reason on her phone. Family leave is hers by law, so say what you can offer instead.</p>
+  <label class="dui-label" for="why">Your reason</label>
+  <textarea class="dui-textarea" id="why"></textarea>
+  <div class="dui-actions"><button class="dui-btn-sm" type="button" data-dialog-close>Decline</button><button class="dui-btn-sm-ghost" type="button" data-dialog-close>Keep it open</button></div>
+</dialog>
+</main>
+</div>
+</div>
+<dialog class="dui-dialog dui-cmd" aria-label="Search and commands">
+  <div class="dui-cmd__q"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg><input type="text" placeholder="Type a command or a name" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="cmd-list" autocomplete="off"></div>
+  <ul class="dui-cmd__list" id="cmd-list" role="listbox" aria-label="Commands">
+
+    <li class="dui-cmd__group" role="presentation">Go to</li>
+    <li class="dui-cmd__opt" data-href="work-rota.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Rota</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Leave</li>
+    <li class="dui-cmd__opt" data-href="work-field.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Today's runs</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Drivers</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Hours</li>
+  </ul>
+  <p class="dui-cmd__empty" hidden>Nothing matches. Try a name or a number.</p>
+  <div class="dui-cmd__foot"><span><span class="dui-kbd">↑</span> <span class="dui-kbd">↓</span> to move</span><span><span class="dui-kbd">Enter</span> to open</span><span><span class="dui-kbd">Esc</span> to close</span></div>
+</dialog>
+</body>
+</html>

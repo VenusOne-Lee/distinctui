@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Delivery arrived warm · Kettle</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: A support desk: the queue beside the open case, the customer's words, a dashed team note only staff see, a reply that says what it needs before it can go, and what the agent can't see said plainly. Kettle, Brightwater Logistics and everyone here are invented. */
+  /* Brightwater's colour lives on its workspace mark only. People keep one ring colour each, everywhere. */
+  :root { --dui-signature: #0b6e4f; }
+  .case { display: grid; gap: 0; min-height: 100%; }
+  @media (min-width: 1300px) { .case { grid-template-columns: minmax(0, 1fr) 19rem; } }
+  .thread { display: flex; flex-direction: column; gap: 20px; padding: 24px 32px 40px; min-width: 0; }
+  @media (max-width: 899px) { .thread { padding: 16px max(16px, env(safe-area-inset-right, 0px)) 32px max(16px, env(safe-area-inset-left, 0px)); } }
+  .msg { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; }
+  .msg__body { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-card); font-size: var(--dui-text-md); line-height: 1.55; }
+  .msg__head { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: var(--dui-text-sm); }
+  .msg__head time { color: var(--dui-grey-600); font-size: var(--dui-text-floor); }
+  .msg--note .msg__body { border-style: dashed; background: var(--dui-grey-50); }
+  .msg--note .msg__head span { font-size: var(--dui-text-floor); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .att { display: inline-flex; align-items: center; gap: 8px; font-size: var(--dui-text-sm); }
+  .compose { display: flex; flex-direction: column; gap: 10px; padding: 14px; border: 1.5px solid var(--dui-black); border-radius: var(--dui-radius-card); }
+  .compose__bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .compose__bar .dui-seg { margin-right: auto; }
+  .compose .dui-textarea { border: 0; padding: 4px 2px; min-height: 6rem; }
+  .compose .dui-textarea:focus { border: 0; }
+  .side { display: flex; flex-direction: column; gap: 20px; padding: 24px; border-left: 1px solid var(--dui-grey-200); }
+  @media (max-width: 1299px) { .side { border-left: 0; border-top: 1px solid var(--dui-grey-200); padding: 24px 32px 40px; } }
+  .side h2 { font-size: var(--dui-text-base); }
+  .ships { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; font-size: var(--dui-text-sm); }
+  .ships li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--dui-grey-200); }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<div class="dui-app" data-density="default">
+<nav class="dui-rail" id="rail" aria-label="Main">
+  <details class="dui-menu">
+    <summary class="dui-ws" aria-label="Workspace: Brightwater Logistics. Switch workspace"><span class="dui-mark" style="--mark-size:2rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span>Brightwater<small>Kettle · Logistics</small></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-down"/></svg></summary>
+    <div class="dui-menu__panel" style="left:0;right:auto">
+      <a class="dui-menu__item" href="work-desk.html" aria-current="page">Brightwater Logistics</a>
+      <a class="dui-menu__item" href="work-signin.html">Switch workspace</a>
+      <div class="dui-menu__sep"></div>
+      <a class="dui-menu__item" href="work-home.html">Open Quarry</a>
+    </div>
+  </details>
+  <button class="dui-rail__item" type="button" data-cmd-open style="border:0;background:none;font:inherit;cursor:pointer;width:100%"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search<span class="dui-kbd" style="margin-left:auto">⌘K</span></button>
+  <a href="work-desk.html" aria-current="page"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#inbox"/></svg>My queue<span class="dui-count-plain">4</span></a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#columns"/></svg>All open<span class="dui-count-plain">31</span></a>
+  <p class="dui-rail__label">Kettle</p>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#building"/></svg>Customers</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#message"/></svg>Saved replies</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chart"/></svg>Reports</a>
+  <a class="dui-rail__me" href="#"><span class="dui-mark" data-ring="2" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-9.jpg" alt=""></span></span><span><b style="display:block;font-weight:600">Nomsa Zulu</b><span class="dui-count-plain">Support lead</span></span></a>
+</nav>
+<div class="dui-main">
+<header class="dui-topbar">
+  <button class="dui-icon-btn dui-topbar__menu" type="button" data-rail-toggle aria-controls="rail" aria-expanded="false" aria-label="Menu"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#menu"/></svg></button>
+  <nav aria-label="Breadcrumbs" style="min-width:0"><ol class="dui-crumbs"><li><a href="work-desk.html">My queue</a></li><li aria-current="page">K-7741</li></ol></nav>
+  <div class="dui-topbar__end">
+    <button class="dui-search dui-topbar__wide" type="button" data-cmd-open><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search cases, customers<span class="dui-kbd">⌘K</span></button>
+    
+  </div>
+</header>
+<main id="main" class="dui-content">
+<h1 class="dui-sr-only">My queue</h1>
+<div class="dui-split-view">
+  <div class="dui-split-view__list">
+    <div class="dui-list__head">My queue <span class="dui-count-plain">4</span></div>
+    <ul class="dui-list" aria-label="Cases assigned to you">
+    <li><button class="dui-item" type="button" data-open-item="K-7741" aria-current="true">
+      <span class="dui-mark dui-mark--sm" data-ring="5"><span class="dui-mark__inner"><img src="img/portrait-11.jpg" alt=""></span></span>
+      <span class="dui-item__title">Cold-chain delivery arrived warm</span>
+      <span class="dui-item__id">K-7741</span>
+      <span class="dui-item__meta"><span class="dui-st" data-st="due">Reply due in 42 min</span><span>Karoo Kitchen Supplies</span></span>
+    </button></li>
+    <li><button class="dui-item" type="button" data-open-item="K-7738" aria-current="false">
+      <span class="dui-mark dui-mark--plain" style="--mark-size:2rem"><span class="dui-mark__inner">UP</span></span>
+      <span class="dui-item__title">Driver couldn't find the gate at Unit 4</span>
+      <span class="dui-item__id">K-7738</span>
+      <span class="dui-item__meta"><span class="dui-st" data-st="review">Waiting on Johan</span><span>Umgeni Pharmacy</span></span>
+    </button></li>
+    <li><button class="dui-item" type="button" data-open-item="K-7730" aria-current="false">
+      <span class="dui-mark dui-mark--plain" style="--mark-size:2rem"><span class="dui-mark__inner">BB</span></span>
+      <span class="dui-item__title">Invoice shows the wrong VAT number</span>
+      <span class="dui-item__id">K-7730</span>
+      <span class="dui-item__meta"><span class="dui-st" data-st="draft">Draft reply</span><span>Bayside Bakers</span></span>
+    </button></li>
+    <li><button class="dui-item" type="button" data-open-item="K-7722" aria-current="false">
+      <span class="dui-mark dui-mark--plain" style="--mark-size:2rem"><span class="dui-mark__inner">RH</span></span>
+      <span class="dui-item__title">Can we move Friday's pallets to Monday?</span>
+      <span class="dui-item__id">K-7722</span>
+      <span class="dui-item__meta"><span class="dui-st" data-st="signed">Solved, 6 Nov</span><span>Ridge Hardware</span></span>
+    </button></li>
+    </ul>
+  </div>
+  <div class="dui-split-view__detail">
+  <article class="case" data-detail="K-7741" aria-labelledby="d-K-7741">
+    <div class="thread">
+      <button class="dui-btn-sm-ghost dui-split-view__back" type="button" data-split-back><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg>Queue</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <p class="dui-meta">K-7741 · Karoo Kitchen Supplies · <span class="dui-st" data-st="due">Reply due in 42 min</span></p>
+        <h2 class="dui-h1" id="d-K-7741" tabindex="-1">Delivery arrived <b>warm</b></h2>
+      </div>
+      <div data-notices></div>
+
+      <div class="msg"><span class="dui-mark" data-ring="5" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-11.jpg" alt=""></span></span><div class="msg__body">
+        <div class="msg__head"><b>Amara Okafor</b><span class="dui-meta">Karoo Kitchen Supplies</span><time datetime="2026-11-07T07:48+02:00">7 Nov 2026, 07:48 SAST</time></div>
+        <p>This morning's delivery of frozen stock arrived at 9°C. We can't sell it. The driver said the fridge unit was off since Pietermaritzburg. What happens now?</p>
+        <span class="att"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg><a class="dui-link" href="#">probe-reading.jpg</a></span>
+      </div></div>
+
+      <div class="msg msg--note"><span class="dui-mark" data-ring="1" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-6.jpg" alt=""></span></span><div class="msg__body">
+        <div class="msg__head"><span>Note, only the team sees this</span><b>Johan Adams</b><time datetime="2026-11-07T08:15+02:00">7 Nov 2026, 08:15 SAST</time></div>
+        <p>Truck ND 42 GP. The unit tripped at 05:50 and the alarm went to the old depot number. Workshop has it now. Load was 18 pallets for three customers.</p>
+      </div></div>
+
+      <form class="compose" onsubmit="return false" aria-label="Reply">
+        <div class="compose__bar">
+          <div class="dui-seg" role="radiogroup" aria-label="Who sees it">
+            <label><input type="radio" name="to" checked>Reply to Amara</label>
+            <label><input type="radio" name="to">Team note</label>
+          </div>
+          <button class="dui-btn-sm-ghost" type="button" data-cmd-open>Saved replies<span class="dui-kbd">⌘K</span></button>
+        </div>
+        <label class="dui-sr-only" for="reply">Your reply</label>
+        <textarea class="dui-textarea" id="reply">Amara, I'm sorry. The fridge unit on our truck failed and the alarm didn't reach us. We'll credit the full load, R 48 260, today, and Johan can bring a replacement on Monday's run. Would that work?</textarea>
+        <div class="compose__bar">
+          <span class="dui-meta" style="margin-right:auto">Credits over R 25 000 need Pieter. He's online.</span>
+          <button class="dui-btn-sm-ghost" type="button" data-done="Asked Pieter">Ask Pieter to approve the credit</button>
+          <button class="dui-btn-sm" type="button" data-done="Sent"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#send"/></svg>Send</button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="side" aria-label="About this customer">
+      <section style="display:flex;flex-direction:column;gap:12px">
+        <h2 class="dui-h4">Karoo Kitchen Supplies</h2>
+        <dl class="dui-props">
+          <dt>Customer since</dt><dd>2019</dd>
+          <dt>Plan</dt><dd>Cold chain, weekly</dd>
+          <dt>Account owner</dt><dd><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="img/portrait-9.jpg" alt=""></span></span><span>Nomsa Zulu</span></span></dd>
+          <dt>Open cases</dt><dd>1</dd>
+        </dl>
+      </section>
+      <section style="display:flex;flex-direction:column;gap:8px">
+        <h2 class="dui-h4">Recent deliveries</h2>
+        <ul class="ships">
+          <li><span>7 Nov · 18 pallets</span><span class="dui-st" data-st="blocked">Arrived warm</span></li>
+          <li><span>31 Oct · 16 pallets</span><span class="dui-st" data-st="signed">On time</span></li>
+          <li><span>24 Oct · 17 pallets</span><span class="dui-st" data-st="signed">On time</span></li>
+        </ul>
+      </section>
+      <div class="dui-lock">
+        <b>You can't see Amara's phone number</b>
+        <span>Support sees emails only. Account owners see phone numbers.</span>
+        <button class="dui-btn-sm-ghost" type="button" data-done="Asked">Ask Nomsa</button>
+      </div>
+    </aside>
+  </article>
+  <article class="thread" data-detail="K-7738" hidden aria-labelledby="d-K-7738">
+    <button class="dui-btn-sm-ghost dui-split-view__back" type="button" data-split-back><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg>Queue</button>
+    <p class="dui-meta">K-7738 · Umgeni Pharmacy · <span class="dui-st" data-st="review">Waiting on Johan</span></p>
+    <h2 class="dui-h1" id="d-K-7738" tabindex="-1">Driver couldn't find the gate at Unit <b>4</b></h2>
+    <p class="dui-body">The whole conversation shows here, newest at the bottom.</p>
+  </article>
+  <article class="thread" data-detail="K-7730" hidden aria-labelledby="d-K-7730">
+    <button class="dui-btn-sm-ghost dui-split-view__back" type="button" data-split-back><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg>Queue</button>
+    <p class="dui-meta">K-7730 · Bayside Bakers · <span class="dui-st" data-st="draft">Draft reply</span></p>
+    <h2 class="dui-h1" id="d-K-7730" tabindex="-1">Invoice shows the wrong VAT <b>number</b></h2>
+    <p class="dui-body">The whole conversation shows here, newest at the bottom.</p>
+  </article>
+  <article class="thread" data-detail="K-7722" hidden aria-labelledby="d-K-7722">
+    <button class="dui-btn-sm-ghost dui-split-view__back" type="button" data-split-back><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg>Queue</button>
+    <p class="dui-meta">K-7722 · Ridge Hardware · <span class="dui-st" data-st="signed">Solved, 6 Nov</span></p>
+    <h2 class="dui-h1" id="d-K-7722" tabindex="-1">Can we move Friday's pallets to <b>Monday?</b></h2>
+    <p class="dui-body">The whole conversation shows here, newest at the bottom.</p>
+  </article>
+  </div>
+</div>
+</main>
+</div>
+</div>
+<dialog class="dui-dialog dui-cmd" aria-label="Search and commands">
+  <div class="dui-cmd__q"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg><input type="text" placeholder="Type a command or a name" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="cmd-list" autocomplete="off"></div>
+  <ul class="dui-cmd__list" id="cmd-list" role="listbox" aria-label="Commands">
+    <li class="dui-cmd__group" role="presentation">Saved replies</li>
+    <li class="dui-cmd__opt" data-words="sorry credit warm" data-done="Saved reply added: Credit for a failed delivery."><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#message"/></svg>Credit for a failed delivery</li>
+    <li class="dui-cmd__opt" data-words="reschedule move" data-done="Saved reply added: Move a delivery."><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#message"/></svg>Move a delivery</li>
+    <li class="dui-cmd__group" role="presentation">Assign K-7741</li>
+    <li class="dui-cmd__opt" data-words="assign johan" data-done="Assigned to Johan Adams."><span class="dui-mark" data-ring="1" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-6.jpg" alt=""></span></span>Assign to Johan Adams<span class="dui-meta">Senior driver</span></li>
+    <li class="dui-cmd__group" role="presentation">Go to</li>
+    <li class="dui-cmd__opt" data-href="work-desk.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to My queue</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to All open</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Customers</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Saved replies</li>
+    <li class="dui-cmd__opt" data-href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Reports</li>
+  </ul>
+  <p class="dui-cmd__empty" hidden>Nothing matches. Try a name or a number.</p>
+  <div class="dui-cmd__foot"><span><span class="dui-kbd">↑</span> <span class="dui-kbd">↓</span> to move</span><span><span class="dui-kbd">Enter</span> to open</span><span><span class="dui-kbd">Esc</span> to close</span></div>
+</dialog>
+</body>
+</html>
