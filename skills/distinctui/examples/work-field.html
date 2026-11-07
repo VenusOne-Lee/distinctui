@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Today's run · Roster</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: A driver's phone: one stop at a time, big buttons for gloved hands, what to know at the gate, offline said plainly, and a way to say why a delivery can't happen. Roster, Brightwater Logistics and everyone here are invented. */
+  /* Each workspace's colour lives on its own mark only. */
+  :root { --dui-signature: #0b6e4f; }
+  body { background: var(--dui-white); }
+  .ph { max-width: 30rem; margin: 0 auto; min-height: 100dvh; display: flex; flex-direction: column; }
+  @media (min-width: 600px) { .ph { border-inline: 1px solid var(--dui-grey-200); } }
+  .ph__top { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 12px max(16px, env(safe-area-inset-left, 0px)); padding-top: max(12px, env(safe-area-inset-top, 0px)); background: var(--dui-white); border-bottom: 1px solid var(--dui-grey-200); font-size: var(--dui-text-sm); }
+  .ph__top b { font-weight: 700; }
+  .ph__top .dui-st { margin-left: auto; }
+  .ph__main { flex: 1; display: flex; flex-direction: column; gap: 20px; padding: 20px max(16px, env(safe-area-inset-left, 0px)) 112px; }
+  .now { display: flex; flex-direction: column; gap: 14px; padding: 18px; border: 1.5px solid var(--dui-black); border-radius: var(--dui-radius-feature); }
+  .now__top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .now .dui-props { font-size: var(--dui-text-sm); }
+  .note { display: flex; gap: 10px; padding: 12px 14px; border-radius: var(--dui-radius-input); background: var(--dui-grey-50); font-size: var(--dui-text-sm); }
+  .note svg { flex-shrink: 0; margin-top: 2px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .two .dui-btn-ghost, .now > .dui-btn { justify-content: center; width: 100%; min-height: 3.25rem; }
+  .stops { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .stops li { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--dui-grey-200); font-size: var(--dui-text-sm); }
+  .stops li b { display: block; font-weight: 600; }
+  .stops li .dui-meta { font-size: var(--dui-text-floor); }
+  .stops li[aria-current="step"] b { font-weight: 700; }
+  .stop__n { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid var(--dui-grey-400); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stops li[aria-current="step"] .stop__n { background: var(--dui-black); border-color: var(--dui-black); color: var(--dui-white); }
+  .tabs { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 30rem; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--dui-white); border-top: 1px solid var(--dui-grey-200); padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 2; }
+  .tabs a { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px 12px; font-size: var(--dui-text-floor); color: var(--dui-grey-600); text-decoration: none; min-height: 3.5rem; }
+  .tabs a[aria-current="page"] { color: var(--dui-black); font-weight: 600; box-shadow: inset 0 2px 0 var(--dui-black); }
+  .reasons { display: flex; flex-direction: column; gap: 10px; }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<div class="ph">
+<header class="ph__top"><span class="dui-mark" style="--mark-size:1.75rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span><b>Roster</b> · Brightwater</span><span class="dui-st" data-st="off">Offline</span></header>
+
+<main id="main" class="ph__main">
+  <div class="dui-status" data-tone="alert" role="status">No signal. Stop 3 is saved on your phone and sends when you're back online.</div>
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <p class="dui-meta">Saturday 7 November · truck ND 51 GP</p>
+    <h1 class="dui-h2">Morning, Zanele. <b>3</b> stops to go.</h1>
+    <progress class="dui-progress" max="6" value="3" aria-label="3 of 6 stops done"></progress>
+  </div>
+
+  <section class="now" aria-labelledby="now-h">
+    <div class="now__top"><span class="dui-eyebrow">Stop 4 of 6</span><span class="dui-meta">Due 10:00–12:00</span></div>
+    <h2 class="dui-h3" id="now-h">Umgeni Pharmacy</h2>
+    <dl class="dui-props">
+      <dt>Address</dt><dd>14 Umgeni Road, Durban</dd>
+      <dt>Load</dt><dd>4 pallets, keep at 2 to 8°C</dd>
+      <dt>Fridge</dt><dd>4°C, checked 09:40</dd>
+      <dt>Signs</dt><dd>Whoever's at the counter, with their name</dd>
+    </dl>
+    <p class="note"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#map-pin"/></svg><span><b>Use the Unit 4 gate on Pine Lane.</b> The front gate is locked on Saturdays. Ring twice.</span></p>
+    <div class="two">
+      <a class="dui-btn-ghost" href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#map-pin"/></svg>Directions</a>
+      <a class="dui-btn-ghost" href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#phone"/></svg>Call them</a>
+    </div>
+    <a class="dui-btn" href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#pen"/></svg>Get a signature</a>
+    <button class="dui-link" type="button" data-dialog-open="#cant" style="align-self:center;border:0;background:none;font:inherit;font-size:var(--dui-text-sm);cursor:pointer;min-height:2.75rem">I can't deliver this</button>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:6px" aria-labelledby="run-h">
+    <h2 class="dui-h4" id="run-h">Today's run</h2>
+    <ol class="stops">
+      <li><span class="stop__n">1</span><span><b>Bayside Bakers</b><span class="dui-meta">07:10</span></span><span class="dui-st" data-st="signed">Delivered 07:14</span></li>
+      <li><span class="stop__n">2</span><span><b>Ridge Hardware</b><span class="dui-meta">08:05</span></span><span class="dui-st" data-st="signed">Delivered 08:22</span></li>
+      <li><span class="stop__n">3</span><span><b>Karoo Kitchen Supplies</b><span class="dui-meta">09:00</span></span><span class="dui-st" data-st="signed">Saved on phone</span></li>
+      <li aria-current="step"><span class="stop__n">4</span><span><b>Umgeni Pharmacy</b><span class="dui-meta">10:00–12:00</span></span><span class="dui-st" data-st="review">Now</span></li>
+      <li><span class="stop__n">5</span><span><b>Point Road Clinic</b><span class="dui-meta">12:30–14:00</span></span><span class="dui-st" data-st="draft">Next</span></li>
+      <li><span class="stop__n">6</span><span><b>Harbour Café</b><span class="dui-meta">14:30–16:00</span></span><span class="dui-st" data-st="draft">Last</span></li>
+    </ol>
+  </section>
+</main>
+
+<nav class="tabs" aria-label="Main">
+  <a href="work-field.html" aria-current="page"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#truck"/></svg>Today</a>
+  <a href="work-rota.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#calendar"/></svg>My week</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#clock"/></svg>Leave</a>
+  <a href="#"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#user"/></svg>Me</a>
+</nav>
+</div>
+
+<dialog class="dui-dialog" id="cant" aria-labelledby="cant-h">
+  <h2 class="dui-h4" id="cant-h">Why can't you deliver?</h2>
+  <fieldset class="reasons" style="border:0;margin:0;padding:0">
+    <legend class="dui-sr-only">Reason</legend>
+    <label class="dui-choice"><input type="radio" name="why" checked><span>Nobody there to sign</span></label>
+    <label class="dui-choice"><input type="radio" name="why"><span>Can't get in</span></label>
+    <label class="dui-choice"><input type="radio" name="why"><span>They refused it</span></label>
+    <label class="dui-choice"><input type="radio" name="why"><span>Something's damaged or warm</span></label>
+  </fieldset>
+  <p class="dui-meta" style="color:var(--dui-grey-800)">Rahul at the depot gets this at once and tells you what to do with the load. Take a photo if you can.</p>
+  <div class="dui-actions"><button class="dui-btn-sm" type="button" data-dialog-close>Tell the depot</button><button class="dui-btn-sm-ghost" type="button" data-dialog-close>Back</button></div>
+</dialog>
+</body>
+</html>

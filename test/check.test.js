@@ -65,7 +65,7 @@ test("distinctUI@work: initials in small marks, two rings for one person, single
 
 test("every @work template is in the examples and has no warnings", () => {
   const work = examples.filter((f) => f.startsWith("work-"));
-  assert.equal(work.length, 9);
+  assert.equal(work.length, 17);
   for (const f of work) {
     const r = checkHTML(readFileSync(new URL(f, dir), "utf8"));
     assert.equal(r.warnings, 0, `${f}: ${r.findings.map((x) => x.message).join(" / ")}`);

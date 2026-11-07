@@ -29,7 +29,7 @@ Then ask Claude for the look: "Build the sign-up page in distinctUI. Our signatu
 
 ## distinctUI@work
 
-For apps people use all day, load the work layer after the core files. It adds an app shell, dense tables with selection and a bulk bar, a command menu, approvals, audit trails, reports and settings, all still black, white and grey. See [distinctui.com/work.html](https://distinctui.com/work.html) and [references/work.md](skills/distinctui/references/work.md).
+For apps people use all day, load the work layer after the core files. It adds an app shell, dense tables with selection and a bulk bar, a command menu, approvals, audit trails, reports and settings, all still black, white and grey. Seventeen templates show it in four invented apps: contracts and invoices, hiring, a support desk, and a shift rota with a driver's phone. See [distinctui.com/work.html](https://distinctui.com/work.html) and [references/work.md](skills/distinctui/references/work.md).
 
 ```html
 <link rel="stylesheet" href="distinctui.css">
@@ -55,7 +55,7 @@ claude mcp add --transport http distinctui https://distinctui.com/mcp
 | `get_rules` | The twelve rules, what's left out on purpose, and the values the checker uses |
 | `get_tokens`, `pick_palette` | The tokens, and the five ring palettes with the CSS for each |
 | `list_components`, `get_component` | Copy-ready markup for each component group |
-| `list_templates`, `get_template` | The 42 page templates |
+| `list_templates`, `get_template` | The 50 page templates |
 | `get_reference` | Any reference, such as `page-spec`, `voice` or `review` |
 | `check_page` | Checks HTML against the rules and says how to fix each finding |
 | `check_spec`, `compose_page` | Checks a [page spec](skills/distinctui/references/page-spec.md) and turns it into a finished page |
@@ -174,7 +174,7 @@ skills/distinctui/
   references/page-spec.md  pages written as content, for compose.js and the MCP server
   references/swiftui.md    the SwiftUI package, what maps to what, phone rules
   references/wordpress.md  the WordPress block theme, what maps to what
-  examples/                42 templates in eight groups: marketing, stories, selling,
+  examples/                50 templates in eight groups: marketing, stories, selling,
                            accounts, app screens, at work, help and docs, system pages
 wordpress/distinctui/      the WordPress block theme (theme.json, templates, patterns, the font)
 wordpress/distinctui-plus/ distinctUI+, the builder plugin (canvas, page specs, abilities for Claude)

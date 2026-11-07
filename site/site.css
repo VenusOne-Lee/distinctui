@@ -211,3 +211,21 @@ pre.code { margin: 0; overflow-x: auto; border-radius: var(--dui-radius-panel); 
 .app-frame__view iframe { position: absolute; top: 0; left: 0; border: 0; width: 100%; height: 100%; transform-origin: 0 0; display: block; }
 @media (max-width: 639px) { .rule-text { grid-template-columns: minmax(0, 1fr); } .rule-text > :not(.rule-n), .rule-text > h3 { grid-column: 1; grid-row: auto; } }
 @media (min-width: 1200px) { .specimen .dui-multiples { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* At work: use cases and ideas */
+.uses{display:grid;gap:16px}
+@media (min-width:760px){.uses{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.uses{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.use{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--dui-grey-200);border-radius:var(--dui-radius-card);transition:border-color var(--dui-dur) var(--dui-ease)}
+.use:hover{border-color:var(--dui-black)}
+.use__start{margin:0;font-size:var(--dui-text-sm);line-height:1.7}
+.use__start b{display:block;font-weight:600}
+.use__rules{margin:auto 0 0;display:flex;flex-wrap:wrap;gap:6px;padding-top:6px}
+.use__rules .dui-badge{text-decoration:none;font-size:var(--dui-text-xs)}
+.ideas{list-style:none;margin:0;padding:0;display:grid;gap:0 32px}
+@media (min-width:900px){.ideas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ideas li{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid var(--dui-grey-200);font-size:var(--dui-text-md)}
+.ideas li b{font-weight:600}
+.ideas li .dui-meta{font-size:var(--dui-text-sm);line-height:1.7}
+.frame-tabs{max-width:100%;overflow-x:auto;scrollbar-width:none}
+.frame-tabs label{flex-shrink:0}

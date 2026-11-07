@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>People · Quarry</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../assets/distinctui.css">
+<link rel="stylesheet" href="../assets/distinctui-work.css">
+<style>
+  /* distinctUI@work example: People and roles: synced from the customer's directory, roles changed in place, saved views as tabs, an invite that says what happens next. Quarry, Brightwater Logistics, its vendors and its people are invented. */
+  /* Brightwater's colour lives on its workspace mark only. People keep one ring colour each, everywhere. */
+  :root { --dui-signature: #0b6e4f; }
+  .ppl-tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+  .ppl-tools .dui-search { flex: 0 1 18rem; }
+  .seats { display: grid; gap: 16px; }
+  @media (min-width: 900px) { .seats { grid-template-columns: 1fr 1fr; } }
+  .group { display: flex; flex-direction: column; gap: 8px; }
+  .dui-data .dui-who { align-items: center; }
+  .pp { display: flex; flex-direction: column; gap: 1px; line-height: 1.3; padding-block: 4px; }
+  .pp b { font-weight: 600; }
+  .pp span { font-size: var(--dui-text-floor); color: var(--dui-grey-600); }
+</style>
+<script src="../assets/distinctui.js" defer></script>
+<script src="../assets/distinctui-work.js" defer></script>
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<div class="dui-app" data-density="default">
+<nav class="dui-rail" id="rail" aria-label="Main">
+  <details class="dui-menu">
+    <summary class="dui-ws" aria-label="Workspace: Brightwater Logistics. Switch workspace"><span class="dui-mark" style="--mark-size:2rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span>Brightwater<small>Logistics · 214 people</small></span><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-down"/></svg></summary>
+    <div class="dui-menu__panel" style="left:0;right:auto">
+      <a class="dui-menu__item" href="work-home.html" aria-current="page">Brightwater Logistics</a>
+      <a class="dui-menu__item" href="work-home.html">Brightwater sandbox</a>
+      <div class="dui-menu__sep"></div>
+      <a class="dui-menu__item" href="work-admin.html">Workspace settings</a>
+    </div>
+  </details>
+  <button class="dui-rail__item" type="button" data-cmd-open style="border:0;background:none;font:inherit;cursor:pointer;width:100%"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search<span class="dui-kbd" style="margin-left:auto">⌘K</span></button>
+  <a href="work-home.html" data-key="g h"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#home"/></svg>Home<span class="dui-kbd" data-single>G H</span></a>
+  <a href="work-console.html" data-key="g i"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#inbox"/></svg>Inbox<span class="dui-count-plain">7</span></a>
+  <p class="dui-rail__label">Work</p>
+  <a href="work-table.html" data-key="g c"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>Contracts<span class="dui-kbd" data-single>G C</span></a>
+  <a href="work-request.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg>Requests</a>
+  <a href="work-approvals.html" data-key="g a"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Approvals<span class="dui-count-plain">3</span></a>
+  <a href="work-invoice.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#bag"/></svg>Invoices<span class="dui-count-plain">1</span></a>
+  <a href="work-reports.html" data-key="g r"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#chart"/></svg>Reports<span class="dui-kbd" data-single>G R</span></a>
+  <p class="dui-rail__label">Admin</p>
+  <a href="work-people.html" aria-current="page"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#users"/></svg>People</a>
+  <a href="work-audit.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg>Audit log</a>
+  <a href="work-admin.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#settings"/></svg>Settings</a>
+  <a href="work-states.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#columns"/></svg>States</a>
+  <a class="dui-rail__me" href="work-admin.html#preferences"><span class="dui-mark" data-ring="3" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span><span><b style="display:block;font-weight:600">Lerato Dube</b><span class="dui-count-plain">Approver</span></span></a>
+</nav>
+<div class="dui-main">
+<header class="dui-topbar">
+  <button class="dui-icon-btn dui-topbar__menu" type="button" data-rail-toggle aria-controls="rail" aria-expanded="false" aria-label="Menu"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#menu"/></svg></button>
+  <nav aria-label="Breadcrumbs" style="min-width:0"><ol class="dui-crumbs"><li><a href="work-home.html">Brightwater</a></li><li><a href="work-admin.html">Admin</a></li><li aria-current="page">People</li></ol></nav>
+  <div class="dui-topbar__end">
+    <button class="dui-search dui-topbar__wide" type="button" data-cmd-open><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg>Search contracts, people<span class="dui-kbd">⌘K</span></button>
+    
+    <details class="dui-menu dui-updates">
+  <summary class="dui-icon-btn dui-bell" aria-label="Updates, 2 unread"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#bell"/></svg><span class="dui-count">2</span></summary>
+  <div class="dui-menu__panel">
+    <div class="dui-updates__head"><b>Updates</b><button class="dui-link" type="button" data-mark-read style="border:0;background:none;font:inherit;cursor:pointer">Mark all read</button></div>
+    <ul class="dui-updates__list">
+      <li data-unread><span class="dui-mark" data-ring="4" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-12.jpg" alt=""></span></span><span><b>Pieter Venter signed Fleet telematics renewal</b> as Finance. It waits on you now.<time datetime="2026-11-05T09:14+02:00">5 Nov 2026, 09:14 SAST</time></span></li>
+      <li data-unread><span class="dui-mark" data-ring="5" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span><span><b>Kaya Cloud is still blocked</b>. The tax certificate is 32 days late.<time datetime="2026-11-07T08:00+02:00">7 Nov 2026, 08:00 SAST</time></span></li>
+      <li><span class="dui-mark" data-ring="1" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="img/portrait-5.jpg" alt=""></span></span><span>Naledi Sithole sent 2 contracts for approval.<time datetime="2026-11-04T15:02+02:00">4 Nov 2026, 15:02 SAST</time></span></li>
+    </ul>
+  </div>
+</details>
+  </div>
+</header>
+<main id="main" class="dui-content">
+<div class="dui-head">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <h1 class="dui-h1"><b>People</b> at Brightwater</h1>
+    <p class="dui-meta">214 people. Names, teams and who leaves come from Brightwater's own directory.</p>
+  </div>
+  <div class="dui-actions"><button class="dui-btn-sm" type="button" data-dialog-open="#invite"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#plus"/></svg>Invite people</button></div>
+</div>
+
+<div data-notices></div>
+
+<div class="seats">
+  <div class="dui-tile"><span class="dui-tile__label">Seats</span><span class="dui-tile__num"><b>214</b> of 220</span><span class="dui-tile__means">6 left. Admins and auditors don't use a seat.</span></div>
+  <div class="dui-lock">
+    <b>Change names and teams in your directory</b>
+    <span>Brightwater keeps people in sync from its own directory every hour. Roles are set here. Kofi Asante runs the sync.</span>
+    <a class="dui-btn-sm-ghost" href="work-admin.html">Directory sync settings</a>
+  </div>
+</div>
+
+<div data-filter-scope style="display:contents">
+  <div class="ppl-tools">
+    <div class="dui-tabs" role="tablist" aria-label="People">
+      <button class="dui-tab" role="tab" aria-selected="true" type="button" data-filter="all">Everyone</button>
+      <button class="dui-tab" role="tab" aria-selected="false" type="button" data-filter="approvers">Approvers</button>
+      <button class="dui-tab" role="tab" aria-selected="false" type="button" data-filter="admins">Admins</button>
+      <button class="dui-tab" role="tab" aria-selected="false" type="button" data-filter="invited">Invited</button>
+      <button class="dui-tab" role="tab" aria-selected="false" type="button" data-filter="suspended">Suspended</button>
+    </div>
+    <label class="dui-search"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg><input class="dui-field" type="search" placeholder="Filter by name, team or email" aria-label="Filter people" data-filter-rows="#people"></label>
+  </div>
+  <div class="dui-data-wrap">
+    <table class="dui-data">
+      <thead><tr><th class="dui-pin">Person</th><th>Team</th><th>Role</th><th>Status</th><th>Last here</th></tr></thead>
+      <tbody id="people">
+        <tr data-tags="approvers">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="3"><span class="dui-mark__inner"><img src="img/portrait-1.jpg" alt=""></span></span><span class="pp"><b>Lerato Dube</b><span>lerato@brightwater.example</span></span></span></td>
+          <td>Procurement</td>
+          <td><select class="dui-role-select" aria-label="Role for Lerato Dube" data-who="Lerato’s"><option>Viewer</option><option>Editor</option><option selected>Approver</option><option>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="done">Active</span></td>
+          <td>Today, 10:41</td>
+        </tr>
+        <tr data-tags="approvers">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="4"><span class="dui-mark__inner"><img src="img/portrait-12.jpg" alt=""></span></span><span class="pp"><b>Pieter Venter</b><span>pieter@brightwater.example</span></span></span></td>
+          <td>Finance</td>
+          <td><select class="dui-role-select" aria-label="Role for Pieter Venter" data-who="Pieter’s"><option>Viewer</option><option>Editor</option><option selected>Approver</option><option>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="done">Active</span></td>
+          <td>Today, 09:14</td>
+        </tr>
+        <tr data-tags="admins">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="img/portrait-3.jpg" alt=""></span></span><span class="pp"><b>Kofi Asante</b><span>kofi@brightwater.example</span></span></span></td>
+          <td>Legal</td>
+          <td><select class="dui-role-select" aria-label="Role for Kofi Asante" data-who="Kofi’s"><option>Viewer</option><option>Editor</option><option>Approver</option><option>Auditor</option><option selected>Admin</option></select></td>
+          <td><span class="dui-st" data-st="done">Active</span></td>
+          <td>Yesterday</td>
+        </tr>
+        <tr data-tags="">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="img/portrait-2.jpg" alt=""></span></span><span class="pp"><b>Ayanda Khumalo</b><span>ayanda@brightwater.example</span></span></span></td>
+          <td>Fleet</td>
+          <td><select class="dui-role-select" aria-label="Role for Ayanda Khumalo" data-who="Ayanda’s"><option>Viewer</option><option selected>Editor</option><option>Approver</option><option>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="done">Active</span></td>
+          <td>Today, 08:02</td>
+        </tr>
+        <tr data-tags="">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="4"><span class="dui-mark__inner"><img src="img/portrait-8.jpg" alt=""></span></span><span class="pp"><b>Grace Mensah</b><span>grace@brightwater.example</span></span></span></td>
+          <td>Internal audit</td>
+          <td><select class="dui-role-select" aria-label="Role for Grace Mensah" data-who="Grace’s"><option>Viewer</option><option>Editor</option><option>Approver</option><option selected>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="done">Active</span></td>
+          <td>3 Nov 2026</td>
+        </tr>
+        <tr data-tags="">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="img/portrait-5.jpg" alt=""></span></span><span class="pp"><b>Naledi Sithole</b><span>naledi@brightwater.example</span></span></span></td>
+          <td>Procurement</td>
+          <td><select class="dui-role-select" aria-label="Role for Naledi Sithole" data-who="Naledi’s"><option>Viewer</option><option selected>Editor</option><option>Approver</option><option>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="done">Active</span></td>
+          <td>Today, 07:30</td>
+        </tr>
+        <tr data-tags="invited approvers">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="img/portrait-7.jpg" alt=""></span></span><span class="pp"><b>Thabo Mokoena</b><span>thabo@brightwater.example</span></span></span></td>
+          <td>Finance</td>
+          <td><select class="dui-role-select" aria-label="Role for Thabo Mokoena" data-who="Thabo’s"><option>Viewer</option><option>Editor</option><option selected>Approver</option><option>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="draft">Invited 5 Nov</span></td>
+          <td>—</td>
+        </tr>
+        <tr data-tags="">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="5"><span class="dui-mark__inner"><img src="img/portrait-10.jpg" alt=""></span></span><span class="pp"><b>Rahul Naidoo</b><span>rahul@brightwater.example</span></span></span></td>
+          <td>Operations</td>
+          <td><select class="dui-role-select" aria-label="Role for Rahul Naidoo" data-who="Rahul’s"><option>Viewer</option><option selected>Editor</option><option>Approver</option><option>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="done">Active</span></td>
+          <td>Today, 06:55</td>
+        </tr>
+        <tr data-tags="suspended">
+          <td class="dui-pin"><span class="dui-who"><span class="dui-mark dui-mark--sm dui-mark--plain"><span class="dui-mark__inner"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#user"/></svg></span></span><span class="pp"><b>Danie Kruger</b><span>danie.k@contractor.example</span></span></span></td>
+          <td>Contractor, IT</td>
+          <td><select class="dui-role-select" aria-label="Role for Danie Kruger" data-who="Danie’s"><option selected>Viewer</option><option>Editor</option><option>Approver</option><option>Auditor</option><option>Admin</option></select></td>
+          <td><span class="dui-st" data-st="off">Suspended</span></td>
+          <td>12 Oct 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="dui-meta" data-no-results hidden>Nobody matches. Try part of a name or an email.</p>
+</div>
+
+<p class="dui-meta" style="font-size:var(--dui-text-floor)">A suspended person keeps their history and signatures. They can't sign in or see anything until an Admin brings them back.</p>
+
+<dialog class="dui-dialog" id="invite" aria-labelledby="invite-h">
+  <h2 class="dui-h4" id="invite-h">Invite people to Brightwater</h2>
+  <div class="group"><label class="dui-label" for="inv-emails">Work emails <span class="dui-hint">One per line, or paste a list.</span></label>
+  <textarea class="dui-textarea" id="inv-emails" style="min-height:5rem">zanele@brightwater.example</textarea></div>
+  <div class="group"><label class="dui-label" for="inv-role">Role</label>
+  <select class="dui-select" id="inv-role"><option>Viewer</option><option selected>Editor</option><option>Approver</option></select></div>
+  <p class="dui-meta" style="color:var(--dui-grey-800)">They get an email that's valid for 7 days. Only people with a brightwater.example address can join.</p>
+  <div class="dui-actions"><button class="dui-btn-sm" type="button" data-dialog-close>Send invite</button><button class="dui-btn-sm-ghost" type="button" data-dialog-close>Cancel</button></div>
+</dialog>
+</main>
+</div>
+</div>
+<dialog class="dui-dialog dui-cmd" aria-label="Search and commands">
+  <div class="dui-cmd__q"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg><input type="text" placeholder="Type a command, a contract or a person" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="cmd-list" autocomplete="off"></div>
+  <ul class="dui-cmd__list" id="cmd-list" role="listbox" aria-label="Commands">
+
+    <li class="dui-cmd__group" role="presentation">Contracts</li>
+    <li class="dui-cmd__opt" data-href="work-approvals.html" data-words="tracklane QC-2041"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>Fleet telematics renewal<span class="dui-meta">QC-2041</span></li>
+    <li class="dui-cmd__opt" data-href="work-table.html" data-words="sunfield QC-2029"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>Solar power purchase<span class="dui-meta">QC-2029</span></li>
+    <li class="dui-cmd__group" role="presentation">Go to</li>
+    <li class="dui-cmd__opt" data-href="work-home.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Home<span class="dui-kbd" data-single>G H</span></li>
+    <li class="dui-cmd__opt" data-href="work-table.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Contracts<span class="dui-kbd" data-single>G C</span></li>
+    <li class="dui-cmd__opt" data-href="work-console.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Inbox<span class="dui-kbd" data-single>G I</span></li>
+    <li class="dui-cmd__opt" data-href="work-approvals.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Approvals<span class="dui-kbd" data-single>G A</span></li>
+    <li class="dui-cmd__opt" data-href="work-reports.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Reports<span class="dui-kbd" data-single>G R</span></li>
+    <li class="dui-cmd__opt" data-href="work-audit.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Audit log</li>
+    <li class="dui-cmd__opt" data-href="work-admin.html"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg>Go to Settings</li>
+    <li class="dui-cmd__group" role="presentation">Settings</li>
+    <li class="dui-cmd__opt" data-href="work-admin.html#preferences" data-words="keyboard shortcuts speech"><svg class="dui-icon" aria-hidden="true"><use href="../assets/icons.svg#settings"/></svg>Single-key shortcuts and density</li>
+  </ul>
+  <p class="dui-cmd__empty" hidden>Nothing matches. Try a contract number, a vendor or a person.</p>
+  <div class="dui-cmd__foot"><span><span class="dui-kbd">↑</span> <span class="dui-kbd">↓</span> to move</span><span><span class="dui-kbd">Enter</span> to open</span><span><span class="dui-kbd">Esc</span> to close</span></div>
+</dialog>
+</body>
+</html>
