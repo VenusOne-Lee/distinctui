@@ -27,13 +27,13 @@ async function script(a: Act<S>) {
   await a.wait(1600)
   await a.click({ at: 'chart', x: 0.5, y: 0.5 })
   a.put({ table: false })
-  await a.move({ x: 380, y: 250 })
+  await a.move({ x: 440, y: 300 })
   await a.wait(2000)
 }
 
 export function WorkReport() {
   return (
-    <Stage width={400} height={260} initial={initial} poster={poster} script={script} play="once" palette="mono" className="dui-look mo mo-report" cursor={{ at: { x: 380, y: 250 } }}>
+    <Stage width={400} height={260} initial={initial} poster={poster} script={script} play="once" palette="mono" className="dui-look mo mo-report" cursor={{ at: { x: 440, y: 300 } }}>
       {(s) => (
         <div className="mo-card mo-report__card">
           <div className="mo-report__top">

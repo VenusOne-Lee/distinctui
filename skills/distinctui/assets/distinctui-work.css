@@ -25,6 +25,7 @@
 }
 
 /* Density: one switch, every table and list follows it. Default is the middle. */
+:root,
 .dui-app,
 [data-density] {
   --dui-row-h: 2.75rem;      /* 44 */

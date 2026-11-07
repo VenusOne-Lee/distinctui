@@ -150,3 +150,64 @@ pre.code { margin: 0; overflow-x: auto; border-radius: var(--dui-radius-panel); 
 
 /* distinctUI@work page: four moments, two by two */
 @media (min-width: 900px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.work-grid .moment-tile .moment { min-height: 0; }
+.moment-cap { display: flex; flex-direction: column; gap: 6px; }
+.moment-cap h3, .moment-cap p { margin: 0; }
+
+/* distinctUI@work page and the components page: every @work piece, live.
+   The examples themselves live once, in site/work.html; the build copies them. */
+.sec-head { display: flex; flex-direction: column; gap: 8px; }
+.rule-sec { display: grid; gap: 20px; align-items: start; }
+.rule-sec.dui-section { padding-block: 40px; }
+.rule-text { display: grid; gap: 8px 16px; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; max-width: 48rem; }
+.rule-text > :not(.rule-n) { grid-column: 2; }
+.rule-text > h3 { grid-row: 1; }
+.rule-text h3 { margin: 0; font-weight: 700; }
+.rule-text .dui-body { margin: 0; }
+.rule-n { font-size: 1.5rem; font-weight: 300; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.pieces { margin: 0; font-size: var(--dui-text-sm); }
+.pieces::before { content: "Pieces: "; font-weight: 600; color: var(--dui-black); }
+.specimen { border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-card); padding: 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0; background: var(--dui-white); }
+@media (max-width: 639px) { .specimen { padding: 16px; } }
+.spec-stack { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.spec-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.spec-bar > b { font-weight: 700; }
+.markup summary { cursor: pointer; font-size: var(--dui-text-sm); font-weight: 600; width: fit-content; }
+.markup summary:hover { text-decoration: underline; }
+.markup .dui-code { margin-top: 12px; max-height: 26rem; overflow: auto; font-size: 0.8rem; }
+.specimen .dui-data-wrap { max-height: none; }
+.status-key { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 0; font-size: var(--dui-text-sm); }
+.sk-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--dui-grey-200); }
+.sk-dot { width: 1.5rem; height: 1.5rem; min-height: 0; border-radius: 50%; flex: none; }
+.people { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
+.people li { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.people b { display: block; font-weight: 600; }
+.ws-demo { align-self: flex-start; min-width: 16rem; }
+.brand-pick { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.brand-pick legend { width: 100%; margin-bottom: 8px; padding: 0; }
+.brand-pick label { position: relative; display: grid; cursor: pointer; }
+.brand-pick input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.brand-pick i { display: block; width: 2.25rem; height: 2.25rem; border-radius: 50%; border: 3px solid var(--dui-white); box-shadow: 0 0 0 1px var(--dui-grey-200); }
+.brand-pick input:checked + i { box-shadow: 0 0 0 2px var(--dui-black); }
+.brand-pick input:focus-visible + i { outline: 2px solid var(--dui-black); outline-offset: 3px; }
+.heat-wrap { overflow-x: auto; padding-bottom: 4px; }
+.heat-wrap .dui-heat { min-width: 30rem; }
+.role-rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.role-rows li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--dui-grey-200); }
+.specimen .dui-split-view { min-height: 0; border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-panel); overflow: hidden; }
+.specimen .dui-split-view__list { max-height: none; position: static; }
+.split-detail { display: flex; flex-direction: column; gap: 14px; padding: 20px; }
+.more-grid { display: grid; gap: 32px; }
+@media (min-width: 900px) { .more-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .more-cell--wide { grid-column: 1 / -1; } }
+.more-cell { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.more-cell h3 { margin: 0; }
+.more-cell .specimen { margin-top: 8px; }
+.frame-tabs { align-self: flex-start; }
+.app-frame { border: 1px solid var(--dui-grey-200); border-radius: var(--dui-radius-card); overflow: hidden; background: var(--dui-white); }
+.app-frame__bar { display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-bottom: 1px solid var(--dui-grey-200); background: var(--dui-grey-50); }
+.app-frame__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--dui-grey-200); }
+.app-frame__bar span { margin: 0 auto; font-size: var(--dui-text-floor); color: var(--dui-grey-600); transform: translateX(-24px); }
+.app-frame__view { position: relative; overflow: hidden; height: 640px; }
+.app-frame__view iframe { position: absolute; top: 0; left: 0; border: 0; width: 100%; height: 100%; transform-origin: 0 0; display: block; }
+@media (max-width: 639px) { .rule-text { grid-template-columns: minmax(0, 1fr); } .rule-text > :not(.rule-n), .rule-text > h3 { grid-column: 1; grid-row: auto; } }
+@media (min-width: 1200px) { .specimen .dui-multiples { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

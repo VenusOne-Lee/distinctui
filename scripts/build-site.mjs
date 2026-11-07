@@ -34,7 +34,9 @@ const style = `<style>
 @media (max-width:639px){.dsite-bar{grid-template-columns:1fr auto}.dsite-logo,.dsite-code,.dsite-label{display:none}}
 .dsite-step svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @media print{.dsite-bar{display:none}}
-</style>`;
+.dsite-embed .dsite-bar{display:none}
+</style>
+<script>if (self !== top) document.documentElement.classList.add("dsite-embed");</script>`;
 
 templates.forEach(({ slug, name }, i) => {
   const prev = templates[(i - 1 + templates.length) % templates.length];
@@ -55,6 +57,34 @@ templates.forEach(({ slug, name }, i) => {
   if (!/<body[^>]*>/.test(html)) throw new Error(`No <body> in ${file}`);
   writeFileSync(file, html.replace(/<body[^>]*>/, (m) => `${m}\n${bar}`));
 });
+
+// distinctUI@work pieces: each live example on the At work page sits between
+// <!-- piece:name --> and <!-- /piece:name -->. The build fills <!-- markup:name -->
+// with that example's markup, folded under "Show markup", and puts the same live
+// example wherever another page says <!-- include:name -->. One copy to edit.
+{
+  const work = readFileSync("site/work.html", "utf8");
+  const pieces = new Map([...work.matchAll(/<!-- piece:([\w-]+) -->\n([\s\S]*?)\n<!-- \/piece:\1 -->/g)].map(([, name, html]) => [name, html]));
+  const dedent = (html) => {
+    const lines = html.split("\n");
+    const indent = Math.min(...lines.filter((l) => l.trim()).map((l) => l.match(/^ */)[0].length));
+    return lines.map((l) => l.slice(indent)).join("\n");
+  };
+  const code = (html) => dedent(html).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const fill = (file) => {
+    let html = readFileSync(file, "utf8");
+    html = html.replace(/<!-- include:([\w-]+) -->/g, (m, name) => {
+      if (!pieces.has(name)) throw new Error(`No piece "${name}" in site/work.html, asked for by ${file}`);
+      return `<!-- piece:${name} -->\n${pieces.get(name)}\n<!-- /piece:${name} -->\n<!-- markup:${name} -->`;
+    });
+    html = html.replace(/<!-- markup:([\w-]+) -->/g, (m, name) => {
+      if (!pieces.has(name)) throw new Error(`No piece "${name}" in site/work.html, asked for by ${file}`);
+      return `<details class="markup"><summary>Show markup</summary><pre class="dui-code"><code>${code(pieces.get(name))}</code></pre></details>`;
+    });
+    writeFileSync(file, html);
+  };
+  for (const f of ["dist/work.html", "dist/components.html"]) fill(f);
+}
 
 // Moments: faux product UI built with the Stageshow kit (moments/kit, MIT,
 // Benji Taylor) in the distinctUI look, bundled for the Moments page.

@@ -15,15 +15,17 @@ The worked example is Quarry, an invented contracts app, in nine templates: `wor
 
 ## The nine extra rules
 
-1. **Dense, then roomy if you like.** Three row heights: Compact 34px, Default 44px, Airy 56px. Each person chooses, and it's remembered (`input[data-density-set]`). Text never goes below 12px (`--dui-text-floor`).
-2. **States are drawn.** Hover is grey-50. A selected row (`aria-selected="true"`) and a focused row get a black edge. Status is `.dui-st` with `data-st`: `signed` and `done` solid, `review` half, `draft` dashed, `off` grey, `blocked` a black ! and bold words. Always with words.
-3. **One ring colour per person.** Give each person a ring from one palette and keep it everywhere: the table, the inbox, the chain, the updates. Marks under 28px (`.dui-mark--sm` 24px, `--xs` 20px) show a photo, never initials; the script warns in the console if it finds initials.
-4. **Your colour stays on your mark.** A customer's brand colour is `--dui-signature`, and it shows on their workspace mark (`.dui-ws`) only. Nothing else in the app changes colour.
-5. **Who asked is not who signs.** In `.dui-chain`, the requester sits in `.dui-chain__from` with a plain mark, set apart by a hairline. Signers follow in order. A link is solid once signed, dashed (`data-done="false"`) before.
-6. **Personal details are need-to-know.** IP addresses, places and devices are personal information under POPIA. Mark those cells `.dui-private`; they show only when a parent has `data-viewer="admin"` or `"auditor"`. Add a `.dui-private-note` that says who can see them. Dates are full, with the time zone: `5 Nov 2026, 09:14 SAST`, in a `<time datetime>`.
-7. **Shortcuts you can see, and switch off.** Single-key shortcuts (`data-key="a"`, `"g c"`) show as `.dui-kbd` key caps with `data-single`. A switch (`input[data-keys-toggle]`) turns them all off, for speech input and switch users (WCAG 2.1.4); the caps hide with them. The command menu on ⌘K or Ctrl K always works, and every shortcut is also a button or a menu item.
-8. **Undo instead of are you sure.** A bulk action happens at once, then a notice with Undo stays in the page (`distinctUI.notice(text, { undo })`, into `[data-notices]`). No toasts. Only what can't be undone opens a dialog that asks for the typed name (`input[data-confirm-match]`).
-9. **Compare in black.** Series are black small multiples on one shared scale (`.dui-multiples`), never a colour per series. Say the scale in words. Every chart can turn into its table (`[data-view-as]`). A heat map has three steps you can tell apart, with the count printed in each cell.
+They're numbered W1 to W9, so they don't mix with the twelve core rules.
+
+- **W1. Dense, then roomy if you like.** Three row heights: Compact 34px, Default 44px, Airy 56px. Each person chooses, and it's remembered (`input[data-density-set]`). Text never goes below 12px (`--dui-text-floor`).
+- **W2. States are drawn.** Hover is grey-50. A selected row (`aria-selected="true"`) and a focused row get a black edge. Status is `.dui-st` with `data-st`: `signed` and `done` solid, `review` half, `draft` dashed, `off` grey, `blocked` a black ! and bold words. Always with words.
+- **W3. One ring colour per person.** Give each person a ring from one palette and keep it everywhere: the table, the inbox, the chain, the updates. Marks under 28px (`.dui-mark--sm` 24px, `--xs` 20px) show a photo, never initials; the script warns in the console if it finds initials.
+- **W4. Your colour stays on your mark.** A customer's brand colour is `--dui-signature`, and it shows on their workspace mark (`.dui-ws`) only. Nothing else in the app changes colour. To let an admin pick it, put `input[data-brand-set]` radios inside a `[data-brand]` scope.
+- **W5. Who asked is not who signs.** In `.dui-chain`, the requester sits in `.dui-chain__from` with a plain mark, set apart by a hairline. Signers follow in order. A link is solid once signed, dashed (`data-done="false"`) before.
+- **W6. Personal details are need-to-know.** IP addresses, places and devices are personal information under POPIA. Mark those cells `.dui-private`; they show only when a parent has `data-viewer="admin"` or `"auditor"`. Add a `.dui-private-note` that says who can see them. Dates are full, with the time zone: `5 Nov 2026, 09:14 SAST`, in a `<time datetime>`.
+- **W7. Shortcuts you can see, and switch off.** Single-key shortcuts (`data-key="a"`, `"g c"`) show as `.dui-kbd` key caps with `data-single`. A switch (`input[data-keys-toggle]`) turns them all off, for speech input and switch users (WCAG 2.1.4); the caps hide with them. The command menu on ⌘K or Ctrl K always works, and every shortcut is also a button or a menu item.
+- **W8. Undo instead of are you sure.** A bulk action happens at once, then a notice with Undo stays in the page (`distinctUI.notice(text, { undo })`, into `[data-notices]`). No toasts. Only what can't be undone opens a dialog that asks for the typed name (`input[data-confirm-match]`).
+- **W9. Compare in black.** Series are black small multiples on one shared scale (`.dui-multiples`), never a colour per series. Say the scale in words. Every chart can turn into its table (`[data-view-as]`). A heat map has three steps you can tell apart, with the count printed in each cell.
 
 ## Pieces
 
@@ -47,6 +49,8 @@ The worked example is Quarry, an invented contracts app, in nine templates: `wor
 | Settings | `.dui-settings`, `.dui-setting`, `.dui-secret`, `.dui-danger`, `.dui-confirm-name` | Secrets show once, then masked with Copy. |
 | Notices | `.dui-status` in `[data-notices]`, `data-tone="alert"` for something to look at | Stay until closed or undone. |
 | Loading again | `[data-reload="#id"]`, `[data-skeleton]` | Grey shapes, after 300ms. |
+| Workspace colour | `[data-brand]`, `input[data-brand-set][value="#0b6e4f"]` | Sets `--dui-signature` for that scope, so only the workspace mark changes. |
+| Several pieces on one page | `[data-scope]` | Keeps a piece's notices, sign count and states to itself. Without it, they go to the first on the page. |
 
 ## Motion
 

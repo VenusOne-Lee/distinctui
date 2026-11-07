@@ -30,6 +30,10 @@
  *   select[data-viewer-set]          who's looking: admin and auditor see .dui-private cells
  *   [data-mark-read]                 marks every update as read
  *   [data-reload="#id"]              shows loading shapes, then the content again
+ *   input[data-brand-set]            a colour for the nearest [data-brand]: it reaches the
+ *                                    workspace mark and nothing else
+ *   [data-scope]                     keeps a piece's notices, counts and states to itself,
+ *                                    when one page shows more than one piece
  *
  * From your own code:
  *   distinctUI.notice("Sent 2 contracts", { undo: () => … })  a notice that stays until closed
@@ -55,11 +59,13 @@
   const remove = (item) => (ui.remove ? ui.remove(item) : item.remove());
   const roll = (el, n) => (ui.roll ? ui.roll(el, n) : (el.textContent = n));
   const typing = (el) => el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
+  // The nearest [data-scope] around an element, or the whole page.
+  const scope = (el) => (el && el.closest && el.closest("[data-scope]")) || document;
   const changed = (el) => { el.classList.remove("dui-changed"); void el.offsetWidth; el.classList.add("dui-changed"); };
 
   /* ---------- Notices that stay (no toasts) ---------- */
   function notice(text, { undo, where } = {}) {
-    const box = where || $("[data-notices]");
+    const box = (where && (where.matches?.("[data-notices]") ? where : $("[data-notices]", scope(where)))) || $("[data-notices]");
     if (!box) { announce(text); return null; }
     const n = document.createElement("div");
     n.className = "dui-status";
@@ -145,7 +151,7 @@
     const target = o.dataset.click && $(o.dataset.click);
     if (target) target.click();
     document.dispatchEvent(new CustomEvent("dui:command", { detail: { id: o.id, el: o } }));
-    if (o.dataset.done) notice(o.dataset.done);
+    if (o.dataset.done) notice(o.dataset.done, { where: target || (cmdReturn && cmdReturn !== document.body ? cmdReturn : cmd) });
   }
   if (cmd) {
     $$(".dui-cmd__opt", cmd).forEach((o, i) => { o.id ||= "dui-cmd-" + i; o.setAttribute("role", "option"); });
@@ -219,12 +225,12 @@
       const places = rows.map((r) => ({ r, next: r.nextElementSibling, body: r.parentElement }));
       rows.forEach((r) => remove(r));
       setTimeout(() => selection(table), 450);
-      notice(`Archived ${n} ${noun}.`, { undo: () => places.reverse().forEach(({ r, next, body }) => { $("[data-row-check]", r).checked = false; r.removeAttribute("aria-selected"); next && next.isConnected ? body.insertBefore(r, next) : body.append(r); changed(r); }) });
+      notice(`Archived ${n} ${noun}.`, { where: b, undo: () => places.reverse().forEach(({ r, next, body }) => { $("[data-row-check]", r).checked = false; r.removeAttribute("aria-selected"); next && next.isConnected ? body.insertBefore(r, next) : body.append(r); changed(r); }) });
     } else {
       const before = rows.map((r) => { const c = $("[data-cell='stage']", r); return { r, c, html: c?.innerHTML }; });
       before.forEach(({ r, c }) => { if (c) { c.innerHTML = `<span class="dui-st" data-st="${b.dataset.st || "review"}">${b.dataset.label || "In review"}</span>`; } changed(r); });
       clearSelection(table);
-      notice(`${b.dataset.doneWords || "Done"}: ${n} ${noun}.`, { undo: () => before.forEach(({ r, c, html }) => { if (c) c.innerHTML = html; changed(r); }) });
+      notice(`${b.dataset.doneWords || "Done"}: ${n} ${noun}.`, { where: b, undo: () => before.forEach(({ r, c, html }) => { if (c) c.innerHTML = html; changed(r); }) });
     }
   });
 
@@ -314,6 +320,12 @@
       const w = t.closest("[data-view-as]") || $(t.dataset.viewAsSet);
       if (w) w.dataset.viewAs = t.value;
     }
+    if (t.matches("input[data-brand-set]") && t.checked) {
+      const b = t.closest("[data-brand]") || root;
+      b.style.setProperty("--dui-signature", t.value);
+      $$(".dui-ws .dui-mark, [data-brand-mark]", b).forEach(changed);
+      announce(`Workspace colour is now ${t.dataset.name || t.value}`);
+    }
     if (t.matches("select[data-viewer-set]")) {
       const s = t.closest("[data-viewer]") || document.body;
       s.dataset.viewer = t.value;
@@ -322,7 +334,7 @@
     if (t.matches("select.dui-role-select:not([data-viewer-set])")) {
       const row = t.closest("tr, li");
       if (row) changed(row);
-      notice(`${t.dataset.who || "Their"} role is now ${t.value}.`);
+      notice(`${t.dataset.who || "Their"} role is now ${t.value}.`, { where: t });
     }
   });
 
@@ -373,15 +385,16 @@
     if (link && link.classList.contains("dui-chain__link")) link.dataset.done = "true";
     const when = $("[data-when]", step);
     if (when) when.textContent = when.dataset.when;
-    const count = $("[data-sign-count]");
+    const sc = scope(b);
+    const count = $("[data-sign-count]", sc);
     if (count) roll(count, (parseInt(count.textContent, 10) || 0) + 1);
-    $$("[data-sign-state]").forEach((s) => { s.dataset.st = s.dataset.signState; if (s.dataset.signLabel) s.textContent = s.dataset.signLabel; });
-    const tpl = $("template[data-sign-row]"), list = tpl && $(tpl.dataset.signRow);
+    $$("[data-sign-state]", sc).forEach((s) => { s.dataset.st = s.dataset.signState; if (s.dataset.signLabel) s.textContent = s.dataset.signLabel; });
+    const tpl = $("template[data-sign-row]", sc), list = tpl && $(tpl.dataset.signRow);
     if (tpl && list) { const row = tpl.content.firstElementChild.cloneNode(true); add(list, row); changed(row); }
     if (ui.done) ui.done(b, b.dataset.doneWords || "Signed", 2400);
     b.setAttribute("aria-disabled", "true");
-    $$("[data-sign-hide]").forEach((h) => setTimeout(() => remove(h), 700));
-    setTimeout(() => notice(b.dataset.notice || "Signed."), still ? 0 : 700);
+    $$("[data-sign-hide]", sc).forEach((h) => setTimeout(() => remove(h), 700));
+    setTimeout(() => notice(b.dataset.notice || "Signed.", { where: b }), still ? 0 : 700);
   });
 
   /* ---------- Lines that draw in ---------- */

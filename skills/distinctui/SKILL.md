@@ -107,15 +107,15 @@ The example photos in `examples/img/` are AI-generated people, places and produc
 
 For apps people use all day (admin tools, dashboards, back offices), add `assets/distinctui-work.css` and `assets/distinctui-work.js` after the core files. The twelve rules still hold. Read `references/work.md` first; the short version:
 
-- Three row heights (Compact 34px, Default 44px, Airy 56px), chosen by each person and remembered.
-- Rows have drawn states: hover grey-50, selected and focused get a black edge. Status is a shape plus words, never a colour.
-- One ring colour per person, everywhere in the product. Photos only in marks under 28px, never initials.
-- A customer's brand colour goes on their workspace mark only.
-- In an approval, the person who asked sits apart from the people who sign. Dashed means still to sign.
-- IP addresses and places show to Admin and Auditor only (POPIA). Dates are full, with the time zone.
-- Single-key shortcuts show as key caps and have an off switch (WCAG 2.1.4). ⌘K always works.
-- Bulk actions happen, then a notice with Undo stays in the page. Only what can't be undone asks for the typed name.
-- Compare series with black small multiples on one scale, never a colour per series. Every chart can become its table.
+- W1. Three row heights (Compact 34px, Default 44px, Airy 56px), chosen by each person and remembered.
+- W2. Rows have drawn states: hover grey-50, selected and focused get a black edge. Status is a shape plus words, never a colour.
+- W3. One ring colour per person, everywhere in the product. Photos only in marks under 28px, never initials.
+- W4. A customer's brand colour goes on their workspace mark only.
+- W5. In an approval, the person who asked sits apart from the people who sign. Dashed means still to sign.
+- W6. IP addresses and places show to Admin and Auditor only (POPIA). Dates are full, with the time zone.
+- W7. Single-key shortcuts show as key caps and have an off switch (WCAG 2.1.4). ⌘K always works.
+- W8. Bulk actions happen, then a notice with Undo stays in the page. Only what can't be undone asks for the typed name.
+- W9. Compare series with black small multiples on one scale, never a colour per series. Every chart can become its table.
 
 ## Layout
 
