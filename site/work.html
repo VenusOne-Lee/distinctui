@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>At work · distinctUI</title>
+<meta name="description" content="distinctUI@work: the same black, white and grey for the apps people use all day. Dense tables, a command menu, approvals, audit logs, reports and the states nobody draws.">
+<meta property="og:title" content="distinctUI@work">
+<meta property="og:description" content="distinctUI for work apps: tables, approvals, audit logs and reports, still in black, white and grey.">
+<meta property="og:image" content="https://distinctui.com/share-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="/assets/distinctui.css">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/assets/stageshow-look.css">
+<link rel="stylesheet" href="/moments/moments.css">
+</head>
+<body class="dui-page">
+<a class="dui-skip" href="#main">Skip to content</a>
+<header class="dui-container dui-header">
+  <a class="dui-logo" href="/">distinctUI</a>
+  <nav class="dui-nav" aria-label="Main">
+    <span class="wide-nav"><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/work.html" aria-current="page">At work</a><a href="/moments.html">Moments</a><a href="/swiftui.html">SwiftUI</a></span>
+    <a class="dui-btn-sm" href="https://github.com/VenusOne-Lee/distinctui">GitHub</a>
+  </nav>
+</header>
+<nav class="dui-container dui-subnav site-subnav" aria-label="Sections"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/work.html" aria-current="page">At work</a><a href="/moments.html">Moments</a><a href="/swiftui.html">SwiftUI</a></nav>
+
+<main id="main" class="dui-container" style="padding-bottom:96px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
+    <span class="dui-eyebrow">distinctUI@work</span>
+    <h1 class="dui-h1">The same look, for the apps people use <b>all day</b></h1>
+    <p class="dui-lede">Tables with thousands of rows, approvals with an audit trail, settings an admin can trust, and every state drawn. Still black, white and grey, with colour only on people's rings.</p>
+    <div class="dui-actions"><a class="dui-btn" href="/examples/work-home.html">Open the example app</a><a class="dui-btn-ghost" href="/templates.html#work">See the nine templates</a></div>
+  </div>
+
+  <section class="dui-section" aria-labelledby="mo-h">
+    <div style="display:flex;flex-direction:column;gap:8px"><h2 id="mo-h" class="dui-h2">Four things that <b>happen</b> at work</h2>
+    <p class="dui-meta">Built with <a class="dui-link" href="https://benji.org/stageshow">Stageshow</a> by Benji Taylor (MIT), in the distinctUI look. Each plays once when you scroll to it. With reduced motion you see the finished frame.</p></div>
+    <div class="moment-grid work-grid">
+      <div class="moment-tile">
+        <div class="moment" data-moment="work-sign" data-label="An approval card. Kofi and Pieter have signed. Sign as Procurement is pressed, Lerato's dashed ring goes solid, the last link turns solid and the count goes from 2 of 3 to 3 of 3."></div>
+        <h3 class="dui-h4">Sign, in order</h3>
+        <p class="cap">The requester sits apart. The last ring is dashed until she signs, then the link goes solid and the count rolls.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="work-bulk" data-label="A contracts list. Two rows are ticked, a black bar appears with Send for approval, it is pressed, both rows change from Draft to In review and a notice says Sent 2 contracts for approval, with Undo."></div>
+        <h3 class="dui-h4">Send many at once</h3>
+        <p class="cap">Tick two rows and the black bar swaps in. One press changes both, and a notice with Undo stays.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="work-command" data-label="A contract page. Command K opens a menu, assign nal is typed, the list narrows to Assign to Naledi Sithole, Enter is pressed and the owner changes to Naledi Sithole with a notice."></div>
+        <h3 class="dui-h4">Command menu</h3>
+        <p class="cap">⌘K on a white veil. Typing narrows the list, Enter runs the top match, and the page says what changed.</p>
+      </div>
+      <div class="moment-tile">
+        <div class="moment" data-moment="work-report" data-label="Four small black line charts of spend by depot draw in one after another, then Table is pressed and the same numbers show as rows, then Chart again."></div>
+        <h3 class="dui-h4">A report</h3>
+        <p class="cap">Four black lines on one scale draw in turn. The switch turns them into the table they came from.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dui-section" aria-labelledby="rules-h">
+    <h2 id="rules-h" class="dui-h2">Nine extra <b>rules</b></h2>
+    <p class="dui-body">The twelve rules still hold. These are what an app adds.</p>
+    <ol class="dui-rows rules">
+      <li class="dui-row"><span class="n">1</span><div><b>Dense, then roomy if you like.</b> <span class="dui-meta">Three row heights, Compact, Default and Airy, remembered per person. 34, 44 or 56 pixels.</span></div></li>
+      <li class="dui-row"><span class="n">2</span><div><b>States are drawn.</b> <span class="dui-meta">Hover is grey-50, selected and focused rows get a black edge. Status is a shape plus words: solid, half, dashed, or a black !</span></div></li>
+      <li class="dui-row"><span class="n">3</span><div><b>One ring colour per person.</b> <span class="dui-meta">Everywhere in the product. Photos, never initials, in marks under 28 pixels.</span></div></li>
+      <li class="dui-row"><span class="n">4</span><div><b>Your colour stays on your mark.</b> <span class="dui-meta">A customer's brand colour goes on their workspace mark only. Nothing else in the app changes colour.</span></div></li>
+      <li class="dui-row"><span class="n">5</span><div><b>Who asked is not who signs.</b> <span class="dui-meta">In an approval the requester sits apart from the chain, and dashed means still to sign.</span></div></li>
+      <li class="dui-row"><span class="n">6</span><div><b>Personal details are need-to-know.</b> <span class="dui-meta">IP addresses and places show to Admin and Auditor only (POPIA). Dates are full, with the time zone.</span></div></li>
+      <li class="dui-row"><span class="n">7</span><div><b>Shortcuts you can see, and switch off.</b> <span class="dui-meta">Single keys show as key caps and turn off with one switch (WCAG 2.1.4). ⌘K always works.</span></div></li>
+      <li class="dui-row"><span class="n">8</span><div><b>Undo instead of are you sure.</b> <span class="dui-meta">Bulk actions happen, then a notice with Undo stays in the page. Only what can't be undone asks you to type the name.</span></div></li>
+      <li class="dui-row"><span class="n">9</span><div><b>Compare in black.</b> <span class="dui-meta">Small multiples on one shared scale, never a colour per series. Every chart can become its table.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="dui-section" aria-labelledby="use-h">
+    <h2 id="use-h" class="dui-h2">Use <b>it</b></h2>
+    <p class="dui-body">Load the work layer after distinctUI. It adds the app shell, dense tables, the command menu, approvals, charts and settings, and the script that makes them move.</p>
+    <pre class="dui-code"><code>&lt;link rel="stylesheet" href="distinctui.css"&gt;
+&lt;link rel="stylesheet" href="distinctui-work.css"&gt;
+&lt;script src="distinctui.js" defer&gt;&lt;/script&gt;
+&lt;script src="distinctui-work.js" defer&gt;&lt;/script&gt;</code></pre>
+    <p class="dui-body">Or ask Claude with the skill installed: “Build an approvals screen with distinctUI@work.” The rules are in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/work.md">work.md</a>.</p>
+    <div class="dui-actions" style="flex-wrap:wrap"><a class="dui-btn-sm-ghost" href="/examples/work-home.html">Home</a><a class="dui-btn-sm-ghost" href="/examples/work-table.html">Contracts table</a><a class="dui-btn-sm-ghost" href="/examples/work-console.html">Inbox</a><a class="dui-btn-sm-ghost" href="/examples/work-approvals.html">Approval</a><a class="dui-btn-sm-ghost" href="/examples/work-reports.html">Reports</a><a class="dui-btn-sm-ghost" href="/examples/work-audit.html">Audit log</a><a class="dui-btn-sm-ghost" href="/examples/work-admin.html">Settings</a><a class="dui-btn-sm-ghost" href="/examples/work-states.html">States</a><a class="dui-btn-sm-ghost" href="/examples/work-trust.html">Trust page</a></div>
+  </section>
+</main>
+
+
+<footer class="dui-container dui-footer">
+  <span><b>distinctUI</b> distinctui.com</span>
+  <span>The system behind Version One. MIT licence.</span>
+  <nav aria-label="More"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/work.html">At work</a><a href="/moments.html">Moments</a><a href="/swiftui.html">SwiftUI</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://www.npmjs.com/package/@distinctui/css">npm</a><a href="https://versionone.co.za">Version One</a></nav>
+</footer>
+<script src="/assets/distinctui.js" defer></script>
+<script type="module" src="/moments/moments.js"></script>
+</body>
+</html>
