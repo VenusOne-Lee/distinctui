@@ -9,8 +9,10 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
 <link rel="stylesheet" href="/assets/distinctui.css">
+<link rel="stylesheet" href="/assets/distinctui-work.css">
 <link rel="stylesheet" href="/site.css">
 <script src="/assets/distinctui.js" defer></script>
+<script src="/assets/distinctui-work.js" defer></script>
 </head>
 <body class="dui-page">
 <a class="dui-skip" href="#main">Skip to content</a>
@@ -36,11 +38,12 @@
       <div><h2>Components</h2><ul><li><a href="#buttons">Buttons</a></li><li><a href="#badges">Badges</a></li><li><a href="#forms">Forms</a></li><li><a href="#cards">Cards</a></li><li><a href="#mark">Mark</a></li><li><a href="#nav">Menu and tabs</a></li><li><a href="#notices">Notices</a></li><li><a href="#quotes">Quotes</a></li><li><a href="#dates">Dates and amounts</a></li><li><a href="#edges">Announcements</a></li></ul></div>
       <div><h2>Sections</h2><ul><li><a href="#split">Feature with a photo</a></li><li><a href="#how">How it works</a></li><li><a href="#compare">Plan comparison</a></li><li><a href="#signup">Newsletter</a></li><li><a href="#hours">Hours and location</a></li></ul></div>
       <div><h2>Patterns</h2><ul><li><a href="#motion">Motion</a></li><li><a href="#furniture">Furniture</a></li><li><a href="#content">Tables</a></li><li><a href="#controls">Switches</a></li><li><a href="#icons">Icons</a></li></ul></div>
+      <div><h2>At work</h2><ul><li><a href="#work-table">Data table and density</a></li><li><a href="#work-states">Status and loading</a></li><li><a href="#work-people">People</a></li><li><a href="#work-workspace">Workspace switcher</a></li><li><a href="#work-chain">Approval chain</a></li><li><a href="#work-audit">Audit trail and roles</a></li><li><a href="#work-shortcuts">Shortcuts and commands</a></li><li><a href="#work-bulk">Bulk actions and Undo</a></li><li><a href="#work-charts">Numbers and charts</a></li><li><a href="#work-split">List and detail</a></li><li><a href="#work-activity">Activity</a></li><li><a href="#work-lock">Disabled, with a reason</a></li><li><a href="#work-settings">Settings</a></li></ul></div>
     </nav>
   </aside>
   <div class="docs-body">
     <nav class="toc docs-chips" aria-label="On this page">
-      <a class="dui-btn-sm-ghost" href="#colour">Colour</a><a class="dui-btn-sm-ghost" href="#palettes">Palettes</a><a class="dui-btn-sm-ghost" href="#type">Type</a><a class="dui-btn-sm-ghost" href="#shape">Shape</a><a class="dui-btn-sm-ghost" href="#buttons">Buttons</a><a class="dui-btn-sm-ghost" href="#badges">Badges</a><a class="dui-btn-sm-ghost" href="#forms">Forms</a><a class="dui-btn-sm-ghost" href="#cards">Cards</a><a class="dui-btn-sm-ghost" href="#mark">Mark</a><a class="dui-btn-sm-ghost" href="#nav">Menu and tabs</a><a class="dui-btn-sm-ghost" href="#notices">Notices</a><a class="dui-btn-sm-ghost" href="#quotes">Quotes</a><a class="dui-btn-sm-ghost" href="#dates">Dates</a><a class="dui-btn-sm-ghost" href="#edges">Announcements</a><a class="dui-btn-sm-ghost" href="#split">Photo feature</a><a class="dui-btn-sm-ghost" href="#how">How it works</a><a class="dui-btn-sm-ghost" href="#compare">Plans</a><a class="dui-btn-sm-ghost" href="#signup">Newsletter</a><a class="dui-btn-sm-ghost" href="#hours">Hours</a><a class="dui-btn-sm-ghost" href="#motion">Motion</a><a class="dui-btn-sm-ghost" href="#furniture">Furniture</a><a class="dui-btn-sm-ghost" href="#content">Tables</a><a class="dui-btn-sm-ghost" href="#controls">Switches</a><a class="dui-btn-sm-ghost" href="#icons">Icons</a>
+      <a class="dui-btn-sm-ghost" href="#colour">Colour</a><a class="dui-btn-sm-ghost" href="#palettes">Palettes</a><a class="dui-btn-sm-ghost" href="#type">Type</a><a class="dui-btn-sm-ghost" href="#shape">Shape</a><a class="dui-btn-sm-ghost" href="#buttons">Buttons</a><a class="dui-btn-sm-ghost" href="#badges">Badges</a><a class="dui-btn-sm-ghost" href="#forms">Forms</a><a class="dui-btn-sm-ghost" href="#cards">Cards</a><a class="dui-btn-sm-ghost" href="#mark">Mark</a><a class="dui-btn-sm-ghost" href="#nav">Menu and tabs</a><a class="dui-btn-sm-ghost" href="#notices">Notices</a><a class="dui-btn-sm-ghost" href="#quotes">Quotes</a><a class="dui-btn-sm-ghost" href="#dates">Dates</a><a class="dui-btn-sm-ghost" href="#edges">Announcements</a><a class="dui-btn-sm-ghost" href="#split">Photo feature</a><a class="dui-btn-sm-ghost" href="#how">How it works</a><a class="dui-btn-sm-ghost" href="#compare">Plans</a><a class="dui-btn-sm-ghost" href="#signup">Newsletter</a><a class="dui-btn-sm-ghost" href="#hours">Hours</a><a class="dui-btn-sm-ghost" href="#motion">Motion</a><a class="dui-btn-sm-ghost" href="#furniture">Furniture</a><a class="dui-btn-sm-ghost" href="#content">Tables</a><a class="dui-btn-sm-ghost" href="#controls">Switches</a><a class="dui-btn-sm-ghost" href="#icons">Icons</a><a class="dui-btn-sm-ghost" href="#work">At work</a>
     </nav>
 
   <section class="dui-section spec" id="colour" aria-labelledby="c-h">
@@ -497,6 +500,115 @@
       <div class="icons"><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#search"/></svg><span>search</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#arrow-right"/></svg><span>arrow-right</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#arrow-left"/></svg><span>arrow-left</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#check"/></svg><span>check</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#x"/></svg><span>x</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#plus"/></svg><span>plus</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#minus"/></svg><span>minus</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#mail"/></svg><span>mail</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#message"/></svg><span>message</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#map-pin"/></svg><span>map-pin</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#clock"/></svg><span>clock</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#lock"/></svg><span>lock</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#bag"/></svg><span>bag</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#truck"/></svg><span>truck</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#copy"/></svg><span>copy</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#external"/></svg><span>external</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#download"/></svg><span>download</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#refresh"/></svg><span>refresh</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#home"/></svg><span>home</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#bell"/></svg><span>bell</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#settings"/></svg><span>settings</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#user"/></svg><span>user</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#calendar"/></svg><span>calendar</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#phone"/></svg><span>phone</span></span><span class="ico"><svg class="dui-icon" aria-hidden="true" style="width:24px;height:24px"><use href="/assets/icons.svg#play"/></svg><span>play</span></span></div>
       <div class="demo-row"><a class="dui-btn-sm-ghost" href="#icons"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#bag"/></svg> Bag</a><a class="dui-btn-sm" href="#icons">Continue <svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg></a><button class="dui-icon-btn" type="button" aria-label="Close"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#x"/></svg></button></div>
       <p class="cap">Lucide outlines in <code>icons.svg</code>, drawn in the text colour, next to a word. Never filled, never coloured.</p>
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work" aria-labelledby="work-h">
+    <h2 id="work-h" class="dui-h2">At <b>work</b></h2>
+    <p class="dui-body">The app layer, live, from <code>distinctui-work.css</code> and <code>distinctui-work.js</code>. Load both after distinctUI. The rules behind each piece are on the <a class="dui-link" href="/work.html">At work page</a>, and every class is in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/work.md">work.md</a>.</p>
+  </section>
+
+  <section class="dui-section spec" id="work-table" aria-labelledby="work-table-h">
+    <h2 id="work-table-h" class="dui-h2">Data table and <b>density</b></h2>
+    <p class="cap"><code>.dui-data-wrap</code>, <code>table.dui-data</code>, <code>.dui-sort</code>, <code>.dui-num</code>, <code>[data-density]</code> with <code>input[data-density-set]</code>, <code>input[data-col]</code>. Rule W1.</p>
+    <div class="specimen" data-scope>
+<!-- include:table -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-states" aria-labelledby="work-states-h">
+    <h2 id="work-states-h" class="dui-h2">Status and <b>loading</b></h2>
+    <p class="cap"><code>.dui-st[data-st]</code> (draft, review, due, signed, blocked), <code>.dui-list</code>, <code>.dui-item</code>, <code>[data-reload]</code> with <code>[data-skeleton]</code>. Rule W2.</p>
+    <div class="specimen" data-scope>
+<!-- include:states -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-people" aria-labelledby="work-people-h">
+    <h2 id="work-people-h" class="dui-h2"><b>People</b></h2>
+    <p class="cap"><code>.dui-mark[data-ring]</code>, <code>.dui-mark--sm</code>, <code>.dui-who</code>. One ring colour per person, photos under 28px. Rule W3.</p>
+    <div class="specimen" data-scope>
+<!-- include:people -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-workspace" aria-labelledby="work-workspace-h">
+    <h2 id="work-workspace-h" class="dui-h2">Workspace <b>switcher</b></h2>
+    <p class="cap"><code>.dui-ws</code> in a <code>details.dui-menu</code>, <code>[data-brand]</code> with <code>input[data-brand-set]</code>. The customer's colour reaches the mark only. Rule W4.</p>
+    <div class="specimen" data-scope>
+<!-- include:workspace -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-chain" aria-labelledby="work-chain-h">
+    <h2 id="work-chain-h" class="dui-h2">Approval <b>chain</b></h2>
+    <p class="cap"><code>.dui-chain</code>, <code>__from</code>, <code>__steps</code>, <code>__step</code>, <code>__link</code>, <code>[data-sign]</code>, <code>[data-sign-count]</code>. Rule W5.</p>
+    <div class="specimen" data-scope>
+<!-- include:chain -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-audit" aria-labelledby="work-audit-h">
+    <h2 id="work-audit-h" class="dui-h2">Audit trail and <b>roles</b></h2>
+    <p class="cap"><code>[data-viewer]</code> with <code>select[data-viewer-set]</code>, <code>.dui-private</code>, <code>.dui-perm</code> with <code>.dui-yes</code> and <code>.dui-no</code>. Rule W6.</p>
+    <div class="specimen" data-scope>
+<!-- include:audit -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-shortcuts" aria-labelledby="work-shortcuts-h">
+    <h2 id="work-shortcuts-h" class="dui-h2">Shortcuts and <b>commands</b></h2>
+    <p class="cap"><code>.dui-kbd[data-single]</code>, <code>[data-key]</code>, <code>[data-keys-toggle]</code>, <code>dialog.dui-cmd</code>, <code>.dui-updates</code>. Rule W7.</p>
+    <div class="specimen" data-scope>
+<!-- include:shortcuts -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-bulk" aria-labelledby="work-bulk-h">
+    <h2 id="work-bulk-h" class="dui-h2">Bulk actions and <b>Undo</b></h2>
+    <p class="cap"><code>table[data-select]</code>, <code>.dui-swapbar</code>, <code>.dui-bulk</code>, <code>[data-bulk]</code>, <code>[data-notices]</code>, <code>.dui-danger</code> with <code>[data-confirm-match]</code>. Rule W8.</p>
+    <div class="specimen" data-scope>
+<!-- include:bulk -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-charts" aria-labelledby="work-charts-h">
+    <h2 id="work-charts-h" class="dui-h2">Numbers and <b>charts</b></h2>
+    <p class="cap"><code>.dui-tiles</code>, <code>.dui-multiples</code>, <code>.dui-chart-*</code>, <code>[data-view-as]</code>, <code>.dui-heat</code>. Rule W9.</p>
+    <div class="specimen" data-scope>
+<!-- include:charts -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-split" aria-labelledby="work-split-h">
+    <h2 id="work-split-h" class="dui-h2">List and <b>detail</b></h2>
+    <p class="cap"><code>.dui-split-view</code>, <code>.dui-item[data-open-item]</code>, <code>[data-detail]</code>, <code>[data-split-back]</code>, <code>.dui-props</code>.</p>
+    <div class="specimen" data-scope>
+<!-- include:split -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-activity" aria-labelledby="work-activity-h">
+    <h2 id="work-activity-h" class="dui-h2"><b>Activity</b></h2>
+    <p class="cap"><code>.dui-feed</code>, with full dates and the time zone.</p>
+    <div class="specimen" data-scope>
+<!-- include:activity -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-lock" aria-labelledby="work-lock-h">
+    <h2 id="work-lock-h" class="dui-h2">Disabled, with a <b>reason</b></h2>
+    <p class="cap"><code>.dui-lock</code>: say why, who can change it, and one way to ask.</p>
+    <div class="specimen" data-scope>
+<!-- include:lock -->
+    </div>
+  </section>
+
+  <section class="dui-section spec" id="work-settings" aria-labelledby="work-settings-h">
+    <h2 id="work-settings-h" class="dui-h2"><b>Settings</b></h2>
+    <p class="cap"><code>.dui-secret</code>, <code>.dui-role-select</code>. Roles change in place and say so.</p>
+    <div class="specimen" data-scope>
+<!-- include:settings -->
     </div>
   </section>
   </div>

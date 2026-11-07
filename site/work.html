@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>At work · distinctUI</title>
-<meta name="description" content="distinctUI@work: the same black, white and grey for the apps people use all day. Dense tables, a command menu, approvals, audit logs, reports and the states nobody draws.">
+<meta name="description" content="distinctUI@work: the same black, white and grey for the apps people use all day. Every piece live: dense tables, a command menu, approvals, audit logs, reports and the states nobody draws.">
 <meta property="og:title" content="distinctUI@work">
 <meta property="og:description" content="distinctUI for work apps: tables, approvals, audit logs and reports, still in black, white and grey.">
 <meta property="og:image" content="https://distinctui.com/share-card.png">
@@ -13,11 +13,14 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
 <link rel="stylesheet" href="/assets/distinctui.css">
+<link rel="stylesheet" href="/assets/distinctui-work.css">
 <link rel="stylesheet" href="/site.css">
 <link rel="stylesheet" href="/assets/stageshow-look.css">
 <link rel="stylesheet" href="/moments/moments.css">
 </head>
 <body class="dui-page">
+<!-- Every live example sits between a "piece:name" comment and a "/piece:name" comment. The build adds its markup under
+     "Show markup", and copies it to the components page wherever that page has an "include:name" comment. Edit it here only. -->
 <a class="dui-skip" href="#main">Skip to content</a>
 <header class="dui-container dui-header">
   <a class="dui-logo" href="/">distinctUI</a>
@@ -32,72 +35,692 @@
   <div style="display:flex;flex-direction:column;gap:16px;padding-top:32px">
     <span class="dui-eyebrow">distinctUI@work</span>
     <h1 class="dui-h1">The same look, for the apps people use <b>all day</b></h1>
-    <p class="dui-lede">Tables with thousands of rows, approvals with an audit trail, settings an admin can trust, and every state drawn. Still black, white and grey, with colour only on people's rings.</p>
-    <div class="dui-actions"><a class="dui-btn" href="/examples/work-home.html">Open the example app</a><a class="dui-btn-ghost" href="/templates.html#work">See the nine templates</a></div>
+    <p class="dui-lede">Tables with thousands of rows, approvals with an audit trail, settings an admin can trust, and every state drawn. Still black, white and grey, with colour only on people's rings. Every piece on this page is live: press things.</p>
+    <div class="dui-actions"><a class="dui-btn" href="/examples/work-home.html">Open the example app</a><a class="dui-btn-ghost" href="#templates">See the nine templates</a></div>
   </div>
 
-  <section class="dui-section" aria-labelledby="mo-h">
-    <div style="display:flex;flex-direction:column;gap:8px"><h2 id="mo-h" class="dui-h2">Four things that <b>happen</b> at work</h2>
+  <div class="docs">
+  <aside class="docs-side">
+    <nav class="dui-sidenav docs-nav" aria-label="On this page">
+      <div><h2>At work</h2><ul><li><a href="#app">The app</a></li><li><a href="#moments">Moments</a></li><li><a href="#w1">W1 Density</a></li><li><a href="#w2">W2 States</a></li><li><a href="#w3">W3 Rings</a></li><li><a href="#w4">W4 Your mark</a></li><li><a href="#w5">W5 Signing</a></li><li><a href="#w6">W6 Need-to-know</a></li><li><a href="#w7">W7 Shortcuts</a></li><li><a href="#w8">W8 Undo</a></li><li><a href="#w9">W9 Charts</a></li><li><a href="#more">Everything else</a></li><li><a href="#templates">Templates</a></li><li><a href="#use">Use it</a></li></ul></div>
+    </nav>
+  </aside>
+  <div class="docs-body">
+    <nav class="toc docs-chips" aria-label="On this page"><a class="dui-btn-sm-ghost" href="#app">The app</a><a class="dui-btn-sm-ghost" href="#moments">Moments</a><a class="dui-btn-sm-ghost" href="#w1">W1 Density</a><a class="dui-btn-sm-ghost" href="#w2">W2 States</a><a class="dui-btn-sm-ghost" href="#w3">W3 Rings</a><a class="dui-btn-sm-ghost" href="#w4">W4 Your mark</a><a class="dui-btn-sm-ghost" href="#w5">W5 Signing</a><a class="dui-btn-sm-ghost" href="#w6">W6 Need-to-know</a><a class="dui-btn-sm-ghost" href="#w7">W7 Shortcuts</a><a class="dui-btn-sm-ghost" href="#w8">W8 Undo</a><a class="dui-btn-sm-ghost" href="#w9">W9 Charts</a><a class="dui-btn-sm-ghost" href="#more">Everything else</a><a class="dui-btn-sm-ghost" href="#templates">Templates</a><a class="dui-btn-sm-ghost" href="#use">Use it</a></nav>
+
+  <section class="dui-section" id="app" aria-labelledby="app-h">
+    <div class="sec-head"><h2 id="app-h" class="dui-h2">The app, <b>live</b></h2>
+    <p class="dui-body">Quarry, an invented contracts app at an invented company, Brightwater Logistics. It's the real template, working, in a frame. Click around in it.</p></div>
+    <div class="dui-seg frame-tabs" role="radiogroup" aria-label="Screen">
+      <label><input type="radio" name="frame" value="work-home" data-frame-set checked>Home</label>
+      <label><input type="radio" name="frame" value="work-table" data-frame-set>Contracts</label>
+      <label><input type="radio" name="frame" value="work-approvals" data-frame-set>Approval</label>
+      <label><input type="radio" name="frame" value="work-reports" data-frame-set>Reports</label>
+    </div>
+    <div class="app-frame">
+      <div class="app-frame__bar" aria-hidden="true"><i></i><i></i><i></i><span>quarry.example</span></div>
+      <div class="app-frame__view"><iframe src="/examples/work-home.html" title="Quarry, the example app: Home" loading="lazy"></iframe></div>
+    </div>
+    <p class="dui-meta"><a class="dui-link" href="/examples/work-home.html" data-frame-open>Open this screen on its own</a></p>
+  </section>
+
+  <section class="dui-section" id="moments" aria-labelledby="mo-h">
+    <div class="sec-head"><h2 id="mo-h" class="dui-h2">Four things that <b>happen</b> at work</h2>
     <p class="dui-meta">Built with <a class="dui-link" href="https://benji.org/stageshow">Stageshow</a> by Benji Taylor (MIT), in the distinctUI look. Each plays once when you scroll to it. With reduced motion you see the finished frame.</p></div>
     <div class="moment-grid work-grid">
       <div class="moment-tile">
         <div class="moment" data-moment="work-sign" data-label="An approval card. Kofi and Pieter have signed. Sign as Procurement is pressed, Lerato's dashed ring goes solid, the last link turns solid and the count goes from 2 of 3 to 3 of 3."></div>
-        <h3 class="dui-h4">Sign, in order</h3>
-        <p class="cap">The requester sits apart. The last ring is dashed until she signs, then the link goes solid and the count rolls.</p>
+        <div class="moment-cap"><h3 class="dui-h4">Sign, in order</h3><p class="cap">The requester sits apart. The last ring is dashed until she signs, then the link goes solid and the count rolls.</p></div>
       </div>
       <div class="moment-tile">
         <div class="moment" data-moment="work-bulk" data-label="A contracts list. Two rows are ticked, a black bar appears with Send for approval, it is pressed, both rows change from Draft to In review and a notice says Sent 2 contracts for approval, with Undo."></div>
-        <h3 class="dui-h4">Send many at once</h3>
-        <p class="cap">Tick two rows and the black bar swaps in. One press changes both, and a notice with Undo stays.</p>
+        <div class="moment-cap"><h3 class="dui-h4">Send many at once</h3><p class="cap">Tick two rows and the black bar swaps in. One press changes both, and a notice with Undo stays.</p></div>
       </div>
       <div class="moment-tile">
         <div class="moment" data-moment="work-command" data-label="A contract page. Command K opens a menu, assign nal is typed, the list narrows to Assign to Naledi Sithole, Enter is pressed and the owner changes to Naledi Sithole with a notice."></div>
-        <h3 class="dui-h4">Command menu</h3>
-        <p class="cap">⌘K on a white veil. Typing narrows the list, Enter runs the top match, and the page says what changed.</p>
+        <div class="moment-cap"><h3 class="dui-h4">Command menu</h3><p class="cap">⌘K on a white veil. Typing narrows the list, Enter runs the top match, and the page says what changed.</p></div>
       </div>
       <div class="moment-tile">
         <div class="moment" data-moment="work-report" data-label="Four small black line charts of spend by depot draw in one after another, then Table is pressed and the same numbers show as rows, then Chart again."></div>
-        <h3 class="dui-h4">A report</h3>
-        <p class="cap">Four black lines on one scale draw in turn. The switch turns them into the table they came from.</p>
+        <div class="moment-cap"><h3 class="dui-h4">A report</h3><p class="cap">Four black lines on one scale draw in turn. The switch turns them into the table they came from.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="dui-section" aria-labelledby="rules-h">
-    <h2 id="rules-h" class="dui-h2">Nine extra <b>rules</b></h2>
-    <p class="dui-body">The twelve rules still hold. These are what an app adds.</p>
-    <ol class="dui-rows rules">
-      <li class="dui-row"><span class="n">1</span><div><b>Dense, then roomy if you like.</b> <span class="dui-meta">Three row heights, Compact, Default and Airy, remembered per person. 34, 44 or 56 pixels.</span></div></li>
-      <li class="dui-row"><span class="n">2</span><div><b>States are drawn.</b> <span class="dui-meta">Hover is grey-50, selected and focused rows get a black edge. Status is a shape plus words: solid, half, dashed, or a black !</span></div></li>
-      <li class="dui-row"><span class="n">3</span><div><b>One ring colour per person.</b> <span class="dui-meta">Everywhere in the product. Photos, never initials, in marks under 28 pixels.</span></div></li>
-      <li class="dui-row"><span class="n">4</span><div><b>Your colour stays on your mark.</b> <span class="dui-meta">A customer's brand colour goes on their workspace mark only. Nothing else in the app changes colour.</span></div></li>
-      <li class="dui-row"><span class="n">5</span><div><b>Who asked is not who signs.</b> <span class="dui-meta">In an approval the requester sits apart from the chain, and dashed means still to sign.</span></div></li>
-      <li class="dui-row"><span class="n">6</span><div><b>Personal details are need-to-know.</b> <span class="dui-meta">IP addresses and places show to Admin and Auditor only (POPIA). Dates are full, with the time zone.</span></div></li>
-      <li class="dui-row"><span class="n">7</span><div><b>Shortcuts you can see, and switch off.</b> <span class="dui-meta">Single keys show as key caps and turn off with one switch (WCAG 2.1.4). ⌘K always works.</span></div></li>
-      <li class="dui-row"><span class="n">8</span><div><b>Undo instead of are you sure.</b> <span class="dui-meta">Bulk actions happen, then a notice with Undo stays in the page. Only what can't be undone asks you to type the name.</span></div></li>
-      <li class="dui-row"><span class="n">9</span><div><b>Compare in black.</b> <span class="dui-meta">Small multiples on one shared scale, never a colour per series. Every chart can become its table.</span></div></li>
-    </ol>
+  <section class="dui-section" id="rules" aria-labelledby="rules-h">
+    <div class="sec-head"><h2 id="rules-h" class="dui-h2">Nine extra <b>rules</b>, each one live</h2>
+    <p class="dui-body">The twelve rules still hold. These are what an app adds, numbered W1 to W9, each with the pieces that keep it. Open “Show markup” under any of them to copy it.</p></div>
   </section>
 
-  <section class="dui-section" aria-labelledby="use-h">
+  <section class="dui-section rule-sec" id="w1" aria-labelledby="w1-h">
+    <div class="rule-text">
+      <span class="rule-n">W1</span>
+      <h3 class="dui-h3" id="w1-h">Dense, then roomy if you like.</h3>
+      <p class="dui-body">Three row heights, Compact, Default and Airy, at 34, 44 and 56 pixels. Each person's choice is remembered. Try it, then sort a column and hide one.</p>
+      <p class="dui-meta pieces">Data table, sort, density and columns</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:table -->
+<div data-density="default">
+  <div class="dui-toolbar">
+    <div class="dui-seg" role="radiogroup" aria-label="Row height">
+      <label><input type="radio" name="w1-density" value="compact" data-density-set>Compact</label>
+      <label><input type="radio" name="w1-density" value="default" data-density-set checked>Default</label>
+      <label><input type="radio" name="w1-density" value="airy" data-density-set>Airy</label>
+    </div>
+    <div class="dui-toolbar__end"><label class="dui-check" style="font-size:var(--dui-text-sm)"><input type="checkbox" data-col="vendor" checked> Vendor column</label></div>
+  </div>
+  <div class="dui-data-wrap">
+    <table class="dui-data">
+      <caption class="dui-sr-only">Six contracts, sorted by value</caption>
+      <thead><tr>
+        <th class="dui-pin"><button class="dui-sort" type="button">Contract<svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#sort"/></svg></button></th>
+        <th data-c="vendor"><button class="dui-sort" type="button">Vendor<svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#sort"/></svg></button></th>
+        <th>Owner</th>
+        <th class="dui-num" aria-sort="descending"><button class="dui-sort" type="button">Value (R)<svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#sort"/></svg></button></th>
+        <th><button class="dui-sort" type="button">Stage<svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#sort"/></svg></button></th>
+      </tr></thead>
+      <tbody>
+      <tr tabindex="0">
+        <td class="dui-pin">Solar power purchase</td>
+        <td data-c="vendor">Sunfield Energy</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span>Kofi Asante</span></span></td>
+        <td class="dui-num" data-v="9400000">9 400 000</td>
+        <td><span class="dui-st" data-st="review">In review, 1 of 3</span></td>
+      </tr>
+      <tr tabindex="0">
+        <td class="dui-pin">Bulk diesel supply</td>
+        <td data-c="vendor">Harbourline Fuel</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span>Ayanda Khumalo</span></span></td>
+        <td class="dui-num" data-v="5120000">5 120 000</td>
+        <td><span class="dui-st" data-st="due">Renewal due</span></td>
+      </tr>
+      <tr tabindex="0">
+        <td class="dui-pin">Cold-chain warehousing</td>
+        <td data-c="vendor">Orbit Freight</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="4"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span><span>Pieter Venter</span></span></td>
+        <td class="dui-num" data-v="3880500">3 880 500</td>
+        <td><span class="dui-st" data-st="signed">Signed</span></td>
+      </tr>
+      <tr tabindex="0">
+        <td class="dui-pin">Fleet telematics renewal</td>
+        <td data-c="vendor">Tracklane</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span>Ayanda Khumalo</span></span></td>
+        <td class="dui-num" data-v="1240000">1 240 000</td>
+        <td><span class="dui-st" data-st="review">In review, 2 of 3</span></td>
+      </tr>
+      <tr tabindex="0">
+        <td class="dui-pin">Cloud hosting</td>
+        <td data-c="vendor">Kaya Cloud</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="3"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span>Lerato Dube</span></span></td>
+        <td class="dui-num" data-v="612000">612 000</td>
+        <td><span class="dui-st" data-st="blocked">Tax certificate missing</span></td>
+      </tr>
+      <tr tabindex="0">
+        <td class="dui-pin">Print and packaging</td>
+        <td data-c="vendor">Blue Mesa Print</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span>Naledi Sithole</span></span></td>
+        <td class="dui-num" data-v="284900">284 900</td>
+        <td><span class="dui-st" data-st="draft">Draft</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /piece:table -->
+<!-- markup:table -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w2" aria-labelledby="w2-h">
+    <div class="rule-text">
+      <span class="rule-n">W2</span>
+      <h3 class="dui-h3" id="w2-h">States are drawn.</h3>
+      <p class="dui-body">Hover is a grey wash, and the open or selected row gets a black edge. Status is a shape plus words: dashed for a draft, half for in review, solid for done, a black ! when it's stuck. Loading shows grey shapes, after 300ms.</p>
+      <p class="dui-meta pieces">Status, list items, loading again</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:states -->
+<div class="spec-stack">
+  <p class="status-key" aria-label="Status shapes">
+    <span class="dui-st" data-st="draft">Draft</span>
+    <span class="dui-st" data-st="review">In review</span>
+    <span class="dui-st" data-st="due">Renewal due</span>
+    <span class="dui-st" data-st="signed">Signed</span>
+    <span class="dui-st" data-st="blocked">Tax certificate missing</span>
+  </p>
+  <div class="spec-bar"><b>Waiting on you</b><button class="dui-btn-sm-ghost" type="button" data-reload="#w2-list" data-skeleton="#w2-skel"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#refresh"/></svg>Load again</button></div>
+  <div id="w2-skel" hidden aria-hidden="true">
+    <div class="sk-row"><span class="dui-skeleton sk-dot"></span><span class="dui-skeleton" style="width:45%"></span><span class="dui-skeleton" style="width:18%;margin-left:auto"></span></div>
+    <div class="sk-row"><span class="dui-skeleton sk-dot"></span><span class="dui-skeleton" style="width:38%"></span><span class="dui-skeleton" style="width:18%;margin-left:auto"></span></div>
+    <div class="sk-row"><span class="dui-skeleton sk-dot"></span><span class="dui-skeleton" style="width:50%"></span><span class="dui-skeleton" style="width:18%;margin-left:auto"></span></div>
+  </div>
+  <ul class="dui-list" id="w2-list" aria-label="Waiting on you">
+    <li><a class="dui-item" href="/examples/work-approvals.html"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span class="dui-item__title">Fleet telematics renewal</span><span class="dui-item__id">QC-2041</span><span class="dui-item__meta"><span class="dui-st" data-st="review">In review, 2 of 3</span></span></a></li>
+    <li><a class="dui-item" href="/examples/work-table.html" aria-current="true"><span class="dui-mark dui-mark--sm" data-ring="3"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span class="dui-item__title">Cloud hosting</span><span class="dui-item__id">QC-2035</span><span class="dui-item__meta"><span class="dui-st" data-st="blocked">Tax certificate missing</span></span></a></li>
+    <li><a class="dui-item" href="/examples/work-table.html"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span class="dui-item__title">Print and packaging</span><span class="dui-item__id">QC-2031</span><span class="dui-item__meta"><span class="dui-st" data-st="draft">Draft</span></span></a></li>
+  </ul>
+</div>
+<!-- /piece:states -->
+<!-- markup:states -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w3" aria-labelledby="w3-h">
+    <div class="rule-text">
+      <span class="rule-n">W3</span>
+      <h3 class="dui-h3" id="w3-h">One ring colour per person.</h3>
+      <p class="dui-body">Kofi is orange everywhere in the product, and Pieter is gold. Photos, never initials, in marks under 28 pixels.</p>
+      <p class="dui-meta pieces">Marks, who chips</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:people -->
+<div class="spec-stack">
+  <ul class="people" aria-label="People at Brightwater">
+    <li><span class="dui-mark" data-ring="3" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span><b>Lerato Dube</b><span class="dui-meta">Procurement</span></span></li>
+    <li><span class="dui-mark" data-ring="1" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span><b>Ayanda Khumalo</b><span class="dui-meta">Fleet</span></span></li>
+    <li><span class="dui-mark" data-ring="2" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span><b>Kofi Asante</b><span class="dui-meta">Legal</span></span></li>
+    <li><span class="dui-mark" data-ring="4" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span><span><b>Pieter Venter</b><span class="dui-meta">Finance</span></span></li>
+    <li><span class="dui-mark" data-ring="5" style="--mark-size:3rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-10.jpg" alt=""></span></span><span><b>Rahul Naidoo</b><span class="dui-meta">Operations</span></span></li>
+  </ul>
+  <p class="dui-meta" style="display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:0"><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span>Kofi Asante</span></span><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="4"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span><span>Pieter Venter</span></span><span class="dui-who"><span class="dui-mark" data-ring="3" style="--mark-size:1.25rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span>Lerato at 20px, still a photo</span></span></p>
+</div>
+<!-- /piece:people -->
+<!-- markup:people -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w4" aria-labelledby="w4-h">
+    <div class="rule-text">
+      <span class="rule-n">W4</span>
+      <h3 class="dui-h3" id="w4-h">Your colour stays on your mark.</h3>
+      <p class="dui-body">A customer's brand colour goes on their workspace mark only. Pick one: the mark changes, and the button, the people and the status don't.</p>
+      <p class="dui-meta pieces">Workspace switcher, workspace colour</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:workspace -->
+<div class="spec-stack" data-brand style="--dui-signature:#0b6e4f">
+  <details class="dui-menu ws-demo">
+    <summary class="dui-ws" aria-label="Workspace: Brightwater Logistics. Switch workspace"><span class="dui-mark" style="--mark-size:2rem"><span class="dui-mark__inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/><path d="M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span></span><span>Brightwater<small>Logistics · 214 people</small></span><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#chevron-down"/></svg></summary>
+    <div class="dui-menu__panel" style="left:0;right:auto">
+      <a class="dui-menu__item" href="/examples/work-home.html" aria-current="page">Brightwater Logistics</a>
+      <a class="dui-menu__item" href="/examples/work-home.html">Brightwater sandbox</a>
+      <div class="dui-menu__sep"></div>
+      <a class="dui-menu__item" href="/examples/work-admin.html">Workspace settings</a>
+    </div>
+  </details>
+  <fieldset class="brand-pick">
+    <legend class="dui-label">Workspace colour</legend>
+    <label><input type="radio" name="w4-brand" value="#0b6e4f" data-name="Brightwater green" data-brand-set checked><i style="background:#0b6e4f"></i><span class="dui-sr-only">Brightwater green</span></label>
+    <label><input type="radio" name="w4-brand" value="#b4232c" data-name="Signal red" data-brand-set><i style="background:#b4232c"></i><span class="dui-sr-only">Signal red</span></label>
+    <label><input type="radio" name="w4-brand" value="#1f3bff" data-name="Cobalt" data-brand-set><i style="background:#1f3bff"></i><span class="dui-sr-only">Cobalt</span></label>
+    <label><input type="radio" name="w4-brand" value="#000000" data-name="Black" data-brand-set><i style="background:#000000"></i><span class="dui-sr-only">Black</span></label>
+  </fieldset>
+  <p class="dui-meta" style="margin:0;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center"><button class="dui-btn-sm" type="button" data-done="Saved">Save</button><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span>Kofi Asante</span></span><span class="dui-st" data-st="signed">Signed</span></p>
+</div>
+<!-- /piece:workspace -->
+<!-- markup:workspace -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w5" aria-labelledby="w5-h">
+    <div class="rule-text">
+      <span class="rule-n">W5</span>
+      <h3 class="dui-h3" id="w5-h">Who asked is not who signs.</h3>
+      <p class="dui-body">In an approval, the requester sits apart from the chain. Dashed means still to sign. Sign, and the ring fills in, the link goes solid and the count rolls.</p>
+      <p class="dui-meta pieces">Approval chain</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:chain -->
+<div class="spec-stack">
+  <div class="spec-bar"><b><span data-sign-count>2</span> of 3 signed</b><span class="dui-meta" data-sign-hide>Waiting on you since 5 Nov</span></div>
+  <div class="dui-chain">
+    <div class="dui-chain__from"><span class="dui-mark dui-mark--plain" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span><b>Ayanda</b><br>Asked on 3 Nov</span></div>
+    <ol class="dui-chain__steps" aria-label="Signatures, in order">
+      <li class="dui-chain__step"><span class="dui-mark" data-ring="2" data-live="true" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span><b>Kofi</b><span>Legal</span><span>Signed 4 Nov</span></span></li>
+      <li class="dui-chain__link" aria-hidden="true"></li>
+      <li class="dui-chain__step"><span class="dui-mark" data-ring="4" data-live="true" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span><span><b>Pieter</b><span>Finance</span><span>Signed 5 Nov</span></span></li>
+      <li class="dui-chain__link" data-done="false" aria-hidden="true"></li>
+      <li class="dui-chain__step" id="w5-me"><span class="dui-mark" data-ring="3" data-live="false" style="--mark-size:2.75rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span><b>Lerato</b><span>Procurement</span><span data-when="Signed just now">Waiting on you</span></span></li>
+    </ol>
+  </div>
+  <div class="dui-actions"><button class="dui-btn-sm" type="button" id="w5-sign" data-sign="#w5-me" data-done-words="Signed" data-notice="You signed for Procurement. Tracklane gets the signed copy by email."><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#pen"/></svg>Sign as Procurement</button><span class="dui-st" data-st="review" data-sign-state="signed" data-sign-label="Signed, 3 of 3">In review, 2 of 3</span></div>
+  <div data-notices></div>
+</div>
+<!-- /piece:chain -->
+<!-- markup:chain -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w6" aria-labelledby="w6-h">
+    <div class="rule-text">
+      <span class="rule-n">W6</span>
+      <h3 class="dui-h3" id="w6-h">Personal details are need-to-know.</h3>
+      <p class="dui-body">IP addresses and places show to Admin and Auditor only, as POPIA asks. Switch who's looking and the column comes and goes. Dates are full, with the time zone.</p>
+      <p class="dui-meta pieces">Activity table, private cells, roles, permission matrix</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:audit -->
+<div class="spec-stack" data-viewer="approver">
+  <div class="spec-bar"><b>Audit trail</b>
+    <label class="dui-meta" style="display:flex;align-items:center;gap:8px">View as
+      <select class="dui-role-select" data-viewer-set aria-label="View as">
+        <option value="approver" selected>Approver</option>
+        <option value="admin">Admin</option>
+        <option value="auditor">Auditor</option>
+      </select>
+    </label>
+  </div>
+  <div class="dui-data-wrap">
+    <table class="dui-data">
+      <caption class="dui-sr-only">Audit trail for Fleet telematics renewal</caption>
+      <thead><tr><th>When</th><th>Who</th><th>What happened</th><th class="dui-private">IP address and place</th></tr></thead>
+      <tbody>
+        <tr><td><time datetime="2026-11-05T09:14+02:00">5 Nov 2026, 09:14 SAST</time></td><td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="4"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span><span>Pieter Venter</span></span></td><td>Signed for Finance</td><td class="dui-private dui-faint">196.22.8.19 · Pretoria</td></tr>
+        <tr><td><time datetime="2026-11-04T16:40+02:00">4 Nov 2026, 16:40 SAST</time></td><td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span>Kofi Asante</span></span></td><td>Signed for Legal</td><td class="dui-private dui-faint">196.25.14.30 · Cape Town</td></tr>
+        <tr><td><time datetime="2026-11-03T11:02+02:00">3 Nov 2026, 11:02 SAST</time></td><td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span>Ayanda Khumalo</span></span></td><td>Sent it for approval</td><td class="dui-private dui-faint">105.233.40.2 · Johannesburg</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <table class="dui-perm">
+    <caption class="dui-sr-only">Who can do what</caption>
+    <thead><tr><th scope="col">Action</th><th scope="col">Signer</th><th scope="col">Owner</th><th scope="col">Admin</th><th scope="col">Auditor</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Sign</th><td><span class="dui-yes"><span class="dui-sr-only">Yes</span></span></td><td><span class="dui-no"><span class="dui-sr-only">No</span></span></td><td><span class="dui-no"><span class="dui-sr-only">No</span></span></td><td><span class="dui-no"><span class="dui-sr-only">No</span></span></td></tr>
+      <tr><th scope="row">Change the value</th><td><span class="dui-no"><span class="dui-sr-only">No</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Yes</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Yes</span></span></td><td><span class="dui-no"><span class="dui-sr-only">No</span></span></td></tr>
+      <tr><th scope="row">See IP addresses</th><td><span class="dui-no"><span class="dui-sr-only">No</span></span></td><td><span class="dui-no"><span class="dui-sr-only">No</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Yes</span></span></td><td><span class="dui-yes"><span class="dui-sr-only">Yes</span></span></td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- /piece:audit -->
+<!-- markup:audit -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w7" aria-labelledby="w7-h">
+    <div class="rule-text">
+      <span class="rule-n">W7</span>
+      <h3 class="dui-h3" id="w7-h">Shortcuts you can see, and switch off.</h3>
+      <p class="dui-body">Single keys show as key caps and turn off with one switch (WCAG 2.1.4). ⌘K, or Ctrl+K, always opens search and commands.</p>
+      <p class="dui-meta pieces">Key caps, command menu, updates</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:shortcuts -->
+<div class="spec-stack">
+  <div class="spec-bar">
+    <button class="dui-search" type="button" data-cmd-open style="flex:1;max-width:22rem"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#search"/></svg>Search contracts, people<span class="dui-kbd">⌘K</span></button>
+    <details class="dui-menu dui-updates">
+      <summary class="dui-icon-btn dui-bell" aria-label="Updates, 2 unread"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#bell"/></svg><span class="dui-count">2</span></summary>
+      <div class="dui-menu__panel">
+        <div class="dui-updates__head"><b>Updates</b><button class="dui-link" type="button" data-mark-read style="border:0;background:none;font:inherit;cursor:pointer">Mark all read</button></div>
+        <ul class="dui-updates__list">
+          <li data-unread><span class="dui-mark" data-ring="4" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span><span><b>Pieter Venter signed Fleet telematics renewal</b> as Finance. It waits on you now.<time datetime="2026-11-05T09:14+02:00">5 Nov 2026, 09:14 SAST</time></span></li>
+          <li data-unread><span class="dui-mark" data-ring="5" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-10.jpg" alt=""></span></span><span><b>Kaya Cloud is still blocked</b>. The tax certificate is 32 days late.<time datetime="2026-11-07T08:00+02:00">7 Nov 2026, 08:00 SAST</time></span></li>
+          <li><span class="dui-mark" data-ring="1" style="--mark-size:2rem"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span>Naledi Sithole sent 2 contracts for approval.<time datetime="2026-11-04T15:02+02:00">4 Nov 2026, 15:02 SAST</time></span></li>
+        </ul>
+      </div>
+    </details>
+  </div>
+  <div class="dui-actions">
+    <button class="dui-btn-sm" type="button" id="w7-approve" data-key="a" data-done="Approved"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#check"/></svg>Approve<span class="dui-kbd" data-single>A</span></button>
+    <button class="dui-btn-sm-ghost" type="button" data-key="d" data-done="Delegated"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#users"/></svg>Delegate<span class="dui-kbd" data-single>D</span></button>
+    <button class="dui-btn-sm-ghost" type="button" data-key="e" data-done="Sent back"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#undo"/></svg>Send back<span class="dui-kbd" data-single>E</span></button>
+  </div>
+  <label class="dui-switch" style="max-width:24rem">Single-key shortcuts <input type="checkbox" role="switch" data-keys-toggle checked></label>
+  <p class="dui-meta" style="margin:0">Press A, D or E while nothing is focused. Turn the switch off and they stop, for speech input and switch users. ⌘K always works.</p>
+  <div data-notices></div>
+  <dialog class="dui-dialog dui-cmd" aria-label="Search and commands">
+    <div class="dui-cmd__q"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#search"/></svg><input type="text" placeholder="Type a command, a contract or a person" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="w7-cmd-list" autocomplete="off"></div>
+    <ul class="dui-cmd__list" id="w7-cmd-list" role="listbox" aria-label="Commands">
+      <li class="dui-cmd__group" role="presentation">This contract</li>
+      <li class="dui-cmd__opt" data-click="#w7-approve" data-words="approve yes"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#check"/></svg>Approve<span class="dui-kbd" data-single>A</span></li>
+      <li class="dui-cmd__opt" data-done="Assigned to Naledi Sithole" data-words="assign owner procurement"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span>Assign to Naledi Sithole</li>
+      <li class="dui-cmd__opt" data-done="Assigned to Rahul Naidoo" data-words="assign owner operations"><span class="dui-mark dui-mark--sm" data-ring="5"><span class="dui-mark__inner"><img src="/examples/img/portrait-10.jpg" alt=""></span></span>Assign to Rahul Naidoo</li>
+      <li class="dui-cmd__opt" data-click="#w5-sign" data-words="sign procurement chain"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#pen"/></svg>Sign as Procurement</li>
+      <li class="dui-cmd__group" role="presentation">Go to</li>
+      <li class="dui-cmd__opt" data-href="/examples/work-table.html" data-words="contracts table"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg>Go to Contracts</li>
+      <li class="dui-cmd__opt" data-href="/examples/work-reports.html" data-words="reports charts"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg>Go to Reports</li>
+    </ul>
+    <p class="dui-cmd__empty" hidden>Nothing matches. Try a contract number, a vendor or a person.</p>
+    <div class="dui-cmd__foot"><span><span class="dui-kbd">↑</span> <span class="dui-kbd">↓</span> to move</span><span><span class="dui-kbd">Enter</span> to run</span><span><span class="dui-kbd">Esc</span> to close</span></div>
+  </dialog>
+</div>
+<!-- /piece:shortcuts -->
+<!-- markup:shortcuts -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w8" aria-labelledby="w8-h">
+    <div class="rule-text">
+      <span class="rule-n">W8</span>
+      <h3 class="dui-h3" id="w8-h">Undo instead of are you sure.</h3>
+      <p class="dui-body">Tick rows and the black bar swaps in. Act, and a notice with Undo stays in the page. Only what can't be undone asks you to type the name.</p>
+      <p class="dui-meta pieces">Saved views, filter, selection, bulk bar, notices, danger zone</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:bulk -->
+<div class="spec-stack">
+  <div data-filter-scope style="display:contents">
+  <div class="dui-swapbar" data-for="#w8-table">
+    <div class="dui-toolbar">
+      <div class="dui-tabs" role="tablist" aria-label="Saved views">
+        <button class="dui-tab" role="tab" aria-selected="true" type="button" data-filter="all">All</button>
+        <button class="dui-tab" role="tab" aria-selected="false" type="button" data-filter="mine">Drafts</button>
+        <button class="dui-tab" role="tab" aria-selected="false" type="button" data-filter="blocked">Blocked</button>
+      </div>
+      <div class="dui-toolbar__end"><label class="dui-search" style="flex-basis:12rem"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#search"/></svg><input class="dui-field" type="search" placeholder="Filter" aria-label="Filter contracts" data-filter-rows="#w8-table" data-no-results="#w8-none"></label></div>
+    </div>
+    <div class="dui-bulk" role="toolbar" aria-label="Selected contracts">
+      <span class="dui-bulk__count"><span data-selected-count>0</span> selected</span>
+      <button type="button" data-bulk="stage" data-st="review" data-label="Sent for approval" data-done-words="Sent for approval" data-one="contract" data-many="contracts" data-main><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#send"/></svg>Send for approval</button>
+      <button type="button" data-bulk="archive" data-one="contract" data-many="contracts"><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#archive"/></svg>Archive</button>
+      <button type="button" class="dui-bulk__clear" data-clear-selection>Clear</button>
+    </div>
+  </div>
+  <div class="dui-data-wrap">
+    <table class="dui-data" id="w8-table" data-select="[data-for='#w8-table']">
+      <caption class="dui-sr-only">Four contracts. Tick rows to act on them together.</caption>
+      <thead><tr>
+        <th class="dui-check-cell"><input type="checkbox" data-check-all aria-label="Select all shown"></th>
+        <th class="dui-pin">Contract</th><th>ID</th><th>Owner</th><th>Stage</th>
+      </tr></thead>
+      <tbody>
+      <tr tabindex="0" aria-selected="false" data-tags="mine">
+        <td class="dui-check-cell"><input type="checkbox" data-row-check aria-label="Select Tyres and fitment"></td>
+        <td class="dui-pin">Tyres and fitment</td>
+        <td class="dui-faint">QC-2033</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="5"><span class="dui-mark__inner"><img src="/examples/img/portrait-10.jpg" alt=""></span></span><span>Rahul Naidoo</span></span></td>
+        <td data-cell="stage"><span class="dui-st" data-st="draft">Draft</span></td>
+      </tr>
+      <tr tabindex="0" aria-selected="false" data-tags="mine">
+        <td class="dui-check-cell"><input type="checkbox" data-row-check aria-label="Select Print and packaging"></td>
+        <td class="dui-pin">Print and packaging</td>
+        <td class="dui-faint">QC-2031</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span>Naledi Sithole</span></span></td>
+        <td data-cell="stage"><span class="dui-st" data-st="draft">Draft</span></td>
+      </tr>
+      <tr tabindex="0" aria-selected="false" data-tags="">
+        <td class="dui-check-cell"><input type="checkbox" data-row-check aria-label="Select Site security, 4 depots"></td>
+        <td class="dui-pin">Site security, 4 depots</td>
+        <td class="dui-faint">QC-2024</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="5"><span class="dui-mark__inner"><img src="/examples/img/portrait-10.jpg" alt=""></span></span><span>Rahul Naidoo</span></span></td>
+        <td data-cell="stage"><span class="dui-st" data-st="signed">Signed</span></td>
+      </tr>
+      <tr tabindex="0" aria-selected="false" data-tags="blocked">
+        <td class="dui-check-cell"><input type="checkbox" data-row-check aria-label="Select Cleaning, Durban depot"></td>
+        <td class="dui-pin">Cleaning, Durban depot</td>
+        <td class="dui-faint">QC-2012</td>
+        <td><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-5.jpg" alt=""></span></span><span>Naledi Sithole</span></span></td>
+        <td data-cell="stage"><span class="dui-st" data-st="blocked">B-BBEE certificate expired</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dui-empty" id="w8-none" hidden><b>No contracts match “<span data-query></span>”</b><p>Check the spelling, or search by contract number.</p></div>
+  </div>
+  <div data-notices></div>
+  <div class="dui-danger">
+    <b>Delete Brightwater sandbox</b>
+    <p class="dui-meta" style="color:var(--dui-grey-800);margin:0">The one thing here you can't undo, so it asks you to type the name.</p>
+    <div><button class="dui-btn-sm-ghost" type="button" data-dialog-open="#w8-delete">Delete workspace</button></div>
+  </div>
+  <dialog class="dui-dialog" id="w8-delete" aria-labelledby="w8-delete-h">
+    <form method="dialog" style="display:flex;flex-direction:column;gap:16px">
+      <h2 class="dui-h4" id="w8-delete-h">Delete Brightwater sandbox?</h2>
+      <p class="dui-meta" style="color:var(--dui-grey-800);margin:0">Everyone in it loses access now. It's gone for good on 7 Dec 2026.</p>
+      <div style="display:flex;flex-direction:column;gap:6px"><label class="dui-label" for="w8-confirm">Type <span class="dui-confirm-name">brightwater-sandbox</span> to confirm</label><input class="dui-field" id="w8-confirm" autocomplete="off" data-confirm-match="brightwater-sandbox"></div>
+      <div class="dui-actions"><button class="dui-btn-sm" type="submit" data-confirm-btn disabled aria-disabled="true">Delete workspace</button><button class="dui-btn-sm-ghost" type="button" data-dialog-close>Keep it</button></div>
+    </form>
+  </dialog>
+</div>
+<!-- /piece:bulk -->
+<!-- markup:bulk -->
+    </div>
+  </section>
+
+  <section class="dui-section rule-sec" id="w9" aria-labelledby="w9-h">
+    <div class="rule-text">
+      <span class="rule-n">W9</span>
+      <h3 class="dui-h3" id="w9-h">Compare in black.</h3>
+      <p class="dui-body">Small multiples on one shared scale, never a colour per series. Every chart can become its table, and numbers say what they mean.</p>
+      <p class="dui-meta pieces">Number tiles, small multiples, heat map</p>
+    </div>
+    <div class="specimen" data-scope>
+<!-- piece:charts -->
+<div class="spec-stack" data-view-as="chart">
+  <section class="dui-tiles" aria-label="The year in three numbers">
+    <div class="dui-tile"><span class="dui-tile__label">Spent</span><span class="dui-tile__num">R <b>46.2</b> million</span><span class="dui-tile__means">R 3.1m more than last year</span></div>
+    <div class="dui-tile"><span class="dui-tile__label">Signed on time</span><span class="dui-tile__num"><b>94</b>%</span><span class="dui-tile__means">Up from 81% last year</span></div>
+    <div class="dui-tile"><span class="dui-tile__label">Blocked now</span><span class="dui-tile__num"><b>2</b> contracts</span><span class="dui-tile__means">Both waiting on certificates</span></div>
+  </section>
+  <div class="spec-bar">
+    <div><b>Spend by depot</b><p class="dui-meta" style="font-size:var(--dui-text-floor);margin:0">One scale for all four, R 0 to R 2.4 million a month.</p></div>
+    <div class="dui-seg" role="radiogroup" aria-label="Show as">
+      <label><input type="radio" name="w9-as" value="chart" data-view-as-set checked>Chart</label>
+      <label><input type="radio" name="w9-as" value="table" data-view-as-set>Table</label>
+    </div>
+  </div>
+  <div class="dui-multiples dui-draw-lines" data-as="chart">
+      <figure class="dui-multiple" style="margin:0;--dui-i:0">
+        <figcaption class="dui-multiple__head"><span>Johannesburg</span><b>R 2.24m</b></figcaption>
+        <svg viewBox="0 -4 240 118" role="img" aria-label="Johannesburg: R 1.82 million in December to R 2.24 million in November, up 23%">
+          <line class="dui-chart-grid" x1="0" x2="240" y1="48" y2="48"/>
+          <polygon class="dui-chart-area" points="0,96 0.0,23.2 21.8,25.6 43.6,19.8 65.5,20.8 87.3,18.0 109.1,15.6 130.9,16.6 152.7,13.2 174.5,11.2 196.4,12.4 218.2,9.6 240.0,6.4 240,96"/>
+          <polyline class="dui-chart-line" points="0.0,23.2 21.8,25.6 43.6,19.8 65.5,20.8 87.3,18.0 109.1,15.6 130.9,16.6 152.7,13.2 174.5,11.2 196.4,12.4 218.2,9.6 240.0,6.4"/>
+          <circle class="dui-chart-dot" cx="240" cy="6.4" r="3"/>
+          <line class="dui-chart-base" x1="0" x2="240" y1="96" y2="96"/>
+          <text class="dui-chart-label" x="0" y="112">Dec</text><text class="dui-chart-label" x="240" y="112" text-anchor="end">Nov</text>
+        </svg>
+        <span class="dui-meta" style="font-size:var(--dui-text-floor)">Up 23% in a year</span>
+      </figure>
+      <figure class="dui-multiple" style="margin:0;--dui-i:1">
+        <figcaption class="dui-multiple__head"><span>Durban</span><b>R 1.51m</b></figcaption>
+        <svg viewBox="0 -4 240 118" role="img" aria-label="Durban: R 1.21 million in December to R 1.51 million in November, up 25%">
+          <line class="dui-chart-grid" x1="0" x2="240" y1="48" y2="48"/>
+          <polygon class="dui-chart-area" points="0,96 0.0,47.6 21.8,48.8 43.6,46.8 65.5,45.6 87.3,46.4 109.1,44.0 130.9,42.0 152.7,42.8 174.5,40.8 196.4,39.2 218.2,37.6 240.0,35.6 240,96"/>
+          <polyline class="dui-chart-line" points="0.0,47.6 21.8,48.8 43.6,46.8 65.5,45.6 87.3,46.4 109.1,44.0 130.9,42.0 152.7,42.8 174.5,40.8 196.4,39.2 218.2,37.6 240.0,35.6"/>
+          <circle class="dui-chart-dot" cx="240" cy="35.6" r="3"/>
+          <line class="dui-chart-base" x1="0" x2="240" y1="96" y2="96"/>
+          <text class="dui-chart-label" x="0" y="112">Dec</text><text class="dui-chart-label" x="240" y="112" text-anchor="end">Nov</text>
+        </svg>
+        <span class="dui-meta" style="font-size:var(--dui-text-floor)">Up 25% in a year</span>
+      </figure>
+      <figure class="dui-multiple" style="margin:0;--dui-i:2">
+        <figcaption class="dui-multiple__head"><span>Cape Town</span><b>R 1.08m</b></figcaption>
+        <svg viewBox="0 -4 240 118" role="img" aria-label="Cape Town: R 0.98 million in December to R 1.08 million in November, up 10%">
+          <line class="dui-chart-grid" x1="0" x2="240" y1="48" y2="48"/>
+          <polygon class="dui-chart-area" points="0,96 0.0,56.8 21.8,55.6 43.6,56.4 65.5,54.4 87.3,55.2 109.1,56.0 130.9,53.6 152.7,54.0 174.5,54.8 196.4,53.2 218.2,52.4 240.0,52.8 240,96"/>
+          <polyline class="dui-chart-line" points="0.0,56.8 21.8,55.6 43.6,56.4 65.5,54.4 87.3,55.2 109.1,56.0 130.9,53.6 152.7,54.0 174.5,54.8 196.4,53.2 218.2,52.4 240.0,52.8"/>
+          <circle class="dui-chart-dot" cx="240" cy="52.8" r="3"/>
+          <line class="dui-chart-base" x1="0" x2="240" y1="96" y2="96"/>
+          <text class="dui-chart-label" x="0" y="112">Dec</text><text class="dui-chart-label" x="240" y="112" text-anchor="end">Nov</text>
+        </svg>
+        <span class="dui-meta" style="font-size:var(--dui-text-floor)">Up 10% in a year</span>
+      </figure>
+      <figure class="dui-multiple" style="margin:0;--dui-i:3">
+        <figcaption class="dui-multiple__head"><span>Gqeberha</span><b>R 0.53m</b></figcaption>
+        <svg viewBox="0 -4 240 118" role="img" aria-label="Gqeberha: R 0.42 million in December to R 0.53 million in November, up 26%">
+          <line class="dui-chart-grid" x1="0" x2="240" y1="48" y2="48"/>
+          <polygon class="dui-chart-area" points="0,96 0.0,79.2 21.8,78.4 43.6,78.8 65.5,77.2 87.3,75.2 109.1,71.6 130.9,70.4 152.7,72.0 174.5,72.8 196.4,73.6 218.2,74.4 240.0,74.8 240,96"/>
+          <polyline class="dui-chart-line" points="0.0,79.2 21.8,78.4 43.6,78.8 65.5,77.2 87.3,75.2 109.1,71.6 130.9,70.4 152.7,72.0 174.5,72.8 196.4,73.6 218.2,74.4 240.0,74.8"/>
+          <circle class="dui-chart-dot" cx="240" cy="74.8" r="3"/>
+          <line class="dui-chart-base" x1="0" x2="240" y1="96" y2="96"/>
+          <text class="dui-chart-label" x="0" y="112">Dec</text><text class="dui-chart-label" x="240" y="112" text-anchor="end">Nov</text>
+        </svg>
+        <span class="dui-meta" style="font-size:var(--dui-text-floor)">Up 26% in a year</span>
+      </figure>
+  </div>
+  <div class="dui-data-wrap" data-as="table">
+    <table class="dui-data">
+      <caption class="dui-sr-only">Spend by depot, in R thousands</caption>
+      <thead><tr><th class="dui-pin">Depot (R thousands)</th><th class="dui-num">Dec 2025</th><th class="dui-num">Nov 2026</th><th class="dui-num">Change</th></tr></thead>
+      <tbody>
+        <tr><th scope="row" class="dui-pin">Johannesburg</th><td class="dui-num">1 820</td><td class="dui-num">2 240</td><td class="dui-num">+23%</td></tr>
+        <tr><th scope="row" class="dui-pin">Durban</th><td class="dui-num">1 210</td><td class="dui-num">1 510</td><td class="dui-num">+25%</td></tr>
+        <tr><th scope="row" class="dui-pin">Cape Town</th><td class="dui-num">980</td><td class="dui-num">1 080</td><td class="dui-num">+10%</td></tr>
+        <tr><th scope="row" class="dui-pin">Gqeberha</th><td class="dui-num">420</td><td class="dui-num">530</td><td class="dui-num">+26%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="spec-bar"><b>Renewals coming up</b><p class="dui-heat-key"><span><i></i>None</span><span><i data-n="1"></i>1 or 2</span><span><i data-n="3"></i>3 or more</span></p></div>
+  <div class="heat-wrap">
+    <div class="dui-heat" role="img" aria-label="Renewals by category and month, Dec 2026 to Nov 2027. The busiest is Services in November, with 5.">
+      <span></span><span style="padding:0;text-align:center">D</span><span style="padding:0;text-align:center">J</span><span style="padding:0;text-align:center">F</span><span style="padding:0;text-align:center">M</span><span style="padding:0;text-align:center">A</span><span style="padding:0;text-align:center">M</span><span style="padding:0;text-align:center">J</span><span style="padding:0;text-align:center">J</span><span style="padding:0;text-align:center">A</span><span style="padding:0;text-align:center">S</span><span style="padding:0;text-align:center">O</span><span style="padding:0;text-align:center">N</span>
+      <span>Fleet</span><i data-n="0" title="Fleet, Dec: 0"></i><i data-n="1" title="Fleet, Jan: 1">1</i><i data-n="0" title="Fleet, Feb: 0"></i><i data-n="2" title="Fleet, Mar: 2">2</i><i data-n="0" title="Fleet, Apr: 0"></i><i data-n="0" title="Fleet, May: 0"></i><i data-n="3" title="Fleet, Jun: 3">3</i><i data-n="1" title="Fleet, Jul: 1">1</i><i data-n="0" title="Fleet, Aug: 0"></i><i data-n="0" title="Fleet, Sep: 0"></i><i data-n="1" title="Fleet, Oct: 1">1</i><i data-n="0" title="Fleet, Nov: 0"></i>
+      <span>Facilities</span><i data-n="2" title="Facilities, Dec: 2">2</i><i data-n="0" title="Facilities, Jan: 0"></i><i data-n="1" title="Facilities, Feb: 1">1</i><i data-n="1" title="Facilities, Mar: 1">1</i><i data-n="0" title="Facilities, Apr: 0"></i><i data-n="0" title="Facilities, May: 0"></i><i data-n="0" title="Facilities, Jun: 0"></i><i data-n="4" title="Facilities, Jul: 4">4</i><i data-n="1" title="Facilities, Aug: 1">1</i><i data-n="0" title="Facilities, Sep: 0"></i><i data-n="0" title="Facilities, Oct: 0"></i><i data-n="1" title="Facilities, Nov: 1">1</i>
+      <span>Services</span><i data-n="1" title="Services, Dec: 1">1</i><i data-n="1" title="Services, Jan: 1">1</i><i data-n="0" title="Services, Feb: 0"></i><i data-n="0" title="Services, Mar: 0"></i><i data-n="2" title="Services, Apr: 2">2</i><i data-n="0" title="Services, May: 0"></i><i data-n="1" title="Services, Jun: 1">1</i><i data-n="0" title="Services, Jul: 0"></i><i data-n="0" title="Services, Aug: 0"></i><i data-n="0" title="Services, Sep: 0"></i><i data-n="0" title="Services, Oct: 0"></i><i data-n="5" title="Services, Nov: 5">5</i>
+    </div>
+  </div>
+</div>
+<!-- /piece:charts -->
+<!-- markup:charts -->
+    </div>
+  </section>
+
+  <section class="dui-section" id="more" aria-labelledby="more-h">
+    <div class="sec-head"><h2 id="more-h" class="dui-h2">Everything <b>else</b></h2>
+    <p class="dui-body">The pieces that don't belong to one rule. The app shell is the frame at the top of the page.</p></div>
+    <div class="more-grid">
+      <div class="more-cell more-cell--wide"><h3 class="dui-h4">List and detail</h3><p class="dui-meta">Arrow keys move. One pane at a time on phones.</p><div class="specimen" data-scope>
+<!-- piece:split -->
+<div class="dui-split-view" data-open="QC-2041">
+  <div class="dui-split-view__list">
+    <ul class="dui-list" aria-label="Inbox">
+      <li><button class="dui-item" type="button" data-open-item="QC-2041" aria-current="true"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span class="dui-item__title">Fleet telematics renewal</span><span class="dui-item__id">QC-2041</span></button></li>
+      <li><button class="dui-item" type="button" data-open-item="QC-2019" aria-current="false"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span class="dui-item__title">Bulk diesel supply</span><span class="dui-item__id">QC-2019</span></button></li>
+      <li><button class="dui-item" type="button" data-open-item="QC-2035" aria-current="false"><span class="dui-mark dui-mark--sm" data-ring="3"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span class="dui-item__title">Cloud hosting</span><span class="dui-item__id">QC-2035</span></button></li>
+    </ul>
+  </div>
+  <div class="dui-split-view__detail">
+    <article class="split-detail" data-detail="QC-2041" aria-labelledby="sd-1">
+      <button class="dui-btn-sm-ghost dui-split-view__back" type="button" data-split-back><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-left"/></svg>Inbox</button>
+      <h3 class="dui-h4" id="sd-1" tabindex="-1">Fleet telematics renewal</h3>
+      <dl class="dui-props"><dt>Owner</dt><dd><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span>Ayanda Khumalo</span></span></dd><dt>Value</dt><dd>R 1 240 000 a year</dd><dt>Renews</dt><dd>14 Dec 2026</dd></dl>
+    </article>
+    <article class="split-detail" data-detail="QC-2019" hidden aria-labelledby="sd-2">
+      <button class="dui-btn-sm-ghost dui-split-view__back" type="button" data-split-back><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-left"/></svg>Inbox</button>
+      <h3 class="dui-h4" id="sd-2" tabindex="-1">Bulk diesel supply</h3>
+      <dl class="dui-props"><dt>Owner</dt><dd><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span>Ayanda Khumalo</span></span></dd><dt>Value</dt><dd>R 5 120 000 a year</dd><dt>Renews</dt><dd>20 Nov 2026</dd></dl>
+    </article>
+    <article class="split-detail" data-detail="QC-2035" hidden aria-labelledby="sd-3">
+      <button class="dui-btn-sm-ghost dui-split-view__back" type="button" data-split-back><svg class="dui-icon" aria-hidden="true"><use href="/assets/icons.svg#arrow-left"/></svg>Inbox</button>
+      <h3 class="dui-h4" id="sd-3" tabindex="-1">Cloud hosting</h3>
+      <dl class="dui-props"><dt>Owner</dt><dd><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="3"><span class="dui-mark__inner"><img src="/examples/img/portrait-1.jpg" alt=""></span></span><span>Lerato Dube</span></span></dd><dt>Value</dt><dd>R 612 000 a year</dd><dt>Blocked</dt><dd><span class="dui-st" data-st="blocked">Tax certificate missing</span></dd></dl>
+    </article>
+  </div>
+</div>
+<!-- /piece:split -->
+<!-- markup:split -->
+      </div></div>
+      <div class="more-cell"><h3 class="dui-h4">Activity</h3><p class="dui-meta">Who did what, with the full date and time zone.</p><div class="specimen" data-scope>
+<!-- piece:activity -->
+<ul class="dui-feed">
+  <li><span class="dui-mark dui-mark--sm" data-ring="4"><span class="dui-mark__inner"><img src="/examples/img/portrait-12.jpg" alt=""></span></span><span><b>Pieter Venter</b> signed for Finance</span><time datetime="2026-11-05T09:14+02:00">5 Nov 2026, 09:14 SAST</time></li>
+  <li><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="/examples/img/portrait-3.jpg" alt=""></span></span><span><b>Kofi Asante</b> signed for Legal</span><time datetime="2026-11-04T16:40+02:00">4 Nov 2026, 16:40 SAST</time></li>
+  <li><span class="dui-mark dui-mark--sm" data-ring="1"><span class="dui-mark__inner"><img src="/examples/img/portrait-2.jpg" alt=""></span></span><span><b>Ayanda Khumalo</b> sent it for approval</span><time datetime="2026-11-03T11:02+02:00">3 Nov 2026, 11:02 SAST</time></li>
+</ul>
+<!-- /piece:activity -->
+<!-- markup:activity -->
+      </div></div>
+      <div class="more-cell"><h3 class="dui-h4">Disabled, with a reason</h3><p class="dui-meta">Say why, who can change it, and one way to ask.</p><div class="specimen" data-scope>
+<!-- piece:lock -->
+<div class="dui-lock">
+  <b>You can't change the value</b>
+  <span>It's in review. Ayanda can send it back to draft if the price needs to change.</span>
+  <button class="dui-btn-sm-ghost" type="button" data-done="Asked">Ask Ayanda</button>
+</div>
+<!-- /piece:lock -->
+<!-- markup:lock -->
+      </div></div>
+      <div class="more-cell more-cell--wide"><h3 class="dui-h4">Settings</h3><p class="dui-meta">Secrets masked with Copy. Roles change in place, and say so.</p><div class="specimen" data-scope>
+<!-- piece:settings -->
+<div class="spec-stack">
+  <div class="dui-secret"><code id="ee-scim">scim_••••••••••••••••7Q2a</code><button class="dui-btn-sm-ghost" type="button" data-copy="#ee-scim">Copy</button></div>
+  <p class="dui-meta" style="margin:0;font-size:var(--dui-text-floor)">Shown once when made, then masked.</p>
+  <ul class="role-rows">
+    <li><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="2"><span class="dui-mark__inner"><img src="/examples/img/portrait-7.jpg" alt=""></span></span><span>Thabo Mokoena</span></span><select class="dui-role-select" data-who="Thabo's" aria-label="Role for Thabo Mokoena"><option>Viewer</option><option>Signer</option><option selected>Admin</option><option>Auditor</option></select></li>
+    <li><span class="dui-who"><span class="dui-mark dui-mark--sm" data-ring="4"><span class="dui-mark__inner"><img src="/examples/img/portrait-8.jpg" alt=""></span></span><span>Grace Mensah</span></span><select class="dui-role-select" data-who="Grace's" aria-label="Role for Grace Mensah"><option>Viewer</option><option>Signer</option><option>Admin</option><option selected>Auditor</option></select></li>
+  </ul>
+  <div data-notices></div>
+</div>
+<!-- /piece:settings -->
+<!-- markup:settings -->
+      </div></div>
+    </div>
+  </section>
+
+  <section class="dui-section" id="templates" aria-labelledby="tpl-h">
+    <h2 id="tpl-h" class="dui-h2">Nine <b>templates</b></h2>
+    <p class="dui-body">Every piece above, put together into the screens of one app.</p>
+    <div class="dui-grid dui-grid--3 tpl">
+      <a class="dui-card dui-card--flush" href="/examples/work-home.html"><div class="dui-card__media"><img src="/thumbs/work-home.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Home</h3><p class="dui-meta">What needs you, what's moving, what's stuck.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-table.html"><div class="dui-card__media"><img src="/thumbs/work-table.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Contracts table</h3><p class="dui-meta">Saved views, sort, select rows, a bulk bar, Undo.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-console.html"><div class="dui-card__media"><img src="/thumbs/work-console.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Inbox</h3><p class="dui-meta">A list beside the open item, ⌘K, key caps.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-approvals.html"><div class="dui-card__media"><img src="/thumbs/work-approvals.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Approval</h3><p class="dui-meta">Who asked apart from who signs, then the trail.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-reports.html"><div class="dui-card__media"><img src="/thumbs/work-reports.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Reports</h3><p class="dui-meta">Black small multiples on one scale, a heat map.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-audit.html"><div class="dui-card__media"><img src="/thumbs/work-audit.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Audit log</h3><p class="dui-meta">Need-to-know details, with View as.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-admin.html"><div class="dui-card__media"><img src="/thumbs/work-admin.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Settings</h3><p class="dui-meta">Roles in place, single sign-on, keys shown once.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-states.html"><div class="dui-card__media"><img src="/thumbs/work-states.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">States</h3><p class="dui-meta">Loading, empty, broken, not allowed, too long.</p></div></a>
+      <a class="dui-card dui-card--flush" href="/examples/work-trust.html"><div class="dui-card__media"><img src="/thumbs/work-trust.png" alt="" loading="lazy"></div><div class="dui-card__body"><h3 class="dui-h4">Trust page</h3><p class="dui-meta">Where data lives, who can see it, POPIA.</p></div></a>
+    </div>
+  </section>
+
+  <section class="dui-section" id="use" aria-labelledby="use-h">
     <h2 id="use-h" class="dui-h2">Use <b>it</b></h2>
     <p class="dui-body">Load the work layer after distinctUI. It adds the app shell, dense tables, the command menu, approvals, charts and settings, and the script that makes them move.</p>
     <pre class="dui-code"><code>&lt;link rel="stylesheet" href="distinctui.css"&gt;
 &lt;link rel="stylesheet" href="distinctui-work.css"&gt;
 &lt;script src="distinctui.js" defer&gt;&lt;/script&gt;
 &lt;script src="distinctui-work.js" defer&gt;&lt;/script&gt;</code></pre>
-    <p class="dui-body">Or ask Claude with the skill installed: “Build an approvals screen with distinctUI@work.” The rules are in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/work.md">work.md</a>.</p>
-    <div class="dui-actions" style="flex-wrap:wrap"><a class="dui-btn-sm-ghost" href="/examples/work-home.html">Home</a><a class="dui-btn-sm-ghost" href="/examples/work-table.html">Contracts table</a><a class="dui-btn-sm-ghost" href="/examples/work-console.html">Inbox</a><a class="dui-btn-sm-ghost" href="/examples/work-approvals.html">Approval</a><a class="dui-btn-sm-ghost" href="/examples/work-reports.html">Reports</a><a class="dui-btn-sm-ghost" href="/examples/work-audit.html">Audit log</a><a class="dui-btn-sm-ghost" href="/examples/work-admin.html">Settings</a><a class="dui-btn-sm-ghost" href="/examples/work-states.html">States</a><a class="dui-btn-sm-ghost" href="/examples/work-trust.html">Trust page</a></div>
+    <p class="dui-body">Or ask Claude with the skill installed: “Build an approvals screen with distinctUI@work.” The rules and every class are in <a class="dui-link" href="https://github.com/VenusOne-Lee/distinctui/blob/main/skills/distinctui/references/work.md">work.md</a>, and each piece is on the <a class="dui-link" href="/components.html#work-table">components page</a> too.</p>
   </section>
+  </div>
+  </div>
 </main>
-
 
 <footer class="dui-container dui-footer">
   <span><b>distinctUI</b> distinctui.com</span>
   <span>The system behind Version One. MIT licence.</span>
   <nav aria-label="More"><a href="/">Home</a><a href="/#rules">Rules</a><a href="/components.html">Components</a><a href="/templates.html">Templates</a><a href="/work.html">At work</a><a href="/moments.html">Moments</a><a href="/swiftui.html">SwiftUI</a><a href="https://github.com/VenusOne-Lee/distinctui">GitHub</a><a href="https://www.npmjs.com/package/@distinctui/css">npm</a><a href="https://versionone.co.za">Version One</a></nav>
 </footer>
+<script>
+// Side navigation: mark the section in view.
+(() => {
+  const links = [...document.querySelectorAll(".docs-nav a")];
+  const sections = links.map((a) => document.querySelector(a.hash));
+  const mark = () => {
+    let current = sections[0];
+    for (const s of sections) if (s.getBoundingClientRect().top <= 120) current = s;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = sections.at(-1);
+    links.forEach((a, i) => sections[i] === current ? a.setAttribute("aria-current", "location") : a.removeAttribute("aria-current"));
+  };
+  addEventListener("scroll", mark, { passive: true });
+  addEventListener("resize", mark);
+  mark();
+})();
+// The framed app: a desktop screen scaled to fit, or the phone layout at full size on small screens.
+(() => {
+  const view = document.querySelector(".app-frame__view"), frame = view && view.querySelector("iframe");
+  if (!frame) return;
+  const open = document.querySelector("[data-frame-open]");
+  const W = 1280, H = 800;
+  const fit = () => {
+    const w = view.clientWidth;
+    if (w < 700) { frame.style.width = w + "px"; frame.style.height = "640px"; frame.style.transform = ""; view.style.height = "640px"; }
+    else { const s = w / W; frame.style.width = W + "px"; frame.style.height = H + "px"; frame.style.transform = `scale(${s})`; view.style.height = H * s + "px"; }
+  };
+  new ResizeObserver(fit).observe(view);
+  document.addEventListener("change", (e) => {
+    const t = e.target;
+    if (!t.matches("[data-frame-set]")) return;
+    const url = `/examples/${t.value}.html`;
+    frame.src = url; frame.title = `Quarry, the example app: ${t.parentElement.textContent.trim()}`;
+    if (open) open.href = url;
+  });
+})();
+</script>
 <script src="/assets/distinctui.js" defer></script>
+<script src="/assets/distinctui-work.js" defer></script>
 <script type="module" src="/moments/moments.js"></script>
 </body>
 </html>

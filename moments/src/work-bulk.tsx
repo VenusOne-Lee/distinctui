@@ -9,9 +9,9 @@ type S = { ticks: number; sent: boolean; notice: boolean }
 const initial: S = { ticks: 0, sent: false, notice: false }
 const poster: S = { ticks: 0, sent: true, notice: true }
 const ROWS = [
-  { name: 'Tyres and fitment', who: 'RN', ring: '5' },
-  { name: 'Print and packaging', who: 'NS', ring: '1' },
-  { name: 'Forklift leasing', who: 'PV', ring: '4' },
+  { name: 'Tyres and fitment', img: 10, ring: '5' },
+  { name: 'Print and packaging', img: 5, ring: '1' },
+  { name: 'Forklift leasing', img: 12, ring: '4' },
 ]
 
 async function script(a: Act<S>) {
@@ -28,13 +28,13 @@ async function script(a: Act<S>) {
   a.put({ ticks: 0, sent: true })
   await a.wait(420)
   a.put({ notice: true })
-  await a.move({ x: 380, y: 250 })
+  await a.move({ x: 440, y: 300 })
   await a.wait(2400)
 }
 
 export function WorkBulk() {
   return (
-    <Stage width={400} height={260} initial={initial} poster={poster} script={script} play="once" palette="mono" className="dui-look mo mo-bulk" cursor={{ at: { x: 380, y: 250 } }}>
+    <Stage width={400} height={260} initial={initial} poster={poster} script={script} play="once" palette="mono" className="dui-look mo mo-bulk" cursor={{ at: { x: 440, y: 300 } }}>
       {(s) => (
         <div className="mo-card mo-bulk__card">
           <div className="mo-swap" data-selecting={s.ticks > 0 || undefined}>
@@ -47,7 +47,7 @@ export function WorkBulk() {
           {ROWS.map((r, i) => (
             <div key={r.name} className="mo-row mo-bulk__row" data-sel={s.ticks > i && i < 2 ? '' : undefined}>
               <span className="mo-box" data-target={`tick-${i}`} data-cursor="pointer" data-on={(s.ticks > i && i < 2) || undefined} />
-              <span className="dui-mark" data-ring={r.ring} style={{ ['--mark-size' as string]: '28px' }}><span className="dui-mark__inner">{r.who}</span></span>
+              <span className="dui-mark" data-ring={r.ring} style={{ ['--mark-size' as string]: '28px' }}><span className="dui-mark__inner"><img src={`/examples/img/portrait-${r.img}.jpg`} alt="" /></span></span>
               <span className="mo-ink mo-bulk__name">{r.name}</span>
               <span className="mo-st" data-st={i < 2 && s.sent ? 'review' : i === 2 ? 'signed' : 'draft'}>{i < 2 ? (s.sent ? 'In review' : 'Draft') : 'Signed'}</span>
             </div>

@@ -8,8 +8,8 @@ type S = { open: boolean; q: string; done: boolean }
 const initial: S = { open: false, q: '', done: false }
 const poster: S = { open: true, q: 'assign nal', done: false }
 const ALL = [
-  { label: 'Assign to Naledi Sithole', words: 'assign naledi procurement', who: 'NS', ring: '1' },
-  { label: 'Assign to Rahul Naidoo', words: 'assign rahul operations', who: 'RN', ring: '5' },
+  { label: 'Assign to Naledi Sithole', words: 'assign naledi procurement', img: 5, ring: '1' },
+  { label: 'Assign to Rahul Naidoo', words: 'assign rahul operations', img: 10, ring: '5' },
   { label: 'Go to Contracts', words: 'go contracts' },
   { label: 'Go to Reports', words: 'go reports' },
 ]
@@ -45,7 +45,7 @@ export function WorkCommand() {
                 <div className="mo-cmd__q">{s.q || <span className="mo-faint">Type a command</span>}<span className="mo-caret" /></div>
                 {shown.map((o, i) => (
                   <div key={o.label} className="mo-cmd__opt" data-on={i === 0 || undefined}>
-                    {o.who ? <span className="dui-mark" data-ring={o.ring} style={{ ['--mark-size' as string]: '28px' }}><span className="dui-mark__inner">{o.who}</span></span> : <span className="mo-cmd__arrow">→</span>}
+                    {o.img ? <span className="dui-mark" data-ring={o.ring} style={{ ['--mark-size' as string]: '28px' }}><span className="dui-mark__inner"><img src={`/examples/img/portrait-${o.img}.jpg`} alt="" /></span></span> : <span className="mo-cmd__arrow">→</span>}
                     {o.label}
                   </div>
                 ))}
